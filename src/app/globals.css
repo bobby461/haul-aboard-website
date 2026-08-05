@@ -1,0 +1,2796 @@
+/* ============================================================
+   HAUL ABOARD JUNK REMOVAL — GLOBAL DESIGN TOKENS
+   Palette + type pulled from the brand board: 1950s Florida
+   marina / bait-shop / vintage-workwear. Marina navy is the new
+   "ink" (dark surfaces + body text), Jacksonville orange is the
+   pop, salt cream is the paper, seafoam is the cool accent.
+   Change values here only if the brand evolves.
+
+   Brand colors:
+     Marina Navy   #0F2E4D  (deep) / #14385C (mid)
+     Jax Orange    #F15A24  / #F36A21
+     Salt Cream    #F6E9D6
+     Seafoam       #8FB6B7  / #98C4CC
+     Dock Black    #1F1F1F
+   ============================================================ */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg: #f6e9d6;          /* salt cream — the paper */
+    --ink: #0f2e4d;         /* marina navy — dark surfaces + text */
+    --ink-deep: #0a2338;    /* deeper navy for layering */
+    --orange: #f15a24;      /* jacksonville orange */
+    --orange-deep: #d2410f; /* pressed / hover orange */
+    --seafoam: #8fb6b7;     /* cool nautical accent */
+    --seafoam-light: #b9d4d3;
+    --gold: #e8a33d;        /* warm brass/rope gold */
+    --star-gold: #f5b841;
+    --muted: #5c6b72;       /* muted slate for secondary text */
+    --line: rgba(15, 46, 77, 0.14);
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html,
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-barlow), "Barlow", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* Subtle film-grain noise overlay (4% opacity, fixed across viewport).
+     Pulled exactly from the mockup. */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 100;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+}
+
+/* ============================================================
+   NAV
+   ============================================================ */
+nav.site-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 16px 44px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 32px;
+  z-index: 50;
+  background: rgba(255, 255, 255, 0.96);
+  -webkit-backdrop-filter: saturate(140%) blur(8px);
+  backdrop-filter: saturate(140%) blur(8px);
+  border-bottom: 1px solid var(--line);
+  box-shadow: 0 2px 18px rgba(0, 0, 0, 0.05);
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  line-height: 1;
+}
+/* Text wordmark logo (stand-in for the brand-board artwork). Anton display
+   face, navy with an orange accent on "ABOARD", small condensed sub-line. */
+.logo-wordmark {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+}
+.logo-line1 {
+  font-family: var(--font-bebas), sans-serif;
+  font-size: 30px;
+  line-height: 0.9;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+}
+.logo-line1 .logo-accent {
+  color: var(--orange);
+}
+.logo-line2 {
+  font-family: var(--font-barlow-condensed), sans-serif;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+/* Legacy image wordmark (used if a logo.png is dropped back in). */
+.logo-img {
+  height: 44px;
+  width: auto;
+  display: block;
+}
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  font-family: var(--font-barlow-condensed), "Barlow Condensed", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.nav-links a {
+  color: var(--ink);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-links a:hover {
+  color: var(--orange);
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.call-now {
+  background: var(--orange);
+  color: #ffffff;
+  padding: 14px 26px;
+  font-family: var(--font-barlow-condensed), "Barlow Condensed", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 10px;
+  transition:
+    background 0.2s cubic-bezier(0.2, 0.8, 0.2, 1),
+    transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow:
+    0 4px 12px rgba(241, 90, 36, 0.30),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+}
+.call-now:hover {
+  background: var(--orange-deep);
+  transform: translateY(-2px);
+  box-shadow:
+    0 8px 20px rgba(241, 90, 36, 0.42),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22);
+}
+.call-now .phone-icon {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  background: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M20 15.5c-1.25 0-2.45-.2-3.57-.57-.35-.11-.74-.03-1.02.24l-2.2 2.2c-2.83-1.44-5.15-3.75-6.59-6.58l2.2-2.21c.28-.27.36-.66.25-1.01C8.7 6.45 8.5 5.25 8.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1zM19 12h2c0-4.97-4.03-9-9-9v2c3.87 0 7 3.13 7 7zm-4 0h2c0-2.76-2.24-5-5-5v2c1.66 0 3 1.34 3 3z'/%3E%3C/svg%3E")
+    center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M20 15.5c-1.25 0-2.45-.2-3.57-.57-.35-.11-.74-.03-1.02.24l-2.2 2.2c-2.83-1.44-5.15-3.75-6.59-6.58l2.2-2.21c.28-.27.36-.66.25-1.01C8.7 6.45 8.5 5.25 8.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1zM19 12h2c0-4.97-4.03-9-9-9v2c3.87 0 7 3.13 7 7zm-4 0h2c0-2.76-2.24-5-5-5v2c1.66 0 3 1.34 3 3z'/%3E%3C/svg%3E")
+    center / contain no-repeat;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 8px;
+  background: transparent;
+  border: none;
+}
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2.5px;
+  background: var(--ink);
+  transition: transform 0.3s, opacity 0.3s;
+}
+.hamburger.open span:nth-child(1) {
+  transform: translateY(7.5px) rotate(45deg);
+}
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.open span:nth-child(3) {
+  transform: translateY(-7.5px) rotate(-45deg);
+}
+
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 64px;
+  left: 0;
+  right: 0;
+  background: #ffffff;
+  border-bottom: 1px solid var(--line);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+  z-index: 49;
+  flex-direction: column;
+  padding: 20px 0;
+}
+.mobile-menu.open {
+  display: flex;
+}
+.mobile-menu a {
+  padding: 14px 24px;
+  color: var(--ink);
+  text-decoration: none;
+  font-family: var(--font-barlow-condensed), "Barlow Condensed", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--line);
+}
+.mobile-menu a:last-child {
+  border-bottom: none;
+}
+.mobile-menu a:hover {
+  color: var(--orange);
+  background: var(--bg);
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero {
+  min-height: 100vh;
+  padding: 87px 40px 50px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #fff;
+  overflow: hidden;
+}
+.hero-photo {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+.hero-photo img {
+  object-fit: cover;
+  /* Higher object-position X shifts the picture LEFT in the viewport
+     (we see more of the photo's right side), which pulls the third
+     employee — the shortest, in the camo hoodie — into the center
+     of the frame so he sits dead under the middle stat box. */
+  object-position: 42% 40%;
+  /* Zoom in past `cover` so the empty trees/road on the right
+     get cropped off. transform-origin keeps the crew in frame. */
+  transform: scale(1.35);
+  transform-origin: 38% 60%;
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  /* Subtle uniform dark overlay — 28% at top, 35% at bottom. Keeps
+     the photo sharp and visible while improving readability of the
+     headline, stat cards, and CTA. Stays within the 25–35% spec. */
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.28) 0%,
+    rgba(0, 0, 0, 0.35) 100%
+  );
+  z-index: 1;
+}
+.hero > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Stat blocks — frosted-glass cards on top of the hero photo. The
+   row fades up on initial paint so the hero feels intentional rather
+   than dropping into place. Cards are evenly spaced so the middle
+   one sits dead-center and the outer two are centered in their halves. */
+.stat-row {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 44px;
+  width: 100%;
+  opacity: 0;
+  transform: translateY(14px);
+  animation: hero-fade-up 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) 0.05s forwards;
+}
+.stat-block {
+  /* Was a translucent "glass" panel — Bobby asked for the same dark
+     near-black surface that the service cards below the hero use,
+     so the trust badges read as solid plates over the photo instead
+     of washing into it. Subtle white border + soft drop shadow keep
+     them looking like cards (not blocks painted onto the page). */
+  background: rgba(10, 35, 56, 0.82);
+  -webkit-backdrop-filter: blur(8px) saturate(110%);
+  backdrop-filter: blur(8px) saturate(110%);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 18px;
+  color: #ffffff;
+  padding: 26px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-width: 240px;
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
+    background 0.3s, border-color 0.3s, box-shadow 0.3s;
+  box-shadow:
+    0 14px 40px rgba(0, 0, 0, 0.45),
+    0 2px 8px rgba(0, 0, 0, 0.25);
+}
+.stat-block:hover {
+  transform: translateY(-4px);
+  background: rgba(10, 35, 56, 0.9);
+  border-color: rgba(255, 255, 255, 0.22);
+  box-shadow:
+    0 22px 50px rgba(0, 0, 0, 0.55),
+    0 4px 14px rgba(0, 0, 0, 0.3);
+}
+.stat-block .top {
+  font-family: var(--font-bebas), "Anton", sans-serif;
+  font-size: 60px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #ffffff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+}
+.stat-block .top .star {
+  font-size: 50px;
+  line-height: 1;
+  color: var(--star-gold);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+}
+.stat-block .top .plus {
+  color: #ffffff;
+}
+.stat-block .label {
+  font-family: var(--font-barlow-condensed), "Barlow Condensed", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.94);
+  margin-top: 10px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+@keyframes hero-fade-up {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.stat-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Google "G" — multicolor SVG sits inside a small white circle so
+   the brand colors stay legible on the frosted-glass card. */
+.icon-google {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #ffffff;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.icon-google svg {
+  width: 90%;
+  height: 90%;
+  display: block;
+}
+
+/* Check icon — orange circle with white check, brand pop */
+.icon-check {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--orange);
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Hammer/wrench icon — white stroke on the frosted-glass card */
+.icon-hammer {
+  width: 18px;
+  height: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.icon-hammer svg {
+  width: 100%;
+  height: 100%;
+  color: #ffffff;
+}
+
+/* Headline (Anton) — staggered rise, italic "for good." with orange underline draw */
+.headline {
+  font-family: var(--font-bebas), "Anton", sans-serif;
+  line-height: 0.86;
+  letter-spacing: 0.005em;
+  text-transform: uppercase;
+  margin-bottom: 50px;
+}
+.headline .line {
+  display: block;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: rise 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+.headline .line:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.headline .line:nth-child(2) {
+  animation-delay: 0.3s;
+}
+.headline .line:nth-child(3) {
+  animation-delay: 0.5s;
+}
+.headline .connector {
+  font-size: clamp(48px, 9vw, 130px);
+  color: #ffffff;
+  letter-spacing: -0.005em;
+}
+.headline .brand {
+  font-size: clamp(96px, 18vw, 280px);
+  color: #ffffff;
+  letter-spacing: -0.005em;
+  position: relative;
+}
+.headline .for-good {
+  font-size: clamp(48px, 9vw, 130px);
+  color: #ffffff;
+  font-style: italic;
+  position: relative;
+  display: inline-block;
+}
+.headline .for-good::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.08em;
+  width: 100%;
+  height: 0.08em;
+  background: var(--orange);
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: underline 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  animation-delay: 1.2s;
+}
+
+@keyframes underline {
+  to {
+    transform: scaleX(1);
+  }
+}
+@keyframes rise {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.meta-row {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1.5fr;
+  gap: 40px;
+  align-items: end;
+  border-top: 2px solid rgba(255, 255, 255, 0.4);
+  padding-top: 28px;
+  opacity: 0;
+  animation: rise 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  animation-delay: 0.9s;
+}
+.meta-block .label {
+  font-family: var(--font-barlow-condensed), "Barlow Condensed", sans-serif;
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 12px;
+}
+.meta-block .body {
+  font-size: 16px;
+  line-height: 1.45;
+  font-weight: 500;
+  color: #ffffff;
+  max-width: 28ch;
+}
+
+.primary-cta {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: var(--orange);
+  color: #ffffff;
+  padding: 28px 38px;
+  text-decoration: none;
+  border-radius: 14px;
+  transition:
+    background 0.25s cubic-bezier(0.2, 0.8, 0.2, 1),
+    transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+  box-shadow:
+    0 10px 24px rgba(241, 90, 36, 0.32),
+    0 2px 8px rgba(241, 90, 36, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+}
+.primary-cta:hover {
+  background: var(--orange-deep);
+  transform: translateY(-3px);
+  box-shadow:
+    0 18px 36px rgba(241, 90, 36, 0.42),
+    0 4px 12px rgba(241, 90, 36, 0.26),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22);
+}
+.primary-cta .label-sm {
+  font-family: var(--font-barlow-condensed), "Barlow Condensed", sans-serif;
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+  opacity: 0.9;
+}
+.primary-cta .label-lg {
+  font-family: var(--font-bebas), "Anton", sans-serif;
+  font-size: 30px;
+  letter-spacing: 0.02em;
+  line-height: 1;
+}
+.primary-cta .arrow {
+  margin-left: auto;
+  font-size: 36px;
+  font-family: var(--font-bebas), "Anton", sans-serif;
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.primary-cta:hover .arrow {
+  transform: translateX(8px);
+}
+
+.phone-cta {
+  display: block;
+  text-decoration: none;
+  color: #ffffff;
+}
+.phone-cta .num {
+  font-family: var(--font-bebas), "Anton", sans-serif;
+  font-size: 28px;
+  letter-spacing: 0.04em;
+  line-height: 1;
+}
+.phone-cta .sub {
+  font-family: var(--font-barlow-condensed), "Barlow Condensed", sans-serif;
+  font-weight: 500;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: 6px;
+}
+.phone-cta:hover .num {
+  color: var(--orange);
+}
+
+/* ============================================================
+   TRUST STRIP
+   Black bar, scrolling marquee with orange-stroke Lucide icons.
+   Dividers are thin vertical orange-gradient lines (NOT triangles).
+   ============================================================ */
+.trust-strip {
+  background: var(--ink);
+  color: #ffffff;
+  border-top: 4px solid var(--orange);
+  overflow: hidden;
+  padding: 28px 0;
+  position: relative;
+}
+.trust-track {
+  display: flex;
+  gap: 64px;
+  animation: trust-scroll 40s linear infinite;
+  white-space: nowrap;
+  width: max-content;
+  align-items: center;
+}
+.trust-track:hover {
+  animation-play-state: paused;
+}
+.trust-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  flex-shrink: 0;
+}
+.trust-icon {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--orange);
+}
+.trust-icon svg {
+  width: 100%;
+  height: 100%;
+  stroke: var(--orange);
+  stroke-width: 2;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.trust-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+.trust-text .lg {
+  font-family: var(--font-bebas), "Anton", sans-serif;
+  font-size: 22px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  color: #ffffff;
+}
+.trust-text .sm {
+  font-family: var(--font-barlow-condensed), "Barlow Condensed", sans-serif;
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  margin-top: 5px;
+}
+.trust-divider {
+  width: 1px;
+  height: 36px;
+  background: linear-gradient(
+    180deg,
+    rgba(241, 90, 36, 0) 0%,
+    rgba(241, 90, 36, 0.6) 50%,
+    rgba(241, 90, 36, 0) 100%
+  );
+  flex-shrink: 0;
+}
+@keyframes trust-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* ============================================================
+   SERVICES (homepage) — 6 photo cards in a 3-column grid
+   ============================================================ */
+.services {
+  /* Top padding was 120px — pulled in to 50px so the "What we haul"
+     eyebrow sits right under the trust strip instead of floating in
+     a big cream void. Bottom 80px keeps a comfortable buffer before
+     the next dark section but is much tighter than the original. */
+  padding: 50px 40px 80px;
+  border-bottom: 2px solid var(--ink);
+  background: var(--bg);
+}
+.services .section-title {
+  /* Scoped tighten: the default global section-title sits 70px above
+     its content, which felt too airy for this section once the top
+     padding was pulled in. 44px keeps a clear divide without making
+     the title float disconnected from the cards. */
+  margin-bottom: 44px;
+}
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--font-barlow-condensed), "Barlow Condensed", sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 30px;
+}
+.section-label::before {
+  content: "";
+  width: 40px;
+  height: 2px;
+  background: var(--orange);
+}
+.section-title {
+  font-family: var(--font-bebas), "Anton", sans-serif;
+  font-size: clamp(48px, 8vw, 110px);
+  line-height: 0.92;
+  text-transform: uppercase;
+  letter-spacing: 0.005em;
+  margin-bottom: 70px;
+  max-width: 90%;
+}
+.section-title .accent {
+  color: var(--orange);
+}
+
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.service-card {
+  position: relative;
+  min-height: 360px;
+  overflow: hidden;
+  cursor: pointer;
+  text-decoration: none;
+  color: #ffffff;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 30px;
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+/* The photo gets pushed way into the background here so the white
+   text reads cleanly on every card. Two layered tricks:
+   1. A very dark, near-uniform overlay (80–90% black) does most of
+      the work for contrast.
+   2. The image itself is dimmed + slightly desaturated via filter
+      so it reads as a textured backdrop rather than a competing
+      foreground photo. You can still tell what each card is about,
+      but the eye locks onto the text immediately.
+   On hover both flip to the brand orange treatment. */
+.service-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(10, 35, 56, 0.8) 0%, rgba(10, 35, 56, 0.9) 100%);
+  transition: background 0.4s;
+  z-index: 1;
+}
+.service-card img {
+  filter: brightness(0.55) saturate(0.85);
+  transition: filter 0.4s;
+}
+.service-card:hover {
+  transform: translateY(-4px);
+}
+.service-card:hover::before {
+  background: linear-gradient(180deg, rgba(241, 90, 36, 0.65) 0%, rgba(210, 65, 15, 0.92) 100%);
+}
+.service-card:hover img {
+  filter: brightness(0.7) saturate(1);
+}
+.service-card > * {
+  position: relative;
+  z-index: 2;
+}
+/* Content wrapper inside each card — centered vertically + horizontally
+   by the flex layout on .service-card. Constrained so descriptions
+   don't sprawl edge-to-edge on wide cards. */
+.service-card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 92%;
+}
+.service-card .name {
+  font-family: var(--font-bebas), "Anton", sans-serif;
+  font-size: clamp(42px, 3.4vw, 56px);
+  letter-spacing: 0.01em;
+  line-height: 0.95;
+  margin-bottom: 18px;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.6);
+}
+.service-card .desc {
+  font-size: 16px;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.95);
+  margin-bottom: 22px;
+  max-width: 34ch;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.6);
+}
+.service-card .arrow-link {
+  font-family: var(--font-barlow-condensed), "Barlow Condensed", sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: gap 0.3s;
+}
+.service-card:hover .arrow-link {
+  gap: 14px;
+}
+
+/* Photo placeholder used when an image hasn't been uploaded yet.
+   Medium-dark gray stripes so it sits naturally behind the dark
+   gradient overlays on hero / banner / card photos — without a
+   real photo, you still see "no photo yet" but the page reads
+   close to how it'll look once the photo lands. */
+.photo-placeholder {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    45deg,
+    #3d5566 0px,
+    #3d5566 12px,
+    #334858 12px,
+    #334858 24px
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 16px;
+  font-family: var(--font-barlow-condensed), "Barlow Condensed", sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.55);
+  text-transform: uppercase;
+}
+
+/* ============================================================
+   REVIEWS SECTION
+   Two stacked slabs: a dark "header" with the eyebrow, title, and
+   rating badge, and a light "body" with the actual review cards
+   and CTA. Splitting them gives the page more visual rhythm than
+   a single 120vh black block. The headline reads like a section
+   header, the cards feel like the content underneath it.
+   ============================================================ */
+.reviews-section-header {
+  padding: 100px 40px 70px;
+  background: var(--ink);
+  color: #ffffff;
+  text-align: center;
+}
+.reviews-section-header .section-label {
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.6);
+}
+.reviews-section-header .section-title {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  margin-bottom: 28px;
+  color: #ffffff;
+}
+/* Explainer paragraph that makes the Junk-Away-Delaware attribution
+   unmistakable before the sister-company reviews are shown. */
+.reviews-intro {
+  max-width: 62ch;
+  margin: 0 auto 30px;
+  font-size: 17px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.86);
+}
+/* Attribution line above the /reviews grid — keeps the Delaware source of
+   the reviews explicit on the white body section. */
+.reviews-attribution {
+  max-width: 1100px;
+  margin: 0 auto 26px;
+  text-align: center;
+  font-family: var(--font-barlow-condensed), sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.reviews-section-body {
+  padding: 44px 40px 90px;
+  background: #ffffff;
+  border-bottom: 2px solid var(--ink);
+  text-align: center;
+}
+
+/* Rating badge — sized for the dark header. */
+.reviews-rating-display {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 28px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 4px;
+  color: #ffffff;
+}
+.reviews-rating-display .stars {
+  color: var(--star-gold);
+  font-size: 28px;
+  letter-spacing: 2px;
+}
+.reviews-rating-display .num {
+  font-family: var(--font-bebas), "Anton", sans-serif;
+  font-size: 32px;
+  line-height: 1;
+  color: #ffffff;
+}
+.reviews-rating-display .from {
+  font-family: var(--font-barlow-condensed), "Barlow Condensed", sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Reviews grid: cards left-aligned within the centered body so the
+   quotes read like quotes (not centered marketing copy). */
+.reviews-testimonial-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+/* Housecall Pro reviews widget wrapper. The HCP embed code defaults
+   to a fixed 1000×1000 iframe; we override to fluid-width with a
+   sensible max so it doesn't sprawl on ultra-wide displays. Height
+   is tall enough to show a handful of reviews before the widget's
+   internal scroller engages — visitors don't need to scroll the
+   page just to see more reviews. */
+.hcp-reviews-widget {
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: left;
+}
+.hcp-reviews-widget iframe {
+  display: block;
+  width: 100%;
+  height: 1100px;
+  border: 0;
+  background: var(--bg);
+}
+@media (max-width: 700px) {
+  .hcp-reviews-widget iframe {
+    height: 900px;
+  }
+}
+
+/* Light-variant testimonial card — used on the white body sections
+   for /reviews and the homepage. Mirrors .testimonial structurally
+   but flips the palette: cream card on white, ink text, gold stars,
+   orange top stripe. */
+.testimonial-light {
+  background: var(--bg);
+  color: var(--ink);
+  padding: 36px 30px;
+  border-top: 4px solid var(--orange);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.testimonial-light .stars {
+  color: var(--star-gold);
+  font-size: 20px;
+  letter-spacing: 2px;
+}
+.testimonial-light .quote {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--ink);
+  flex-grow: 1;
+  margin: 0;
+}
+.testimonial-light .meta {
+  font-family: var(--font-barlow-condensed), "Barlow Condensed", sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+  padding-top: 18px;
+}
+.testimonial-light .meta .name {
+  color: var(--ink);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.reviews-cta {
+  margin-top: 50px;
+}
+.reviews-cta a {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--ink);
+  text-decoration: none;
+  font-family: var(--font-barlow-condensed), "Barlow Condensed", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 16px 28px;
+  border: 2px solid var(--ink);
+  transition: background 0.2s, color 0.2s;
+}
+.reviews-cta a:hover {
+  background: var(--ink);
+  color: #ffffff;
+}
+
+/* /reviews page-hero modifier. Collapses the section to the size of
+   its content (rather than the default 60vh min-height) and centers
+   the breadcrumb + headline + lede so the layout doesn't lean to one
+   side. Result: a tight dark header that sits flush above the white
+   reviews body, no big empty black slab below the lede.
+   The selectors are chained as `.page-hero.reviews-hero` to win
+   specificity over the default `.page-hero` rules further down the
+   file (CSS cascade picks the later rule when specificity ties). */
+.page-hero.reviews-hero {
+  min-height: 0;
+  padding: 130px 40px 36px;
+  justify-content: flex-start;
+  text-align: center;
+}
+.page-hero.reviews-hero .breadcrumb {
+  display: flex;
+  justify-content: center;
+}
+.page-hero.reviews-hero h1 {
+  /* Force "300+ Jacksonville Beach Neighbors." onto one line across the full
+     hero width. The 16ch cap from .page-hero h1 is overridden here.
+     Font size is scaled down a touch (vs the default page-hero) so
+     the line fits comfortably on standard laptop widths. */
+  max-width: none;
+  margin: 0 auto 18px;
+  font-size: clamp(36px, 6vw, 92px);
+  white-space: nowrap;
+}
+.page-hero.reviews-hero .lede {
+  margin: 0 auto;
+  max-width: 60ch;
+}
+@media (max-width: 1100px) {
+  /* Below 1100px the single-line headline gets too tight against the
+     edges — allow it to wrap and shrink the font. */
+  .page-hero.reviews-hero h1 {
+    white-space: normal;
+  }
+}
+@media (max-width: 700px) {
+  .page-hero.reviews-hero {
+    padding: 100px 20px 28px;
+  }
+}
+
+/* ============================================================
+   BIG ORANGE CTA BLOCK
+   ============================================================ */
+.cta-block {
+  padding: 140px 40px;
+  text-align: center;
+  background: var(--orange);
+  color: #ffffff;
+  border-bottom: 2px solid var(--ink);
+}
+.cta-block .pre {
+  font-family: var(--font-barlow-condensed), "Barlow Condensed", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+.cta-block .huge {
+  font-family: var(--font-bebas), "Anton", sans-serif;
+  font-size: clamp(72px, 14vw, 200px);
+  line-height: 0.85;
+  text-transform: uppercase;
+  letter-spacing: 0.005em;
+  margin-bottom: 40px;
+  color: #ffffff;
+}
+.cta-block .button-row {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+.btn-dark,
+.btn-outline {
+  padding: 22px 38px;
+  text-decoration: none;
+  font-family: var(--font-bebas), "Anton", sans-serif;
+  font-size: 22px;
+  letter-spacing: 0.06em;
+  transition: transform 0.15s, background 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+.btn-dark {
+  background: var(--ink);
+  color: #ffffff;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+.btn-outline {
+  background: #ffffff;
+  color: var(--ink);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+.btn-dark:hover,
+.btn-outline:hover {
+  transform: translateY(-2px);
+}
+.btn-dark:hover {
+  background: #14385c;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer.site-footer {
+  padding: 50px 40px;
+  background: var(--ink);
+  color: var(--bg);
+  font-family: var(--font-barlow-condensed), "Barlow Condensed", sans-serif;
+  font-weight: 500;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+footer.site-footer .accent {
+  color: var(--orange);
+}
+footer.site-footer .footer-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ---------- Footer link columns ----------
+   The footer is the site's main internal-linking surface (every page
+   links to the key service + city pages with descriptive anchors).
+   The base .site-footer is uppercase/condensed for the legal row, so
+   the columns opt back out of uppercase for readability. */
+footer.site-footer .footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: 48px;
+  max-width: 1200px;
+  margin: 0 auto 44px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid rgba(250, 247, 242, 0.16);
+  align-items: start;
+}
+footer.site-footer .footer-heading {
+  font-family: var(--font-bebas), "Anton", sans-serif;
+  font-size: 22px;
+  letter-spacing: 0.04em;
+  color: var(--orange);
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+footer.site-footer .footer-text,
+footer.site-footer .footer-list a,
+footer.site-footer .footer-link-plain {
+  font-family: var(--font-barlow), "Barlow", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+  line-height: 1.6;
+  color: rgba(250, 247, 242, 0.78);
+}
+footer.site-footer .footer-text {
+  margin-bottom: 14px;
+}
+footer.site-footer .footer-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+footer.site-footer .footer-list li {
+  margin-bottom: 9px;
+}
+footer.site-footer .footer-list a,
+footer.site-footer .footer-link-plain {
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+footer.site-footer .footer-list a:hover,
+footer.site-footer .footer-link-plain:hover,
+footer.site-footer .footer-phone:hover {
+  color: var(--orange);
+}
+footer.site-footer .footer-phone {
+  display: block;
+  font-family: var(--font-bebas), "Anton", sans-serif;
+  font-size: 30px;
+  letter-spacing: 0.02em;
+  color: var(--bg);
+  text-decoration: none;
+  margin-bottom: 4px;
+  transition: color 0.15s ease;
+}
+footer.site-footer .footer-link-plain {
+  display: block;
+  margin-bottom: 14px;
+}
+
+/* ============================================================
+   MOBILE ≤ 900px
+   ============================================================ */
+@media (max-width: 900px) {
+  .nav-links {
+    display: none;
+  }
+  .hamburger {
+    display: flex;
+  }
+
+  nav.site-nav {
+    padding: 12px 16px;
+  }
+  .logo-img {
+    height: 32px;
+  }
+  .logo-line1 {
+    font-size: 23px;
+  }
+  .logo-line2 {
+    font-size: 9px;
+    letter-spacing: 0.26em;
+  }
+  .nav-right {
+    gap: 8px;
+  }
+  .call-now {
+    padding: 9px 14px;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+  }
+  .call-now .phone-icon {
+    width: 11px;
+    height: 11px;
+  }
+
+  .hero {
+    padding: 90px 20px 40px;
+  }
+  .hero-photo img {
+    object-position: 60% 50%;
+  }
+
+  .stat-row {
+    gap: 6px;
+    margin-bottom: 30px;
+    justify-content: space-between;
+  }
+  .stat-block {
+    min-width: 0;
+    flex: 1;
+    padding: 14px 8px;
+  }
+  .stat-block .top {
+    font-size: 30px;
+    gap: 5px;
+  }
+  .stat-block .top .star {
+    font-size: 24px;
+  }
+  .stat-block .label {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    gap: 4px;
+    text-align: center;
+    line-height: 1.15;
+  }
+  .icon-google,
+  .icon-check {
+    width: 14px;
+    height: 14px;
+    font-size: 10px;
+  }
+  .meta-row {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .trust-track {
+    animation-duration: 30s;
+    gap: 40px;
+  }
+  .trust-item {
+    gap: 10px;
+  }
+  .trust-text .lg {
+    font-size: 18px;
+  }
+  .trust-text .sm {
+    font-size: 10px;
+  }
+
+  .service-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .service-card {
+    min-height: 280px;
+  }
+
+  .reviews-section-header {
+    padding: 60px 20px 40px;
+  }
+  .reviews-section-body {
+    padding: 40px 20px 70px;
+  }
+
+  .cta-block {
+    padding: 90px 20px;
+  }
+  .services {
+    padding: 70px 20px;
+  }
+  footer.site-footer {
+    padding: 30px 20px;
+  }
+  footer.site-footer .footer-row {
+    flex-direction: column;
+    gap: 14px;
+    text-align: center;
+  }
+  footer.site-footer .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-bottom: 32px;
+    padding-bottom: 28px;
+  }
+}
+
+@media (max-width: 560px) {
+  footer.site-footer .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}
+
+/* ============================================================
+   COMPACT PAGE HERO (service / location / blog / about pages)
+   Pulled directly from junkaway-service-page.html and
+   junkaway-location-page.html mockup CSS.
+   ============================================================ */
+.page-hero {
+  position: relative;
+  min-height: 60vh;
+  padding: 130px 40px 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #ffffff;
+  overflow: hidden;
+}
+.page-hero-photo {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+.page-hero-photo img {
+  object-fit: cover;
+  object-position: center;
+}
+.page-hero-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(10, 35, 56, 0.85) 0%,
+      rgba(10, 35, 56, 0.5) 60%,
+      rgba(10, 35, 56, 0.3) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(10, 35, 56, 0.4) 0%,
+      rgba(10, 35, 56, 0.7) 100%
+    );
+  z-index: 1;
+}
+.page-hero > * {
+  position: relative;
+  z-index: 2;
+}
+
+.breadcrumb {
+  font-family: var(--font-barlow-condensed), "Barlow Condensed", sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 20px;
+}
+.breadcrumb a {
+  color: var(--orange);
+  text-decoration: none;
+}
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+.breadcrumb .sep {
+  color: rgba(255, 255, 255, 0.4);
+  margin: 0 10px;
+}
+
+.page-hero h1 {
+  font-family: var(--font-bebas), "Anton", sans-serif;
+  font-size: clamp(54px, 9vw, 120px);
+  line-height: 0.92;
+  letter-spacing: 0.005em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  max-width: 16ch;
+}
+.page-hero h1 .accent {
+  color: var(--orange);
+}
+
+.page-hero .lede {
+  font-size: 18px;
+  line-height: 1.5;
+  max-width: 60ch;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 36px;
+}
+
+/* Location-page hero stats row */
+.hero-stats {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 36px;
+  flex-wrap: wrap;
+}
+.hero-stat {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+.hero-stat .num {
+  font-family: var(--font-bebas), "Anton", sans-serif;
+  font-size: 36px;
+  line-height: 1;
+  color: var(--orange);
+}
+.hero-stat .label {
+  font-family: var(--font-barlow-condensed), "Barlow Condensed", sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.hero-cta-row {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.btn-primary,
+.btn-secondary {
+  padding: 18px 28px;
+  text-decoration: none;
+  font-family: var(--font-bebas), "Anton", sans-serif;
+  font-size: 20px;
+  letter-spacing: 0.04em;
+  transition: background 0.2s, transform 0.15s;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.btn-primary {
+  background: var(--orange);
+  color: #ffffff;
+  box-shadow: 0 8px 24px rgba(241, 90, 36, 0.4);
+}
+.btn-primary:hover {
+  background: var(--orange-deep);
+  transform: translateY(-2px);
+}
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(4px);
+}
+.btn-secondary:hover {
+  background: #ffffff;
+  color: var(--ink);
+  border-color: #ffffff;
+}
+
+/* ============================================================
+   WHAT WE HANDLE (service page section 2)
+   ============================================================ */
+.what-we-haul {
+  padding: 100px 40px;
+  background: #ffffff;
+  border-bottom: 2px solid var(--ink);
+}
+.what-we-haul-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.what-we-haul-text p {
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--ink);
+  margin-bottom: 20px;
+}
+.haul-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px 24px;
+  margin-top: 20px;
+}
+.haul-list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 16px;
+  font-weight: 500;
+}
+.haul-list li::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  background: var(--orange);
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   FULL-WIDTH PHOTO BANNER (service page)
+   ============================================================ */
+.photo-banner {
+  position: relative;
+  height: 380px;
+  overflow: hidden;
+  border-bottom: 2px solid var(--ink);
+}
+.photo-banner-img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+.photo-banner-img img {
+  object-fit: cover;
+}
+.photo-banner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(10, 35, 56, 0.2) 0%,
+    rgba(10, 35, 56, 0.6) 100%
+  );
+  z-index: 1;
+}
+.photo-banner-text {
+  position: absolute;
+  bottom: 40px;
+  left: 40px;
+  right: 40px;
+  z-index: 2;
+  color: #ffffff;
+  font-family: var(--font-bebas), "Anton", sans-serif;
+  font-size: clamp(36px, 5vw, 64px);
+  line-height: 1;
+  max-width: 20ch;
+}
+.photo-banner-text .accent {
+  color: var(--orange);
+}
+
+/* ============================================================
+   HOW IT WORKS (3 steps)
+   ============================================================ */
+.how-it-works {
+  padding: 100px 40px;
+  background: var(--bg);
+  border-bottom: 2px solid var(--ink);
+}
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 50px;
+}
+.step {
+  background: #ffffff;
+  padding: 36px 30px;
+  transition: transform 0.2s;
+  border-top: 4px solid var(--orange);
+}
+.step:hover {
+  transform: translateY(-4px);
+}
+.step-number {
+  font-family: var(--font-bebas), "Anton", sans-serif;
+  font-size: 80px;
+  line-height: 1;
+  color: var(--orange);
+  margin-bottom: 16px;
+}
+.step-title {
+  font-family: var(--font-bebas), "Anton", sans-serif;
+  font-size: 28px;
+  line-height: 1;
+  margin-bottom: 12px;
+}
+.step-desc {
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+/* ============================================================
+   PRICING BLOCK (dark) + ORANGE CTA CARD
+   ============================================================ */
+.pricing-block {
+  padding: 100px 40px;
+  background: var(--ink);
+  color: #ffffff;
+  border-bottom: 2px solid var(--ink);
+}
+.pricing-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.05fr;
+  gap: 60px;
+  align-items: stretch;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.pricing-block .section-label {
+  color: rgba(255, 255, 255, 0.6);
+}
+.pricing-block .section-title {
+  color: #ffffff;
+}
+.pricing-block p {
+  font-size: 17px;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 20px;
+}
+.pricing-cta-card {
+  background: var(--orange);
+  padding: 70px 50px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  box-shadow: 0 20px 60px rgba(241, 90, 36, 0.35);
+}
+.pricing-cta-card .pre {
+  font-family: var(--font-barlow-condensed), "Barlow Condensed", sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+.pricing-cta-card .lg {
+  font-family: var(--font-bebas), "Anton", sans-serif;
+  font-size: clamp(56px, 6vw, 92px);
+  line-height: 0.95;
+  color: #ffffff;
+  letter-spacing: 0.005em;
+}
+.btn-white {
+  display: inline-block;
+  background: #ffffff;
+  color: var(--ink);
+  padding: 26px 44px;
+  text-decoration: none;
+  font-family: var(--font-bebas), "Anton", sans-serif;
+  font-size: 28px;
+  letter-spacing: 0.04em;
+  transition: transform 0.15s, box-shadow 0.15s;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+.btn-white:hover {
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.28);
+}
+.btn-white:hover {
+  transform: translateY(-2px);
+}
+
+/* ============================================================
+   RELATED SERVICES (3 cards)
+   ============================================================ */
+.related {
+  padding: 100px 40px;
+  background: var(--bg);
+  border-bottom: 2px solid var(--ink);
+}
+.related-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 40px;
+}
+.related-card {
+  position: relative;
+  min-height: 260px;
+  overflow: hidden;
+  cursor: pointer;
+  text-decoration: none;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 26px;
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.related-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(10, 35, 56, 0.2) 0%,
+    rgba(10, 35, 56, 0.85) 100%
+  );
+  transition: background 0.4s;
+  z-index: 1;
+}
+.related-card:hover {
+  transform: translateY(-4px);
+}
+.related-card:hover::before {
+  background: linear-gradient(
+    180deg,
+    rgba(241, 90, 36, 0.3) 0%,
+    rgba(210, 65, 15, 0.92) 100%
+  );
+}
+.related-card > * {
+  position: relative;
+  z-index: 2;
+}
+.related-card .name {
+  font-family: var(--font-bebas), "Anton", sans-serif;
+  font-size: 30px;
+  letter-spacing: 0.01em;
+  line-height: 0.95;
+  margin-bottom: 6px;
+}
+.related-card .arrow-link {
+  font-family: var(--font-barlow-condensed), "Barlow Condensed", sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: gap 0.3s;
+  margin-top: 8px;
+}
+.related-card:hover .arrow-link {
+  gap: 14px;
+}
+
+/* ============================================================
+   FAQ ACCORDION
+   ============================================================ */
+.faq-section {
+  padding: 100px 40px;
+  background: #ffffff;
+  border-bottom: 2px solid var(--ink);
+}
+.faq-list {
+  max-width: 900px;
+  margin-top: 40px;
+}
+.faq-item {
+  border-top: 1px solid var(--line);
+}
+.faq-item:last-child {
+  border-bottom: 1px solid var(--line);
+}
+.faq-question {
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: none;
+  padding: 24px 0;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  font-family: var(--font-bebas), "Anton", sans-serif;
+  font-size: 24px;
+  letter-spacing: 0.01em;
+  line-height: 1.1;
+  color: var(--ink);
+}
+.faq-question:hover {
+  color: var(--orange);
+}
+.faq-toggle {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  background: var(--orange);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  line-height: 1;
+  transition: transform 0.3s;
+}
+.faq-item.open .faq-toggle {
+  transform: rotate(45deg);
+}
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.4s ease;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--muted);
+  padding: 0;
+}
+.faq-item.open .faq-answer {
+  max-height: 800px;
+  padding: 0 0 24px;
+}
+
+/* ============================================================
+   LOCATION PAGE — LOCAL INTRO + NEIGHBORHOODS
+   ============================================================ */
+.local-intro {
+  padding: 100px 40px;
+  background: #ffffff;
+  border-bottom: 2px solid var(--ink);
+}
+.local-intro-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.local-intro-text p {
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--ink);
+  margin-bottom: 20px;
+}
+/* ---------- Homepage internal-links grid (HomeSeoLinks) ---------- */
+.home-links-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 40px auto 0;
+}
+.home-links-heading {
+  font-family: var(--font-bebas), "Anton", sans-serif;
+  font-size: 26px;
+  letter-spacing: 0.02em;
+  margin-bottom: 16px;
+  color: var(--ink);
+}
+.home-links-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.home-links-list li {
+  margin-bottom: 10px;
+}
+.home-links-list a {
+  font-family: var(--font-barlow), "Barlow", sans-serif;
+  font-size: 16.5px;
+  line-height: 1.5;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--line);
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+.home-links-list a:hover {
+  color: var(--orange);
+  border-bottom-color: var(--orange);
+}
+@media (max-width: 900px) {
+  .home-links-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}
+
+.neighborhoods-card {
+  background: var(--bg);
+  padding: 30px;
+  border-left: 4px solid var(--orange);
+}
+.neighborhoods-card h3 {
+  font-family: var(--font-bebas), "Anton", sans-serif;
+  font-size: 28px;
+  letter-spacing: 0.02em;
+  margin-bottom: 18px;
+}
+.neighborhoods-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 24px;
+}
+.neighborhoods-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  font-weight: 500;
+}
+.neighborhoods-list li::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  background: var(--orange);
+  flex-shrink: 0;
+}
+.neighborhoods-list a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px dashed transparent;
+}
+.neighborhoods-list a:hover {
+  color: var(--orange);
+  border-bottom-color: var(--orange);
+}
+
+/* ============================================================
+   LOCATION PAGE — TESTIMONIALS (dark)
+   ============================================================ */
+.testimonials {
+  padding: 100px 40px;
+  background: var(--ink);
+  color: #ffffff;
+  border-bottom: 2px solid var(--ink);
+}
+.testimonials .section-label {
+  color: rgba(255, 255, 255, 0.6);
+}
+.testimonials .section-title {
+  color: #ffffff;
+}
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 50px;
+}
+.testimonial {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 36px 30px;
+  border-top: 4px solid var(--orange);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.testimonial .stars {
+  color: var(--star-gold);
+  font-size: 20px;
+  letter-spacing: 2px;
+}
+.testimonial .quote {
+  font-size: 16px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
+  flex-grow: 1;
+}
+.testimonial .meta {
+  font-family: var(--font-barlow-condensed), "Barlow Condensed", sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  padding-top: 18px;
+}
+.testimonial .meta .name {
+  color: #ffffff;
+  display: block;
+  margin-bottom: 4px;
+}
+
+/* ============================================================
+   OTHER AREAS GRID (location page)
+   ============================================================ */
+.other-areas {
+  padding: 100px 40px;
+  background: #ffffff;
+  border-bottom: 2px solid var(--ink);
+}
+.areas-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 40px;
+}
+.area-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 28px;
+  background: var(--bg);
+  text-decoration: none;
+  color: var(--ink);
+  transition: background 0.2s, color 0.2s;
+  border-left: 4px solid var(--orange);
+}
+.area-link:hover {
+  background: var(--ink);
+  color: #ffffff;
+}
+.area-link .name {
+  font-family: var(--font-bebas), "Anton", sans-serif;
+  font-size: 26px;
+  letter-spacing: 0.01em;
+  line-height: 1;
+}
+.area-link .arrow {
+  font-family: var(--font-bebas), "Anton", sans-serif;
+  font-size: 24px;
+  color: var(--orange);
+  transition: transform 0.3s;
+}
+.area-link:hover .arrow {
+  transform: translateX(6px);
+}
+
+/* ============================================================
+   MOBILE OVERRIDES for new sections (≤900px)
+   ============================================================ */
+@media (max-width: 900px) {
+  .page-hero {
+    padding: 110px 20px 60px;
+    min-height: 50vh;
+  }
+  .hero-stats {
+    gap: 18px;
+  }
+  .hero-stat .num {
+    font-size: 28px;
+  }
+  .what-we-haul,
+  .how-it-works,
+  .pricing-block,
+  .related,
+  .faq-section,
+  .local-intro,
+  .testimonials,
+  .other-areas {
+    padding: 60px 20px;
+  }
+  .what-we-haul-grid,
+  .pricing-grid,
+  .local-intro-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  .haul-list,
+  .neighborhoods-list {
+    grid-template-columns: 1fr;
+  }
+  .steps-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .related-grid,
+  .testimonial-grid,
+  .areas-grid {
+    grid-template-columns: 1fr;
+  }
+  .photo-banner {
+    height: 240px;
+  }
+  .photo-banner-text {
+    left: 20px;
+    right: 20px;
+    bottom: 24px;
+  }
+}
+
+/* ============================================================
+   CENTER CONTENT INSIDE WIDE SECTIONS
+   When a section has a grid constrained to max-width 1200px (or
+   the FAQ list at 900px) and `margin: 0 auto`, the eyebrow label
+   and section title above it need the same constraint or they
+   look left-anchored relative to the centered grid below.
+   ============================================================ */
+.what-we-haul > .section-label,
+.what-we-haul > .section-title,
+.local-intro > .section-label,
+.local-intro > .section-title {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.faq-section > .section-label,
+.faq-section > .section-title,
+.faq-section > .faq-list {
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ============================================================
+   CONTACT PAGE — form + sidebar info card
+   ============================================================ */
+.contact-section {
+  padding: 100px 40px;
+  background: #ffffff;
+  border-bottom: 2px solid var(--ink);
+}
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: start;
+}
+.contact-form-wrap {
+  min-width: 0;
+}
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.contact-form .form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.contact-form .form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.contact-form .form-field > span {
+  font-family: var(--font-barlow-condensed), "Barlow Condensed", sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  font-family: var(--font-barlow), "Barlow", sans-serif;
+  font-size: 16px;
+  padding: 14px 16px;
+  border: 2px solid var(--line);
+  background: #ffffff;
+  color: var(--ink);
+  transition: border-color 0.2s;
+  width: 100%;
+  border-radius: 0;
+}
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--orange);
+}
+.contact-form textarea {
+  resize: vertical;
+  min-height: 130px;
+  font-family: var(--font-barlow), "Barlow", sans-serif;
+}
+.contact-form .btn-primary {
+  align-self: flex-start;
+  margin-top: 8px;
+  cursor: pointer;
+  border: none;
+  font-family: var(--font-bebas), "Anton", sans-serif;
+}
+.contact-form .btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.contact-form .form-error {
+  background: rgba(210, 65, 15, 0.08);
+  border-left: 4px solid var(--orange-deep);
+  padding: 14px 18px;
+  font-size: 15px;
+  color: var(--ink);
+}
+.form-success {
+  text-align: center;
+  padding: 60px 30px;
+  border: 2px solid var(--orange);
+  background: var(--bg);
+}
+.form-success h2 {
+  font-family: var(--font-bebas), "Anton", sans-serif;
+  font-size: clamp(36px, 5vw, 64px);
+  line-height: 0.95;
+  margin-bottom: 16px;
+  color: var(--ink);
+}
+.form-success p {
+  font-size: 17px;
+  line-height: 1.6;
+  max-width: 50ch;
+  margin: 0 auto;
+}
+
+/* Housecall Pro lead-form iframe wrapper.
+   The form fields inside are styled by HCP — we only frame it so it
+   sits cleanly in the page. A 2px ink border matches the section's
+   bottom border for visual continuity. */
+.hcp-embed {
+  border: 2px solid var(--ink);
+  background: #ffffff;
+}
+.hcp-embed iframe {
+  display: block;
+  width: 100%;
+  border: 0;
+}
+
+/* Sidebar info card on the contact page */
+.contact-aside {
+  position: sticky;
+  top: 120px;
+}
+.contact-info-card {
+  background: var(--ink);
+  color: #ffffff;
+  padding: 40px 36px;
+  border-top: 6px solid var(--orange);
+}
+.contact-phone-num {
+  font-family: var(--font-bebas), "Anton", sans-serif;
+  font-size: 44px;
+  line-height: 1;
+  color: #ffffff;
+  text-decoration: none;
+  display: block;
+  margin: 14px 0 18px;
+  letter-spacing: 0.02em;
+}
+.contact-phone-num:hover {
+  color: var(--orange);
+}
+.contact-hours {
+  font-family: var(--font-barlow-condensed), "Barlow Condensed", sans-serif;
+  font-weight: 500;
+  font-size: 13px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 22px;
+}
+.contact-email {
+  display: block;
+  color: var(--orange);
+  text-decoration: none;
+  font-size: 16px;
+  margin-bottom: 22px;
+  word-break: break-word;
+}
+.contact-email:hover {
+  text-decoration: underline;
+}
+.contact-area {
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  padding-top: 22px;
+  margin-bottom: 22px;
+}
+.contact-area strong {
+  font-family: var(--font-barlow-condensed), "Barlow Condensed", sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+  display: block;
+  margin-bottom: 8px;
+}
+.contact-area p {
+  font-size: 14px;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.9);
+}
+.contact-directions {
+  display: inline-block;
+  color: var(--orange);
+  font-family: var(--font-barlow-condensed), "Barlow Condensed", sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.contact-directions:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 900px) {
+  .contact-section {
+    padding: 60px 20px;
+  }
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .contact-form .form-row {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .contact-aside {
+    position: static;
+  }
+  .contact-info-card {
+    padding: 30px 24px;
+  }
+  .contact-phone-num {
+    font-size: 36px;
+  }
+}
+
+/* ============================================================
+   BLOG — index grid + post body
+   ============================================================ */
+.blog-index {
+  padding: 100px 40px;
+  background: #ffffff;
+  border-bottom: 2px solid var(--ink);
+}
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-top: 40px;
+}
+.blog-card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: var(--ink);
+  background: var(--bg);
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s;
+  border-bottom: 4px solid var(--orange);
+  overflow: hidden;
+}
+.blog-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.12);
+}
+.blog-card-img {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+}
+.blog-card-body {
+  padding: 26px 28px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.blog-card-date {
+  font-family: var(--font-barlow-condensed), "Barlow Condensed", sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.blog-card-title {
+  font-family: var(--font-bebas), "Anton", sans-serif;
+  font-size: 28px;
+  line-height: 1;
+  letter-spacing: 0.01em;
+}
+.blog-card-excerpt {
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+.blog-empty {
+  text-align: center;
+  padding: 80px 20px;
+  border: 2px dashed var(--line);
+  margin-top: 40px;
+}
+.blog-empty h3 {
+  font-family: var(--font-bebas), "Anton", sans-serif;
+  font-size: 48px;
+  line-height: 1;
+  margin-bottom: 14px;
+}
+.blog-empty p {
+  font-size: 16px;
+  color: var(--muted);
+  max-width: 50ch;
+  margin: 0 auto;
+}
+
+/* Individual blog-post body — single column, comfortable reading width */
+.blog-post-meta {
+  font-family: var(--font-barlow-condensed), "Barlow Condensed", sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.85);
+  margin-top: 12px;
+}
+.blog-post-body {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 80px 24px;
+  font-family: var(--font-barlow), "Barlow", sans-serif;
+  font-size: 18px;
+  line-height: 1.7;
+  color: var(--ink);
+}
+.blog-post-body h1,
+.blog-post-body h2,
+.blog-post-body h3 {
+  font-family: var(--font-bebas), "Anton", sans-serif;
+  letter-spacing: 0.005em;
+  line-height: 1;
+  margin: 48px 0 16px;
+}
+.blog-post-body h1 { font-size: 48px; }
+.blog-post-body h2 { font-size: 36px; }
+.blog-post-body h3 { font-size: 28px; }
+.blog-post-body p { margin: 0 0 20px; }
+/* Inline images in blog markdown (e.g. before/after job photos). Without this
+   a full-width photo would overflow the 720px article column. */
+.blog-post-body img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 8px 0 6px;
+  border: 1px solid var(--line);
+}
+/* An italic line straight after an image reads as its caption. */
+.blog-post-body img + em,
+.blog-post-body p > img + em {
+  display: block;
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 24px;
+}
+.blog-post-body ul,
+.blog-post-body ol { margin: 0 0 20px 24px; }
+.blog-post-body li { margin-bottom: 8px; }
+.blog-post-body a {
+  color: var(--orange-deep);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.blog-post-body a:hover { color: var(--orange); }
+.blog-post-body blockquote {
+  border-left: 4px solid var(--orange);
+  padding: 8px 0 8px 24px;
+  margin: 28px 0;
+  font-style: italic;
+  color: var(--muted);
+}
+.blog-post-body code {
+  background: var(--bg);
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 0.9em;
+}
+.blog-post-body img {
+  max-width: 100%;
+  height: auto;
+  margin: 24px 0;
+}
+
+@media (max-width: 900px) {
+  .blog-index { padding: 60px 20px; }
+  .blog-grid { grid-template-columns: 1fr; gap: 20px; }
+  .blog-post-body {
+    padding: 50px 20px;
+    font-size: 17px;
+  }
+  .blog-post-body h1 { font-size: 36px; }
+  .blog-post-body h2 { font-size: 28px; }
+  .blog-post-body h3 { font-size: 22px; }
+}
+
+/* ============================================================
+   NAV DROPDOWNS (desktop) + MOBILE COLLAPSIBLE SUB-SECTIONS
+   ============================================================ */
+
+/* Reset list semantics on the desktop nav so it stays inline */
+.nav-links {
+  list-style: none;
+}
+.nav-links li {
+  position: relative;
+  display: inline-block;
+}
+
+/* Trigger gets a small ▾ caret next to the label */
+.nav-trigger {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 6px;
+}
+.nav-caret {
+  font-size: 10px;
+  opacity: 0.6;
+  transition: transform 0.2s, opacity 0.2s;
+}
+.nav-item-with-dropdown:hover .nav-caret,
+.nav-item-with-dropdown:focus-within .nav-caret {
+  transform: translateY(1px);
+  opacity: 1;
+}
+
+/* The dropdown panel itself */
+.nav-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(8px);
+  min-width: 540px;
+  max-width: 720px;
+  background: #ffffff;
+  border-top: 4px solid var(--orange);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.14);
+  padding: 24px 28px;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
+  z-index: 60;
+}
+.nav-item-with-dropdown:hover .nav-dropdown,
+.nav-item-with-dropdown:focus-within .nav-dropdown {
+  visibility: visible;
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+  pointer-events: auto;
+}
+
+.nav-dropdown-section + .nav-dropdown-section {
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+}
+.nav-dropdown-heading {
+  font-family: var(--font-barlow-condensed), "Barlow Condensed", sans-serif;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+.nav-dropdown-grid {
+  display: grid;
+  gap: 6px 24px;
+}
+.nav-dropdown-grid-3 { grid-template-columns: repeat(3, 1fr); }
+.nav-dropdown-grid-2 { grid-template-columns: repeat(2, 1fr); }
+
+.nav-dropdown a {
+  display: block;
+  padding: 8px 6px;
+  color: var(--ink);
+  font-family: var(--font-barlow), "Barlow", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 0.15s, border-color 0.15s;
+}
+.nav-dropdown a:hover {
+  color: var(--orange);
+  border-bottom-color: var(--orange);
+}
+
+.nav-dropdown-footer {
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+  text-align: right;
+}
+.nav-dropdown-footer a {
+  font-family: var(--font-barlow-condensed), "Barlow Condensed", sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--orange);
+  display: inline-block;
+  padding: 0;
+}
+.nav-dropdown-footer a:hover {
+  color: var(--orange-deep);
+  border-bottom: none;
+}
+
+/* Mobile: collapsible sub-sections inside .mobile-menu */
+.mobile-menu-group {
+  border-bottom: 1px solid var(--line);
+}
+.mobile-menu-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 24px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--ink);
+  font-family: var(--font-barlow-condensed), "Barlow Condensed", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-align: left;
+}
+.mobile-menu-trigger:hover {
+  color: var(--orange);
+  background: var(--bg);
+}
+.mobile-caret {
+  font-size: 14px;
+  transition: transform 0.2s;
+}
+.mobile-menu-trigger.open .mobile-caret {
+  transform: rotate(180deg);
+}
+.mobile-menu-sublist {
+  background: var(--bg);
+  padding: 6px 0;
+}
+.mobile-menu-sublist a {
+  display: block;
+  padding: 12px 36px;
+  color: var(--ink);
+  font-family: var(--font-barlow), "Barlow", sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  letter-spacing: 0;
+  text-transform: none;
+  border-bottom: 1px solid transparent;
+}
+.mobile-menu-sublist a:hover {
+  color: var(--orange);
+  background: #ffffff;
+}
+.mobile-menu-all {
+  color: var(--orange) !important;
+  font-weight: 700 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+
+/* Hide the mobile triggers on desktop, and hide the desktop dropdown on mobile */
+@media (max-width: 900px) {
+  .nav-dropdown {
+    display: none !important;
+  }
+  .nav-caret {
+    display: none;
+  }
+}
+
+/* Small "read the local guide" line on service-area pages (reciprocal
+   link to each town's blog guide, part of the city cross-link cluster). */
+.local-guide-line {
+  max-width: 1200px;
+  margin: -20px auto 0;
+  padding: 0 40px 40px;
+}
+.local-guide-line p {
+  font-family: var(--font-barlow), "Barlow", sans-serif;
+  font-size: 17px;
+  color: var(--ink);
+}
+.local-guide-line a {
+  color: var(--orange);
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid var(--orange);
+}
+@media (max-width: 900px) {
+  .local-guide-line { padding: 0 20px 28px; }
+}
