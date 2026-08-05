@@ -1,6 +1,6 @@
-# Haul Aboard Delaware
+# Haul Aboard Junk Removal
 
-Marketing site for [haulaboardjunk.com](https://haulaboardjunk.com) — family-owned junk removal across Delaware.
+Marketing site for [haulaboardjunk.com](https://haulaboardjunk.com) — locally owned junk removal across the Jacksonville Beaches.
 
 ## Stack
 

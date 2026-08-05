@@ -1,4 +1,4 @@
-# SECURITY.md — Haul Aboard Delaware
+# SECURITY.md — Haul Aboard Junk Removal
 
 Security posture, protections in place, and incident response steps for `haulaboardjunk.com`.
 

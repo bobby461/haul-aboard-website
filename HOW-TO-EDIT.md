@@ -1,4 +1,4 @@
-# How to Edit Haul Aboard Delaware
+# How to Edit Haul Aboard Junk Removal
 
 This guide is written for **you** — the business owner — not a developer. You don't need to know how to code to edit your site. Almost every visible piece of text, every photo, every phone number, and every page on the site can be changed by editing one of two things:
 
@@ -153,8 +153,8 @@ In `src/lib/content.ts`, find the `services` array. Each entry has:
   name: "Hot Tub & Spa Removal",
   navLabel: "Hot Tub Removal",  // shorter label for nav dropdowns
   h1: "Hot Tub Removal",
-  h1Accent: "in Delaware.",     // the orange-tinted part
-  metaTitle: "Hot Tub Removal Delaware | Haul Aboard",
+  h1Accent: "in Jacksonville Beach.",     // the orange-tinted part
+  metaTitle: "Hot Tub Removal Jacksonville Beach | Haul Aboard",
   metaDescription: "...",
   heroPhoto: { src: "...", alt: "..." },
   heroLede: "Old hot tubs are heavy...",
@@ -236,12 +236,12 @@ To publish a new post:
 
 ```md
 ---
-title: "How Much Does Junk Removal Cost in Delaware?"
+title: "How Much Does Junk Removal Cost in Jacksonville Beach?"
 slug: "how-much-does-junk-removal-cost-in-delaware"
 date: "2026-05-15"
 excerpt: "A short 1-2 sentence summary that appears on the blog index."
 featuredImage: "/images/blog/your-post-image.jpg"
-metaTitle: "Junk Removal Cost Delaware | Haul Aboard"
+metaTitle: "Junk Removal Cost Jacksonville Beach | Haul Aboard"
 metaDescription: "Tag-line for Google search results, ~150 chars."
 author: "Haul Aboard Team"
 ---
