@@ -52,7 +52,17 @@ const FOOTER_COMPANY: { href: string; label: string }[] = [
 export function Footer() {
   const year = new Date().getFullYear();
   return (
-    <footer className="site-footer">
+    <>
+      <div className="coastal-strip">
+        <span>Built on Hard Work</span>
+        <span className="anchor" aria-hidden="true">⚓</span>
+        <span>Honest Service</span>
+        <span className="anchor" aria-hidden="true">⚓</span>
+        <span>Coastal Roots</span>
+        <span className="anchor" aria-hidden="true">⚓</span>
+        <span className="est">Jacksonville Beach, FL</span>
+      </div>
+      <footer className="site-footer">
       <div className="footer-grid">
         <div className="footer-col footer-about">
           <div className="footer-heading">Haul Aboard</div>
@@ -125,6 +135,7 @@ export function Footer() {
           <span className="accent">·</span> {business.phone}
         </div>
       </div>
-    </footer>
+      </footer>
+    </>
   );
 }

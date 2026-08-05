@@ -82,8 +82,37 @@ export function Hero() {
         />
       </div>
       <div className="hero-overlay" aria-hidden="true" />
+      <div className="hero-sunburst" aria-hidden="true" />
+
+      {/* Vintage anchor emblem — floats top-right on wide screens */}
+      <svg className="emblem hero-emblem" viewBox="0 0 120 120" aria-hidden="true">
+        <defs>
+          <path id="arcTop" d="M16,60 A44,44 0 0 1 104,60" />
+          <path id="arcBot" d="M22,60 A38,38 0 0 0 98,60" />
+        </defs>
+        <circle className="disc" cx="60" cy="60" r="57" />
+        <circle className="ring" cx="60" cy="60" r="50" />
+        <text>
+          <textPath href="#arcTop" startOffset="50%" textAnchor="middle">
+            HAUL ABOARD
+          </textPath>
+        </text>
+        <text>
+          <textPath href="#arcBot" startOffset="50%" textAnchor="middle">
+            JAX BEACH · FL
+          </textPath>
+        </text>
+        <path
+          className="anchor-ico"
+          transform="translate(42,42) scale(1.5)"
+          d="M12 2a2 2 0 00-2 2c0 .74.4 1.38 1 1.72V7H8v2h3v9.94A7 7 0 015.07 13H7l-3-4-3 4h2.05A9 9 0 0012 21a9 9 0 009.95-8H24l-3-4-3 4h1.93A7 7 0 0113 18.94V9h3V7h-3V5.72c.6-.34 1-.98 1-1.72a2 2 0 00-2-2z"
+        />
+      </svg>
 
       <div>
+        <div className="hero-badge-row">
+          <span className="script-accent">We Haul It All!</span>
+        </div>
         <div className="stat-row" aria-label="Trust signals">
           {h.stats.map((s, i) => (
             <div className="stat-block" key={i}>

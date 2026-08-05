@@ -2794,3 +2794,265 @@ footer.site-footer .footer-link-plain {
 @media (max-width: 900px) {
   .local-guide-line { padding: 0 20px 28px; }
 }
+
+/* ============================================================
+   ★  VINTAGE RETRO LAYER  ★
+   1950s Florida marina / bait-shop skin, layered on top of the
+   base styles above. Pulled from the Haul Aboard brand board:
+   layered "block letter" lettering, brush-script accents, anchor
+   & rope motifs, wave dividers, hard-shadow sticker buttons, and
+   warm cream paper texture. Everything here enhances existing
+   markup by class name — later cascade wins.
+   ============================================================ */
+
+/* ---- Paper texture: faint navy weave over the cream, plus a
+        warm vignette, on top of the existing film grain. ---- */
+html,
+body {
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(15, 46, 77, 0.05) 1px, transparent 0),
+    radial-gradient(1200px 500px at 50% -10%, rgba(143, 182, 183, 0.14), transparent 70%);
+  background-size: 22px 22px, 100% 100%;
+}
+body::before { opacity: 0.06; } /* nudge the grain up a touch */
+
+/* ---- Brush-script accent ("We Haul It All!") ---- */
+.script-accent {
+  font-family: var(--font-script), cursive;
+  color: var(--orange);
+  line-height: 0.9;
+  transform: rotate(-4deg);
+  display: inline-block;
+  text-shadow: 2px 2px 0 rgba(10, 35, 56, 0.18);
+}
+.on-dark .script-accent,
+.hero .script-accent,
+.cta-block .script-accent {
+  color: var(--gold);
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* ---- Layered "block letter" headlines — the signature move.
+        Navy/seafoam hard offset behind the type gives that
+        vintage stacked-poster depth. ---- */
+.headline .brand {
+  color: var(--orange);
+  -webkit-text-stroke: 2px #fff8ee;
+  paint-order: stroke fill;
+  text-shadow:
+    5px 5px 0 var(--ink-deep),
+    5px 5px 0 var(--ink-deep);
+}
+/* Section titles on cream sections: navy type, seafoam drop. */
+.section-title {
+  text-shadow: 4px 4px 0 var(--seafoam);
+}
+.section-title .accent {
+  text-shadow: 4px 4px 0 rgba(15, 46, 77, 0.22);
+}
+/* Titles that sit on DARK sections want a warm drop instead. */
+.reviews-section-header .section-title,
+.pricing-block .section-title {
+  text-shadow: 4px 4px 0 var(--orange-deep);
+}
+.reviews-section-header .section-title .accent,
+.pricing-block .section-title .accent {
+  text-shadow: 4px 4px 0 rgba(0, 0, 0, 0.28);
+}
+.page-hero h1 {
+  text-shadow: 4px 4px 0 var(--ink-deep), 7px 7px 0 rgba(0, 0, 0, 0.28);
+}
+.cta-block .huge {
+  text-shadow: 5px 5px 0 var(--ink), 9px 9px 0 rgba(0, 0, 0, 0.2);
+}
+.pricing-cta-card .lg {
+  text-shadow: 3px 3px 0 var(--ink);
+}
+.photo-banner-text {
+  text-shadow: 3px 3px 0 var(--ink-deep);
+}
+
+/* ---- Nautical section label: swap the little bar for an anchor ---- */
+.section-label::before {
+  width: 24px;
+  height: 24px;
+  background: var(--orange);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2a2 2 0 00-2 2c0 .74.4 1.38 1 1.72V7H8v2h3v9.94A7 7 0 015.07 13H7l-3-4-3 4h2.05A9 9 0 0012 21a9 9 0 009.95-8H24l-3-4-3 4h1.93A7 7 0 0113 18.94V9h3V7h-3V5.72c.6-.34 1-.98 1-1.72a2 2 0 00-2-2z'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2a2 2 0 00-2 2c0 .74.4 1.38 1 1.72V7H8v2h3v9.94A7 7 0 015.07 13H7l-3-4-3 4h2.05A9 9 0 0012 21a9 9 0 009.95-8H24l-3-4-3 4h1.93A7 7 0 0113 18.94V9h3V7h-3V5.72c.6-.34 1-.98 1-1.72a2 2 0 00-2-2z'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+.reviews-section-header .section-label::before,
+.pricing-block .section-label::before {
+  background: var(--gold);
+}
+
+/* ---- Hard-shadow "sticker" buttons ---- */
+.primary-cta,
+.btn-primary,
+.btn-white,
+.btn-dark,
+.pricing-cta-card .btn-white {
+  border: 3px solid var(--ink);
+  box-shadow: 5px 5px 0 var(--ink) !important;
+  border-radius: 6px;
+}
+.primary-cta:hover,
+.btn-primary:hover,
+.btn-white:hover,
+.btn-dark:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 7px 7px 0 var(--ink) !important;
+}
+.btn-white,
+.pricing-cta-card .btn-white {
+  border-color: var(--ink);
+}
+.call-now {
+  border: 2px solid var(--ink);
+  box-shadow: 3px 3px 0 var(--ink);
+  border-radius: 6px;
+}
+.call-now:hover {
+  box-shadow: 4px 4px 0 var(--ink);
+}
+.btn-outline,
+.btn-secondary,
+.reviews-cta a {
+  border-width: 2px;
+  border-radius: 6px;
+  box-shadow: 4px 4px 0 rgba(15, 46, 77, 0.28);
+}
+
+/* ---- Wave dividers between key color changes (beach/marina) ---- */
+.trust-strip,
+.cta-block {
+  position: relative;
+}
+.trust-strip::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 34px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 34' preserveAspectRatio='none'%3E%3Cpath d='M0,34 L0,17 C150,2 300,2 450,15 C600,28 750,28 900,15 C1050,2 1150,6 1200,12 L1200,34 Z' fill='%23f6e9d6'/%3E%3C/svg%3E") repeat-x bottom / 1200px 34px;
+  z-index: 6;
+}
+.cta-block::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 34px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 34' preserveAspectRatio='none'%3E%3Cpath d='M0,34 L0,17 C150,2 300,2 450,15 C600,28 750,28 900,15 C1050,2 1150,6 1200,12 L1200,34 Z' fill='%230f2e4d'/%3E%3C/svg%3E") repeat-x bottom / 1200px 34px;
+  z-index: 6;
+}
+
+/* ---- Trust strip → rope/flag banner feel ---- */
+.trust-strip {
+  border-top: 4px solid var(--orange);
+  border-bottom: 4px solid var(--gold);
+  background:
+    repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.03) 0 12px, transparent 12px 24px),
+    var(--ink);
+}
+
+/* ---- Coastal tagline strip (from the brand-board footer bar) ---- */
+.coastal-strip {
+  background: var(--ink-deep);
+  color: var(--bg);
+  text-align: center;
+  padding: 15px 20px;
+  border-top: 3px solid var(--orange);
+  border-bottom: 3px solid var(--orange);
+  font-family: var(--font-barlow-condensed), sans-serif;
+  font-weight: 700;
+  font-size: 12.5px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.coastal-strip .anchor {
+  color: var(--orange);
+  font-size: 15px;
+}
+.coastal-strip .est {
+  color: var(--gold);
+}
+
+/* ---- Circular emblem/badge (arched text + anchor) ---- */
+.emblem {
+  width: 128px;
+  height: 128px;
+  flex-shrink: 0;
+}
+.emblem .ring {
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 2;
+}
+.emblem .disc {
+  fill: var(--ink-deep);
+}
+.emblem text {
+  fill: var(--bg);
+  font-family: var(--font-barlow-condensed), sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  font-size: 11px;
+  text-transform: uppercase;
+}
+.emblem .anchor-ico {
+  fill: var(--orange);
+}
+
+/* ---- Hero: sunburst behind the headline + script flourish ---- */
+.hero .hero-sunburst {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    repeating-conic-gradient(
+      from 0deg at 50% 42%,
+      rgba(246, 233, 214, 0.05) 0deg 6deg,
+      transparent 6deg 12deg
+    );
+  -webkit-mask: radial-gradient(circle at 50% 42%, #000 0, transparent 60%);
+  mask: radial-gradient(circle at 50% 42%, #000 0, transparent 60%);
+}
+.hero-badge-row {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 14px;
+}
+.hero-badge-row .script-accent {
+  font-size: clamp(34px, 5.5vw, 62px);
+}
+.hero-emblem {
+  position: absolute;
+  top: 104px;
+  right: 44px;
+  z-index: 3;
+  width: 150px;
+  height: 150px;
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.4));
+  transform: rotate(-6deg);
+}
+@media (max-width: 1024px) {
+  .hero-emblem { display: none; }
+}
+
+@media (max-width: 700px) {
+  .headline .brand { -webkit-text-stroke-width: 1.5px; text-shadow: 3px 3px 0 var(--ink-deep); }
+  .section-title { text-shadow: 3px 3px 0 var(--seafoam); }
+  .cta-block .huge { text-shadow: 3px 3px 0 var(--ink); }
+  .emblem { width: 92px; height: 92px; }
+  .coastal-strip { font-size: 10.5px; letter-spacing: 0.16em; gap: 10px; }
+}

@@ -123,7 +123,7 @@ export const homepage = {
     // we haul it all." (the mascot-board slogan as the payoff).
     headlineLine1: "If it's junk,",
     headlineBrand: "Haul Aboard.",
-    headlineLine3: "we haul it all.",
+    headlineLine3: "it's gone for good.",
 
     // Background photo behind the dark overlay. Drop a new file at
     // this path in /public/ to swap it. Keep ratio wide (~3:2).
