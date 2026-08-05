@@ -216,10 +216,10 @@ export const homepage = {
     cards: [
       {
         num: "01",
-        name: "Garage\n& Basement",
+        name: "Garage\n& Attic",
         desc: "Years of stuff, gone in an afternoon. We do the lifting, you point and direct.",
         linkSlug: "garage-cleanouts",
-        photo: "/images/services/garage-basement.jpg",
+        photo: "/images/services/garage-attic.jpg",
         alt: "Cluttered garage being cleaned out",
       },
       {
@@ -481,21 +481,21 @@ export const services: Service[] = [
       "Storm took down a tree? Spring cleanup left you with a mountain of brush? We load it, haul it, and dispose of it the right way.",
   },
   {
-    slug: "basement-cleanouts",
-    name: "Basement Cleanouts",
-    navLabel: "Basement Cleanouts",
-    h1: "Basement Cleanouts",
+    slug: "storm-debris-removal",
+    name: "Storm & Hurricane Debris Removal",
+    navLabel: "Storm & Hurricane Debris",
+    h1: "Storm & Hurricane Debris Removal",
     h1Accent: "in Jacksonville Beach.",
-    metaTitle: "Basement Cleanouts in Jacksonville Beach — Same-Day Service",
+    metaTitle: "Storm & Hurricane Debris Removal — Jacksonville Beach, FL",
     metaDescription:
-      "Full basement cleanouts across the Beaches — furniture, boxes & old appliances, gone in an afternoon. Same-day service, free estimates, licensed & insured.",
+      "Fast storm & hurricane debris removal across the Jacksonville Beaches — downed limbs, fence sections, ruined furniture, drywall & flooding damage. Same-day cleanup, free estimates, licensed & insured.",
     heroPhoto: {
-      src: "/images/services/basement-cleanout-hero.jpg",
-      alt: "Haul Aboard crew carrying a large panel out during a cleanout",
-      focal: "center 45%",
+      src: "/images/services/storm-debris-hero.jpg",
+      alt: "Storm debris — downed branches and damaged fencing — piled in a Jacksonville Beach yard after a hurricane",
+      focal: "center 50%",
     },
     heroLede:
-      "Decades of stuff, all in one trip. We work around your boiler, your water heater, and your tight stairwells. You point — we lift.",
+      "After a Florida storm, the last thing you need is a mountain of debris. We clear downed limbs, blown-down fencing, ruined furniture, and water-damaged material fast — so you can get back to normal.",
   },
   {
     slug: "attic-cleanouts",
@@ -1062,7 +1062,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       title: "Anything that plugs in. ",
       titleAccent: "We'll haul it.",
       paragraphs: [
-        "Old appliances are a special kind of headache — heavy, awkward, and usually stuck in tight kitchens or basements with stairs you'd never want to navigate alone. We bring the dollies, the straps, and the muscle. We disconnect, carry, and load. You don't lift a finger.",
+        "Old appliances are a special kind of headache — heavy, awkward, and usually stuck in tight kitchens or garages with stairs you'd never want to navigate alone. We bring the dollies, the straps, and the muscle. We disconnect, carry, and load. You don't lift a finger.",
         "We recycle whatever has scrap value — copper, steel — and dispose of the rest at licensed facilities. Refrigerators get refrigerant-recovered properly so CFCs don't end up in the air. That's not optional, it's the law, and we follow it.",
       ],
       includesEyebrow: "Includes",
@@ -1113,7 +1113,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       title: "Transparent pricing, ",
       titleAccent: "no surprises.",
       paragraphs: [
-        "Appliance removal is priced by what you're getting rid of and how hard it is to get out — a single dishwasher in an unfinished basement is different from a kitchen full of built-ins on a third floor. We give you a flat quote upfront after a quick photo or walkthrough.",
+        "Appliance removal is priced by what you're getting rid of and how hard it is to get out — a single dishwasher in a cramped laundry closet is different from a kitchen full of built-ins on a third floor. We give you a flat quote upfront after a quick photo or walkthrough.",
         "We beat the franchises on price, and we care a heck of a lot more about the work. Our minimum is $199 (a small pile of stuff or a single couch) and the price scales from there based on volume and labor. Free estimates, every time.",
       ],
       cardPre: "Free Estimate",
@@ -1233,7 +1233,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       items: [
         { q: "How much does furniture removal cost in Jacksonville Beach?", a: "Single items start at our $199 minimum. Volume-based pricing scales from there. We always quote flat upfront — free estimates." },
         { q: "Do you take mattresses?", a: "Yes — bed bugs, stains, age, none of it scares us. We recycle springs and frames where possible and dispose of the rest properly." },
-        { q: "Will you carry it down the stairs?", a: "That's the whole job. Two-flight walk-ups, basement haul-outs, tight Jacksonville Beach row-home stairwells — we plan it before we start." },
+        { q: "Will you carry it down the stairs?", a: "That's the whole job. Two-flight walk-ups, garage haul-outs, tight Jacksonville Beach stairwells — we plan it before we start." },
         { q: "Can you donate it instead of trashing it?", a: "We try. If it's clean and usable, we route it to local Jacksonville Beach shelters and donation centers. Anything that won't pass donation goes to recycling and licensed disposal." },
         { q: "Do you offer same-day pickup?", a: "Often. Same-day service is available across most of the Beaches depending on the day's schedule. Call us in the morning." },
       ],
@@ -1438,42 +1438,42 @@ export const serviceDetails: Record<string, ServiceDetail> = {
   // ============================================================
   // BASEMENT CLEANOUTS
   // ============================================================
-  "basement-cleanouts": {
+  "storm-debris-removal": {
     hero: {
       photo: {
-        src: "/images/services/basement-cleanout-hero.jpg",
-        alt: "Haul Aboard crew carrying a large panel out during a cleanout",
-        focal: "center 45%",
+        src: "/images/services/storm-debris-hero.jpg",
+        alt: "Storm debris — downed branches and damaged fencing — piled in a Jacksonville Beach yard after a hurricane",
+        focal: "center 50%",
       },
     },
     whatWeHandle: {
       eyebrow: "What we handle",
-      title: "Decades of stuff. ",
-      titleAccent: "One afternoon.",
+      title: "When the storm passes, ",
+      titleAccent: "we clear the mess.",
       paragraphs: [
-        "Basements are where things go to be forgotten. Old furniture, exercise equipment that hasn't moved in years, holiday decorations from the '90s, mystery boxes — we take it all out, work around your boiler and water heater, and navigate the stairwells without scratching the wall.",
-        "Half-cleanout or full-clear, you get the same crew, the same flat price, and the same broom-swept finish. You point and direct from the steps. We do the lifting.",
+        "Living at the Beaches means living with hurricane season. When a storm rolls through, it leaves downed limbs, snapped fence sections, shredded screen enclosures, and soaked, ruined furniture behind. We come in after the wind stops and haul it all off — fast — so your yard and home aren't a hazard while you're trying to recover.",
+        "Flooding leaves its own mess: water-logged drywall, baseboards, carpet, mattresses, and appliances that have to come out before mold sets in. We load it, haul it, and dispose of it the right way. One flat price, quoted before we start, even in the middle of a busy cleanup week.",
       ],
-      includesEyebrow: "Includes",
+      includesEyebrow: "We haul",
       includesList: [
-        "Furniture & mattresses",
-        "Old appliances",
-        "Exercise equipment",
-        "Boxes of clutter",
-        "Old electronics",
-        "Paint cans (dried)",
-        "Carpets & padding",
-        "Holiday decor",
+        "Downed limbs & brush",
+        "Blown-down fencing",
+        "Damaged screen/lanai enclosures",
+        "Water-damaged furniture",
+        "Flood-soaked drywall & carpet",
+        "Ruined appliances",
+        "Tarps & construction debris",
+        "General storm cleanup",
       ],
     },
     banner: {
       photo: {
-        src: "/images/services/basement-cleanout-banner.jpg",
-        alt: "A Haul Aboard crew member inside a box truck pulling wrap over a load of stacked chairs and wood panels",
+        src: "/images/services/storm-debris-banner.jpg",
+        alt: "A Haul Aboard truck loaded with hurricane debris cleared from a coastal Jacksonville Beach property",
         focal: "center 55%",
       },
-      text: "You point. ",
-      textAccent: "We lift.",
+      text: "Storm's over. ",
+      textAccent: "Let's get you back to normal.",
     },
     howItWorks: {
       eyebrow: "How it works",
@@ -1482,52 +1482,52 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       steps: [
         {
           num: "01",
-          title: "Get a free estimate",
-          desc: "Send us a photo or call us. We give you a flat, transparent price upfront — no hidden fees, no surprises on the day.",
+          title: "Call or send photos",
+          desc: "Tell us what the storm left behind. We give you a flat, transparent price upfront — no storm-season price gouging, ever.",
         },
         {
           num: "02",
-          title: "We show up on time",
-          desc: "Our local Jacksonville Beach crew arrives in branded trucks with the right tools and the right manpower for the job.",
+          title: "We show up ready",
+          desc: "Our local crew rolls in with the trucks, saws, and manpower to clear debris safely, even when access is tight.",
         },
         {
           num: "03",
           title: "It's gone for good",
-          desc: "We haul it away, recycle what we can, and leave your space cleaner than we found it.",
+          desc: "We haul everything off and dispose of it properly, so your property is safe and clear again.",
         },
       ],
     },
     pricing: {
       eyebrow: "Pricing",
-      title: "Transparent pricing, ",
-      titleAccent: "no surprises.",
+      title: "Fair pricing, ",
+      titleAccent: "even after a storm.",
       paragraphs: [
-        "Basement cleanouts are priced by truck-load — the volume of stuff going out the door. We do a quick walkthrough first (in person or by photo) and give you a flat quote that won't change on the day.",
-        "We beat the franchises on price, and we care a heck of a lot more about the work. Our minimum is $199 (a small pile of stuff or a single couch) and the price scales from there based on volume and labor. Free estimates, every time.",
+        "Storm debris is priced by volume — how much space it takes in the truck — plus the labor to clear it safely. We give you a flat quote after a quick look or a few photos, and it doesn't change on the day. No storm-season surge pricing.",
+        "Our minimum is $199 (a small load) and the price scales from there based on how much there is and how tough the access is. Free estimates, every time — even when we're slammed after a big storm.",
       ],
       cardPre: "Free Estimate",
-      cardLg: "Book in\n60 seconds.",
+      cardLg: "Get it\ncleared.",
     },
     related: {
       eyebrow: "Related services",
-      title: "More junk to ",
-      titleAccent: "get rid of?",
+      title: "More to ",
+      titleAccent: "clear out?",
       slugs: [
-        "garage-cleanouts",
-        "estate-cleanouts",
-        "furniture-and-mattress-removal",
+        "yard-waste-removal",
+        "construction-debris-removal",
+        "shed-and-fence-removal",
       ],
     },
     faq: {
       eyebrow: "Common questions",
-      title: "Basement cleanouts, ",
+      title: "Storm debris removal, ",
       titleAccent: "explained.",
       items: [
-        { q: "How much does a basement cleanout cost in Jacksonville Beach?", a: "Priced by volume. Most residential basements fall in a predictable range. Our minimum is $199 and free estimates apply." },
-        { q: "Will you go through the boxes?", a: "We don't sort or appraise — that's your call. If you want to keep something, set it aside. Anything you don't want, we haul." },
-        { q: "Can you handle a hoarder-level basement?", a: "Yes — see our hoarder cleanouts page. Same crew, more time scheduled, and full discretion." },
-        { q: "Will you damage the stairs or walls on the way out?", a: "We bring corner protectors, blankets, and patience. Tight basement stairs are our daily bread." },
-        { q: "Same-day service?", a: "Smaller basements often, yes. Whole-house basement scoured-down cleanouts we usually schedule a day or two ahead." },
+        { q: "How much does storm debris removal cost in Jacksonville Beach?", a: "It's priced by volume and labor — how much debris there is and how hard it is to reach. We quote a flat price after a quick look or a few photos. Our minimum is $199 and estimates are always free, even during a busy storm-recovery week." },
+        { q: "Do you charge more after a hurricane?", a: "No. We don't do storm-season surge pricing. You get the same fair, flat-rate pricing whether it's a calm week or the day after a hurricane." },
+        { q: "Can you come right after the storm?", a: "We do our best to get out fast during cleanup weeks. Call as early as you can — demand spikes after a big storm, so the sooner you're on the list, the sooner we can clear your property." },
+        { q: "Do you handle flood-damaged material inside the home?", a: "Yes. We haul out water-logged drywall, carpet, baseboards, furniture, and appliances so you can start drying out and preventing mold. For structural repairs you'll want a licensed contractor, but the demo debris is ours to clear." },
+        { q: "Do you take downed trees and large limbs?", a: "We take limbs, brush, and manageable sections. For large whole-tree removals that need a crane or bucket truck, we'll point you to a tree service and haul off the debris once it's down." },
       ],
     },
   },
@@ -1610,7 +1610,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       title: "More junk to ",
       titleAccent: "get rid of?",
       slugs: [
-        "basement-cleanouts",
+        "storm-debris-removal",
         "garage-cleanouts",
         "estate-cleanouts",
       ],
@@ -1707,7 +1707,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       title: "More junk to ",
       titleAccent: "get rid of?",
       slugs: [
-        "basement-cleanouts",
+        "storm-debris-removal",
         "appliance-removal",
         "scrap-metal-removal",
       ],
@@ -1903,7 +1903,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       slugs: [
         "estate-cleanouts",
         "foreclosure-cleanouts",
-        "basement-cleanouts",
+        "storm-debris-removal",
       ],
     },
     faq: {
@@ -2485,7 +2485,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       slugs: [
         "hoarder-cleanouts",
         "foreclosure-cleanouts",
-        "basement-cleanouts",
+        "storm-debris-removal",
       ],
     },
     faq: {
@@ -2518,7 +2518,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       title: "Single piano. ",
       titleAccent: "Cross-town move. Either way.",
       paragraphs: [
-        "We're a junk crew that also moves things — short-haul, single-item, and small local moves with the same hands you trust to haul out a basement. Need a piano moved across the room? A fridge to the new house? Half a one-bedroom across Jacksonville Beach? Same crew.",
+        "We're a junk crew that also moves things — short-haul, single-item, and small local moves with the same hands you trust to haul out a garage. Need a piano moved across the room? A fridge to the new house? Half a one-bedroom across Jacksonville Beach? Same crew.",
         "We're not a national van line and we don't pretend to be. We're better than that for short Jacksonville Beach moves: same-day availability, flat hourly or flat-rate quotes, no fuel surcharges, no hidden add-ons.",
       ],
       includesEyebrow: "Includes",
@@ -3441,7 +3441,7 @@ export const pricingPage = {
       titleAccent: "volume and labor.",
       paragraphs: [
         "Junk removal is priced on two things: how much space your stuff takes up in our truck, and the labor it takes to get it out. That's the whole formula. There's no per-item nickel-and-diming, and no charge for the walk to the curb.",
-        "Four things move the number. Volume — a single couch is a small slice of the truck; a full basement is most of a load. What the material is — appliances with refrigerant, mattresses, tires, and construction debris cost more to dispose of or recycle the right way. Labor and access — a curbside pile is quicker than a third-floor walk-up, a tight basement stairwell, or a hot tub that has to be cut apart before it can leave the yard. And the disposal or recycling fees the transfer station, recycler, or donation center charges us for the material.",
+        "Four things move the number. Volume — a single couch is a small slice of the truck; a full garage is most of a load. What the material is — appliances with refrigerant, mattresses, tires, and construction debris cost more to dispose of or recycle the right way. Labor and access — a curbside pile is quicker than a third-floor walk-up, a tight stairwell, or a hot tub that has to be cut apart before it can leave the yard. And the disposal or recycling fees the transfer station, recycler, or donation center charges us for the material.",
         "Every one of those is visible when we look at the job. That's why we look at the job.",
       ],
     },

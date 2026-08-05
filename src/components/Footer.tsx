@@ -26,7 +26,7 @@ const FOOTER_SERVICES: { href: string; label: string }[] = [
     label: "Construction Debris Removal",
   },
   { href: "/services/garage-cleanouts", label: "Garage Cleanouts" },
-  { href: "/services/basement-cleanouts", label: "Basement Cleanouts" },
+  { href: "/services/storm-debris-removal", label: "Storm & Hurricane Debris Removal" },
   { href: "/services", label: "All Junk Removal Services →" },
 ];
 
