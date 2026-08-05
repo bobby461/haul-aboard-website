@@ -4,6 +4,7 @@ import { TrustStrip } from "@/components/TrustStrip";
 import { ServicesPreview } from "@/components/ServicesPreview";
 import { ReviewsSection } from "@/components/ReviewsSection";
 import { HomeSeoLinks } from "@/components/HomeSeoLinks";
+import { BrandElementsStrip } from "@/components/BrandArt";
 import { FaqAccordion } from "@/components/FaqAccordion";
 import { BigCta } from "@/components/BigCta";
 import { Footer } from "@/components/Footer";
@@ -49,6 +50,7 @@ export default function HomePage() {
         <Hero />
         <TrustStrip />
         <ServicesPreview />
+        <BrandElementsStrip />
         <ReviewsSection />
         <HomeSeoLinks />
         <section className="faq-section">

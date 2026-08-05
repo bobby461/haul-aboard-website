@@ -116,61 +116,45 @@ export const navigation = {
 // ============================================================
 export const homepage = {
   // ---------- Hero (top of page) ----------
+  // Poster-style hero straight off the brand board: the "We Haul It All!"
+  // slogan IS the headline, with the mascot to the right, honest trust
+  // badges, a service-icon row, and the orange "serving" bar underneath.
   hero: {
-    // Three-line headline. Line 1 + line 3 are white, line 2 is the
-    // big orange "Haul Aboard" wordmark. Line 3 is italic with the
-    // animated orange underline. Reads: "If it's junk, Haul Aboard —
-    // we haul it all." (the mascot-board slogan as the payoff).
-    headlineLine1: "If it's junk,",
-    headlineBrand: "Haul Aboard.",
-    headlineLine3: "it's gone for good.",
+    eyebrow: "Serving the Jacksonville Beaches",
+    headline1: "We Haul",
+    headline2: "It All!",
 
-    // Background photo behind the dark overlay. Drop a new file at
-    // this path in /public/ to swap it. Keep ratio wide (~3:2).
-    photo: {
-      src: "/images/hero/crew.jpeg",
-      alt: "Haul Aboard Junk Removal crew and truck at the beach in Jacksonville Beach, Florida",
-      width: 2400,
-      height: 1600,
+    // Mascot illustration slot (brand-board "fishing for junk" pose). Drop a
+    // transparent PNG here and it replaces the labeled placeholder.
+    mascot: {
+      src: "/images/brand/mascot-hero.png",
+      alt: "Haul Aboard mascot reeling in junk with a fishing rod",
     },
 
-    // Three stat blocks above the headline. Haul Aboard is brand-new, so
-    // these are honest operational facts — NOT a review count or star
-    // rating (we have none of our own yet). The Junk Away Delaware track
-    // record lives in the reviews section + About, clearly attributed.
-    stats: [
-      {
-        top: "$0",
-        label: "On-Site Estimates",
-        labelIcon: "check" as const,
-      },
-      {
-        top: "Same-Day",
-        label: "Service, 6 Days a Week",
-        labelIcon: "hammer" as const,
-      },
-      {
-        top: "100%",
-        label: "Licensed & Insured",
-        labelIcon: "check" as const,
-      },
+    lede:
+      "Locally owned junk removal for Jacksonville Beach, Neptune Beach, Atlantic Beach, Ponte Vedra & Nocatee. Same-day service, one flat price, and a crew that treats your place like our own.",
+
+    // Honest trust badges (no invented reviews).
+    badges: [
+      "Licensed & Insured",
+      "Same-Day Service",
+      "Free On-Site Estimates",
+      "$199 Flat-Rate Minimum",
     ],
 
-    // The three columns under the headline (left → right):
-    // 1. Brand pitch
-    metaPitchLabel: "Locally Owned · Jacksonville Beach, FL",
-    // Works the primary keyword ("junk removal in Jacksonville Beach") into real
-    // hero copy without touching the brand headline above it.
-    metaPitchBody:
-      "Locally owned junk removal in Jacksonville Beach — a local crew that shows up on time, hauls it out clean, and leaves your place better than we found it.",
-
-    // 2. Phone CTA (label + number + sub-line)
+    primaryCtaLabel: "Get My Free Estimate",
+    primaryCtaSubLabel: "Book in 60 seconds",
     metaPhoneLabel: "Call us direct",
     metaPhoneSub: "Mon–Fri 7–7 · Sat 7–3",
 
-    // 3. Primary book CTA
-    primaryCtaLabel: "Get My Free Estimate",
-    primaryCtaSubLabel: "Book in 60 seconds",
+    // Orange service-icon row (like the brand-board social post).
+    serviceRow: [
+      { label: "Junk Removal", icon: "trash" as const, href: "/services" },
+      { label: "Cleanouts", icon: "box" as const, href: "/services/estate-cleanouts" },
+      { label: "Appliances", icon: "washer" as const, href: "/services/appliance-removal" },
+      { label: "Furniture & More", icon: "couch" as const, href: "/services/furniture-and-mattress-removal" },
+    ],
+    servingBar: "Serving Jacksonville Beach & Surrounding Areas",
   },
 
   // ---------- Trust strip ----------
