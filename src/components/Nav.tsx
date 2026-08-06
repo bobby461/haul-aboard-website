@@ -23,14 +23,17 @@ export function Nav() {
   return (
     <>
       <nav className="site-nav" aria-label="Primary">
-        {/* Text wordmark logo. Bobby: to use the real brand-board logo
-            instead, drop a transparent PNG at /public/images/brand/logo.png
-            and swap this block back to a next/image <Image>. */}
-        <Link href="/" className="logo logo-wordmark" aria-label="Haul Aboard Junk Removal — home">
-          <span className="logo-line1">
-            HAUL <span className="logo-accent">ABOARD</span>
+        {/* Real mascot face + wordmark lockup. The full stacked logo art
+            lives at /images/brand/logo-full.svg for large/print uses. */}
+        <Link href="/" className="logo logo-lockup" aria-label="Haul Aboard Junk Removal — home">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/images/brand/mascot-face.svg" alt="" className="logo-face" />
+          <span className="logo-wordmark">
+            <span className="logo-line1">
+              HAUL <span className="logo-accent">ABOARD</span>
+            </span>
+            <span className="logo-line2">Junk Removal</span>
           </span>
-          <span className="logo-line2">Junk Removal</span>
         </Link>
 
         <ul className="nav-links" role="menubar">

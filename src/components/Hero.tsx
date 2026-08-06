@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { SeoImage } from "./SeoImage";
 import { TrashCan, Box, Washer, Couch, Anchor } from "./BrandArt";
 import { business, homepage } from "@/lib/content";
 
@@ -51,16 +50,12 @@ export function Hero() {
         </div>
 
         <div className="hero-poster-art">
-          <div className="mascot-frame">
-            <SeoImage
-              src={h.mascot.src}
-              alt={h.mascot.alt}
-              fill
-              priority
-              sizes="(max-width: 900px) 80vw, 480px"
-              style={{ objectFit: "contain", objectPosition: "center bottom" }}
-            />
-          </div>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/brand/mascot-fishing.svg"
+            alt={h.mascot.alt}
+            className="hero-mascot-img"
+          />
         </div>
       </div>
 
