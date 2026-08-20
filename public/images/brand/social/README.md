@@ -8,6 +8,9 @@ Nothing on the website links to these; they live here so they can be
 downloaded on a phone straight from the live site.
 
   pfp-head-navy.png            mascot head, marina navy background
+                               (uses mascot-face-knockout.svg -- the version
+                               with the thin cream halo, so the head does not
+                               sink into the navy)
   pfp-head-cream.png           mascot head, salt cream background
   pfp-head-orange.png          mascot head, jacksonville orange background
   pfp-lockup-cream.png         head + HAUL ABOARD lettering, cream

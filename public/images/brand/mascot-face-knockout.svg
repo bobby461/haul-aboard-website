@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Mascot head for DARK backgrounds.
+     The head's outermost line is marina navy, so on a navy field it sinks into
+     the background. This adds a thin cream halo around the whole silhouette
+     (feMorphology dilate -> flood cream -> composite behind the art) so the
+     head reads as a clean shape. Same paths as mascot-face.svg -- nothing is
+     redrawn, so this can never drift from the mascot. Use mascot-face.svg on
+     light backgrounds. -->
 <svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880.88 902.63">
   <defs>
     <style>
@@ -34,8 +41,14 @@
         fill: #122a40;
       }
     </style>
+    <filter id="ha-knockout" x="-10%" y="-10%" width="120%" height="120%" color-interpolation-filters="sRGB">
+      <feMorphology in="SourceAlpha" operator="dilate" radius="10" result="fat"/>
+      <feFlood flood-color="#f6e9d6" result="cream"/>
+      <feComposite in="cream" in2="fat" operator="in" result="halo"/>
+      <feMerge><feMergeNode in="halo"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
   </defs>
-  <g id="Layer_2-2" data-name="Layer 2">
+  <g id="Layer_2-2" data-name="Layer 2" filter="url(#ha-knockout)">
     <g>
       <ellipse class="cls-2" cx="549.02" cy="758.21" rx="245.52" ry="138.77"/>
       <path class="cls-2" d="M596.24,660.23l248.35-17.41c.5,5.79.74,11.6.74,17.41,0,123.63-112.45,225.37-249.1,225.37-36.01,0-71.59-7.06-104.29-20.7l104.29-204.66Z"/>
