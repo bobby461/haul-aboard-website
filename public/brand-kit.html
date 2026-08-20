@@ -31,6 +31,8 @@
   .card{background:#fff;border:2px solid var(--navy);border-radius:10px;overflow:hidden;
         box-shadow:3px 3px 0 var(--navy);display:flex;flex-direction:column}
   .card .shot{display:block;width:100%;aspect-ratio:1;border-radius:50%;}
+  .grid.wide{grid-template-columns:1fr}
+  .grid.wide .shot{aspect-ratio:1640/624;border-radius:0;border-bottom:2px solid var(--navy)}
   .card .pad{padding:10px;display:flex;flex-direction:column;gap:8px;align-items:center}
   .card .name{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:11.5px;
               letter-spacing:.08em;text-transform:uppercase;text-align:center;line-height:1.3}
@@ -72,6 +74,14 @@
      the whole rod and hook in, which looks good large but gets small and busy as a profile picture.</p>
   <div class="grid" id="g-mascot"></div>
 
+  <h2>Facebook cover photo</h2>
+  <p class="note">The logo on its own, no mascot. These are 1640 × 624 —
+     Facebook’s cover size at double resolution so it stays sharp. The logo is
+     kept well inside the middle of the picture on purpose: Facebook crops the
+     <em>sides</em> off a cover on phones, and anything out near the edges
+     disappears. Nothing here will get cut.</p>
+  <div class="grid wide" id="g-cover"></div>
+
   <h2>Full logo</h2>
   <p class="note">Great for a cover photo or a post. As a profile picture the words
      “Junk Removal” end up too small to read.</p>
@@ -79,7 +89,7 @@
 </div>
 
 <footer>
-  Every file is a 1080 × 1080 square with the artwork sized to sit inside the circle
+  Profile pictures are 1080 × 1080 squares with the artwork sized to sit inside the circle
   Facebook and Instagram crop to — upload them as they are, no cropping needed.<br>
   The circles above show exactly how each one will look.
 </footer>
@@ -92,7 +102,9 @@ const sets = {
   'g-lockup': [['pfp-lockup-cream','Head + name · cream',1],['pfp-lockup-white','Head + name · white']],
   'g-mascot': [['pfp-mascot-cream','Close-up · cream'],['pfp-mascot-orange','Close-up · orange'],
                ['pfp-mascot-full-cream','Whole rod · cream'],['pfp-mascot-full-orange','Whole rod · orange']],
-  'g-logo':   [['pfp-logo-cream','Full logo · cream']]
+  'g-logo':   [['pfp-logo-cream','Full logo · cream']],
+  'g-cover':  [['fb-cover-cream','Cover · cream',1],['fb-cover-cream-areas','Cover · cream + service areas'],
+               ['fb-cover-white','Cover · white']]
 };
 for (const [id, items] of Object.entries(sets)) {
   document.getElementById(id).innerHTML = items.map(([file, label, best]) => `

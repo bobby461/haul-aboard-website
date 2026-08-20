@@ -21,6 +21,18 @@ downloaded on a phone straight from the live site.
   pfp-mascot-full-orange.png   full mascot, whole rod and hook visible
   pfp-logo-cream.png           the complete logo, cream
 
+Facebook cover photos — 1640 x 624 (2x of Facebook's 820 x 312):
+
+  fb-cover-cream.png           logo only, salt cream
+  fb-cover-cream-areas.png     logo + the five service areas, salt cream
+  fb-cover-white.png           logo only, white
+
+Facebook shows a cover at 820x312 on desktop but 640x360 on a phone, and it
+scales to COVER that shorter, narrower box — which lops roughly 133px off each
+side. Everything in these files is kept inside the centre 555px (68%) so no
+part of the logo is ever cropped. If you edit one, keep content inside that
+band or it will get cut on phones.
+
 The mascot is mostly navy, so he disappears on a navy background —
 that's why there is no navy version of the full-mascot files.
 

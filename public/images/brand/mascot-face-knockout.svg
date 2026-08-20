@@ -15,9 +15,17 @@
          stacked BOX blurs, so hard-thresholding it leaves polygonal facets.
      Neither produces a round edge. Do not swap this back for either.
 
+     THE VIEWBOX IS DELIBERATELY LARGER than mascot-face.svg's. The artwork
+     touches all four edges of its own canvas exactly (bbox == viewBox), so a
+     halo grown outward lands outside the canvas and gets clipped off flat at
+     the top, left, right and bottom -- which reads as flat spots on the cap,
+     the left edge, the cheek and under the chin. The extra 14 units of margin
+     give the halo somewhere to live. If you ever change the halo radius,
+     widen this viewBox to match.
+
      Same paths as mascot-face.svg -- nothing is redrawn, so this can never
      drift from the mascot. Use mascot-face.svg on light backgrounds. -->
-<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880.88 902.63">
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="-14.00 -14.00 908.88 930.63">
   <defs>
     <style>
       .cls-1 {
