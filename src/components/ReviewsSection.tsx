@@ -17,7 +17,7 @@ export function ReviewsSection() {
         <div className="section-label">{r.eyebrow}</div>
         <h2 className="section-title">
           {r.title}
-          <span style={{ color: "var(--orange)" }}>{r.titleAccent}</span>
+          <span className="accent">{r.titleAccent}</span>
           {r.titleAfter}
         </h2>
         {"intro" in r && r.intro ? (

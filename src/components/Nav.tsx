@@ -23,17 +23,19 @@ export function Nav() {
   return (
     <>
       <nav className="site-nav" aria-label="Primary">
-        {/* Real mascot face + wordmark lockup. The full stacked logo art
-            lives at /images/brand/logo-full.svg for large/print uses. */}
+        {/* Real mascot face + the actual logo lettering (wordmark.svg is the
+            "HAUL ABOARD / swoosh / JUNK REMOVAL" half of logo-full.svg, cropped
+            straight out of the official art so the nav can never drift from the
+            logo). The full stacked lockup lives at /images/brand/logo-full.svg. */}
         <Link href="/" className="logo logo-lockup" aria-label="Haul Aboard Junk Removal — home">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/images/brand/mascot-face.svg" alt="" className="logo-face" />
-          <span className="logo-wordmark">
-            <span className="logo-line1">
-              HAUL <span className="logo-accent">ABOARD</span>
-            </span>
-            <span className="logo-line2">Junk Removal</span>
-          </span>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/brand/wordmark.svg"
+            alt="Haul Aboard Junk Removal"
+            className="logo-wordmark-img"
+          />
         </Link>
 
         <ul className="nav-links" role="menubar">

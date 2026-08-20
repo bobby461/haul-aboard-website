@@ -120,7 +120,7 @@ export const homepage = {
   // slogan IS the headline, with the mascot to the right, honest trust
   // badges, a service-icon row, and the orange "serving" bar underneath.
   hero: {
-    eyebrow: "Serving the Jacksonville Beaches",
+    eyebrow: "Hey Jacksonville,",
     headline1: "We Haul",
     headline2: "It All!",
 
@@ -135,11 +135,13 @@ export const homepage = {
       "Locally owned junk removal for Jacksonville Beach, Neptune Beach, Atlantic Beach, Ponte Vedra & Nocatee. Same-day service, one flat price, and a crew that treats your place like our own.",
 
     // Honest trust badges (no invented reviews).
+    // Three badges only — they sit on one line that way. Pricing is
+    // deliberately NOT one of them; the $199 minimum lives on /prices
+    // and in the copy, not in the first thing a visitor reads.
     badges: [
       "Licensed & Insured",
       "Same-Day Service",
       "Free On-Site Estimates",
-      "$199 Flat-Rate Minimum",
     ],
 
     primaryCtaLabel: "Get My Free Estimate",

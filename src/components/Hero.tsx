@@ -17,15 +17,22 @@ export function Hero() {
   return (
     <section className="hero-poster">
       <div className="hero-poster-inner">
-        <div className="hero-poster-copy">
+        {/* Eyebrow + slogan span the FULL width of the hero, above the
+            two columns. That fills the dead space that used to sit to the
+            right of the headline and lets "WE HAUL IT ALL!" run on one
+            line at poster scale instead of stacking. */}
+        <div className="hero-poster-head">
           <div className="hero-eyebrow">
             <Anchor className="hero-eyebrow-anchor" />
             {h.eyebrow}
           </div>
           <h1 className="hero-slogan">
-            <span className="l1">{h.headline1}</span>
+            <span className="l1">{h.headline1}</span>{" "}
             <span className="l2">{h.headline2}</span>
           </h1>
+        </div>
+
+        <div className="hero-poster-copy">
           <p className="hero-lede">{h.lede}</p>
 
           <div className="hero-cta-row">
@@ -41,12 +48,6 @@ export function Hero() {
               <div className="sub">{h.metaPhoneSub}</div>
             </a>
           </div>
-
-          <ul className="hero-badges">
-            {h.badges.map((b) => (
-              <li key={b}>{b}</li>
-            ))}
-          </ul>
         </div>
 
         <div className="hero-poster-art">
@@ -57,6 +58,15 @@ export function Hero() {
             className="hero-mascot-img"
           />
         </div>
+
+        {/* Badges get the full width of the hero so all three stay on one
+            line at every desktop/tablet size instead of wrapping the last
+            one onto a row by itself. */}
+        <ul className="hero-badges">
+          {h.badges.map((b) => (
+            <li key={b}>{b}</li>
+          ))}
+        </ul>
       </div>
 
       {/* Orange service-icon row (brand-board social post) */}

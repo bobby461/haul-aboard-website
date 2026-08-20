@@ -90,30 +90,13 @@ nav.site-nav {
   text-decoration: none;
   line-height: 1;
 }
-/* Text wordmark logo (stand-in for the brand-board artwork). Anton display
-   face, navy with an orange accent on "ABOARD", small condensed sub-line. */
-.logo-wordmark {
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 2px;
-}
-.logo-line1 {
-  font-family: var(--font-bebas), sans-serif;
-  font-size: 30px;
-  line-height: 0.9;
-  letter-spacing: 0.02em;
-  color: var(--ink);
-}
-.logo-line1 .logo-accent {
-  color: var(--orange);
-}
-.logo-line2 {
-  font-family: var(--font-barlow-condensed), sans-serif;
-  font-weight: 700;
-  font-size: 11px;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  color: var(--muted);
+/* Nav wordmark: the real logo lettering, cropped out of the official
+   logo art (public/images/brand/wordmark.svg). Sized by height so it
+   always matches the mascot face beside it. */
+.logo-wordmark-img {
+  height: 50px;
+  width: auto;
+  display: block;
 }
 /* Legacy image wordmark (used if a logo.png is dropped back in). */
 .logo-img {
@@ -626,7 +609,9 @@ nav.site-nav {
   color: #ffffff;
   border-top: 4px solid var(--orange);
   overflow: hidden;
-  padding: 28px 0;
+  /* Extra bottom padding clears the 60px wave divider that overlays the
+     bottom edge — without it the wave crops the marquee text. */
+  padding: 30px 0 74px;
   position: relative;
 }
 .trust-track {
@@ -1266,6 +1251,15 @@ footer.site-footer .footer-link-plain {
 /* ============================================================
    MOBILE ≤ 900px
    ============================================================ */
+@media (max-width: 1150px) and (min-width: 901px) {
+  nav.site-nav { padding: 14px 22px; gap: 16px; }
+  .nav-links { gap: 18px; font-size: 12.5px; letter-spacing: 0.09em; }
+  .logo-wordmark-img { height: 40px; }
+  .logo-face { height: 38px; }
+  .logo-lockup { gap: 8px; }
+  .call-now { padding: 10px 14px; font-size: 11.5px; }
+}
+
 @media (max-width: 900px) {
   .nav-links {
     display: none;
@@ -1280,12 +1274,8 @@ footer.site-footer .footer-link-plain {
   .logo-img {
     height: 32px;
   }
-  .logo-line1 {
-    font-size: 23px;
-  }
-  .logo-line2 {
-    font-size: 9px;
-    letter-spacing: 0.26em;
+  .logo-wordmark-img {
+    height: 38px;
   }
   .nav-right {
     gap: 8px;
@@ -2835,44 +2825,66 @@ body::before { opacity: 0.06; } /* nudge the grain up a touch */
   text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3);
 }
 
-/* ---- Layered "block letter" headlines — the signature move.
-        Navy/seafoam hard offset behind the type gives that
-        vintage stacked-poster depth. ---- */
+/* ---- Display headlines: FLAT, not 3D. ----
+        The old treatment stacked a hard 4-9px offset shadow (plus a
+        text-stroke) behind every big heading. At poster sizes that
+        smeared the letterforms, hurt legibility, and read as cheap
+        word-art rather than vintage. The vintage feel now comes from
+        the letterforms themselves (heavy condensed Anton), the
+        navy/orange pairing, and the logo's orange swoosh used as an
+        underline accent (.section-title::after below). Anything that
+        sits over a PHOTO keeps a soft blur shadow for contrast only —
+        that's legibility, not decoration. */
 .headline .brand {
   color: var(--orange);
-  -webkit-text-stroke: 2px #fff8ee;
-  paint-order: stroke fill;
-  text-shadow:
-    5px 5px 0 var(--ink-deep),
-    5px 5px 0 var(--ink-deep);
+  -webkit-text-stroke: 0;
+  text-shadow: none;
 }
-/* Section titles on cream sections: navy type, seafoam drop. */
-.section-title {
-  text-shadow: 4px 4px 0 var(--seafoam);
-}
-.section-title .accent {
-  text-shadow: 4px 4px 0 rgba(20, 56, 92, 0.22);
-}
-/* Titles that sit on DARK sections want a warm drop instead. */
+.section-title,
+.section-title .accent,
 .reviews-section-header .section-title,
-.pricing-block .section-title {
-  text-shadow: 4px 4px 0 var(--orange-deep);
-}
 .reviews-section-header .section-title .accent,
-.pricing-block .section-title .accent {
-  text-shadow: 4px 4px 0 rgba(0, 0, 0, 0.28);
-}
-.page-hero h1 {
-  text-shadow: 4px 4px 0 var(--ink-deep), 7px 7px 0 rgba(0, 0, 0, 0.28);
-}
-.cta-block .huge {
-  text-shadow: 5px 5px 0 var(--ink), 9px 9px 0 rgba(0, 0, 0, 0.2);
-}
+.pricing-block .section-title,
+.pricing-block .section-title .accent,
+.page-hero h1,
+.cta-block .huge,
 .pricing-cta-card .lg {
-  text-shadow: 3px 3px 0 var(--ink);
+  text-shadow: none;
+  -webkit-text-stroke: 0;
 }
+/* Over a photograph — soft shadow purely so the type stays readable. */
 .photo-banner-text {
-  text-shadow: 3px 3px 0 var(--ink-deep);
+  text-shadow: 0 2px 14px rgba(14, 42, 69, 0.75);
+}
+
+/* ---- The logo's orange swoosh, reused as the heading underline.
+        This is the actual brush stroke lifted out of the logo art, so
+        headings are signed with the same mark as the logo instead of a
+        fake 3D shadow. It hangs off the .accent span (the last phrase of
+        each title) rather than the whole <h2>: the accent hugs its own
+        text, so the stroke lands under real letters whether the title is
+        left-aligned or centred, one line or three. ---- */
+.section-title .accent {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.17em;
+}
+.section-title .accent::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 0.135em;
+  background: var(--orange);
+  -webkit-mask: url("/images/brand/swoosh.svg") no-repeat center / 100% 100%;
+  mask: url("/images/brand/swoosh.svg") no-repeat center / 100% 100%;
+  pointer-events: none;
+}
+/* On dark sections the swoosh goes warm gold so it reads off the navy. */
+.reviews-section-header .section-title .accent::after,
+.pricing-block .section-title .accent::after {
+  background: var(--gold);
 }
 
 /* ---- Nautical section label: swap the little bar for an anchor ---- */
@@ -2925,36 +2937,47 @@ body::before { opacity: 0.06; } /* nudge the grain up a touch */
   box-shadow: 4px 4px 0 rgba(20, 56, 92, 0.28);
 }
 
-/* ---- Wave dividers between key color changes (beach/marina) ---- */
+/* ---- Wave dividers between key color changes (beach/marina) ----
+        The old version was a single shallow bump stretched across the
+        whole viewport, which just read as a hill. These are proper
+        two-tone waves: a seafoam swell behind, the next section's colour
+        breaking in front, and foam caps on every crest. The tile repeats
+        every 240px at its natural aspect (never stretched), so the crests
+        stay the same size on a phone and on an ultrawide monitor. */
 .trust-strip,
 .cta-block {
   position: relative;
 }
-.trust-strip::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -1px;
-  height: 34px;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 34' preserveAspectRatio='none'%3E%3Cpath d='M0,34 L0,17 C150,2 300,2 450,15 C600,28 750,28 900,15 C1050,2 1150,6 1200,12 L1200,34 Z' fill='%23f6e9d6'/%3E%3C/svg%3E") repeat-x bottom / 1200px 34px;
-  z-index: 6;
-}
+.trust-strip::after,
 .cta-block::after {
   content: "";
   position: absolute;
   left: 0;
   right: 0;
   bottom: -1px;
-  height: 34px;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 34' preserveAspectRatio='none'%3E%3Cpath d='M0,34 L0,17 C150,2 300,2 450,15 C600,28 750,28 900,15 C1050,2 1150,6 1200,12 L1200,34 Z' fill='%2314385c'/%3E%3C/svg%3E") repeat-x bottom / 1200px 34px;
+  height: 60px;
   z-index: 6;
+  pointer-events: none;
+}
+/* navy trust strip → cream section below */
+.trust-strip::after {
+  background: url("/images/brand/wave-cream.svg") repeat-x bottom / 240px 60px;
+}
+/* cream CTA block → navy footer below */
+.cta-block::after {
+  background: url("/images/brand/wave-navy.svg") repeat-x bottom / 240px 60px;
+}
+@media (max-width: 700px) {
+  .trust-strip::after,
+  .cta-block::after { height: 42px; background-size: 168px 42px; }
+  .trust-strip { padding: 24px 0 52px; }
 }
 
 /* ---- Trust strip → rope/flag banner feel ---- */
 .trust-strip {
   border-top: 4px solid var(--orange);
-  border-bottom: 4px solid var(--gold);
+  /* No bottom border — the wave divider is the edge now. */
+  border-bottom: none;
   background:
     repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.03) 0 12px, transparent 12px 24px),
     var(--ink);
@@ -3052,9 +3075,6 @@ body::before { opacity: 0.06; } /* nudge the grain up a touch */
 }
 
 @media (max-width: 700px) {
-  .headline .brand { -webkit-text-stroke-width: 1.5px; text-shadow: 3px 3px 0 var(--ink-deep); }
-  .section-title { text-shadow: 3px 3px 0 var(--seafoam); }
-  .cta-block .huge { text-shadow: 3px 3px 0 var(--ink); }
   .emblem { width: 92px; height: 92px; }
   .coastal-strip { font-size: 10.5px; letter-spacing: 0.16em; gap: 10px; }
 }
@@ -3065,7 +3085,10 @@ body::before { opacity: 0.06; } /* nudge the grain up a touch */
 .hero-poster {
   position: relative;
   background: var(--bg);
-  padding: 104px 40px 0;
+  /* No horizontal padding here on purpose: the service row and the orange
+     serving bar are full-bleed and must run the whole width of the screen.
+     The copy/mascot area gets its own padding via .hero-poster-inner. */
+  padding: 104px 0 0;
   overflow: hidden;
   border-bottom: 3px solid var(--ink);
 }
@@ -3090,11 +3113,16 @@ body::before { opacity: 0.06; } /* nudge the grain up a touch */
   max-width: 1220px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  gap: 30px;
+  grid-template-columns: 1.02fr 0.98fr;
+  column-gap: 30px;
+  row-gap: 10px;
   align-items: center;
   min-height: clamp(480px, 58vh, 660px);
-  padding: 30px 0 40px;
+  padding: 26px 40px 34px;
+}
+/* Eyebrow + slogan: full width, above both columns. */
+.hero-poster-head {
+  grid-column: 1 / -1;
 }
 .hero-eyebrow {
   display: inline-flex;
@@ -3106,41 +3134,38 @@ body::before { opacity: 0.06; } /* nudge the grain up a touch */
   letter-spacing: 0.24em;
   text-transform: uppercase;
   color: var(--ink);
-  margin-bottom: 18px;
+  margin-bottom: 12px;
 }
 .hero-eyebrow-anchor {
   width: 22px;
   height: 22px;
   color: var(--orange);
 }
+/* "WE HAUL IT ALL!" — one line, poster scale. Flat two-tone type: the
+   old hard 3D offset made it muddy and fought the logo. Legibility and
+   the orange/navy pairing carry the vintage feel instead. */
 .hero-slogan {
   font-family: var(--font-bebas), sans-serif;
-  line-height: 0.8;
+  line-height: 0.86;
   text-transform: uppercase;
-  margin-bottom: 22px;
+  margin-bottom: 14px;
+  white-space: nowrap;
+  font-size: clamp(52px, 15vw, 186px);
+  letter-spacing: 0.005em;
 }
 .hero-slogan .l1,
 .hero-slogan .l2 {
-  display: block;
-  font-size: clamp(68px, 11vw, 150px);
-  letter-spacing: 0.005em;
+  display: inline;
+  font-size: inherit;
 }
-.hero-slogan .l1 {
-  color: var(--ink);
-  text-shadow: 4px 4px 0 var(--seafoam);
-}
-.hero-slogan .l2 {
-  color: var(--orange);
-  -webkit-text-stroke: 2px var(--ink);
-  paint-order: stroke fill;
-  text-shadow: 5px 5px 0 var(--ink-deep);
-}
+.hero-slogan .l1 { color: var(--ink); }
+.hero-slogan .l2 { color: var(--orange); }
 .hero-lede {
   font-size: 18px;
   line-height: 1.55;
   color: var(--ink);
-  max-width: 48ch;
-  margin-bottom: 28px;
+  max-width: 46ch;
+  margin-bottom: 26px;
 }
 .hero-poster .hero-cta-row {
   display: flex;
@@ -3170,10 +3195,12 @@ body::before { opacity: 0.06; } /* nudge the grain up a touch */
 }
 .hero-poster .phone-cta:hover .num { color: var(--orange); }
 .hero-badges {
+  grid-column: 1 / -1;
   list-style: none;
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+  margin-top: 4px;
 }
 .hero-badges li {
   font-family: var(--font-barlow-condensed), sans-serif;
@@ -3195,7 +3222,10 @@ body::before { opacity: 0.06; } /* nudge the grain up a touch */
 /* Mascot slot */
 .hero-poster-art {
   position: relative;
-  align-self: end;
+  align-self: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .mascot-frame {
   position: relative;
@@ -3263,16 +3293,25 @@ body::before { opacity: 0.06; } /* nudge the grain up a touch */
 .serving-anchor { width: 18px; height: 18px; color: #fff8ee; }
 
 @media (max-width: 900px) {
-  .hero-poster { padding: 92px 20px 0; }
+  .hero-poster { padding: 92px 0 0; }
   .hero-poster-inner {
     grid-template-columns: 1fr;
     min-height: 0;
     gap: 8px;
+    padding: 22px 20px 28px;
     text-align: center;
   }
   .hero-eyebrow { justify-content: center; }
+  /* On phones the one-line slogan would shrink to nothing, so let it
+     wrap back to two lines and scale off the viewport. */
+  .hero-slogan {
+    white-space: normal;
+    font-size: clamp(46px, 15vw, 84px);
+  }
+  .hero-poster-art { order: 3; }
   .hero-poster .hero-cta-row,
   .hero-badges { justify-content: center; }
+  .hero-mascot-img { max-height: 280px; margin: 0 auto; }
   .mascot-frame { aspect-ratio: 3 / 3; max-height: 340px; margin: 0 auto; max-width: 340px; }
   .service-row { grid-template-columns: repeat(2, 1fr); }
   .service-row-item:nth-child(2) { border-right: none; }
@@ -3335,23 +3374,17 @@ body::before { opacity: 0.06; } /* nudge the grain up a touch */
   width: auto;
   display: block;
 }
-.logo-lockup .logo-wordmark {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 2px;
-}
+
 /* Hero: real fishing mascot */
 .hero-mascot-img {
   display: block;
   width: 100%;
   height: auto;
-  max-height: 540px;
+  max-height: 400px;
   object-fit: contain;
-  margin-left: auto;
   filter: drop-shadow(0 10px 18px rgba(20, 56, 92, 0.18));
 }
 @media (max-width: 900px) {
-  .hero-mascot-img { max-height: 340px; margin: 0 auto; }
+  .hero-mascot-img { max-height: 280px; margin: 0 auto; }
   .logo-face { height: 38px; }
 }
