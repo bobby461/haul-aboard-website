@@ -19,7 +19,9 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/api/", "/_next/"],
+        // /brand-kit.html is a private download page for the owner's
+        // logo files — useful, but not something to put in search.
+        disallow: ["/api/", "/_next/", "/brand-kit.html"],
       },
     ],
     sitemap: `${base}/sitemap.xml`,

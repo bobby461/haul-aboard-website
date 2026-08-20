@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Haul Aboard — Logo Files</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow+Condensed:wght@500;700&family=Barlow:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#14385C;--navy-deep:#0E2A45;--orange:#F36A21;--cream:#F6E9D6;--seafoam:#8FB6B7}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--cream);color:var(--navy);font-family:Barlow,system-ui,sans-serif;
+       -webkit-font-smoothing:antialiased;padding-bottom:60px}
+  header{background:#fff;color:var(--navy);padding:24px 20px 26px;text-align:center;
+         border-bottom:3px solid var(--navy)}
+  header img{height:70px;width:auto;display:block;margin:0 auto 14px}
+  h1{font-family:Anton,Impact,sans-serif;font-size:clamp(28px,7vw,44px);letter-spacing:.01em;
+     text-transform:uppercase;line-height:1;color:var(--navy)}
+  h1 span{color:var(--orange)}
+  .sub{font-family:"Barlow Condensed",sans-serif;font-weight:700;letter-spacing:.18em;
+       text-transform:uppercase;font-size:12px;color:#5C6B72;margin-top:9px}
+  .how{background:var(--orange);color:#fff;padding:16px 20px;text-align:center;
+       font-size:15px;line-height:1.5;font-weight:600}
+  .wrap{max-width:900px;margin:0 auto;padding:0 16px}
+  h2{font-family:Anton,Impact,sans-serif;text-transform:uppercase;font-size:22px;
+     letter-spacing:.02em;margin:34px 0 4px}
+  .note{font-size:14px;color:#5C6B72;line-height:1.5;margin-bottom:16px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:18px}
+  .card{background:#fff;border:2px solid var(--navy);border-radius:10px;overflow:hidden;
+        box-shadow:3px 3px 0 var(--navy);display:flex;flex-direction:column}
+  .card .shot{display:block;width:100%;aspect-ratio:1;border-radius:50%;}
+  .card .pad{padding:10px;display:flex;flex-direction:column;gap:8px;align-items:center}
+  .card .name{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:11.5px;
+              letter-spacing:.08em;text-transform:uppercase;text-align:center;line-height:1.3}
+  .card a.dl{display:block;background:var(--navy);color:#fff;text-decoration:none;text-align:center;
+             font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:12px;
+             letter-spacing:.12em;text-transform:uppercase;padding:9px 6px;width:100%;border-radius:5px}
+  .best{position:relative}
+  .best::before{content:"PICK ME";position:absolute;z-index:2;top:8px;left:50%;transform:translateX(-50%);
+    background:var(--orange);color:#fff;font-family:"Barlow Condensed",sans-serif;font-weight:700;
+    font-size:10px;letter-spacing:.14em;padding:3px 9px;border-radius:99px}
+  footer{text-align:center;font-size:13px;color:#5C6B72;margin-top:40px;padding:0 20px;line-height:1.6}
+</style>
+</head>
+<body>
+<header>
+  <img src="/images/brand/wordmark.svg" alt="Haul Aboard Junk Removal">
+  <h1>Logo <span>Files</span></h1>
+  <div class="sub">Profile pictures · Facebook &amp; Instagram</div>
+</header>
+
+<div class="how">
+  On your phone: <strong>press and hold</strong> any picture below, then tap
+  <strong>“Add to Photos”</strong> / <strong>“Download image.”</strong><br>
+  On a computer: click the orange <strong>Download</strong> button.
+</div>
+
+<div class="wrap">
+  <h2>Mascot head</h2>
+  <p class="note">Best choice for a profile picture — it’s the only piece of the logo that still
+     reads clearly once Facebook and Instagram shrink it to a small circle.</p>
+  <div class="grid" id="g-head"></div>
+
+  <h2>Head + logo lettering</h2>
+  <p class="note">Use this if you’d rather the company name be readable.</p>
+  <div class="grid" id="g-lockup"></div>
+
+  <h2>Full mascot</h2>
+  <p class="note">The first two are close-ups where he fills the circle. The last two fit
+     the whole rod and hook in, which looks good large but gets small and busy as a profile picture.</p>
+  <div class="grid" id="g-mascot"></div>
+
+  <h2>Full logo</h2>
+  <p class="note">Great for a cover photo or a post. As a profile picture the words
+     “Junk Removal” end up too small to read.</p>
+  <div class="grid" id="g-logo"></div>
+</div>
+
+<footer>
+  Every file is a 1080 × 1080 square with the artwork sized to sit inside the circle
+  Facebook and Instagram crop to — upload them as they are, no cropping needed.<br>
+  The circles above show exactly how each one will look.
+</footer>
+
+<script>
+const B = '/images/brand/social/';
+const sets = {
+  'g-head':   [['pfp-head-navy','Mascot head · navy',1],['pfp-head-cream','Mascot head · cream'],
+               ['pfp-head-orange','Mascot head · orange']],
+  'g-lockup': [['pfp-lockup-cream','Head + name · cream',1],['pfp-lockup-white','Head + name · white']],
+  'g-mascot': [['pfp-mascot-cream','Close-up · cream'],['pfp-mascot-orange','Close-up · orange'],
+               ['pfp-mascot-full-cream','Whole rod · cream'],['pfp-mascot-full-orange','Whole rod · orange']],
+  'g-logo':   [['pfp-logo-cream','Full logo · cream']]
+};
+for (const [id, items] of Object.entries(sets)) {
+  document.getElementById(id).innerHTML = items.map(([file, label, best]) => `
+    <div class="card${best ? ' best' : ''}">
+      <img class="shot" src="${B}${file}.png" alt="${label}">
+      <div class="pad">
+        <div class="name">${label}</div>
+        <a class="dl" href="${B}${file}.png" download>Download</a>
+      </div>
+    </div>`).join('');
+}
+</script>
+</body>
+</html>
