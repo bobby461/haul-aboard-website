@@ -124,10 +124,10 @@ export const homepage = {
     headline1: "We Haul",
     headline2: "It All!",
 
-    // Mascot illustration slot (brand-board "fishing for junk" pose). Drop a
-    // transparent PNG here and it replaces the labeled placeholder.
+    // Mascot illustration slot (brand-board "fishing for junk" pose). This is
+    // the official mascot art; Hero.tsx renders the same file directly.
     mascot: {
-      src: "/images/brand/mascot-hero.png",
+      src: "/images/brand/mascot-fishing.svg",
       alt: "Haul Aboard mascot reeling in junk with a fishing rod",
     },
 
