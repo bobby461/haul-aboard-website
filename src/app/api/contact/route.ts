@@ -125,6 +125,10 @@ export async function POST(req: NextRequest) {
     const from = process.env.RESEND_FROM || "Haul Aboard <onboarding@resend.dev>";
     const to = process.env.CONTACT_TO || business.email;
     let delivered = false;
+    // Why a send failed, as a short non-secret code returned to the caller.
+    // Never contains the key or any customer data — just enough to tell
+    // "no key configured" apart from "Resend rejected us, here's the status".
+    let failCode = "no_api_key";
     if (resendKey) {
       try {
         const subject = `New estimate request: ${service || "Junk Removal"} — ${name}`;
@@ -160,9 +164,11 @@ export async function POST(req: NextRequest) {
           delivered = true;
         } else {
           const errText = await r.text();
+          failCode = `resend_${r.status}`;
           console.error("[contact] Resend error:", r.status, errText);
         }
       } catch (e) {
+        failCode = "resend_exception";
         console.error("[contact] Resend exception:", e);
       }
     } else {
@@ -195,6 +201,7 @@ export async function POST(req: NextRequest) {
         {
           ok: false,
           error: `We couldn't send that just now — please call us at ${business.phone} and we'll take care of you.`,
+          code: failCode,
         },
         { status: 502 }
       );
