@@ -9,20 +9,22 @@ const scriptSrcExtras = isDev ? "'unsafe-eval'" : "";
 // CSP allows the third-party scripts the brief calls for:
 // - GoogleTagManager / GA4
 // - Cloudflare Turnstile (when enabled)
-// - Housecall Pro (lead capture form embed on /contact)
 //
 // Elfsight entries were removed on 2026-05-21 when we moved off
-// the reviews widget to a hand-coded review grid. No third-party
-// JS for reviews anymore, so the CSP is tighter and faster.
+// the reviews widget to a hand-coded review grid.
+// Housecall Pro entries were removed on 2026-08-21 with the lead-form
+// embed — that iframe pointed at Junk Away Delaware's HCP account, so
+// Haul Aboard's estimate requests were landing in the wrong company's
+// CRM. /contact now uses our own form -> /api/contact -> email.
+// No third-party JS for reviews or lead capture, so the CSP is tight.
 const cspHeader = `
   default-src 'self';
-  script-src 'self' 'unsafe-inline' ${scriptSrcExtras} https://www.googletagmanager.com https://www.google-analytics.com https://challenges.cloudflare.com https://*.housecallpro.com;
+  script-src 'self' 'unsafe-inline' ${scriptSrcExtras} https://www.googletagmanager.com https://www.google-analytics.com https://challenges.cloudflare.com;
   style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
   font-src 'self' data: https://fonts.gstatic.com;
   img-src 'self' data: blob: https:;
-  connect-src 'self' https://api.resend.com https://www.google-analytics.com https://*.google-analytics.com https://www.googletagmanager.com https://*.googleapis.com https://*.gstatic.com https://*.googleusercontent.com https://*.housecallpro.com;
-  frame-src 'self' https://www.google.com https://challenges.cloudflare.com https://*.housecallpro.com;
-  child-src 'self' https://*.housecallpro.com;
+  connect-src 'self' https://api.resend.com https://www.google-analytics.com https://*.google-analytics.com https://www.googletagmanager.com https://*.googleapis.com https://*.gstatic.com https://*.googleusercontent.com;
+  frame-src 'self' https://www.google.com https://challenges.cloudflare.com;
   worker-src 'self' blob:;
   frame-ancestors 'self';
   base-uri 'self';

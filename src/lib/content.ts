@@ -3353,7 +3353,7 @@ export const contactPage = {
   eyebrow: "Free estimate",
   h1: "Get a flat quote ",
   h1Accent: "in 60 seconds.",
-  lede: "Tell us what you have, attach a photo if you can, and we'll get back to you next business day. For urgent jobs, call us direct at (904) 875-7183.",
+  lede: "Tell us what you have and we'll get back to you next business day with a flat quote. Got photos? Email them to info@haulaboardjunk.com. For urgent jobs, call us direct at (904) 875-7183.",
   // Form labels and helper text — change wording here, not in the form component.
   form: {
     nameLabel: "Your name",
@@ -3365,7 +3365,8 @@ export const contactPage = {
     descriptionLabel: "Anything else we should know?",
     descriptionPlaceholder:
       "Volume, access, stairs, timeline — whatever helps us quote accurately.",
-    photoLabel: "Photos (optional, up to 5)",
+    // photoLabel: unused — the form has no upload yet. Customers are
+    // asked to email photos instead (see `lede` above).
     submitLabel: "Get My Free Estimate",
     submittingLabel: "Sending…",
   },
