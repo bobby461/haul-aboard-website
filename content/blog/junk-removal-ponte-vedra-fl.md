@@ -69,7 +69,7 @@ What we won't take: asbestos, wet paint (dry it out first and then it's fine), g
 
 ## How it actually works
 
-Call (904) 875-7183 or text us photos. We come out and give you a free, no-obligation, on-site estimate — the real pile, not a guess over the phone. You get a flat quote upfront, before anybody picks anything up. If it doesn't work for you, no hard feelings.
+Call (904) 404-6264 or text us photos. We come out and give you a free, no-obligation, on-site estimate — the real pile, not a guess over the phone. You get a flat quote upfront, before anybody picks anything up. If it doesn't work for you, no hard feelings.
 
 If it does, we load it, carry it out clean, and haul it. Usable goods get donated. Metal, copper, and electronics get recycled. The rest goes to licensed disposal. You don't lift anything.
 
@@ -89,4 +89,4 @@ Same-day is often available — six days a week, Monday through Friday 7am to 7p
 
 ## Ready to get it gone?
 
-Call **(904) 875-7183** or [get a free estimate](/contact). On-site, no obligation, flat quote before we start. Big house in Sawgrass, remodel debris in Marsh Landing, hot tub out by the marsh — we'll come look, tell you straight, and haul it.
+Call **(904) 404-6264** or [get a free estimate](/contact). On-site, no obligation, flat quote before we start. Big house in Sawgrass, remodel debris in Marsh Landing, hot tub out by the marsh — we'll come look, tell you straight, and haul it.

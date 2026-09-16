@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Junk Removal in Jacksonville Beach, FL | Haul Aboard",
     description:
-      "Locally owned Jacksonville Beach junk removal. Same-day service, free on-site estimates, flat pricing, licensed & insured. Call (904) 875-7183.",
+      "Locally owned Jacksonville Beach junk removal. Same-day service, free on-site estimates, flat pricing, licensed & insured. Call (904) 404-6264.",
     url: "/",
     type: "website",
   },

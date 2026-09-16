@@ -5,7 +5,7 @@ This site was cloned from the Junk Away (Delaware) codebase and rebuilt for
 you already know: **Next.js → Vercel**, with all editable copy in
 `src/lib/content.ts`. Edit that file, push to GitHub, Vercel redeploys.
 
-- **Domain:** haulaboardjunk.com   **Phone:** (904) 875-7183   **Email:** info@haulaboardjunk.com
+- **Domain:** haulaboardjunk.com   **Phone:** (904) 404-6264   **Email:** info@haulaboardjunk.com
 - **Brand:** 1950s Florida marina / bait-shop. Navy `#0F2E4D`, orange `#F15A24`,
   salt cream `#F6E9D6`, seafoam `#8FB6B7`. Display font: Anton. Tagline: "We Haul It All!"
 

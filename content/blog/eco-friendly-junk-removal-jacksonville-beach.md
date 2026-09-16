@@ -84,7 +84,7 @@ Short list, short for good reasons:
 - **Medical waste.**
 - **Live ammunition.**
 
-For household hazardous waste, Duval and St. Johns County run collection sites for exactly this. Call us at **(904) 875-7183** and we'll point you toward the right one. We'd rather spend two minutes on the phone than watch that stuff end up in a dumpster.
+For household hazardous waste, Duval and St. Johns County run collection sites for exactly this. Call us at **(904) 404-6264** and we'll point you toward the right one. We'd rather spend two minutes on the phone than watch that stuff end up in a dumpster.
 
 ## Why a crew that sorts beats a dumpster you fill and forget
 
@@ -104,4 +104,4 @@ We serve the [Jacksonville Beaches](/service-areas) — Jacksonville Beach, Nept
 
 The estimate is free, on-site, and there's no obligation attached to it. We look at what you've got, give you a flat quote before anybody touches anything, and you decide from there.
 
-Call **(904) 875-7183** or [request your free on-site estimate](/contact).
+Call **(904) 404-6264** or [request your free on-site estimate](/contact).

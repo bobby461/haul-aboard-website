@@ -19,9 +19,9 @@
 // ============================================================
 export const business = {
   // Display phone (used on every "Call Now" button and the footer)
-  phone: "(904) 875-7183",
+  phone: "(904) 404-6264",
   // Raw digits for tel: links — keep matching `phone` above
-  phoneRaw: "9048757183",
+  phoneRaw: "9044046264",
 
   // Email — used in footer and form auto-replies
   email: "info@haulaboardjunk.com",
@@ -351,7 +351,7 @@ export const homepage = {
     pre: "Free, no-obligation estimates",
     huge: "Ready when\nyou are.",
     primaryLabel: "Get My Free Estimate →",
-    secondaryLabel: "Call (904) 875-7183",
+    secondaryLabel: "Call (904) 404-6264",
   },
 } as const;
 
@@ -3264,7 +3264,7 @@ export const homepageFaq = {
   items: [
     {
       q: "Can you come this afternoon?",
-      a: "Often, yes. Same-day slots fill up, so the move is to call in the morning at (904) 875-7183. Catch us early and there's a real chance your junk is gone by dinner. Our crews run six days a week, Monday through Saturday, and you can book online any day of the week.",
+      a: "Often, yes. Same-day slots fill up, so the move is to call in the morning at (904) 404-6264. Catch us early and there's a real chance your junk is gone by dinner. Our crews run six days a week, Monday through Saturday, and you can book online any day of the week.",
     },
     {
       q: "How much does junk removal cost?",
@@ -3296,7 +3296,7 @@ export const faqPage = {
   eyebrow: "Common questions",
   h1: "Got questions? ",
   h1Accent: "We've got answers.",
-  lede: "If you don't find your answer here, call us at (904) 875-7183 or send us a message — we respond next business day.",
+  lede: "If you don't find your answer here, call us at (904) 404-6264 or send us a message — we respond next business day.",
   items: [
     {
       q: "How much does junk removal cost?",
@@ -3349,11 +3349,11 @@ export const faqPage = {
 export const contactPage = {
   metaTitle: "Get a Free Junk Removal Estimate — Jacksonville Beach",
   metaDescription:
-    "Free no-obligation junk removal estimate in 60 seconds. Tell us what you have, we'll get you a flat price. Or call (904) 875-7183.",
+    "Free no-obligation junk removal estimate in 60 seconds. Tell us what you have, we'll get you a flat price. Or call (904) 404-6264.",
   eyebrow: "Free estimate",
   h1: "Get a flat quote ",
   h1Accent: "in 60 seconds.",
-  lede: "Tell us what you have and we'll get back to you next business day with a flat quote. Got photos? Email them to info@haulaboardjunk.com. For urgent jobs, call us direct at (904) 875-7183.",
+  lede: "Tell us what you have and we'll get back to you next business day with a flat quote. Got photos? Email them to info@haulaboardjunk.com. For urgent jobs, call us direct at (904) 404-6264.",
   // Form labels and helper text — change wording here, not in the form component.
   form: {
     nameLabel: "Your name",
@@ -3372,9 +3372,9 @@ export const contactPage = {
   },
   successHeading: "Thanks — we got it.",
   successBody:
-    "We'll be in touch within one business day with a flat quote. For urgent jobs, call (904) 875-7183 — we usually answer.",
+    "We'll be in touch within one business day with a flat quote. For urgent jobs, call (904) 404-6264 — we usually answer.",
   errorBody:
-    "Something went wrong on our end. Please call us at (904) 875-7183 or try again in a moment.",
+    "Something went wrong on our end. Please call us at (904) 404-6264 or try again in a moment.",
 } as const;
 
 // ============================================================

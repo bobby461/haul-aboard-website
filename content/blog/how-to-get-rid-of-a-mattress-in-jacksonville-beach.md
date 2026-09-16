@@ -61,4 +61,4 @@ If there's any chance your mattress has bed bugs, tell whoever is taking it, whe
 
 Clean mattress and patience: try donation. Truck and a free Saturday: transfer station drop-off. Trash service with bulk pickup: use it. Want it gone today without lifting anything: that's us.
 
-Call **(904) 875-7183** or [get a free estimate online](/contact), and your mattress problem is over by tonight.
+Call **(904) 404-6264** or [get a free estimate online](/contact), and your mattress problem is over by tonight.

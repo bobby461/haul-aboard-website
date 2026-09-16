@@ -35,7 +35,7 @@ If you want to know more about who's showing up at your door, our [story and wha
 
 No mystery here. It's five steps.
 
-**1. You call or text photos.** Ring (904) 875-7183 or send us pictures of what's going. Photos help a lot — we can size up the load before we roll and give you a better sense of what to expect.
+**1. You call or text photos.** Ring (904) 404-6264 or send us pictures of what's going. Photos help a lot — we can size up the load before we roll and give you a better sense of what to expect.
 
 **2. Free on-site estimate.** We come out, look at the actual pile, and quote it. Free, no obligation, no pressure. If the number doesn't work for you, we shake hands and go. That happens sometimes and it's fine.
 
@@ -88,7 +88,7 @@ If you're searching "junk removal near me" from anywhere along the Beaches, we'r
 
 ## Can you come this afternoon?
 
-Often, yes. It depends on how the day's route is shaping up, so the honest answer is to call in the morning and your odds are good. Catch us early at (904) 875-7183 and there's a real chance your junk is gone by dinner. If today is already full, we'll tell you straight and lock in the first slot tomorrow. Either way, you can book any day of the week and we'll confirm the time.
+Often, yes. It depends on how the day's route is shaping up, so the honest answer is to call in the morning and your odds are good. Catch us early at (904) 404-6264 and there's a real chance your junk is gone by dinner. If today is already full, we'll tell you straight and lock in the first slot tomorrow. Either way, you can book any day of the week and we'll confirm the time.
 
 ## The best time to call
 
@@ -100,6 +100,6 @@ If you already know you need us Thursday, book it. A confirmed slot always beats
 
 ## Get a free estimate today
 
-Call **(904) 875-7183** — early in the day if you can. We'll tell you straight whether we can get to you today or whether tomorrow's the honest answer. The on-site estimate is free, there's no obligation, and you get a flat quote before we touch a thing.
+Call **(904) 404-6264** — early in the day if you can. We'll tell you straight whether we can get to you today or whether tomorrow's the honest answer. The on-site estimate is free, there's no obligation, and you get a flat quote before we touch a thing.
 
 Licensed and insured, workers comp and general liability, and a crew that shows up. You can also [send us your details and photos here](/contact) and we'll get right back to you.

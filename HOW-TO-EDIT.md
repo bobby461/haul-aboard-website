@@ -63,7 +63,7 @@ Open `src/lib/content.ts`. Near the top, find the `business` object:
 
 ```ts
 export const business = {
-  phone: "(904) 875-7183",
+  phone: "(904) 404-6264",
   phoneRaw: "3025321186",
   ...
 };

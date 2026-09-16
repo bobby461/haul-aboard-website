@@ -106,6 +106,6 @@ Photos get you a ballpark. The on-site look gets you the number. And we cover th
 
 ## Get a free estimate
 
-Call **(904) 875-7183** and we'll come look at it. The estimate is free, there's no obligation, and you get a flat price before we start — not after. We're licensed and insured, and Haul Aboard is run by the same owner behind Junk Away, Delaware's top-rated junk removal company — so the crew standard is proven even though we're new to the Beaches.
+Call **(904) 404-6264** and we'll come look at it. The estimate is free, there's no obligation, and you get a flat price before we start — not after. We're licensed and insured, and Haul Aboard is run by the same owner behind Junk Away, Delaware's top-rated junk removal company — so the crew standard is proven even though we're new to the Beaches.
 
 If you'd rather not call, [send us the details and a few photos](/contact) and we'll get right back to you.
