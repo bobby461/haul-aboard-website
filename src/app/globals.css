@@ -3702,3 +3702,16 @@ nav.site-nav {
   .call-now { padding: 11px 13px; font-size: 13px; letter-spacing: 0.1em; gap: 7px; }
   .call-now .phone-icon { width: 15px; height: 15px; }
 }
+
+/* The brush stroke under the orange part of a heading takes the color
+   of the OTHER words in that heading, never orange, so it reads as an
+   accent: navy where the heading is navy and orange, white where the
+   heading is white and orange on a navy section. */
+.section-title .accent::after {
+  background: var(--ink);
+}
+.reviews-section-header .section-title .accent::after,
+.pricing-block .section-title .accent::after,
+.testimonials .section-title .accent::after {
+  background: #ffffff;
+}
