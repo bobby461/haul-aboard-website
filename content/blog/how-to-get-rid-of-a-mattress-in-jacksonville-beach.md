@@ -49,7 +49,7 @@ Marketplace and Craigslist are full of free mattress listings, and most of them 
 
 This is what we do. You send us a photo or call, we give you a flat price upfront, and our crew comes to you, usually same-day or next-day, six days a week. We carry it out from wherever it is: upstairs bedroom, garage rafters, third-floor condo, doesn't matter. You don't touch it. This is exactly what our [furniture and mattress removal service](/services/furniture-and-mattress-removal) is built for.
 
-Our minimum is $199, which covers a mattress and box spring or a small pile of other stuff along with it, and honestly, that's how most mattress calls go. Once the truck is there, the old dresser, the broken bed frame, and the boxes in the corner usually hop on too. If you want to know exactly how our pricing works, we broke it all down in our [Jacksonville Beach pricing guide](/blog/how-much-does-junk-removal-cost-in-jacksonville-beach).
+Our minimum is $150, which covers a mattress and box spring or a small pile of other stuff along with it, and honestly, that's how most mattress calls go. Once the truck is there, the old dresser, the broken bed frame, and the boxes in the corner usually hop on too. If you want to know exactly how our pricing works, we broke it all down in our [Jacksonville Beach pricing guide](/blog/how-much-does-junk-removal-cost-in-jacksonville-beach).
 
 Whatever we haul gets handled right: metal springs and frames go to scrap recycling, and the rest goes to licensed facilities. We wrote about [where your junk actually ends up](/blog/eco-friendly-junk-removal-jacksonville-beach) if you're curious.
 

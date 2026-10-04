@@ -71,7 +71,7 @@ Our trucks run the Beaches and St. Johns County every day, so when you call for 
 
 ## What it costs
 
-Every estimate is free, and the price is flat before we lift a thing. Our minimum is $199, which covers a small pile or a single bulky item, and the price scales from there based on how much space your stuff takes in the truck and how much labor it takes to get it out. No fuel surcharges, no surprise fees on the day. If you want the full breakdown of [how junk removal pricing works in Jacksonville Beach](/blog/how-much-does-junk-removal-cost-in-jacksonville-beach), we wrote a whole guide on it.
+Every estimate is free, and the price is flat before we lift a thing. Our minimum is $150, which covers a small pile or a single bulky item, and the price scales from there based on how much space your stuff takes in the truck and how much labor it takes to get it out. No fuel surcharges, no surprise fees on the day. If you want the full breakdown of [how junk removal pricing works in Jacksonville Beach](/blog/how-much-does-junk-removal-cost-in-jacksonville-beach), we wrote a whole guide on it.
 
 ## Common questions from Nocatee neighbors
 

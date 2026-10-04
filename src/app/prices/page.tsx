@@ -13,7 +13,7 @@ import {
 
 // /prices — targets "junk removal prices delaware" / "junk removal cost
 // delaware" by explaining HOW pricing works rather than publishing job
-// prices. The $199 minimum is the only dollar figure on the site (see
+// prices. The $150 minimum is the only dollar figure on the site (see
 // the note on `pricingPage` in content.ts).
 
 export const metadata: Metadata = {

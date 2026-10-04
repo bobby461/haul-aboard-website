@@ -3515,3 +3515,96 @@ body::before { opacity: 0.06; } /* nudge the grain up a touch */
     font-size: clamp(22px, 7.4vw, 34px);
   }
 }
+
+/* ============================================================
+   2026-10-04 layout notes from Bobby
+   ============================================================ */
+
+/* White and orange never share a line. The orange part of a page
+   headline, and of the line over a photo banner, always starts on
+   its own line underneath. */
+.page-hero h1 {
+  max-width: none;
+  font-size: clamp(40px, 7.4vw, 104px);
+  line-height: 1.04;
+}
+.page-hero h1 .accent,
+.photo-banner-text .accent {
+  display: block;
+}
+.page-hero h1 .accent {
+  margin-top: 0.06em;
+}
+@media (min-width: 900px) {
+  .page-hero h1 .accent {
+    white-space: nowrap;
+  }
+}
+.photo-banner-text {
+  max-width: none;
+  line-height: 1.12;
+}
+
+/* Anton sits taller in its line than Bebas did, so stacked lines of
+   the big closing call to action need real leading or they touch. */
+.cta-block .huge {
+  line-height: 1.04;
+}
+
+/* Trust strip: solid brand navy, no diagonal stripes. */
+.trust-strip {
+  background: var(--ink);
+}
+
+/* Town pages: no hard rule under the white intro, and the "read the
+   local guide" line sits inside that white space, lined up with the
+   text above it, instead of straddling the edge. */
+.local-intro {
+  border-bottom: none;
+}
+.local-intro:has(+ .local-guide-line) {
+  padding-bottom: 36px;
+}
+.local-guide-line {
+  max-width: none;
+  margin: 0;
+  padding: 0 40px 80px;
+  background: #ffffff;
+}
+.local-guide-line p {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+@media (max-width: 900px) {
+  .local-guide-line { padding: 0 20px 56px; }
+}
+
+/* Header logo: bigger and easier to read, the way the Junk Away
+   wordmark fills its header. The bar's own padding comes down so the
+   header grows only a little while the mascot and lettering grow a lot. */
+nav.site-nav {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+.logo-lockup {
+  gap: 16px;
+}
+.logo-face {
+  height: 68px;
+}
+.logo-wordmark-img {
+  height: 70px;
+}
+@media (max-width: 1180px) {
+  .logo-face { height: 58px; }
+  .logo-wordmark-img { height: 60px; }
+}
+@media (max-width: 900px) {
+  .logo-lockup { gap: 10px; }
+  .logo-face { height: 48px; }
+  .logo-wordmark-img { height: 50px; }
+}
+@media (max-width: 400px) {
+  .logo-face { height: 42px; }
+  .logo-wordmark-img { height: 44px; }
+}

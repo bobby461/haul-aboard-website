@@ -2,10 +2,10 @@
 title: "How Much Does Junk Removal Cost in Jacksonville Beach?"
 slug: "how-much-does-junk-removal-cost-in-jacksonville-beach"
 date: "2026-04-28"
-excerpt: "What actually drives junk removal pricing in Jacksonville Beach (volume, labor, access, and disposal), plus our $199 minimum and why every estimate is free."
+excerpt: "What actually drives junk removal pricing in Jacksonville Beach (volume, labor, access, and disposal), plus our $150 minimum and why every estimate is free."
 featuredImage: "/images/blog/cost-breakdown.jpg"
 metaTitle: "Junk Removal Cost in Jacksonville Beach — How Pricing Works"
-metaDescription: "What affects junk removal pricing in Jacksonville Beach: volume, material, labor, and disposal fees. Free on-site estimates and a flat quote before we start. $199 minimum."
+metaDescription: "What affects junk removal pricing in Jacksonville Beach: volume, material, labor, and disposal fees. Free on-site estimates and a flat quote before we start. $150 minimum."
 author: "Haul Aboard Team"
 ---
 
@@ -66,9 +66,9 @@ Phone guesses go wrong in both directions. Quote too high and you overpay. Quote
 
 So we come out, look at the pile, and hand you a flat number before anybody touches anything. Free. No obligation. If you don't like it, we shake hands and leave.
 
-## The $199 minimum, and why we publish it
+## The $150 minimum, and why we publish it
 
-Our minimum is $199.
+Our minimum is $150.
 
 That's the floor for a job: the smallest load we can send a licensed, insured, workers-comp-covered crew and a truck out for and still cover the fuel, the wages, the insurance, and the disposal fee. Below that, the math doesn't work for anybody.
 

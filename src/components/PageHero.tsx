@@ -84,7 +84,12 @@ export function PageHero({
 
       <h1>
         {h1}
-        {h1Accent && <span className="accent">{h1Accent}</span>}
+        {h1Accent && (
+          <>
+            {" "}
+            <span className="accent">{h1Accent}</span>
+          </>
+        )}
       </h1>
 
       {lede && <p className="lede">{lede}</p>}

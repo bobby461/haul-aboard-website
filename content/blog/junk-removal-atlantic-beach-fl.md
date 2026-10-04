@@ -80,7 +80,7 @@ We do not take asbestos, wet paint, gasoline or other flammables, pool chemicals
 4. You point and we carry. Nothing goes to the curb and nothing gets lifted by you.
 5. We sort the load. Usable items go to local donation where a center will take them, metal and electronics get recycled, and the rest goes to licensed disposal.
 
-Every job starts at our $199 minimum and goes up with volume and labor. [How our pricing works](/prices) explains what drives the number. For timing, see [same-day junk removal in Jacksonville Beach](/blog/same-day-junk-removal-jacksonville-beach).
+Every job starts at our $150 minimum and goes up with volume and labor. [How our pricing works](/prices) explains what drives the number. For timing, see [same-day junk removal in Jacksonville Beach](/blog/same-day-junk-removal-jacksonville-beach).
 
 ## The rest of the Beaches
 

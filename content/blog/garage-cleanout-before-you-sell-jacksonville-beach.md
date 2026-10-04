@@ -63,7 +63,7 @@ A typical one-car or two-car garage is usually a same-day job. What slows it dow
 
 ## What it costs
 
-Every job starts at our $199 minimum, and the price goes up with volume and labor. You get a flat number at the free on-site estimate, before anything is loaded. There is no hourly meter and no surprise at the end. Our [pricing page](/prices) explains what drives the number.
+Every job starts at our $150 minimum, and the price goes up with volume and labor. You get a flat number at the free on-site estimate, before anything is loaded. There is no hourly meter and no surprise at the end. Our [pricing page](/prices) explains what drives the number.
 
 ## Condos, townhomes and HOAs
 

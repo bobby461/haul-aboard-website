@@ -124,8 +124,8 @@ export default async function ComboPage({ params }: Params) {
             { label: svc.name, href: `/services/${svc.slug}` },
             { label: loc.name },
           ]}
-          h1={`${svc.name} in `}
-          h1Accent={loc.nameWithState + "."}
+          h1={svc.name}
+          h1Accent={loc.nameWithState}
           lede={localizedLede}
           photo={heroPhoto}
         />

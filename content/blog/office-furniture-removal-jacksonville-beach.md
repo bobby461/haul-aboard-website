@@ -73,7 +73,7 @@ Plenty of offices at the Beaches are a spare bedroom. A single desk, a heavy fil
 
 ## What it costs and how fast
 
-Office furniture removal starts at our $199 minimum, which covers a few pieces or a small pile, and goes up with volume and labor. Stairs, long hallway carries and taking cubicles apart all count as labor, and the quote reflects that before we start.
+Office furniture removal starts at our $150 minimum, which covers a few pieces or a small pile, and goes up with volume and labor. Stairs, long hallway carries and taking cubicles apart all count as labor, and the quote reflects that before we start.
 
 Estimates are free and on site. You get one flat number before anything is loaded, with no hourly meter. For a full suite, a walkthrough ahead of time is the right way to do it, so the crew size and the truck space are planned around your move-out date. Smaller jobs can often be done quickly, and same-day service is sometimes available. Our [pricing page](/prices) explains what drives the number.
 

@@ -90,7 +90,7 @@ Public pickup can be the right choice if you can wait and the pile fits their ru
 4. We load from wherever the debris sits, including behind a fence.
 5. We sort the load. Metal gets recycled, and the rest goes to licensed facilities.
 
-Every job starts at our $199 minimum, and the price goes up with volume and labor. Heavy, wet material and long carries from a backyard add labor, and the quote reflects that up front. More on [how our pricing works](/prices).
+Every job starts at our $150 minimum, and the price goes up with volume and labor. Heavy, wet material and long carries from a backyard add labor, and the quote reflects that up front. More on [how our pricing works](/prices).
 
 After a major storm every hauler in the region is busy. We will not promise same-day service in that situation. We will tell you honestly when we can get to you.
 

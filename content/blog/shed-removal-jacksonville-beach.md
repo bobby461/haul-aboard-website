@@ -68,7 +68,7 @@ Before you book, check with your HOA and with your city or county building depar
 
 ## What it costs
 
-Every job starts at our $199 minimum. The price goes up with the size of the structure, what it is made of, whether it is full, and how hard it is to get out of the yard. A small metal shed in an open yard is at the easy end. A large wooden shed behind a fence with no gate access is at the other.
+Every job starts at our $150 minimum. The price goes up with the size of the structure, what it is made of, whether it is full, and how hard it is to get out of the yard. A small metal shed in an open yard is at the easy end. A large wooden shed behind a fence with no gate access is at the other.
 
 The estimate is free, it happens on site, and you get a flat number before we start. Nothing gets touched until you say go. More on [how our pricing works](/prices).
 

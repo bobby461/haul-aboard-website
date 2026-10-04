@@ -83,7 +83,7 @@ export const business = {
   // ---------- Pricing ----------
   // Lowest dollar amount we'll quote. Mentioned in pricing copy
   // and used by the JSON-LD schema (priceRange). One published number only.
-  minimumPrice: 199,
+  minimumPrice: 150,
 
   // Geo coords for LocalBusiness schema — Jacksonville Beach, FL
   geo: { lat: 30.2947, lng: -81.3931 },
@@ -129,9 +129,9 @@ export const homepage = {
     // Three-line headline. Line 1 + line 3 are white, line 2 is the
     // big orange "Haul Aboard" wordmark. Line 3 is italic with the
     // orange underline, and carries the brand tagline.
-    headlineLine1: "Jacksonville Beach,",
+    headlineLine1: "Ahoy Jacksonville!",
     headlineBrand: "Haul Aboard",
-    headlineLine3: "we haul it all.",
+    headlineLine3: "Hauls It All!",
 
     // Background photo behind the dark overlay. PLACEHOLDER: this file is
     // a plain navy panel until there is a real crew-and-truck photo. Drop
@@ -142,29 +142,6 @@ export const homepage = {
       width: 2400,
       height: 1600,
     },
-
-    // Three stat blocks above the headline. HONESTY: Haul Aboard is new
-    // and has no rating, review count or job count of its own, so these
-    // are service facts, not numbers. When real Google reviews exist,
-    // swap these for the rating / review count / jobs completed, the
-    // way Junk Away's hero has them (labelIcon "google-g" is supported).
-    stats: [
-      {
-        top: "Same-Day",
-        label: "Service Available",
-        labelIcon: "check" as const,
-      },
-      {
-        top: "Free",
-        label: "On-Site Estimates",
-        labelIcon: "check" as const,
-      },
-      {
-        top: "Local",
-        label: "Licensed & Insured",
-        labelIcon: "hammer" as const,
-      },
-    ],
 
     // The three columns under the headline (left to right):
     // 1. Brand pitch
@@ -861,7 +838,7 @@ export const aboutPage = {
     {
       heading: "How we work",
       paragraphs: [
-        "We're fully licensed and insured, and everything starts with a free, no-obligation estimate over a quick photo or in person. You get one flat price up front, with a $199 minimum and no hidden fees, no add-ons at the curb, no surprises when we're done.",
+        "We're fully licensed and insured, and everything starts with a free, no-obligation estimate over a quick photo or in person. You get one flat price up front, with a $150 minimum and no hidden fees, no add-ons at the curb, no surprises when we're done.",
         "We haul it all: furniture, appliances, hot tubs, garage and estate cleanouts, construction debris, yard waste. If two people can carry it, it's gone. Whatever we can donate or recycle, we do, so less of it ends up in the landfill. That's the Haul Aboard promise: we haul it all, and we do it right.",
       ],
       photoAfter: {
@@ -927,7 +904,7 @@ export type ServiceDetail = {
 
   // === PRICING ===
   // Dark section with paragraphs on the left and an orange CTA
-  // card on the right. Always end the paragraphs with the $199
+  // card on the right. Always end the paragraphs with the $150
   // minimum mention and free-estimate promise.
   pricing?: {
     eyebrow: string;
@@ -1028,7 +1005,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       titleAccent: "no surprises.",
       paragraphs: [
         "Hot tub removal is priced based on the size of the tub, the access to your yard, and how much dismantling is required. We give you a flat quote upfront after seeing a photo or doing a quick walkthrough, and that price doesn't change on the day.",
-        "We beat the franchises on price, and we care a heck of a lot more about the work. Our minimum is $199 (a small pile of stuff or a single couch) and the price scales from there based on volume and labor. Free estimates, every time.",
+        "We beat the franchises on price, and we care a heck of a lot more about the work. Our minimum is $150 (a small pile of stuff or a single couch) and the price scales from there based on volume and labor. Free estimates, every time.",
       ],
       cardPre: "Free Estimate",
       cardLg: "Book in\n60 seconds.",
@@ -1050,7 +1027,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       items: [
         {
           q: "How much does hot tub removal cost in Jacksonville Beach?",
-          a: "Pricing depends on the size of the tub, the access to your yard, and how much dismantling is needed. Most residential hot tub removals fall in a predictable range, and we give you a flat quote upfront after seeing a photo. Our minimum is $199, and free estimates always.",
+          a: "Pricing depends on the size of the tub, the access to your yard, and how much dismantling is needed. Most residential hot tub removals fall in a predictable range, and we give you a flat quote upfront after seeing a photo. Our minimum is $150, and free estimates always.",
         },
         {
           q: "Do I need to drain the tub before you arrive?",
@@ -1144,7 +1121,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       titleAccent: "no surprises.",
       paragraphs: [
         "Appliance removal is priced by what you're getting rid of and how hard it is to get out. A single dishwasher in a cramped laundry closet is different from a kitchen full of built-ins on a third floor. We give you a flat quote upfront after a quick photo or walkthrough.",
-        "We beat the franchises on price, and we care a heck of a lot more about the work. Our minimum is $199 (a small pile of stuff or a single couch) and the price scales from there based on volume and labor. Free estimates, every time.",
+        "We beat the franchises on price, and we care a heck of a lot more about the work. Our minimum is $150 (a small pile of stuff or a single couch) and the price scales from there based on volume and labor. Free estimates, every time.",
       ],
       cardPre: "Free Estimate",
       cardLg: "Book in\n60 seconds.",
@@ -1164,7 +1141,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       title: "Appliance removal, ",
       titleAccent: "explained.",
       items: [
-        { q: "How much does appliance removal cost in Jacksonville Beach?", a: "Pricing depends on the appliance and how hard it is to access. Most single-appliance jobs are predictable, and we give you a flat quote upfront. Our minimum is $199, and free estimates always." },
+        { q: "How much does appliance removal cost in Jacksonville Beach?", a: "Pricing depends on the appliance and how hard it is to access. Most single-appliance jobs are predictable, and we give you a flat quote upfront. Our minimum is $150, and free estimates always." },
         { q: "Do I need to disconnect the appliance before you arrive?", a: "If you can, great. That saves time. If not, we'll handle it. We disconnect water lines and cap gas at the valve. We bring the right tools." },
         { q: "Can you take a fridge with refrigerant in it?", a: "Yes. Refrigerant gets recovered at licensed recycling facilities, required by law and the right thing to do. No old fridge ends up dumped in a field." },
         { q: "Do you remove built-in appliances?", a: "Yes. Built-in dishwashers, ovens, and microwaves take more careful work but it's standard for us. Send photos and we'll quote it accurately." },
@@ -1241,7 +1218,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       titleAccent: "no surprises.",
       paragraphs: [
         "Furniture removal is priced by volume. A single mattress costs less than a full living room. We quote flat after a photo or walkthrough, and what you see is what you pay. No add-ons for stairs, no surprise fees on the day.",
-        "We beat the franchises on price, and we care a heck of a lot more about the work. Our minimum is $199 (a small pile of stuff or a single couch) and the price scales from there based on volume and labor. Free estimates, every time.",
+        "We beat the franchises on price, and we care a heck of a lot more about the work. Our minimum is $150 (a small pile of stuff or a single couch) and the price scales from there based on volume and labor. Free estimates, every time.",
       ],
       cardPre: "Free Estimate",
       cardLg: "Book in\n60 seconds.",
@@ -1261,7 +1238,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       title: "Furniture & mattress removal, ",
       titleAccent: "explained.",
       items: [
-        { q: "How much does furniture removal cost in Jacksonville Beach?", a: "Single items start at our $199 minimum. Volume-based pricing scales from there. We always quote flat upfront, free estimates." },
+        { q: "How much does furniture removal cost in Jacksonville Beach?", a: "Single items start at our $150 minimum. Volume-based pricing scales from there. We always quote flat upfront, free estimates." },
         { q: "Do you take mattresses?", a: "Yes. Bed bugs, stains, age: none of it scares us. We recycle springs and frames where possible and dispose of the rest properly." },
         { q: "Will you carry it down the stairs?", a: "That's the whole job. Two-flight walk-ups, garage haul-outs, tight Jacksonville Beach stairwells. We plan it before we start." },
         { q: "Can you donate it instead of trashing it?", a: "We try. If it's clean and usable, we route it to local Jacksonville Beach shelters and donation centers. Anything that won't pass donation goes to recycling and licensed disposal." },
@@ -1338,7 +1315,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       titleAccent: "no surprises.",
       paragraphs: [
         "Shed and fence removal is priced based on size, materials, and how much demolition is needed. A 6×8 wood shed is different from a 12×20 metal shed with a concrete pad. We quote flat after seeing a photo or walking the yard with you.",
-        "We beat the franchises on price, and we care a heck of a lot more about the work. Our minimum is $199 (a small pile of stuff or a single couch) and the price scales from there based on volume and labor. Free estimates, every time.",
+        "We beat the franchises on price, and we care a heck of a lot more about the work. Our minimum is $150 (a small pile of stuff or a single couch) and the price scales from there based on volume and labor. Free estimates, every time.",
       ],
       cardPre: "Free Estimate",
       cardLg: "Book in\n60 seconds.",
@@ -1358,7 +1335,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       title: "Shed & fence removal, ",
       titleAccent: "explained.",
       items: [
-        { q: "How much does shed removal cost in Jacksonville Beach?", a: "Most residential shed removals fall in a predictable range. Size and material drive the price. Free estimates and our $199 minimum applies." },
+        { q: "How much does shed removal cost in Jacksonville Beach?", a: "Most residential shed removals fall in a predictable range. Size and material drive the price. Free estimates and our $150 minimum applies." },
         { q: "Do you remove metal sheds?", a: "Yes, metal sheds are one of our most common shed jobs. We dismantle them on-site, unbolting the panels and breaking down the frame, then haul it all out. The steel and aluminum go to a scrap recycler, not the landfill. Rusted, dented, or half-collapsed, it doesn't matter." },
         { q: "Do I need a permit?", a: "Usually not for sheds under a certain size, but it depends on your city or county and your HOA. We can guide you to the right office to check before we schedule the demo." },
         { q: "Will you remove the concrete pad too?", a: "Yes if you want. Pad removal is priced separately because of the additional labor and disposal weight." },
@@ -1432,7 +1409,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       titleAccent: "no surprises.",
       paragraphs: [
         "Demolition is priced on what it takes: the size of the structure, what it is made of, and how hard it is to reach. A small playset in an open yard is quick. A deck built onto the back of the house is more work. We look at it and give you a flat price before anything comes apart.",
-        "Our minimum is $199, and the price scales from there based on volume and labor. The estimate is always free.",
+        "Our minimum is $150, and the price scales from there based on volume and labor. The estimate is always free.",
       ],
       cardPre: "Free Estimate",
       cardLg: "Book in\n60 seconds.",
@@ -1530,7 +1507,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       titleAccent: "no surprises.",
       paragraphs: [
         "Yard waste is priced by volume. A small pile of clippings is different from a half-acre of post-storm tree limbs. We give you a flat quote after a photo or walkthrough, and the price doesn't grow on the day.",
-        "We beat the franchises on price, and we care a heck of a lot more about the work. Our minimum is $199 (a small pile of stuff or a single couch) and the price scales from there based on volume and labor. Free estimates, every time.",
+        "We beat the franchises on price, and we care a heck of a lot more about the work. Our minimum is $150 (a small pile of stuff or a single couch) and the price scales from there based on volume and labor. Free estimates, every time.",
       ],
       cardPre: "Free Estimate",
       cardLg: "Book in\n60 seconds.",
@@ -1550,7 +1527,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       title: "Yard waste removal, ",
       titleAccent: "explained.",
       items: [
-        { q: "How much does yard waste removal cost in Jacksonville Beach?", a: "Volume-based pricing starting at our $199 minimum. Free estimates after a photo. Storm cleanup is often a higher priority job for us, so call right after the weather clears." },
+        { q: "How much does yard waste removal cost in Jacksonville Beach?", a: "Volume-based pricing starting at our $150 minimum. Free estimates after a photo. Storm cleanup is often a higher priority job for us, so call right after the weather clears." },
         { q: "Do I need to bag the leaves?", a: "Helps but not required. We have rakes, tarps, and trucks. If you want to skip the bagging, we'll do it as part of the haul." },
         { q: "Can you take a tree trunk?", a: "Logs and trunks under what two people can carry, yes. Whole-tree removal with a chainsaw is a tree service, not us. We pick up after they're done." },
         { q: "What about old mulch piles?", a: "Yes, all day. Old mulch, dirt piles, sod tear-out. Load and haul." },
@@ -1627,7 +1604,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       titleAccent: "even after a storm.",
       paragraphs: [
         "Storm debris is priced by volume (how much space it takes in the truck) plus the labor to clear it safely. We give you a flat quote after a quick look or a few photos, and it doesn't change on the day. No storm-season surge pricing.",
-        "Our minimum is $199 (a small load) and the price scales from there based on how much there is and how tough the access is. Free estimates, every time, even when we're slammed after a big storm.",
+        "Our minimum is $150 (a small load) and the price scales from there based on how much there is and how tough the access is. Free estimates, every time, even when we're slammed after a big storm.",
       ],
       cardPre: "Free Estimate",
       cardLg: "Get it\ncleared.",
@@ -1647,7 +1624,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       title: "Storm debris removal, ",
       titleAccent: "explained.",
       items: [
-        { q: "How much does storm debris removal cost in Jacksonville Beach?", a: "It's priced by volume and labor: how much debris there is and how hard it is to reach. We quote a flat price after a quick look or a few photos. Our minimum is $199 and estimates are always free, even during a busy storm-recovery week." },
+        { q: "How much does storm debris removal cost in Jacksonville Beach?", a: "It's priced by volume and labor: how much debris there is and how hard it is to reach. We quote a flat price after a quick look or a few photos. Our minimum is $150 and estimates are always free, even during a busy storm-recovery week." },
         { q: "Do you charge more after a hurricane?", a: "No. We don't do storm-season surge pricing. You get the same fair, flat-rate pricing whether it's a calm week or the day after a hurricane." },
         { q: "Can you come right after the storm?", a: "We do our best to get out fast during cleanup weeks. Call as early as you can. Demand spikes after a big storm, so the sooner you're on the list, the sooner we can clear your property." },
         { q: "Do you handle flood-damaged material inside the home?", a: "Yes. We haul out water-logged drywall, carpet, baseboards, furniture, and appliances so you can start drying out and preventing mold. For structural repairs you'll want a licensed contractor, but the demo debris is ours to clear." },
@@ -1724,7 +1701,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       titleAccent: "no surprises.",
       paragraphs: [
         "Attic cleanouts are priced by volume and by access. A walk-in attic is faster than a pull-down ladder space with low headroom. Flat quote upfront after a quick walkthrough.",
-        "We beat the franchises on price, and we care a heck of a lot more about the work. Our minimum is $199 (a small pile of stuff or a single couch) and the price scales from there based on volume and labor. Free estimates, every time.",
+        "We beat the franchises on price, and we care a heck of a lot more about the work. Our minimum is $150 (a small pile of stuff or a single couch) and the price scales from there based on volume and labor. Free estimates, every time.",
       ],
       cardPre: "Free Estimate",
       cardLg: "Book in\n60 seconds.",
@@ -1744,7 +1721,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       title: "Attic cleanouts, ",
       titleAccent: "explained.",
       items: [
-        { q: "How much does an attic cleanout cost in Jacksonville Beach?", a: "Volume + access drive the price. Free estimates and our $199 minimum applies. Most residential attics fall in a predictable range." },
+        { q: "How much does an attic cleanout cost in Jacksonville Beach?", a: "Volume + access drive the price. Free estimates and our $150 minimum applies. Most residential attics fall in a predictable range." },
         { q: "Will you take old insulation?", a: "Loose-fill we can take with the right precautions. Blown-in insulation we'll quote separately. We'll let you know if anything looks like vermiculite (which has special handling)." },
         { q: "My attic is HOT in summer. Will you still come?", a: "Yes. We try to schedule attic cleanouts for early morning or cooler weather when possible, but we get it done either way." },
         { q: "What if there's stuff up there worth saving?", a: "Set it aside before we get there or point it out. We don't sort, we follow your direction." },
@@ -1821,7 +1798,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       titleAccent: "no surprises.",
       paragraphs: [
         "Garage cleanouts are priced by truckload volume. Single-bay or three-bay, we quote flat after a photo or walkthrough. We sort scrap from disposal as we go, but pricing is based on what comes out the door.",
-        "We beat the franchises on price, and we care a heck of a lot more about the work. Our minimum is $199 (a small pile of stuff or a single couch) and the price scales from there based on volume and labor. Free estimates, every time.",
+        "We beat the franchises on price, and we care a heck of a lot more about the work. Our minimum is $150 (a small pile of stuff or a single couch) and the price scales from there based on volume and labor. Free estimates, every time.",
       ],
       cardPre: "Free Estimate",
       cardLg: "Book in\n60 seconds.",
@@ -1841,7 +1818,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       title: "Garage cleanouts, ",
       titleAccent: "explained.",
       items: [
-        { q: "How much does a garage cleanout cost in Jacksonville Beach?", a: "Volume-based. Most residential garages fall in a predictable range. Free estimates and $199 minimum." },
+        { q: "How much does a garage cleanout cost in Jacksonville Beach?", a: "Volume-based. Most residential garages fall in a predictable range. Free estimates and $150 minimum." },
         { q: "Will you take old paint?", a: "Dried-out paint, yes. Liquid paint needs to be dried first or taken to a household hazardous waste site. We can guide you on the easy ways to dry it." },
         { q: "Can you sort what's worth keeping?", a: "We don't sort. That's your call. If you want to keep something, pull it aside before we arrive." },
         { q: "Do you take a lawn mower or snow blower?", a: "Yes. We drain the gas first (or you can) and load it for proper disposal/recycling." },
@@ -1918,7 +1895,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       titleAccent: "no surprises.",
       paragraphs: [
         "Foreclosure cleanouts are priced by property volume and condition. We give bulk pricing for property managers and asset firms with recurring jobs. First-job estimate is free, follow-on jobs run on standing rates.",
-        "We beat the franchises on price, and we care a heck of a lot more about the work. Our minimum is $199 (a small pile of stuff or a single couch) and the price scales from there based on volume and labor. Free estimates, every time.",
+        "We beat the franchises on price, and we care a heck of a lot more about the work. Our minimum is $150 (a small pile of stuff or a single couch) and the price scales from there based on volume and labor. Free estimates, every time.",
       ],
       cardPre: "Free Estimate",
       cardLg: "Book in\n60 seconds.",
@@ -2015,7 +1992,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       titleAccent: "no surprises.",
       paragraphs: [
         "Hoarder cleanouts are scoped before quoted. We walk through with you (or family/property manager), assess scope, and give you a fair flat quote. We don't charge by the hour and we don't surprise you on the day.",
-        "We beat the franchises on price, and we care a heck of a lot more about the work. Our minimum is $199 (a small pile of stuff or a single couch) and the price scales from there based on volume and labor. Free estimates, every time.",
+        "We beat the franchises on price, and we care a heck of a lot more about the work. Our minimum is $150 (a small pile of stuff or a single couch) and the price scales from there based on volume and labor. Free estimates, every time.",
       ],
       cardPre: "Free Estimate",
       cardLg: "Book in\n60 seconds.",
@@ -2112,7 +2089,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       titleAccent: "no surprises.",
       paragraphs: [
         "Construction debris is priced by volume and weight. A bathroom demo is priced differently from a full kitchen tear-out. We give a flat quote upfront and lock the price for ongoing project work.",
-        "We beat the franchises on price, and we care a heck of a lot more about the work. Our minimum is $199 (a small pile of stuff or a single couch) and the price scales from there based on volume and labor. Free estimates, every time.",
+        "We beat the franchises on price, and we care a heck of a lot more about the work. Our minimum is $150 (a small pile of stuff or a single couch) and the price scales from there based on volume and labor. Free estimates, every time.",
       ],
       cardPre: "Free Estimate",
       cardLg: "Book in\n60 seconds.",
@@ -2209,7 +2186,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       titleAccent: "no surprises.",
       paragraphs: [
         "Office cleanouts are priced by volume and access. A 2,000 sq ft office is different from a multi-floor corporate move-out. After-hours service is available with advance scheduling. Flat quote upfront after a walkthrough.",
-        "We beat the franchises on price, and we care a heck of a lot more about the work. Our minimum is $199 (a small pile of stuff or a single couch) and the price scales from there based on volume and labor. Free estimates, every time.",
+        "We beat the franchises on price, and we care a heck of a lot more about the work. Our minimum is $150 (a small pile of stuff or a single couch) and the price scales from there based on volume and labor. Free estimates, every time.",
       ],
       cardPre: "Free Estimate",
       cardLg: "Book in\n60 seconds.",
@@ -2306,7 +2283,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       titleAccent: "no surprises.",
       paragraphs: [
         "Tenant turnovers are priced by unit size and condition. Standard rates available for property managers with recurring units. First job estimated for free; standing accounts run on agreed pricing.",
-        "We beat the franchises on price, and we care a heck of a lot more about the work. Our minimum is $199 (a small pile of stuff or a single couch) and the price scales from there based on volume and labor. Free estimates, every time.",
+        "We beat the franchises on price, and we care a heck of a lot more about the work. Our minimum is $150 (a small pile of stuff or a single couch) and the price scales from there based on volume and labor. Free estimates, every time.",
       ],
       cardPre: "Free Estimate",
       cardLg: "Book in\n60 seconds.",
@@ -2403,7 +2380,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       titleAccent: "no surprises.",
       paragraphs: [
         "Scrap metal removal is priced by volume, just like every other junk removal job. There's no buyback, no free pickup. We come, we haul, and we route the metal to recycling. The price you pay is for our crew's labor and disposal logistics, same as any other haul.",
-        "We beat the franchises on price, and we care a heck of a lot more about the work. Our minimum is $199 (a small pile of stuff or a single couch) and the price scales from there based on volume and labor. Free estimates, every time.",
+        "We beat the franchises on price, and we care a heck of a lot more about the work. Our minimum is $150 (a small pile of stuff or a single couch) and the price scales from there based on volume and labor. Free estimates, every time.",
       ],
       cardPre: "Free Estimate",
       cardLg: "Book in\n60 seconds.",
@@ -2424,7 +2401,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       titleAccent: "explained.",
       items: [
         { q: "Do you pay for scrap metal?", a: "No. Scrap metal removal is a paid haul-away service, not a buyback. We charge for the labor and disposal, same as any other junk job." },
-        { q: "How much does scrap metal removal cost in Jacksonville Beach?", a: "Volume-based, starting at our $199 minimum. Free estimates after a photo or walkthrough." },
+        { q: "How much does scrap metal removal cost in Jacksonville Beach?", a: "Volume-based, starting at our $150 minimum. Free estimates after a photo or walkthrough." },
         { q: "Will you take a swing set?", a: "Yes, with disassembly included. Most residential swing sets fall under a single haul." },
         { q: "Can you remove an old AC condenser?", a: "Yes. We disconnect (we don't touch live electrical), pull the unit, and haul. Refrigerant in older units is recovered properly." },
         { q: "Do you take car parts?", a: "Small parts yes (rims, bumpers, exhaust pieces). Whole vehicles, no. That's a salvage yard's job, not ours." },
@@ -2500,7 +2477,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       titleAccent: "no surprises.",
       paragraphs: [
         "Property management accounts get standing-rate pricing per service type: turnovers, foreclosures, common-area haul-aways. The rates are agreed upfront and stay predictable across the portfolio. New clients get a free first-job quote.",
-        "We beat the franchises on price, and we care a heck of a lot more about the work. Our minimum is $199 (a small pile of stuff or a single couch) and the price scales from there based on volume and labor. Free estimates, every time.",
+        "We beat the franchises on price, and we care a heck of a lot more about the work. Our minimum is $150 (a small pile of stuff or a single couch) and the price scales from there based on volume and labor. Free estimates, every time.",
       ],
       cardPre: "Free Estimate",
       cardLg: "Book in\n60 seconds.",
@@ -2597,7 +2574,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       titleAccent: "no surprises.",
       paragraphs: [
         "Estate cleanouts are scoped before quoted. We walk the property with you (or your executor / family member) and give a flat quote based on volume, condition, and any items needing extra care. Free walkthrough, no obligation.",
-        "We beat the franchises on price, and we care a heck of a lot more about the work. Our minimum is $199 (a small pile of stuff or a single couch) and the price scales from there based on volume and labor. Free estimates, every time.",
+        "We beat the franchises on price, and we care a heck of a lot more about the work. Our minimum is $150 (a small pile of stuff or a single couch) and the price scales from there based on volume and labor. Free estimates, every time.",
       ],
       cardPre: "Free Estimate",
       cardLg: "Book in\n60 seconds.",
@@ -2617,7 +2594,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       title: "Estate cleanouts, ",
       titleAccent: "explained.",
       items: [
-        { q: "How much does an estate cleanout cost in Jacksonville Beach?", a: "Property-by-property quote after walkthrough. Free estimates and our $199 minimum applies for partial cleanouts." },
+        { q: "How much does an estate cleanout cost in Jacksonville Beach?", a: "Property-by-property quote after walkthrough. Free estimates and our $150 minimum applies for partial cleanouts." },
         { q: "Will you flag items of value?", a: "We do. Anything that looks valuable, sentimental, or important (documents, photos, jewelry, valuables) gets set aside for your review before haul-away." },
         { q: "Can you coordinate with an out-of-state family?", a: "Yes. We do this often: Jacksonville Beach estate, out-of-state family. Photos, video walkthroughs, and full email coordination." },
         { q: "Do you donate the donatable items?", a: "When condition allows, yes. Local Jacksonville Beach shelters and donation centers. We can provide donation receipts when needed." },
@@ -2693,8 +2670,8 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       title: "Transparent pricing, ",
       titleAccent: "no surprises.",
       paragraphs: [
-        "Moving service is priced flat per job. We walk it with you (in person or by photo/list) and quote upfront. No hourly drift, no fuel surcharges. Single-item moves start at our $199 minimum and scale by volume and distance.",
-        "We beat the franchises on price, and we care a heck of a lot more about the work. Our minimum is $199 (a small pile of stuff or a single couch) and the price scales from there based on volume and labor. Free estimates, every time.",
+        "Moving service is priced flat per job. We walk it with you (in person or by photo/list) and quote upfront. No hourly drift, no fuel surcharges. Single-item moves start at our $150 minimum and scale by volume and distance.",
+        "We beat the franchises on price, and we care a heck of a lot more about the work. Our minimum is $150 (a small pile of stuff or a single couch) and the price scales from there based on volume and labor. Free estimates, every time.",
       ],
       cardPre: "Free Estimate",
       cardLg: "Book in\n60 seconds.",
@@ -2714,7 +2691,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       title: "Local moving help, ",
       titleAccent: "explained.",
       items: [
-        { q: "How much does a local move cost in Jacksonville Beach?", a: "Flat-rate per job. Single items start at $199. Studio and one-bedroom apartments fall in a predictable range. Free estimate after walkthrough or list." },
+        { q: "How much does a local move cost in Jacksonville Beach?", a: "Flat-rate per job. Single items start at $150. Studio and one-bedroom apartments fall in a predictable range. Free estimate after walkthrough or list." },
         { q: "Do you move pianos?", a: "Yes: uprights, baby grands, and small grands. We bring the dolly, straps, and four hands. We don't tune them and we don't move concert grands." },
         { q: "Same-day moving help?", a: "Often, especially for in-town single-item moves. Larger moves we usually schedule a day or two ahead." },
         { q: "Do you provide packing materials?", a: "We bring blankets, straps, and floor protection. Boxes and packing tape we don't supply, so bring your own or we can route you to a local supplier." },
@@ -2874,13 +2851,13 @@ export const locationDetails: Record<string, LocationDetail> = {
       href: "/blog/junk-removal-jacksonville-beach-fl",
     },
     hero: {
-      h1: "Junk removal in Jacksonville Beach, FL, ",
+      h1: "Junk removal in Jacksonville Beach, FL",
       h1Accent: "condo stairs and all.",
       lede: "Jacksonville Beach is home base. Condos along 1st Street, rentals turning over between guests, garages off Beach Boulevard, whole houses out toward the Intracoastal. Free on-site estimate, flat price before we lift a thing.",
       stats: [
         { num: "Same-Day", label: "Service available" },
         { num: "Free", label: "On-site estimates" },
-        { num: "$199", label: "Flat-rate minimum" },
+        { num: "$150", label: "Flat-rate minimum" },
       ],
     },
     localIntro: {
@@ -2938,7 +2915,7 @@ export const locationDetails: Record<string, LocationDetail> = {
       items: [
         {
           q: "How much does junk removal cost in Jacksonville Beach?",
-          a: "Our minimum is $199, which covers a single couch or a small pile. Above that the price scales with volume and labor, and stairs count as labor: a third-floor condo is more work than a pickup at the curb, and the quote reflects that. Estimates are free and on-site, and you get a flat number before we start. No hourly meter, no surprise line at the end.",
+          a: "Our minimum is $150, which covers a single couch or a small pile. Above that the price scales with volume and labor, and stairs count as labor: a third-floor condo is more work than a pickup at the curb, and the quote reflects that. Estimates are free and on-site, and you get a flat number before we start. No hourly meter, no surprise line at the end.",
         },
         {
           q: "Can you come out the same day in Jacksonville Beach?",
@@ -2980,13 +2957,13 @@ export const locationDetails: Record<string, LocationDetail> = {
       href: "/blog/junk-removal-neptune-beach-fl",
     },
     hero: {
-      h1: "Junk removal in Neptune Beach, FL, ",
+      h1: "Junk removal in Neptune Beach, FL",
       h1Accent: "tight lots and all.",
       lede: "A few minutes up 3rd Street from our home base. Beach cottages, rental turnovers, garages that haven't seen a car in years. Free on-site estimate, flat price before we lift a thing.",
       stats: [
         { num: "Same-Day", label: "Service available" },
         { num: "Free", label: "On-site estimates" },
-        { num: "$199", label: "Flat-rate minimum" },
+        { num: "$150", label: "Flat-rate minimum" },
       ],
     },
     localIntro: {
@@ -3039,7 +3016,7 @@ export const locationDetails: Record<string, LocationDetail> = {
       items: [
         {
           q: "How much does junk removal cost in Neptune Beach?",
-          a: "Our minimum is $199, which covers a single couch or a small pile. Above that the price scales with volume and labor. Estimates are free and on-site, and you get a flat number before we start.",
+          a: "Our minimum is $150, which covers a single couch or a small pile. Above that the price scales with volume and labor. Estimates are free and on-site, and you get a flat number before we start.",
         },
         {
           q: "Can you come out the same day in Neptune Beach?",
@@ -3077,13 +3054,13 @@ export const locationDetails: Record<string, LocationDetail> = {
       href: "/blog/junk-removal-atlantic-beach-fl",
     },
     hero: {
-      h1: "Junk removal in Atlantic Beach, FL, ",
+      h1: "Junk removal in Atlantic Beach, FL",
       h1Accent: "oak canopy and all.",
       lede: "From the blocks by Beaches Town Center up through Selva Marina and out along Mayport Road. Garages, estates, moves and hot tubs. Free on-site estimate, flat price before we lift a thing.",
       stats: [
         { num: "Same-Day", label: "Service available" },
         { num: "Free", label: "On-site estimates" },
-        { num: "$199", label: "Flat-rate minimum" },
+        { num: "$150", label: "Flat-rate minimum" },
       ],
     },
     localIntro: {
@@ -3139,7 +3116,7 @@ export const locationDetails: Record<string, LocationDetail> = {
       items: [
         {
           q: "How much does junk removal cost in Atlantic Beach?",
-          a: "Our minimum is $199, which covers a single couch or a small pile. Above that the price scales with volume and labor. Estimates are free and on-site, and you get a flat number before we start.",
+          a: "Our minimum is $150, which covers a single couch or a small pile. Above that the price scales with volume and labor. Estimates are free and on-site, and you get a flat number before we start.",
         },
         {
           q: "Can you come out the same day in Atlantic Beach?",
@@ -3177,13 +3154,13 @@ export const locationDetails: Record<string, LocationDetail> = {
       href: "/blog/junk-removal-ponte-vedra-fl",
     },
     hero: {
-      h1: "Junk removal in Ponte Vedra Beach, FL, ",
+      h1: "Junk removal in Ponte Vedra Beach, FL",
       h1Accent: "gate codes and all.",
       lede: "Careful, quiet junk removal for Sawgrass, Marsh Landing, The Plantation and the homes along Ponte Vedra Boulevard. Free on-site estimate, flat price before we lift a thing.",
       stats: [
         { num: "Same-Day", label: "Service available" },
         { num: "Free", label: "On-site estimates" },
-        { num: "$199", label: "Flat-rate minimum" },
+        { num: "$150", label: "Flat-rate minimum" },
       ],
     },
     localIntro: {
@@ -3238,7 +3215,7 @@ export const locationDetails: Record<string, LocationDetail> = {
       items: [
         {
           q: "How much does junk removal cost in Ponte Vedra Beach?",
-          a: "Our minimum is $199, which covers a single couch or a small pile. Above that the price scales with volume and labor. Estimates are free and on-site, and you get a flat number before we start.",
+          a: "Our minimum is $150, which covers a single couch or a small pile. Above that the price scales with volume and labor. Estimates are free and on-site, and you get a flat number before we start.",
         },
         {
           q: "How do you get through the gate at Sawgrass, Marsh Landing or The Plantation?",
@@ -3276,13 +3253,13 @@ export const locationDetails: Record<string, LocationDetail> = {
       href: "/blog/junk-removal-ponte-vedra-fl",
     },
     hero: {
-      h1: "Junk removal in Ponte Vedra, FL, ",
+      h1: "Junk removal in Ponte Vedra, FL",
       h1Accent: "garage to lanai.",
       lede: "Palm Valley, Sawmill Lakes and the neighborhoods west of the Intracoastal. Garage cleanouts, furniture, appliances, sheds and playsets. Free on-site estimate, flat price before we lift a thing.",
       stats: [
         { num: "Same-Day", label: "Service available" },
         { num: "Free", label: "On-site estimates" },
-        { num: "$199", label: "Flat-rate minimum" },
+        { num: "$150", label: "Flat-rate minimum" },
       ],
     },
     localIntro: {
@@ -3336,7 +3313,7 @@ export const locationDetails: Record<string, LocationDetail> = {
       items: [
         {
           q: "How much does junk removal cost in Ponte Vedra?",
-          a: "Our minimum is $199, which covers a single couch or a small pile. Above that the price scales with volume and labor. Estimates are free and on-site, and you get a flat number before we start.",
+          a: "Our minimum is $150, which covers a single couch or a small pile. Above that the price scales with volume and labor. Estimates are free and on-site, and you get a flat number before we start.",
         },
         {
           q: "Can you come out the same day in Ponte Vedra?",
@@ -3374,13 +3351,13 @@ export const locationDetails: Record<string, LocationDetail> = {
       href: "/blog/junk-removal-nocatee-fl",
     },
     hero: {
-      h1: "Junk removal in Nocatee, FL, ",
+      h1: "Junk removal in Nocatee, FL",
       h1Accent: "move-in to move-out.",
       lede: "New builds, growing families and a lot of moving trucks. We haul the boxes, the old furniture, the remodel debris and the playset. Free on-site estimate, flat price before we lift a thing.",
       stats: [
         { num: "Same-Day", label: "Service available" },
         { num: "Free", label: "On-site estimates" },
-        { num: "$199", label: "Flat-rate minimum" },
+        { num: "$150", label: "Flat-rate minimum" },
       ],
     },
     localIntro: {
@@ -3438,7 +3415,7 @@ export const locationDetails: Record<string, LocationDetail> = {
       items: [
         {
           q: "How much does junk removal cost in Nocatee?",
-          a: "Our minimum is $199, which covers a single couch or a small pile. Above that the price scales with volume and labor. Estimates are free and on-site, and you get a flat number before we start.",
+          a: "Our minimum is $150, which covers a single couch or a small pile. Above that the price scales with volume and labor. Estimates are free and on-site, and you get a flat number before we start.",
         },
         {
           q: "Can you come out the same day in Nocatee?",
@@ -3541,7 +3518,7 @@ export const comboDetails: Record<string, ComboDetail> = {
       heading: "Hot tub removal in Jacksonville Beach, FL",
       paragraphs: [
         "Salt air is brutal on backyard spas, and when a Jacksonville Beach hot tub finally quits, getting it out is the hard part. Our crew dismantles the shell, frame, pump, and heater right where it sits, with no dragging a waterlogged tub across your pavers or lanai, and carries it out in pieces.",
-        "From the condos near the pier to the homes over toward the Intracoastal, we handle the full teardown and recycle the copper, metal, and frame wood we pull out. Same-day hot tub removal is often available in Jacksonville Beach. Send a photo and we'll give you a flat quote, with a $199 minimum, before we lift a finger.",
+        "From the condos near the pier to the homes over toward the Intracoastal, we handle the full teardown and recycle the copper, metal, and frame wood we pull out. Same-day hot tub removal is often available in Jacksonville Beach. Send a photo and we'll give you a flat quote, with a $150 minimum, before we lift a finger.",
       ],
     },
     faq: {
@@ -3569,7 +3546,7 @@ export const comboDetails: Record<string, ComboDetail> = {
       heading: "Estate cleanouts in Ponte Vedra Beach, FL",
       paragraphs: [
         "Clearing an estate in Ponte Vedra Beach (in Marsh Landing, The Plantation, Sawgrass, or along the Boulevard) calls for a careful, discreet crew. After a loss, a downsize, or a long-distance move, we're the hands you can hand the keys to.",
-        "We sort what's kept, donated, and hauled, protect floors and doorways in the home, and leave it broom-swept and ready to list. Everything starts with a free, private walkthrough and one flat price up front, with a $199 minimum and no surprises.",
+        "We sort what's kept, donated, and hauled, protect floors and doorways in the home, and leave it broom-swept and ready to list. Everything starts with a free, private walkthrough and one flat price up front, with a $150 minimum and no surprises.",
       ],
     },
     faq: {
@@ -3593,7 +3570,7 @@ export const comboDetails: Record<string, ComboDetail> = {
       heading: "Furniture & mattress removal in Jacksonville Beach, FL",
       paragraphs: [
         "From a single mattress in a beach rental to a full living-room set, we lift it, carry it down the stairs, and haul it away: couches, beds, dressers, recliners, box springs, all of it. Perfect for turnovers along 1st and 3rd Street or a quick declutter before guests arrive.",
-        "No stairs too narrow, no piece too awkward. We donate and recycle what we can, and you get a flat price before we start, with a $199 minimum. Same-day furniture removal is common in Jacksonville Beach.",
+        "No stairs too narrow, no piece too awkward. We donate and recycle what we can, and you get a flat price before we start, with a $150 minimum. Same-day furniture removal is common in Jacksonville Beach.",
       ],
     },
   },
@@ -3602,7 +3579,7 @@ export const comboDetails: Record<string, ComboDetail> = {
       heading: "Construction & renovation debris removal in Nocatee, FL",
       paragraphs: [
         "Nocatee is one of the fastest-growing communities in Florida, and all that building leaves debris behind: drywall, flooring, packaging, cabinets, and demo waste. We pull up, load fast, and keep your crew on the build instead of on the dump run.",
-        "We work around active job sites in Town Center, Twenty Mile, and the villages, and haul everything to the right facility. Flat-rate pricing with a $199 minimum, free estimates, and same-day service when the schedule allows.",
+        "We work around active job sites in Town Center, Twenty Mile, and the villages, and haul everything to the right facility. Flat-rate pricing with a $150 minimum, free estimates, and same-day service when the schedule allows.",
       ],
     },
   },
@@ -3611,7 +3588,7 @@ export const comboDetails: Record<string, ComboDetail> = {
       heading: "Appliance removal in Jacksonville Beach, FL",
       paragraphs: [
         "Old appliances are heavy, awkward, and usually wedged into a tight beach-cottage kitchen or garage. We disconnect, dolly out, and load refrigerators, stoves, washers, dryers, and window AC units without scuffing your floors or doorframes.",
-        "Refrigerators are refrigerant-recovered properly, and we recycle the scrap metal. One flat price before we start, with a $199 minimum, and same-day appliance removal is regular across Jacksonville Beach.",
+        "Refrigerators are refrigerant-recovered properly, and we recycle the scrap metal. One flat price before we start, with a $150 minimum, and same-day appliance removal is regular across Jacksonville Beach.",
       ],
     },
   },
@@ -3620,7 +3597,7 @@ export const comboDetails: Record<string, ComboDetail> = {
       heading: "Garage cleanouts in Ponte Vedra, FL",
       paragraphs: [
         "When the garage in Palm Valley or Sawmill Lakes hasn't held a car in years, we fix that in an afternoon: old tools, broken beach gear, paint cans, playsets, and stacks of mystery boxes, cleared out and hauled off.",
-        "You point, we lift. We sort out anything donatable, sweep the slab, and give you one flat price up front with a $199 minimum. Free on-site estimates and same-day service across Ponte Vedra.",
+        "You point, we lift. We sort out anything donatable, sweep the slab, and give you one flat price up front with a $150 minimum. Free on-site estimates and same-day service across Ponte Vedra.",
       ],
     },
   },
@@ -3638,7 +3615,7 @@ export const comboDetails: Record<string, ComboDetail> = {
       heading: "Hot tub removal in Ponte Vedra Beach, FL",
       paragraphs: [
         "A hot tub in Ponte Vedra Beach is usually built in: set into a paver patio, tucked inside a screen enclosure, or boxed in by a deck. None of those let a tub leave in one piece. We disconnect it, cut it down where it sits, and carry it out in sections so nothing has to squeeze past the screen door or over the landscaping.",
-        "In Sawgrass, Marsh Landing and The Plantation we work to the community's contractor hours and gate rules, and we can send a certificate of insurance to the management office first. The metal, the pump and the wiring go to a scrap recycler. Send a photo and we will give you a flat quote, with a $199 minimum, before we touch it.",
+        "In Sawgrass, Marsh Landing and The Plantation we work to the community's contractor hours and gate rules, and we can send a certificate of insurance to the management office first. The metal, the pump and the wiring go to a scrap recycler. Send a photo and we will give you a flat quote, with a $150 minimum, before we touch it.",
       ],
     },
     faq: {
@@ -3658,7 +3635,7 @@ export const comboDetails: Record<string, ComboDetail> = {
       heading: "Furniture & mattress removal in Neptune Beach, FL",
       paragraphs: [
         "Furniture leaves Neptune Beach for two reasons. A rental is turning over and the old mattress and the sagging couch have to be gone before the next tenant or guest arrives, or a long-time homeowner is finally replacing pieces that have sat in salt air for years. Either way it is heavy, awkward, and usually up a narrow staircase.",
-        "We carry it out from wherever it sits, whether that is an upstairs bedroom, a garage apartment or a back porch, and we take the mattress and box spring with it. Usable pieces go to donation where we can. You get one flat price before we start, with a $199 minimum.",
+        "We carry it out from wherever it sits, whether that is an upstairs bedroom, a garage apartment or a back porch, and we take the mattress and box spring with it. Usable pieces go to donation where we can. You get one flat price before we start, with a $150 minimum.",
       ],
     },
     faq: {
@@ -3666,7 +3643,7 @@ export const comboDetails: Record<string, ComboDetail> = {
       title: "Questions from ",
       titleAccent: "Neptune Beach.",
       items: [
-        { q: "Will you take just one couch or one mattress?", a: "Yes. A single item is fine. Our $199 minimum covers it, and it is often worth adding anything else you want gone while the truck is there." },
+        { q: "Will you take just one couch or one mattress?", a: "Yes. A single item is fine. Our $150 minimum covers it, and it is often worth adding anything else you want gone while the truck is there." },
         { q: "Can you get a sleeper sofa down a tight beach-house staircase?", a: "Almost always. We look at the turn before we lift and pad the walls and rail. If a piece truly won't make it, we take it apart upstairs and carry it down in sections." },
         { q: "Do you take mattresses and box springs?", a: "Yes, any size, along with bed frames and headboards. If it has gotten wet or moldy, bag it if you can and tell us when you book." },
         { q: "Can you be in and out before a rental check-in?", a: "Tell us the check-in time when you call (904) 404-6264. Neptune Beach is a few minutes from our base, so a same-day pickup is often possible if you call in the morning." },
@@ -3678,7 +3655,7 @@ export const comboDetails: Record<string, ComboDetail> = {
       heading: "Garage cleanouts in Nocatee, FL",
       paragraphs: [
         "A Nocatee garage fills up fast. The move-in boxes that never got unpacked, the furniture from the last house, the golf cart that took one bay, and the toys and bikes that took the other. With no basement under a Florida home, the garage ends up holding everything.",
-        "We clear it in one visit. You point at what goes, we carry it out, sweep the slab and haul the load away. Cardboard and metal get recycled, and usable items go to donation where we can. Nothing sits at the curb, which keeps your HOA happy. One flat price before we start, with a $199 minimum.",
+        "We clear it in one visit. You point at what goes, we carry it out, sweep the slab and haul the load away. Cardboard and metal get recycled, and usable items go to donation where we can. Nothing sits at the curb, which keeps your HOA happy. One flat price before we start, with a $150 minimum.",
       ],
     },
     faq: {
@@ -3698,7 +3675,7 @@ export const comboDetails: Record<string, ComboDetail> = {
       heading: "Estate cleanouts in Ponte Vedra, FL",
       paragraphs: [
         "Clearing a parent's or a relative's home in Ponte Vedra is a big job at a hard time, and it is harder still when the family lives out of state. We start with a free walkthrough, in person or over a video call, agree what is kept, donated and hauled, and give you one flat price for all of it.",
-        "From there you can hand us the keys. We work room by room through the house, the garage and the attic, set aside anything you have flagged, and leave the home broom-swept and ready for the realtor. We can send photos when it is done. Pricing starts at our $199 minimum and scales with the size of the home.",
+        "From there you can hand us the keys. We work room by room through the house, the garage and the attic, set aside anything you have flagged, and leave the home broom-swept and ready for the realtor. We can send photos when it is done. Pricing starts at our $150 minimum and scales with the size of the home.",
       ],
     },
     faq: {
@@ -3718,7 +3695,7 @@ export const comboDetails: Record<string, ComboDetail> = {
       heading: "Tenant turnover cleanouts in Jacksonville Beach, FL",
       paragraphs: [
         "Jacksonville Beach has a lot of rentals, long-term and short-term, and every one of them loses money for each day it sits empty. When a tenant moves out and leaves a mattress, a couch, a full fridge and a closet of bags behind, the unit can't be cleaned, painted or shown until all of it is gone.",
-        "That is the part we do. We clear the unit, the balcony, the storage closet and the garage in one visit and leave it ready for your cleaner. We work for individual owners and for property managers, and Jacksonville Beach is our home base, so this is the town we can get to fastest. Flat price up front, with a $199 minimum.",
+        "That is the part we do. We clear the unit, the balcony, the storage closet and the garage in one visit and leave it ready for your cleaner. We work for individual owners and for property managers, and Jacksonville Beach is our home base, so this is the town we can get to fastest. Flat price up front, with a $150 minimum.",
       ],
     },
     faq: {
@@ -3738,7 +3715,7 @@ export const comboDetails: Record<string, ComboDetail> = {
       heading: "Storm & hurricane debris removal in Jacksonville Beach, FL",
       paragraphs: [
         "After a tropical storm or a hurricane, the yard is the first problem: downed limbs, palm fronds, sections of fence, a flattened shed, and whatever blew in from next door. Then comes what the water got to, like soaked carpet, ruined furniture and drywall that has to come out before mold sets in.",
-        "We haul all of it. Our crew loads the debris by hand, so there is no waiting for a pile at the curb to be collected, and we can come back for a second load once the tear-out is finished. Before a storm, we also clear loose items, old fencing and dead limbs that could become projectiles. Flat price before we start, with a $199 minimum.",
+        "We haul all of it. Our crew loads the debris by hand, so there is no waiting for a pile at the curb to be collected, and we can come back for a second load once the tear-out is finished. Before a storm, we also clear loose items, old fencing and dead limbs that could become projectiles. Flat price before we start, with a $150 minimum.",
       ],
     },
     faq: {
@@ -3758,7 +3735,7 @@ export const comboDetails: Record<string, ComboDetail> = {
       heading: "Appliance removal in Atlantic Beach, FL",
       paragraphs: [
         "Appliances don't last as long at the beach. Salt air gets into garage fridges, outdoor kitchens and laundry sets on a back porch, and one day the old unit is rusted at the base and the new one is on a delivery truck. If the installer won't haul the old one, or there is a second one in the garage, we take it.",
-        "We disconnect it, dolly it out without marking the floors or the door frames, and load it. Refrigerators and freezers go to a facility that recovers the refrigerant properly, and the steel is recycled. One flat price before we start, with a $199 minimum.",
+        "We disconnect it, dolly it out without marking the floors or the door frames, and load it. Refrigerators and freezers go to a facility that recovers the refrigerant properly, and the steel is recycled. One flat price before we start, with a $150 minimum.",
       ],
     },
     faq: {
@@ -3768,7 +3745,7 @@ export const comboDetails: Record<string, ComboDetail> = {
       items: [
         { q: "Will you disconnect the appliance?", a: "We unplug it and disconnect standard water lines. Gas lines and hard-wired units need to be disconnected by a plumber or electrician before we arrive." },
         { q: "Do you take the old garage fridge or a chest freezer?", a: "Yes. Empty it first, and if it has been sitting unplugged with food in it, tell us so we come prepared." },
-        { q: "Can you take one appliance, or do I need a full load?", a: "One is fine. Our $199 minimum covers it, and it is usually worth adding anything else you want gone while we are there." },
+        { q: "Can you take one appliance, or do I need a full load?", a: "One is fine. Our $150 minimum covers it, and it is usually worth adding anything else you want gone while we are there." },
         { q: "Can you come the same day?", a: "Often, yes. Atlantic Beach is a short drive from our base. Call (904) 404-6264 in the morning for the best chance." },
       ],
     },
@@ -3778,7 +3755,7 @@ export const comboDetails: Record<string, ComboDetail> = {
       heading: "Shed, fence & playset removal in Nocatee, FL",
       paragraphs: [
         "Back yards in Nocatee change as families do. The playset the kids have outgrown, the trampoline nobody uses, a section of fence coming out for a pool, a resin shed that has cracked in the sun. All of it has to be taken apart before it can leave, and none of it can sit at the curb.",
-        "We take it down in the yard, carry it out through the side gate in pieces and haul it away the same visit. We work around irrigation heads, sod and pavers, and we rake up the hardware when we are done. Flat price before we start, with a $199 minimum.",
+        "We take it down in the yard, carry it out through the side gate in pieces and haul it away the same visit. We work around irrigation heads, sod and pavers, and we rake up the hardware when we are done. Flat price before we start, with a $150 minimum.",
       ],
     },
     faq: {
@@ -3936,7 +3913,7 @@ export const homepageFaq = {
     },
     {
       q: "How much does junk removal cost?",
-      a: "Every estimate is free, and the price is flat before we lift a thing. Our minimum is $199, which covers a small pile or a single bulky item, and it scales from there based on how much space your stuff takes in the truck. No fuel surcharges, no surprise fees on the day.",
+      a: "Every estimate is free, and the price is flat before we lift a thing. Our minimum is $150, which covers a small pile or a single bulky item, and it scales from there based on how much space your stuff takes in the truck. No fuel surcharges, no surprise fees on the day.",
     },
     {
       q: "What do you take?",
@@ -3968,7 +3945,7 @@ export const faqPage = {
   items: [
     {
       q: "How much does junk removal cost?",
-      a: "Pricing depends on volume (how much space your junk takes up in our truck) and the labor needed to get it out. Our minimum is $199 (a small pile of stuff or a single couch) and the price scales from there. We always quote you flat upfront after a photo or walkthrough. No hidden fees, no surprises on the day.",
+      a: "Pricing depends on volume (how much space your junk takes up in our truck) and the labor needed to get it out. Our minimum is $150 (a small pile of stuff or a single couch) and the price scales from there. We always quote you flat upfront after a photo or walkthrough. No hidden fees, no surprises on the day.",
     },
     {
       q: "What areas do you serve?",
@@ -4076,7 +4053,7 @@ export const reviewsPage = {
 // delaware" WITHOUT publishing job prices. It explains HOW pricing
 // works and sells the free on-site estimate.
 //
-// PRICING RULE (important): the $199 minimum is the ONLY dollar
+// PRICING RULE (important): the $150 minimum is the ONLY dollar
 // figure we ever publish — it's deliberate, so people who won't pay
 // the minimum self-select out. Never add other prices or ranges
 // here or anywhere else on the site.
@@ -4084,7 +4061,7 @@ export const reviewsPage = {
 export const pricingPage = {
   metaTitle: "Junk Removal Prices in Jacksonville Beach — How It Works",
   metaDescription:
-    "How junk removal pricing works in Jacksonville Beach: what affects your quote, our free on-site estimates, and the flat, upfront price you get before we start. $199 minimum.",
+    "How junk removal pricing works in Jacksonville Beach: what affects your quote, our free on-site estimates, and the flat, upfront price you get before we start. $150 minimum.",
   eyebrow: "Pricing",
   h1: "Junk removal prices ",
   h1Accent: "in Jacksonville Beach.",
@@ -4121,9 +4098,9 @@ export const pricingPage = {
     {
       eyebrow: "Our minimum",
       title: "It starts at ",
-      titleAccent: "$199.",
+      titleAccent: "$150.",
       paragraphs: [
-        "Our minimum is $199. That covers a small pile or a single item like a couch, and the price scales up from there based on how much room it takes in the truck and the labor involved.",
+        "Our minimum is $150. That covers a small pile or a single item like a couch, and the price scales up from there based on how much room it takes in the truck and the labor involved.",
         "We publish the minimum on purpose. We'd rather be upfront than waste your afternoon. If it's below what you had in mind, you know before anyone drives anywhere. Everything above the minimum depends on the job, which is what the free estimate is for.",
       ],
     },
@@ -4147,7 +4124,7 @@ export const pricingPage = {
       },
       {
         q: "Is there a minimum charge?",
-        a: "Yes. Our minimum is $199. That covers a small pile or a single item, and pricing scales up from there based on volume and labor.",
+        a: "Yes. Our minimum is $150. That covers a small pile or a single item, and pricing scales up from there based on volume and labor.",
       },
       {
         q: "Do you charge extra for stairs or long carries?",

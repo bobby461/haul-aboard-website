@@ -84,7 +84,7 @@ Sometimes a home is past the point of a normal cleanout. That is not a reason to
 
 ## Getting yours scheduled
 
-Haul Aboard is a new company at the Beaches, licensed and insured, and run by the same owner behind Junk Away, Delaware's top-rated junk removal company. The estimate is free and on site. Every job starts at our $199 minimum, and the price goes up with how much there is and how much work it takes. A whole house will be well above the minimum, and you get the flat price before anything is loaded. More on [how our pricing works](/prices).
+Haul Aboard is a new company at the Beaches, licensed and insured, and run by the same owner behind Junk Away, Delaware's top-rated junk removal company. The estimate is free and on site. Every job starts at our $150 minimum, and the price goes up with how much there is and how much work it takes. A whole house will be well above the minimum, and you get the flat price before anything is loaded. More on [how our pricing works](/prices).
 
 Read more about the areas we cover in [Ponte Vedra](/service-areas/ponte-vedra), [Ponte Vedra Beach](/service-areas/ponte-vedra-beach) and [Nocatee](/service-areas/nocatee), or our local guides to [junk removal in Ponte Vedra](/blog/junk-removal-ponte-vedra-fl) and [junk removal in Nocatee](/blog/junk-removal-nocatee-fl). If a move is part of the plan, see [moving services](/services/moving-services).
 
