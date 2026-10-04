@@ -3674,8 +3674,9 @@ nav.site-nav {
 .headline {
   margin-bottom: 30px;
 }
-/* The fishing mascot stands on the "ARD" of "Haul Aboard" and casts
-   off the end of the name. Sized in em so it scales with the
+/* The fishing mascot sits in the open box above "ABOARD": to the right
+   of "Ahoy Jacksonville!", under the header, ending where the D ends.
+   He floats in the middle of that space, not on the letters. Sized in em so it scales with the
    lettering at every screen width. The cream edge is what keeps his
    navy overalls and the fishing line visible on a navy background. */
 .headline .brand-text {
@@ -3684,10 +3685,10 @@ nav.site-nav {
 }
 .hero-mascot {
   position: absolute;
-  width: 1.7em;
+  width: 1.5em;
   height: auto;
-  right: -0.76em;
-  bottom: 0.865em;
+  right: 0.12em;
+  bottom: 0.95em;
   pointer-events: none;
   filter:
     drop-shadow(0.012em 0 0 #f6e9d6)
@@ -3714,4 +3715,15 @@ nav.site-nav {
 .pricing-block .section-title .accent::after,
 .testimonials .section-title .accent::after {
   background: #ffffff;
+}
+
+/* On a phone the first line runs most of the way across, so there is
+   no box beside it. The mascot goes in the open space above the
+   headline instead, on the right, where he has room to be seen. */
+@media (max-width: 640px) {
+  .hero-mascot {
+    width: 2.1em;
+    right: -0.2em;
+    bottom: 1.5em;
+  }
 }
