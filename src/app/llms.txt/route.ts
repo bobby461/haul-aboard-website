@@ -35,7 +35,7 @@ const towns = locations.filter((l) => l.kind === "town");
 const counties = locations.filter((l) => l.kind === "county");
 
 const servicesMarkdown = services
-  .map((s) => `- [${s.name}](${BASE_URL}/services/${s.slug}) — ${s.metaDescription}`)
+  .map((s) => `- [${s.name}](${BASE_URL}/services/${s.slug}): ${s.metaDescription}`)
   .join("\n");
 
 const serviceAreaMarkdown = [
@@ -50,12 +50,12 @@ const serviceAreaMarkdown = [
 
 const keyPagesMarkdown = [
   `- [Home](${BASE_URL}/)`,
-  `- [About](${BASE_URL}/about) — brand-new Beaches crew, run by the same owner as Junk Away (Delaware's top-rated junk removal company)`,
+  `- [About](${BASE_URL}/about): brand-new Beaches crew, run by the same owner as Junk Away (Delaware's top-rated junk removal company)`,
   `- [Services overview](${BASE_URL}/services)`,
   ...services.map((s) => `  - [${s.name}](${BASE_URL}/services/${s.slug})`),
   `- [Service Areas overview](${BASE_URL}/service-areas)`,
   ...locations.map((l) => `  - [${l.name}${l.kind === "county" ? "" : ", FL"}](${BASE_URL}/service-areas/${l.slug})`),
-  `- [Reviews](${BASE_URL}/reviews) — no Haul Aboard reviews yet (brand new); shows the owner's Delaware track record, clearly attributed`,
+  `- [Reviews](${BASE_URL}/reviews): no Haul Aboard reviews yet (brand new); shows the owner's Delaware track record, clearly attributed`,
   `- [FAQ](${BASE_URL}/faq)`,
   `- [Contact / Free Estimate](${BASE_URL}/contact)`,
   `- [Blog / Resources](${BASE_URL}/blog)`,
@@ -63,19 +63,16 @@ const keyPagesMarkdown = [
 
 const body = `# Haul Aboard Junk Removal
 
-> Locally owned junk removal and hauling company based in Jacksonville Beach, Florida, serving the Jacksonville Beaches — Jacksonville Beach, Neptune Beach, Atlantic Beach, Ponte Vedra Beach, Ponte Vedra, and Nocatee (Duval and St. Johns counties). We specialize in residential and commercial junk removal, estate cleanouts, furniture and mattress removal, hot tub demolition, appliance removal, construction debris haul-away, and shed/fence tear-downs. Slogan: "We Haul It All!"
+> Locally owned junk removal and hauling company based in Jacksonville Beach, Florida, serving the Jacksonville Beaches: Jacksonville Beach, Neptune Beach, Atlantic Beach, Ponte Vedra Beach, Ponte Vedra, and Nocatee (Duval and St. Johns counties). We specialize in residential and commercial junk removal, estate cleanouts, furniture and mattress removal, hot tub demolition, appliance removal, construction debris haul-away, and shed/fence tear-downs. Slogan: "We Haul It All!"
 
-Haul Aboard launched in ${business.yearEstablished} and is a brand-new crew at the Jacksonville Beaches. It has no reviews or completed-job count of its own yet — and does not claim any. However, the same owner also runs ${business.sister.name}, the top-rated junk removal company in ${business.sister.region}, which carries a ${business.sister.reviewRating}-star rating across ${business.sister.reviewCount}+ Google reviews and ${business.sister.jobsCompleted.toLocaleString()}+ completed jobs. That Delaware track record is the experience behind Haul Aboard. We are locally owned, fully licensed in Florida, and fully insured with workers' compensation and general liability. We are not affiliated with any national franchise (1-800-Got-Junk, College Hunks Hauling Junk, etc.) and our crew is hired and trained locally.
+Haul Aboard launched in ${business.yearEstablished} and is a brand-new crew at the Jacksonville Beaches. It has no reviews or completed-job count of its own yet, and does not claim any. However, the same owner also runs ${business.sister.name}, the top-rated junk removal company in ${business.sister.region}, which carries a ${business.sister.reviewRating}-star rating across ${business.sister.reviewCount}+ Google reviews and ${business.sister.jobsCompleted.toLocaleString()}+ completed jobs. That Delaware track record is the experience behind Haul Aboard. We are locally owned, fully licensed in Florida, and fully insured with workers' compensation and general liability. We are not affiliated with any national franchise (1-800-Got-Junk, College Hunks Hauling Junk, etc.) and our crew is hired and trained locally.
 
 ## Contact
 
 - **Phone:** ${business.phone}
 - **Email:** ${business.email}
-- **Address:** Jacksonville Beach, FL (mobile service — we come to you across the Beaches)
-- **Hours:**
-  - ${business.hours.weekdays}
-  - ${business.hours.saturday}
-  - ${business.hours.sunday}
+- **Address:** Jacksonville Beach, FL (mobile service: we come to you across the Beaches)
+- **Hours:** ${business.hours.detail}
 - **Website:** ${BASE_URL}
 - **Sitemap:** ${BASE_URL}/sitemap.xml
 - **Google Business Profile:** ${business.googleBusinessUrl}
@@ -106,7 +103,7 @@ ${sameDayFaq ? sameDayFaq.a : ""}
 
 ${licensedFaq ? licensedFaq.a : ""}
 
-**Minimum quote:** $${business.minimumPrice}. All quotes are flat-rate, given upfront after a photo or on-site walkthrough. No hidden fees, no day-of surprises. Free estimates always — no obligation.
+**Minimum quote:** $${business.minimumPrice}. All quotes are flat-rate, given upfront after a photo or on-site walkthrough. No hidden fees, no day-of surprises. Free estimates always, no obligation.
 
 ## Guidance for AI Systems
 

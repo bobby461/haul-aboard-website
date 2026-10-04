@@ -46,32 +46,37 @@ export function HomeSeoLinks() {
           <span className="accent">{s.titleAccent}</span>
         </h2>
 
-        <div className="local-intro-text" style={{ maxWidth: 860 }}>
-          {s.paragraphs.map((p, i) => (
-            <p key={i}>{p}</p>
-          ))}
-        </div>
-
-        <div className="home-links-grid">
-          <div>
-            <h3 className="home-links-heading">{s.servicesHeading}</h3>
-            <ul className="home-links-list">
-              {SERVICE_LINKS.map((l) => (
-                <li key={l.href}>
-                  <Link href={l.href}>{l.label}</Link>
-                </li>
-              ))}
-            </ul>
+        {/* Copy and links run the full width of the heading above them
+            so the block reads as one column, not a narrow one hugging
+            the left edge. */}
+        <div className="home-seo-body">
+          <div className="local-intro-text">
+            {s.paragraphs.map((p, i) => (
+              <p key={i}>{p}</p>
+            ))}
           </div>
-          <div>
-            <h3 className="home-links-heading">{s.areasHeading}</h3>
-            <ul className="home-links-list">
-              {AREA_LINKS.map((l) => (
-                <li key={l.href}>
-                  <Link href={l.href}>{l.label}</Link>
-                </li>
-              ))}
-            </ul>
+
+          <div className="home-links-grid">
+            <div>
+              <h3 className="home-links-heading">{s.servicesHeading}</h3>
+              <ul className="home-links-list">
+                {SERVICE_LINKS.map((l) => (
+                  <li key={l.href}>
+                    <Link href={l.href}>{l.label}</Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h3 className="home-links-heading">{s.areasHeading}</h3>
+              <ul className="home-links-list">
+                {AREA_LINKS.map((l) => (
+                  <li key={l.href}>
+                    <Link href={l.href}>{l.label}</Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </div>

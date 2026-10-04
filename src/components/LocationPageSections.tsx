@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { SeoImage } from "./SeoImage";
+import { FaqAccordion } from "./FaqAccordion";
 import type { LocationDetail, Location } from "@/lib/content";
-import { services, locations } from "@/lib/content";
+import { services, locations, business } from "@/lib/content";
 
 // Section components for /service-areas/[slug]. Each is a no-op
 // if its data isn't populated.
@@ -60,6 +61,102 @@ export function LocalIntro({
         </div>
       </div>
     </section>
+  );
+}
+
+// Real recent jobs in this town. The phone number in the closing line
+// becomes a tap-to-call link.
+export function RecentJobs({ data }: { data: LocationDetail["recentJobs"] }) {
+  if (!data || data.jobs.length === 0) return null;
+  return (
+    <section className="recent-jobs">
+      <div className="section-label">{data.eyebrow}</div>
+      <h2 className="section-title">
+        {data.title}
+        <span className="accent">{data.titleAccent}</span>
+      </h2>
+
+      {/* Newer weeks first, then the original week below them. */}
+      {data.newerWeeks?.map((w) => (
+        <div key={w.intro} style={{ marginBottom: 48 }}>
+          <p className="recent-jobs-intro">{w.intro}</p>
+          <RecentJobsList jobs={w.jobs} />
+          <RecentJobsClosing text={w.closing} />
+        </div>
+      ))}
+
+      {data.intro && <p className="recent-jobs-intro">{data.intro}</p>}
+      <RecentJobsList jobs={data.jobs} />
+      <RecentJobsClosing text={data.closing} />
+    </section>
+  );
+}
+
+function RecentJobsList({
+  jobs,
+}: {
+  jobs: NonNullable<LocationDetail["recentJobs"]>["jobs"];
+}) {
+  return (
+    <ul className="recent-jobs-list">
+      {jobs.map((j) => (
+        <li key={j.title} className="recent-job">
+          <h3>{j.title}</h3>
+          <p>{j.text}</p>
+          <JobPhotos photos={j.photos} />
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+function RecentJobsClosing({ text }: { text?: string }) {
+  const closingParts = text?.split(business.phone);
+  if (!closingParts) return null;
+  return (
+    <p className="recent-jobs-closing">
+      {closingParts.map((part, i) => (
+        <span key={i}>
+          {i > 0 && (
+            <a href={`tel:${business.phoneRaw}`} data-cta="recent-jobs-call">
+              {business.phone}
+            </a>
+          )}
+          {part}
+        </span>
+      ))}
+    </p>
+  );
+}
+
+// Photo strip for a recent job. Real before/after shots, shown in
+// square frames because the originals are phone portraits.
+export function JobPhotos({
+  photos,
+}: {
+  photos?: { src: string; alt: string; label?: string; focal?: string }[];
+}) {
+  if (!photos || photos.length === 0) return null;
+  return (
+    <div className="job-photos" data-count={photos.length}>
+      {photos.map((p) => (
+        <figure key={p.src} className="job-photo">
+          <div className="job-photo-img">
+            <SeoImage
+              src={p.src}
+              alt={p.alt}
+              fill
+              sizes="(max-width: 900px) 45vw, 20vw"
+              style={{
+                objectFit: "cover",
+                objectPosition: p.focal ?? "center 50%",
+              }}
+            />
+          </div>
+          {p.label && <figcaption>{p.label}</figcaption>}
+        </figure>
+      ))}
+    </div>
   );
 }
 
@@ -139,6 +236,23 @@ export function Testimonials({ data }: { data: LocationDetail["testimonials"] })
           </div>
         ))}
       </div>
+    </section>
+  );
+}
+
+// City-specific FAQ. Same markup as the service-page FaqSection so the
+// two look identical. The FAQPage JSON-LD is emitted by the page, not
+// here, so the schema and the visible answers stay in one data source.
+export function LocationFaq({ data }: { data: LocationDetail["faq"] }) {
+  if (!data) return null;
+  return (
+    <section className="faq-section">
+      <div className="section-label">{data.eyebrow}</div>
+      <h2 className="section-title">
+        {data.title}
+        <span className="accent">{data.titleAccent}</span>
+      </h2>
+      <FaqAccordion items={data.items} />
     </section>
   );
 }

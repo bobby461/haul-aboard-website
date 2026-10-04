@@ -67,7 +67,7 @@ export function Footer() {
         <div className="footer-col footer-about">
           <div className="footer-heading">Haul Aboard</div>
           <p className="footer-text">
-            Locally owned junk removal serving the Jacksonville Beaches — Jax
+            Locally owned junk removal serving the Jacksonville Beaches: Jax
             Beach, Neptune Beach, Atlantic Beach, Ponte Vedra &amp; Nocatee.
             Same-day service, free on-site estimates, and a flat price before we
             start.
@@ -79,10 +79,7 @@ export function Footer() {
             {business.email}
           </a>
           <div className="footer-text">
-            {business.hours.weekdays}
-            <br />
-            {business.hours.saturday} <span className="accent">·</span>{" "}
-            {business.hours.sunday}
+            {business.hours.display}
           </div>
           <div className="footer-text">
             <span className="accent">★</span> Run by the same owner as{" "}

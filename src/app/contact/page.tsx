@@ -71,9 +71,7 @@ export default function ContactPageRoute() {
                   {business.phone}
                 </a>
                 <div className="contact-hours">
-                  <div>{business.hours.weekdays}</div>
-                  <div>{business.hours.saturday}</div>
-                  <div>{business.hours.sunday}</div>
+                  <div>{business.hours.display}</div>
                 </div>
                 <a href={`mailto:${business.email}`} className="contact-email">
                   {business.email}

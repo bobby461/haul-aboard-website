@@ -55,12 +55,18 @@ export const business = {
     region: "Delaware",
     url: "https://junkawaydelaware.com",
     reviewRating: 4.9,
-    reviewCount: 300,
+    reviewCount: 340,
     jobsCompleted: 2600,
   },
 
   // ---------- Hours ----------
+  // `display` is the one-line version the footer, contact page and hero
+  // show; `detail` is the spelled-out version for llms.txt. The three
+  // lines below them feed nothing but are kept as the source of truth
+  // that schema.ts mirrors (Mon–Fri 07:00–19:00, Sat 07:00–15:00).
   hours: {
+    display: "Mon–Fri 7am–7pm · Sat 7am–3pm",
+    detail: "Monday to Friday 7:00 AM to 7:00 PM, Saturday 7:00 AM to 3:00 PM, closed Sunday",
     weekdays: "Mon–Fri 7am–7pm",
     saturday: "Sat 7am–3pm",
     sunday: "Closed Sunday",
@@ -84,7 +90,7 @@ export const business = {
 
   // Plain-English service area — appears in schema and footer
   serviceArea:
-    "From Atlantic Beach and Neptune Beach down through Jacksonville Beach to Ponte Vedra Beach, Ponte Vedra and Nocatee — we serve the Jacksonville Beaches and the St. Johns County coast.",
+    "From Atlantic Beach and Neptune Beach down through Jacksonville Beach to Ponte Vedra Beach, Ponte Vedra and Nocatee, we serve the Jacksonville Beaches and the St. Johns County coast.",
 } as const;
 
 // ============================================================
@@ -116,47 +122,65 @@ export const navigation = {
 // ============================================================
 export const homepage = {
   // ---------- Hero (top of page) ----------
-  // Poster-style hero straight off the brand board: the "We Haul It All!"
-  // slogan IS the headline, with the mascot to the right, honest trust
-  // badges, a service-icon row, and the orange "serving" bar underneath.
+  // Same layout as the Junk Away hero: full-bleed photo under a dark
+  // overlay, three stat blocks, a three-line headline, then the pitch,
+  // phone number and estimate button along the bottom.
   hero: {
-    eyebrow: "Hey Jacksonville,",
-    headline1: "We Haul",
-    headline2: "It All!",
+    // Three-line headline. Line 1 + line 3 are white, line 2 is the
+    // big orange "Haul Aboard" wordmark. Line 3 is italic with the
+    // orange underline, and carries the brand tagline.
+    headlineLine1: "Jacksonville Beach,",
+    headlineBrand: "Haul Aboard",
+    headlineLine3: "we haul it all.",
 
-    // Mascot illustration slot (brand-board "fishing for junk" pose). This is
-    // the official mascot art; Hero.tsx renders the same file directly.
-    mascot: {
-      src: "/images/brand/mascot-fishing.svg",
-      alt: "Haul Aboard mascot reeling in junk with a fishing rod",
+    // Background photo behind the dark overlay. PLACEHOLDER: this file is
+    // a plain navy panel until there is a real crew-and-truck photo. Drop
+    // the real one at this same path (wide, about 3:2) and it swaps in.
+    photo: {
+      src: "/images/hero/crew.jpeg",
+      alt: "Haul Aboard Junk Removal, Jacksonville Beach, Florida",
+      width: 2400,
+      height: 1600,
     },
 
-    lede:
-      "Locally owned junk removal for Jacksonville Beach, Neptune Beach, Atlantic Beach, Ponte Vedra & Nocatee. Same-day service, one flat price, and a crew that treats your place like our own.",
-
-    // Honest trust badges (no invented reviews).
-    // Three badges only — they sit on one line that way. Pricing is
-    // deliberately NOT one of them; the $199 minimum lives on /prices
-    // and in the copy, not in the first thing a visitor reads.
-    badges: [
-      "Licensed & Insured",
-      "Same-Day Service",
-      "Free On-Site Estimates",
+    // Three stat blocks above the headline. HONESTY: Haul Aboard is new
+    // and has no rating, review count or job count of its own, so these
+    // are service facts, not numbers. When real Google reviews exist,
+    // swap these for the rating / review count / jobs completed, the
+    // way Junk Away's hero has them (labelIcon "google-g" is supported).
+    stats: [
+      {
+        top: "Same-Day",
+        label: "Service Available",
+        labelIcon: "check" as const,
+      },
+      {
+        top: "Free",
+        label: "On-Site Estimates",
+        labelIcon: "check" as const,
+      },
+      {
+        top: "Local",
+        label: "Licensed & Insured",
+        labelIcon: "hammer" as const,
+      },
     ],
 
+    // The three columns under the headline (left to right):
+    // 1. Brand pitch
+    metaPitchLabel: "Locally Owned · Jacksonville Beach, FL",
+    // Works the primary keyword ("junk removal in Jacksonville Beach")
+    // into real hero copy without touching the brand headline above it.
+    metaPitchBody:
+      "Locally owned junk removal in Jacksonville Beach, a crew that shows up on time, hauls it out clean, and treats your place like our own.",
+
+    // 2. Phone CTA (label + number + sub-line)
+    metaPhoneLabel: "Call us direct",
+    metaPhoneSub: "Mon–Fri 7am–7pm · Sat 7am–3pm",
+
+    // 3. Primary book CTA
     primaryCtaLabel: "Get My Free Estimate",
     primaryCtaSubLabel: "Book in 60 seconds",
-    metaPhoneLabel: "Call us direct",
-    metaPhoneSub: "Mon–Fri 7–7 · Sat 7–3",
-
-    // Orange service-icon row (like the brand-board social post).
-    serviceRow: [
-      { label: "Junk Removal", icon: "trash" as const, href: "/services" },
-      { label: "Cleanouts", icon: "box" as const, href: "/services/estate-cleanouts" },
-      { label: "Appliances", icon: "washer" as const, href: "/services/appliance-removal" },
-      { label: "Furniture & More", icon: "couch" as const, href: "/services/furniture-and-mattress-removal" },
-    ],
-    servingBar: "Serving Jacksonville Beach & Surrounding Areas",
   },
 
   // ---------- Trust strip ----------
@@ -164,10 +188,9 @@ export const homepage = {
   // loop seamlessly. To add or remove, just edit this array — the
   // component duplicates them for the marquee automatically.
   trustStrip: [
-    { icon: "shield-check" as const, big: "Licensed", small: "& Bonded" },
     {
-      icon: "shield" as const,
-      big: "Fully Insured",
+      icon: "shield-check" as const,
+      big: "Licensed & Insured",
       small: "Workers comp + liability",
     },
     {
@@ -199,6 +222,9 @@ export const homepage = {
     eyebrow: "What we haul",
     title: "If it doesn't belong, ",
     titleAccent: "it's gone.",
+    // Sits to the right of the heading on desktop, under it on mobile.
+    intro:
+      "From one unwanted item to an entire property, we handle the hauling so you don't have to.",
     cards: [
       {
         num: "01",
@@ -235,15 +261,16 @@ export const homepage = {
       {
         num: "05",
         name: "Yard\nWaste",
-        desc: "Brush, branches, that pile from last fall. Cleared and gone.",
+        desc: "Brush, palm fronds, that pile from the last storm. Cleared and gone.",
         linkSlug: "yard-waste-removal",
         photo: "/images/services/yard-waste.jpg",
         alt: "Yard waste and tree branches piled in a Jacksonville Beach backyard",
       },
       {
         num: "06",
-        name: "If it's\njunk, ask.",
-        desc: "Don't see it on the list? Send a photo. We'll quote it the same day.",
+        name: "Don't see what you need? No worries. We still probably take it if it's junk.",
+        nameAccent: "Just ask.",
+        desc: "Click the button below to fill out a contact form.",
         linkSlug: null,
         ctaLabel: "Get an estimate",
         photo: "/images/services/anything-else.jpg",
@@ -268,12 +295,12 @@ export const homepage = {
     // DE"). Do NOT relabel these as Haul Aboard / Florida reviews. When Haul
     // Aboard collects its own Google reviews, add them to the TOP of this
     // list with Florida details and update the section copy.
-    eyebrow: "New here — but not new to this",
+    eyebrow: "New here, but not new to this",
     title: "The same crew standards, ",
     titleAccent: "now at the Beaches.",
     titleAfter: "",
     intro:
-      "Haul Aboard just launched in Jacksonville Beach, so we haven't collected local reviews yet. But this isn't our first rodeo: our owner also runs Junk Away, the top-rated junk removal company in Delaware. Here's what their customers say — the exact standard we're bringing to Jax Beach.",
+      "Haul Aboard just launched in Jacksonville Beach, so we haven't collected local reviews yet. But this isn't our first rodeo: our owner also runs Junk Away, the top-rated junk removal company in Delaware. Here's what their customers say, the exact standard we're bringing to Jax Beach.",
     ctaLabel: "See Junk Away's reviews on Google →",
   },
 
@@ -339,8 +366,8 @@ export const homepage = {
     title: "Junk removal at the Beaches, ",
     titleAccent: "done right.",
     paragraphs: [
-      "Haul Aboard is a locally owned junk removal company serving Jacksonville Beach, Neptune Beach, Atlantic Beach, Ponte Vedra, Ponte Vedra Beach and Nocatee. We're the junk haulers your neighbors call to clear out a garage, a condo, a rental turnover, or an entire estate — furniture, appliances, hot tubs, construction debris, the works. Licensed, insured, and locally owned.",
-      "Need it gone today? Same-day junk removal is available six days a week across the Beaches — if you're looking for junk removal this afternoon, call us in the morning and we'll do our best to fit you in. Every estimate is free and on-site, and you get a flat price before we start. No surprises, no hidden fees.",
+      "Haul Aboard is a locally owned junk removal company serving Jacksonville Beach, Neptune Beach, Atlantic Beach, Ponte Vedra, Ponte Vedra Beach and Nocatee. We're the junk haulers your neighbors call to clear out a garage, a condo, a rental turnover, or an entire estate, furniture, appliances, hot tubs, construction debris, the works. Licensed, insured, and locally owned.",
+      "Need it gone today? Same-day junk removal is available six days a week across the Beaches. If you're looking for junk removal this afternoon, call us in the morning and we'll do our best to fit you in. Every estimate is free and on-site, and you get a flat price before we start. No surprises, no hidden fees.",
     ],
     servicesHeading: "Popular services",
     areasHeading: "Where we work",
@@ -389,14 +416,14 @@ export const services: Service[] = [
     h1Accent: "in Jacksonville Beach.",
     metaTitle: "Appliance Removal in Jacksonville Beach — Same-Day Service",
     metaDescription:
-      "Fridge, stove, washer, dryer & AC removal across the Beaches. Same-day service, free on-site estimates, licensed & insured — call Haul Aboard today.",
+      "Fridge, stove, washer, dryer & AC removal across the Beaches. Same-day service, free on-site estimates, licensed & insured. Call Haul Aboard today.",
     heroPhoto: {
       src: "/images/services/appliance-removal-hero.jpg",
       alt: "Two Haul Aboard crew members moving a washing machine out of a Jacksonville Beach home on a dolly",
       focal: "center 45%",
     },
     heroLede:
-      "Old appliances are heavy and awkward. We disconnect, haul out, and recycle — no scuffed floors, no stuck doorways. Same-day service across the Beaches.",
+      "Old appliances are heavy and awkward. We disconnect, haul out, and recycle. No scuffed floors, no stuck doorways. Same-day service across the Beaches.",
   },
   {
     slug: "furniture-and-mattress-removal",
@@ -413,7 +440,7 @@ export const services: Service[] = [
       focal: "center 50%",
     },
     heroLede:
-      "From a single mattress to a full living room set — we lift it, carry it down the stairs, and haul it away. Couches, beds, dressers, recliners, all of it.",
+      "From a single mattress to a full living room set, we lift it, carry it down the stairs, and haul it away. Couches, beds, dressers, recliners, all of it.",
   },
   {
     slug: "hot-tub-removal",
@@ -430,7 +457,7 @@ export const services: Service[] = [
       focal: "center 45%",
     },
     heroLede:
-      "Old hot tubs are heavy, awkward, and a pain to dismantle. We do it all — disconnect, break it down, and haul it away. Same-day service available in Jacksonville Beach, Neptune Beach, and across Duval County.",
+      "Old hot tubs are heavy, awkward, and a pain to dismantle. We do it all: disconnect, break it down, and haul it away. Same-day service available in Jacksonville Beach, Neptune Beach, and across Duval County.",
   },
   {
     slug: "shed-and-fence-removal",
@@ -440,14 +467,31 @@ export const services: Service[] = [
     h1Accent: "in Jacksonville Beach.",
     metaTitle: "Shed & Fence Removal Jacksonville Beach — Free Estimates",
     metaDescription:
-      "Old sheds, fences, playsets & carports torn down and hauled away across the Beaches. Licensed & insured, same-day service, free estimates. Licensed & insured.",
+      "Old sheds, fences, playsets & carports torn down and hauled away across the Beaches. Licensed & insured, same-day service, free estimates.",
     heroPhoto: {
       src: "/images/services/shed-fence-removal-hero.jpg",
       alt: "A Haul Aboard crew member carrying a weathered wooden plank across a Jacksonville Beach backyard",
       focal: "center 45%",
     },
     heroLede:
-      "Old sheds, rotting fences, leaning carports — we tear them down, haul them away, and leave the yard ready for whatever's next.",
+      "Old sheds, rotting fences, leaning carports. We tear them down, haul them away, and leave the yard ready for whatever's next.",
+  },
+  {
+    slug: "light-demolition",
+    name: "Light Demolition",
+    navLabel: "Light Demolition",
+    h1: "Light Demolition",
+    h1Accent: "in Jacksonville Beach.",
+    metaTitle: "Light Demolition in Jacksonville Beach: Sheds, Decks, Playsets",
+    metaDescription:
+      "Sheds, decks, playsets, hot tubs, ramps and old flooring taken apart and hauled away across the Jacksonville Beaches. Licensed and insured, free on-site estimates.",
+    heroPhoto: {
+      src: "/images/services/light-demolition-hero.jpg",
+      alt: "A backyard shed being taken apart for removal in Jacksonville Beach",
+      focal: "center 50%",
+    },
+    heroLede:
+      "Sheds, decks, playsets, hot tubs and old flooring. We take it apart, load every piece, and haul it away in the same visit.",
   },
   {
     slug: "yard-waste-removal",
@@ -474,14 +518,14 @@ export const services: Service[] = [
     h1Accent: "in Jacksonville Beach.",
     metaTitle: "Storm & Hurricane Debris Removal — Jacksonville Beach, FL",
     metaDescription:
-      "Fast storm & hurricane debris removal across the Jacksonville Beaches — downed limbs, fence sections, ruined furniture, drywall & flooding damage. Same-day cleanup, free estimates, licensed & insured.",
+      "Fast storm & hurricane debris removal across the Jacksonville Beaches: downed limbs, fence sections, ruined furniture, drywall & flooding damage. Same-day cleanup, free estimates, licensed & insured.",
     heroPhoto: {
       src: "/images/services/storm-debris-hero.jpg",
-      alt: "Storm debris — downed branches and damaged fencing — piled in a Jacksonville Beach yard after a hurricane",
+      alt: "Storm debris (downed branches and damaged fencing) piled in a Jacksonville Beach yard after a hurricane",
       focal: "center 50%",
     },
     heroLede:
-      "After a Florida storm, the last thing you need is a mountain of debris. We clear downed limbs, blown-down fencing, ruined furniture, and water-damaged material fast — so you can get back to normal.",
+      "After a Florida storm, the last thing you need is a mountain of debris. We clear downed limbs, blown-down fencing, ruined furniture, and water-damaged material fast, so you can get back to normal.",
   },
   {
     slug: "attic-cleanouts",
@@ -491,14 +535,14 @@ export const services: Service[] = [
     h1Accent: "in Jacksonville Beach.",
     metaTitle: "Attic Cleanouts in Jacksonville Beach — Free Estimates",
     metaDescription:
-      "Attic cleanout services across the Beaches — old insulation, boxes, furniture & forgotten clutter cleared out. Same-day service, free estimates, licensed & insured.",
+      "Attic cleanout services across the Beaches: old insulation, boxes, furniture & forgotten clutter cleared out. Same-day service, free estimates, licensed & insured.",
     heroPhoto: {
       src: "/images/services/attic-cleanout-hero.jpg",
       alt: "A Haul Aboard crew member alongside the company's dump trailer in Jacksonville Beach",
       focal: "center 40%",
     },
     heroLede:
-      "Pull-down ladders, low ceilings, decades of forgotten boxes. We bring the muscle and the patience to clear it all out — safely.",
+      "Pull-down ladders, low ceilings, decades of forgotten boxes. We bring the muscle and the patience to clear it all out, safely.",
   },
   {
     slug: "garage-cleanouts",
@@ -508,14 +552,14 @@ export const services: Service[] = [
     h1Accent: "in Jacksonville Beach.",
     metaTitle: "Garage Cleanouts in Jacksonville Beach — Same-Day Service",
     metaDescription:
-      "Full garage cleanouts across the Beaches — tools, old paint & mystery boxes gone. Get your garage back. Same-day service, free estimates, licensed & insured.",
+      "Full garage cleanouts across the Beaches: tools, old paint & mystery boxes gone. Get your garage back. Same-day service, free estimates, licensed & insured.",
     heroPhoto: {
       src: "/images/services/garage-cleanout-hero.jpg",
       alt: "Haul Aboard crew loading items into the company dump trailer",
       focal: "center 40%",
     },
     heroLede:
-      "When your garage hasn't held a car in years — we fix that. Old tools, broken bikes, stacks of mystery boxes. Cleared in an afternoon.",
+      "When your garage hasn't held a car in years, we fix that. Old tools, broken bikes, stacks of mystery boxes. Cleared in an afternoon.",
   },
   {
     slug: "foreclosure-cleanouts",
@@ -545,11 +589,11 @@ export const services: Service[] = [
       "Compassionate, judgment-free hoarder cleanouts across the Beaches. We work at your pace and protect your privacy. Licensed & insured, free estimates.",
     heroPhoto: {
       src: "/images/services/hoarder-cleanout-hero.jpg",
-      alt: "A large pile of household junk — mattresses, furniture, boxes and bagged waste — cleared out into a Jacksonville Beach backyard",
+      alt: "A large pile of household junk (mattresses, furniture, boxes and bagged waste) cleared out into a Jacksonville Beach backyard",
       focal: "center 45%",
     },
     heroLede:
-      "We approach every hoarder cleanout with patience and zero judgment. Discreet, careful, and at your pace — we'll work with you to bring the home back.",
+      "We approach every hoarder cleanout with patience and zero judgment. Discreet, careful, and at your pace. We'll work with you to bring the home back.",
   },
   {
     slug: "construction-debris-removal",
@@ -600,7 +644,7 @@ export const services: Service[] = [
       focal: "center 45%",
     },
     heroLede:
-      "When a tenant leaves a mess, every day costs you rent. We turn the unit over fast — broom-swept and ready for the next listing photo.",
+      "When a tenant leaves a mess, every day costs you rent. We turn the unit over fast, broom-swept and ready for the next listing photo.",
   },
   {
     slug: "scrap-metal-removal",
@@ -619,7 +663,7 @@ export const services: Service[] = [
     // IMPORTANT: scrap metal is a paid removal service. Never imply
     // free pickup or buyback — see the brief.
     heroLede:
-      "Old swing sets, AC units, water heaters, busted appliances. We haul scrap metal away as part of our standard junk removal service — priced like every other haul.",
+      "Old swing sets, AC units, water heaters, busted appliances. We haul scrap metal away as part of our standard junk removal service, priced like every other haul.",
   },
   {
     slug: "property-management-cleanouts",
@@ -663,7 +707,7 @@ export const services: Service[] = [
     h1Accent: "in Jacksonville Beach.",
     metaTitle: "Local Moving Help in Jacksonville Beach — Same-Day Crews",
     metaDescription:
-      "Local moving help across the Beaches — heavy lifting, single-item moves & short-haul moves with the crew that hauls your junk. Free estimates, same-day.",
+      "Local moving help across the Beaches: heavy lifting, single-item moves & short-haul moves with the crew that hauls your junk. Free estimates, same-day.",
     heroPhoto: {
       src: "/images/services/moving-services-hero.jpg",
       alt: "A Haul Aboard crew member with a dolly beside a loaded box truck",
@@ -699,7 +743,7 @@ export const locations: Location[] = [
     kind: "town",
     metaTitle: "Junk Removal in Jacksonville Beach, FL — Same-Day",
     metaDescription:
-      "Local junk removal in Jacksonville Beach, FL — furniture, appliances, hot tubs, garage & condo cleanouts. Same-day service, free on-site estimates, licensed & insured. Call Haul Aboard.",
+      "Local junk removal in Jacksonville Beach, FL: furniture, appliances, hot tubs, garage & condo cleanouts. Same-day service, free on-site estimates, licensed & insured. Call Haul Aboard.",
     heroPhoto: {
       src: "/images/locations/jacksonville-beach-hero.jpg",
       alt: "Jacksonville Beach, Florida oceanfront and pier",
@@ -713,7 +757,7 @@ export const locations: Location[] = [
     kind: "town",
     metaTitle: "Junk Removal in Neptune Beach, FL — Same-Day Service",
     metaDescription:
-      "Junk removal in Neptune Beach, FL — from Beaches Town Center to the ocean. Furniture, appliance & full-home cleanouts. Same-day service, free estimates, licensed & insured.",
+      "Junk removal in Neptune Beach, FL, from Beaches Town Center to the ocean. Furniture, appliance & full-home cleanouts. Same-day service, free estimates, licensed & insured.",
     heroPhoto: {
       src: "/images/locations/neptune-beach-hero.jpg",
       alt: "Quiet residential street in Neptune Beach, Florida",
@@ -727,7 +771,7 @@ export const locations: Location[] = [
     kind: "town",
     metaTitle: "Junk Removal in Atlantic Beach, FL — Same-Day Service",
     metaDescription:
-      "Junk removal in Atlantic Beach, FL — hauling furniture, appliances, hot tubs & cleanouts across Duval County's north beaches. Same-day service, free estimates, licensed & insured.",
+      "Junk removal in Atlantic Beach, FL: hauling furniture, appliances, hot tubs & cleanouts across Duval County's north beaches. Same-day service, free estimates, licensed & insured.",
     heroPhoto: {
       src: "/images/locations/atlantic-beach-hero.jpg",
       alt: "Coastal homes near the ocean in Atlantic Beach, Florida",
@@ -741,7 +785,7 @@ export const locations: Location[] = [
     kind: "town",
     metaTitle: "Junk Removal in Ponte Vedra Beach, FL — White-Glove",
     metaDescription:
-      "Junk removal in Ponte Vedra Beach, FL — estate cleanouts, furniture & hot tub removal with careful, white-glove crews. Same-day service, free estimates, licensed & insured.",
+      "Junk removal in Ponte Vedra Beach, FL: estate cleanouts, furniture & hot tub removal with careful, white-glove crews. Same-day service, free estimates, licensed & insured.",
     heroPhoto: {
       src: "/images/locations/ponte-vedra-beach-hero.jpg",
       alt: "Palm-lined coastal neighborhood in Ponte Vedra Beach, Florida",
@@ -755,7 +799,7 @@ export const locations: Location[] = [
     kind: "town",
     metaTitle: "Junk Removal in Ponte Vedra, FL — Same-Day Service",
     metaDescription:
-      "Junk removal in Ponte Vedra, FL — garage, home & estate cleanouts plus furniture and appliance haul-away. Same-day service, free on-site estimates, licensed & insured.",
+      "Junk removal in Ponte Vedra, FL: garage, home & estate cleanouts plus furniture and appliance haul-away. Same-day service, free on-site estimates, licensed & insured.",
     heroPhoto: {
       src: "/images/locations/ponte-vedra-hero.jpg",
       alt: "Upscale residential area in Ponte Vedra, Florida",
@@ -769,7 +813,7 @@ export const locations: Location[] = [
     kind: "town",
     metaTitle: "Junk Removal in Nocatee, FL — Same-Day Service",
     metaDescription:
-      "Junk removal in Nocatee, FL — new-build debris, moving-day cleanouts, furniture & appliance haul-away across Ponte Vedra's master-planned community. Same-day service, free estimates.",
+      "Junk removal in Nocatee, FL: new-build debris, moving-day cleanouts, furniture & appliance haul-away across Ponte Vedra's master-planned community. Same-day service, free estimates.",
     heroPhoto: {
       src: "/images/locations/nocatee-hero.jpg",
       alt: "Master-planned neighborhood streets in Nocatee, Florida",
@@ -791,7 +835,7 @@ export const locations: Location[] = [
 export const aboutPage = {
   metaTitle: "About Haul Aboard — Jacksonville Beach Junk Removal",
   metaDescription:
-    "Haul Aboard is a locally owned junk removal crew serving the Jacksonville Beaches, launched by the same owner behind Junk Away — Delaware's top-rated junk removal company. New here, but not new to the work.",
+    "Haul Aboard is a locally owned junk removal crew serving the Jacksonville Beaches, launched by the same owner behind Junk Away, Delaware's top-rated junk removal company. New here, but not new to the work.",
   // Hero photo behind the headline. Drop a real shot at this path — the truck
   // on the beach, the crew, or you. Dark gradient sits on top for legibility.
   heroPhoto: {
@@ -804,21 +848,21 @@ export const aboutPage = {
     {
       heading: "Where we come from",
       paragraphs: [
-        "Haul Aboard is the newest junk removal crew at the Jacksonville Beaches — but the people behind it have been doing this for years. Our owner also runs Junk Away, the top-rated junk removal company in Delaware, with 2,600+ jobs completed and a 4.9-star average across more than 300 Google reviews.",
-        "We fell in love with the Florida coast — the marinas, the bait shops, the salt air — and decided to bring the exact same crew standards down to the Beaches: show up on time, quote a flat price before we start, work hard, clean up after ourselves, and treat your home like it's our own.",
+        "Haul Aboard is the newest junk removal crew at the Jacksonville Beaches, but the people behind it have been doing this for years. Our owner also runs Junk Away, the top-rated junk removal company in Delaware, with 2,600+ jobs completed and a 4.9-star average across more than 300 Google reviews.",
+        "We fell in love with the Florida coast (the marinas, the bait shops, the salt air) and decided to bring the exact same crew standards down to the Beaches: show up on time, quote a flat price before we start, work hard, clean up after ourselves, and treat your home like it's our own.",
       ],
       photoAfter: {
         src: "/images/about/truck.jpg",
         alt: "Haul Aboard Junk Removal truck and dump trailer parked near the water",
         caption:
-          "Same owner, same standards as Junk Away in Delaware — now at the Beaches. [ADD your own photo + caption]",
+          "Same owner, same standards as Junk Away in Delaware, now at the Beaches. [ADD your own photo + caption]",
       },
     },
     {
       heading: "How we work",
       paragraphs: [
-        "We're fully licensed and insured, and everything starts with a free, no-obligation estimate — over a quick photo or in person. You get one flat price up front, with a $199 minimum and no hidden fees, no add-ons at the curb, no surprises when we're done.",
-        "We haul it all: furniture, appliances, hot tubs, garage and estate cleanouts, construction debris, yard waste — if two people can carry it, it's gone. Whatever we can donate or recycle, we do, so less of it ends up in the landfill. That's the Haul Aboard promise: we haul it all, and we do it right.",
+        "We're fully licensed and insured, and everything starts with a free, no-obligation estimate over a quick photo or in person. You get one flat price up front, with a $199 minimum and no hidden fees, no add-ons at the curb, no surprises when we're done.",
+        "We haul it all: furniture, appliances, hot tubs, garage and estate cleanouts, construction debris, yard waste. If two people can carry it, it's gone. Whatever we can donate or recycle, we do, so less of it ends up in the landfill. That's the Haul Aboard promise: we haul it all, and we do it right.",
       ],
       photoAfter: {
         src: "/images/about/crew.jpg",
@@ -932,8 +976,8 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       title: "Any tub, any size, ",
       titleAccent: "any condition.",
       paragraphs: [
-        "Hot tub removal isn't a one-person job. The acrylic shell, the wood frame, the heater, the pump — every piece needs to come apart before it can leave the yard. Our crew arrives with the saws, dollies, and manpower to dismantle your tub on-site and load it cleanly into the truck.",
-        "No surprise fees. No leaving you with debris in the yard. We sweep up after ourselves and recycle whatever components we can — copper, scrap metal, and frame wood — to keep junk out of the landfill.",
+        "Hot tub removal isn't a one-person job. The acrylic shell, the wood frame, the heater, the pump: every piece needs to come apart before it can leave the yard. Our crew arrives with the saws, dollies, and manpower to dismantle your tub on-site and load it cleanly into the truck.",
+        "No surprise fees. No leaving you with debris in the yard. We sweep up after ourselves and recycle whatever components we can (copper, scrap metal, and frame wood) to keep junk out of the landfill.",
       ],
       includesEyebrow: "Includes",
       includesList: [
@@ -964,7 +1008,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
         {
           num: "01",
           title: "Get a free estimate",
-          desc: "Send us a photo of the tub or call us. We give you a flat, transparent price upfront — no hidden fees, no surprises on the day.",
+          desc: "Send us a photo of the tub or call us. We give you a flat, transparent price upfront, no hidden fees, no surprises on the day.",
         },
         {
           num: "02",
@@ -983,7 +1027,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       title: "Transparent pricing, ",
       titleAccent: "no surprises.",
       paragraphs: [
-        "Hot tub removal is priced based on the size of the tub, the access to your yard, and how much dismantling is required. We give you a flat quote upfront after seeing a photo or doing a quick walkthrough — and that price doesn't change on the day.",
+        "Hot tub removal is priced based on the size of the tub, the access to your yard, and how much dismantling is required. We give you a flat quote upfront after seeing a photo or doing a quick walkthrough, and that price doesn't change on the day.",
         "We beat the franchises on price, and we care a heck of a lot more about the work. Our minimum is $199 (a small pile of stuff or a single couch) and the price scales from there based on volume and labor. Free estimates, every time.",
       ],
       cardPre: "Free Estimate",
@@ -1006,15 +1050,15 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       items: [
         {
           q: "How much does hot tub removal cost in Jacksonville Beach?",
-          a: "Pricing depends on the size of the tub, the access to your yard, and how much dismantling is needed. Most residential hot tub removals fall in a predictable range, and we give you a flat quote upfront after seeing a photo. Our minimum is $199 — and free estimates always.",
+          a: "Pricing depends on the size of the tub, the access to your yard, and how much dismantling is needed. Most residential hot tub removals fall in a predictable range, and we give you a flat quote upfront after seeing a photo. Our minimum is $199, and free estimates always.",
         },
         {
           q: "Do I need to drain the tub before you arrive?",
-          a: "Yes, please drain the tub fully before our crew arrives. If you can't drain it yourself, let us know when booking and we can talk through options. A drained tub is much faster — and safer — to remove.",
+          a: "Yes, please drain the tub fully before our crew arrives. If you can't drain it yourself, let us know when booking and we can talk through options. A drained tub is much faster, and safer, to remove.",
         },
         {
           q: "Will you damage my deck or yard?",
-          a: "No. Our crew dismantles the tub on-site so we can carry it out in pieces — no dragging across decks or lawns. We bring boards to protect surfaces and clean up before we leave.",
+          a: "No. Our crew dismantles the tub on-site so we can carry it out in pieces, with no dragging across decks or lawns. We bring boards to protect surfaces and clean up before we leave.",
         },
         {
           q: "Can you remove a hot tub on the same day?",
@@ -1022,11 +1066,11 @@ export const serviceDetails: Record<string, ServiceDetail> = {
         },
         {
           q: "What happens to the tub after you take it?",
-          a: "We recycle everything we can — copper, scrap metal, frame wood — and dispose of the rest responsibly at licensed facilities. Eco-friendly junk removal is the standard, not an upgrade.",
+          a: "We recycle everything we can (copper, scrap metal, frame wood) and dispose of the rest responsibly at licensed facilities. Eco-friendly junk removal is the standard, not an upgrade.",
         },
         {
           q: "Do you remove built-in or in-ground hot tubs?",
-          a: "Yes. Built-in tubs take more work — we may need to disassemble decking or remove tile surrounds — but we've handled it before. Send us photos and we'll give you a fair quote.",
+          a: "Yes. Built-in tubs take more work, and we may need to disassemble decking or remove tile surrounds, but we've handled it before. Send us photos and we'll give you a fair quote.",
         },
       ],
     },
@@ -1048,8 +1092,8 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       title: "Anything that plugs in. ",
       titleAccent: "We'll haul it.",
       paragraphs: [
-        "Old appliances are a special kind of headache — heavy, awkward, and usually stuck in tight kitchens or garages with stairs you'd never want to navigate alone. We bring the dollies, the straps, and the muscle. We disconnect, carry, and load. You don't lift a finger.",
-        "We recycle whatever has scrap value — copper, steel — and dispose of the rest at licensed facilities. Refrigerators get refrigerant-recovered properly so CFCs don't end up in the air. That's not optional, it's the law, and we follow it.",
+        "Old appliances are a special kind of headache: heavy, awkward, and usually stuck in tight kitchens or garages with stairs you'd never want to navigate alone. We bring the dollies, the straps, and the muscle. We disconnect, carry, and load. You don't lift a finger.",
+        "We recycle whatever has scrap value (copper, steel) and dispose of the rest at licensed facilities. Refrigerators get refrigerant-recovered properly so CFCs don't end up in the air. That's not optional. It's the law, and we follow it.",
       ],
       includesEyebrow: "Includes",
       includesList: [
@@ -1080,7 +1124,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
         {
           num: "01",
           title: "Get a free estimate",
-          desc: "Send us a photo or call us. We give you a flat, transparent price upfront — no hidden fees, no surprises on the day.",
+          desc: "Send us a photo or call us. We give you a flat, transparent price upfront, no hidden fees, no surprises on the day.",
         },
         {
           num: "02",
@@ -1099,7 +1143,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       title: "Transparent pricing, ",
       titleAccent: "no surprises.",
       paragraphs: [
-        "Appliance removal is priced by what you're getting rid of and how hard it is to get out — a single dishwasher in a cramped laundry closet is different from a kitchen full of built-ins on a third floor. We give you a flat quote upfront after a quick photo or walkthrough.",
+        "Appliance removal is priced by what you're getting rid of and how hard it is to get out. A single dishwasher in a cramped laundry closet is different from a kitchen full of built-ins on a third floor. We give you a flat quote upfront after a quick photo or walkthrough.",
         "We beat the franchises on price, and we care a heck of a lot more about the work. Our minimum is $199 (a small pile of stuff or a single couch) and the price scales from there based on volume and labor. Free estimates, every time.",
       ],
       cardPre: "Free Estimate",
@@ -1120,9 +1164,9 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       title: "Appliance removal, ",
       titleAccent: "explained.",
       items: [
-        { q: "How much does appliance removal cost in Jacksonville Beach?", a: "Pricing depends on the appliance and how hard it is to access. Most single-appliance jobs are predictable, and we give you a flat quote upfront. Our minimum is $199 — and free estimates always." },
-        { q: "Do I need to disconnect the appliance before you arrive?", a: "If you can, great — that saves time. If not, we'll handle it. We disconnect water lines and cap gas at the valve. We bring the right tools." },
-        { q: "Can you take a fridge with refrigerant in it?", a: "Yes. Refrigerant gets recovered at licensed recycling facilities — required by law and the right thing to do. No old fridge ends up dumped in a field." },
+        { q: "How much does appliance removal cost in Jacksonville Beach?", a: "Pricing depends on the appliance and how hard it is to access. Most single-appliance jobs are predictable, and we give you a flat quote upfront. Our minimum is $199, and free estimates always." },
+        { q: "Do I need to disconnect the appliance before you arrive?", a: "If you can, great. That saves time. If not, we'll handle it. We disconnect water lines and cap gas at the valve. We bring the right tools." },
+        { q: "Can you take a fridge with refrigerant in it?", a: "Yes. Refrigerant gets recovered at licensed recycling facilities, required by law and the right thing to do. No old fridge ends up dumped in a field." },
         { q: "Do you remove built-in appliances?", a: "Yes. Built-in dishwashers, ovens, and microwaves take more careful work but it's standard for us. Send photos and we'll quote it accurately." },
         { q: "Same-day appliance pickup?", a: "Often, yes. Same-day service is available across most of the Beaches depending on our crew's schedule. Call early in the day for the best chance." },
       ],
@@ -1143,9 +1187,9 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     whatWeHandle: {
       eyebrow: "What we handle",
       title: "Couches, beds, dressers ",
-      titleAccent: "— all of it.",
+      titleAccent: ", all of it.",
       paragraphs: [
-        "From a single mattress to a full living room set, we handle the lift, the stairs, and the tight doorways. Sectionals, recliners, sleeper sofas with the metal frames that weigh a ton — bring it on. We come prepared.",
+        "From a single mattress to a full living room set, we handle the lift, the stairs, and the tight doorways. Sectionals, recliners, sleeper sofas with the metal frames that weigh a ton. Bring it on. We come prepared.",
         "We donate what's still usable to Jacksonville Beach-area shelters and donation centers when condition allows, and recycle mattress components (the springs, foam, and frames) wherever possible. The rest goes to licensed facilities.",
       ],
       includesEyebrow: "Includes",
@@ -1177,7 +1221,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
         {
           num: "01",
           title: "Get a free estimate",
-          desc: "Send us a photo or call us. We give you a flat, transparent price upfront — no hidden fees, no surprises on the day.",
+          desc: "Send us a photo or call us. We give you a flat, transparent price upfront, no hidden fees, no surprises on the day.",
         },
         {
           num: "02",
@@ -1196,7 +1240,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       title: "Transparent pricing, ",
       titleAccent: "no surprises.",
       paragraphs: [
-        "Furniture removal is priced by volume — a single mattress costs less than a full living room. We quote flat after a photo or walkthrough, and what you see is what you pay. No add-ons for stairs, no surprise fees on the day.",
+        "Furniture removal is priced by volume. A single mattress costs less than a full living room. We quote flat after a photo or walkthrough, and what you see is what you pay. No add-ons for stairs, no surprise fees on the day.",
         "We beat the franchises on price, and we care a heck of a lot more about the work. Our minimum is $199 (a small pile of stuff or a single couch) and the price scales from there based on volume and labor. Free estimates, every time.",
       ],
       cardPre: "Free Estimate",
@@ -1217,9 +1261,9 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       title: "Furniture & mattress removal, ",
       titleAccent: "explained.",
       items: [
-        { q: "How much does furniture removal cost in Jacksonville Beach?", a: "Single items start at our $199 minimum. Volume-based pricing scales from there. We always quote flat upfront — free estimates." },
-        { q: "Do you take mattresses?", a: "Yes — bed bugs, stains, age, none of it scares us. We recycle springs and frames where possible and dispose of the rest properly." },
-        { q: "Will you carry it down the stairs?", a: "That's the whole job. Two-flight walk-ups, garage haul-outs, tight Jacksonville Beach stairwells — we plan it before we start." },
+        { q: "How much does furniture removal cost in Jacksonville Beach?", a: "Single items start at our $199 minimum. Volume-based pricing scales from there. We always quote flat upfront, free estimates." },
+        { q: "Do you take mattresses?", a: "Yes. Bed bugs, stains, age: none of it scares us. We recycle springs and frames where possible and dispose of the rest properly." },
+        { q: "Will you carry it down the stairs?", a: "That's the whole job. Two-flight walk-ups, garage haul-outs, tight Jacksonville Beach stairwells. We plan it before we start." },
         { q: "Can you donate it instead of trashing it?", a: "We try. If it's clean and usable, we route it to local Jacksonville Beach shelters and donation centers. Anything that won't pass donation goes to recycling and licensed disposal." },
         { q: "Do you offer same-day pickup?", a: "Often. Same-day service is available across most of the Beaches depending on the day's schedule. Call us in the morning." },
       ],
@@ -1274,7 +1318,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
         {
           num: "01",
           title: "Get a free estimate",
-          desc: "Send us a photo or call us. We give you a flat, transparent price upfront — no hidden fees, no surprises on the day.",
+          desc: "Send us a photo or call us. We give you a flat, transparent price upfront, no hidden fees, no surprises on the day.",
         },
         {
           num: "02",
@@ -1316,10 +1360,104 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       items: [
         { q: "How much does shed removal cost in Jacksonville Beach?", a: "Most residential shed removals fall in a predictable range. Size and material drive the price. Free estimates and our $199 minimum applies." },
         { q: "Do you remove metal sheds?", a: "Yes, metal sheds are one of our most common shed jobs. We dismantle them on-site, unbolting the panels and breaking down the frame, then haul it all out. The steel and aluminum go to a scrap recycler, not the landfill. Rusted, dented, or half-collapsed, it doesn't matter." },
-        { q: "Do I need a permit?", a: "Usually not for sheds under a certain size, but it depends on your township. We can guide you to the right office to check before we schedule the demo." },
+        { q: "Do I need a permit?", a: "Usually not for sheds under a certain size, but it depends on your city or county and your HOA. We can guide you to the right office to check before we schedule the demo." },
         { q: "Will you remove the concrete pad too?", a: "Yes if you want. Pad removal is priced separately because of the additional labor and disposal weight." },
         { q: "What if my fence has metal posts set in concrete?", a: "Standard. We pull posts and footings out cleanly. The holes get backfilled with the displaced dirt or capped, depending on what you want." },
         { q: "Same-day demolition?", a: "Smaller sheds and fences, often yes. Larger demos we usually schedule a day or two ahead so we bring the right equipment." },
+      ],
+    },
+  },
+
+  // ============================================================
+  // LIGHT DEMOLITION
+  // Same page Junk Away added in September 2026, written for the
+  // Beaches. No job stories here: Haul Aboard is new, so the copy
+  // describes the service and nothing that hasn't happened yet.
+  // ============================================================
+  "light-demolition": {
+    whatWeHandle: {
+      eyebrow: "What we handle",
+      title: "Take it apart. ",
+      titleAccent: "Haul it out.",
+      paragraphs: [
+        "Light demolition is the part of the job before the hauling. Something is still standing, or still screwed down, and it has to come apart before it can go on the trailer. We bring the saws, the pry bars and enough hands to take it down on site, then we load it and take it away. Same crew, usually the same visit.",
+        "This is work on the things around a house, not the house itself. We take down sheds, decks, playsets, ramps and hot tubs, and we pull up old flooring. Whole buildings, load-bearing walls and anything with asbestos need a licensed demolition or abatement contractor, and we will tell you at the estimate if your job is one of those.",
+        "Salt air does a lot of this work for us at the Beaches. Deck boards go soft, metal sheds rust through at the base, and fasteners seize. That changes how a structure comes apart, so we look at it in person before we quote it.",
+      ],
+      includesEyebrow: "Includes",
+      includesList: [
+        "Sheds, wood and metal",
+        "Decks and railings",
+        "Playsets and swing sets",
+        "Hot tubs",
+        "Ramps",
+        "Old flooring",
+        "Hauling every piece away",
+      ],
+    },
+    banner: {
+      photo: {
+        src: "/images/services/light-demolition-banner.jpg",
+        alt: "A cleared backyard after a shed was taken down and hauled away",
+        focal: "center 55%",
+      },
+      text: "Taken apart. ",
+      textAccent: "Hauled away.",
+    },
+    howItWorks: {
+      eyebrow: "How it works",
+      title: "Three steps. ",
+      titleAccent: "That's it.",
+      steps: [
+        {
+          num: "01",
+          title: "Free on-site estimate",
+          desc: "We look at what is coming down, how it was built and how we get it out. You get a flat price before we start.",
+        },
+        {
+          num: "02",
+          title: "We take it apart",
+          desc: "Saws, pry bars and a crew that knows how to use them. We work around the siding, the fence, the pavers and anything that is staying.",
+        },
+        {
+          num: "03",
+          title: "Loaded and gone",
+          desc: "Every piece goes on the trailer. Metal gets recycled, and we clean up the spot before we leave.",
+        },
+      ],
+    },
+    pricing: {
+      eyebrow: "Pricing",
+      title: "Transparent pricing, ",
+      titleAccent: "no surprises.",
+      paragraphs: [
+        "Demolition is priced on what it takes: the size of the structure, what it is made of, and how hard it is to reach. A small playset in an open yard is quick. A deck built onto the back of the house is more work. We look at it and give you a flat price before anything comes apart.",
+        "Our minimum is $199, and the price scales from there based on volume and labor. The estimate is always free.",
+      ],
+      cardPre: "Free Estimate",
+      cardLg: "Book in\n60 seconds.",
+    },
+    related: {
+      eyebrow: "Related services",
+      title: "More junk to ",
+      titleAccent: "get rid of?",
+      slugs: [
+        "shed-and-fence-removal",
+        "hot-tub-removal",
+        "construction-debris-removal",
+      ],
+    },
+    faq: {
+      eyebrow: "Common questions",
+      title: "Light demolition, ",
+      titleAccent: "explained.",
+      items: [
+        { q: "What counts as light demolition?", a: "Structures and fixtures around a home that a crew can take apart by hand with saws and pry bars: sheds, decks, playsets, ramps, hot tubs and old flooring. If it is holding up a house, it is not light demolition." },
+        { q: "Do you do full house or structural demolition?", a: "No. Whole buildings, load-bearing walls and anything that needs heavy equipment go to a demolition contractor. We will tell you at the estimate if your job is bigger than what we do." },
+        { q: "What about asbestos?", a: "We do not handle it. Old flooring, siding or insulation that might contain asbestos needs a licensed abatement contractor, which is a company licensed to remove hazardous building materials. If you think yours might have it, tell us before we come." },
+        { q: "Do I need a permit or HOA approval to take down a shed or deck?", a: "It depends on the town and the community, so we can't answer that for you. Check with your city or St. Johns County building office, and with your HOA if you have one, before we schedule. Once you have the go-ahead we handle the rest." },
+        { q: "Will you take out the concrete pad or footings too?", a: "We can. Pads and footings take more labor and weigh more to dispose of, so they are priced separately, and we will tell you that at the estimate." },
+        { q: "Can you come the same day?", a: "For a small shed or playset, often yes. Bigger jobs like a full deck we usually schedule a day or two out. Call (904) 404-6264 and we will tell you what today looks like." },
       ],
     },
   },
@@ -1340,7 +1478,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       title: "Brush, branches, ",
       titleAccent: "and back to clean.",
       paragraphs: [
-        "Storm took down a tree? Spring cleanup left you with a mountain of brush you can't fit in the cans? We load it, haul it, and get rid of it the right way. Yard waste goes to compost facilities or licensed disposal — never the landfill if we can help it.",
+        "Storm took down a tree? Spring cleanup left you with a mountain of brush you can't fit in the cans? We load it, haul it, and get rid of it the right way. Yard waste goes to compost facilities or licensed disposal, never the landfill if we can help it.",
         "We handle big jobs that won't fit in the weekly trash pickup. Old mulch piles, tree-trimming aftermath, leaves, hedges, garden tear-outs. If it's organic and you want it gone, we'll take it.",
       ],
       includesEyebrow: "Includes",
@@ -1372,7 +1510,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
         {
           num: "01",
           title: "Get a free estimate",
-          desc: "Send us a photo or call us. We give you a flat, transparent price upfront — no hidden fees, no surprises on the day.",
+          desc: "Send us a photo or call us. We give you a flat, transparent price upfront, no hidden fees, no surprises on the day.",
         },
         {
           num: "02",
@@ -1391,7 +1529,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       title: "Transparent pricing, ",
       titleAccent: "no surprises.",
       paragraphs: [
-        "Yard waste is priced by volume. A small pile of clippings is different from a half-acre of post-storm tree limbs. We give you a flat quote after a photo or walkthrough — and the price doesn't grow on the day.",
+        "Yard waste is priced by volume. A small pile of clippings is different from a half-acre of post-storm tree limbs. We give you a flat quote after a photo or walkthrough, and the price doesn't grow on the day.",
         "We beat the franchises on price, and we care a heck of a lot more about the work. Our minimum is $199 (a small pile of stuff or a single couch) and the price scales from there based on volume and labor. Free estimates, every time.",
       ],
       cardPre: "Free Estimate",
@@ -1412,10 +1550,10 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       title: "Yard waste removal, ",
       titleAccent: "explained.",
       items: [
-        { q: "How much does yard waste removal cost in Jacksonville Beach?", a: "Volume-based pricing starting at our $199 minimum. Free estimates after a photo. Storm cleanup is often a higher priority job for us — call right after the weather clears." },
+        { q: "How much does yard waste removal cost in Jacksonville Beach?", a: "Volume-based pricing starting at our $199 minimum. Free estimates after a photo. Storm cleanup is often a higher priority job for us, so call right after the weather clears." },
         { q: "Do I need to bag the leaves?", a: "Helps but not required. We have rakes, tarps, and trucks. If you want to skip the bagging, we'll do it as part of the haul." },
-        { q: "Can you take a tree trunk?", a: "Logs and trunks under what two people can carry, yes. Whole-tree removal with a chainsaw is a tree service, not us — we pick up after they're done." },
-        { q: "What about old mulch piles?", a: "Yes, all day. Old mulch, dirt piles, sod tear-out — load and haul." },
+        { q: "Can you take a tree trunk?", a: "Logs and trunks under what two people can carry, yes. Whole-tree removal with a chainsaw is a tree service, not us. We pick up after they're done." },
+        { q: "What about old mulch piles?", a: "Yes, all day. Old mulch, dirt piles, sod tear-out. Load and haul." },
         { q: "Same-day yard waste pickup?", a: "Often, especially after storms when we know it's a priority. Same-day service depends on our crew's schedule." },
       ],
     },
@@ -1428,7 +1566,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     hero: {
       photo: {
         src: "/images/services/storm-debris-hero.jpg",
-        alt: "Storm debris — downed branches and damaged fencing — piled in a Jacksonville Beach yard after a hurricane",
+        alt: "Storm debris (downed branches and damaged fencing) piled in a Jacksonville Beach yard after a hurricane",
         focal: "center 50%",
       },
     },
@@ -1437,7 +1575,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       title: "When the storm passes, ",
       titleAccent: "we clear the mess.",
       paragraphs: [
-        "Living at the Beaches means living with hurricane season. When a storm rolls through, it leaves downed limbs, snapped fence sections, shredded screen enclosures, and soaked, ruined furniture behind. We come in after the wind stops and haul it all off — fast — so your yard and home aren't a hazard while you're trying to recover.",
+        "Living at the Beaches means living with hurricane season. When a storm rolls through, it leaves downed limbs, snapped fence sections, shredded screen enclosures, and soaked, ruined furniture behind. We come in after the wind stops and haul it all off, fast, so your yard and home aren't a hazard while you're trying to recover.",
         "Flooding leaves its own mess: water-logged drywall, baseboards, carpet, mattresses, and appliances that have to come out before mold sets in. We load it, haul it, and dispose of it the right way. One flat price, quoted before we start, even in the middle of a busy cleanup week.",
       ],
       includesEyebrow: "We haul",
@@ -1469,7 +1607,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
         {
           num: "01",
           title: "Call or send photos",
-          desc: "Tell us what the storm left behind. We give you a flat, transparent price upfront — no storm-season price gouging, ever.",
+          desc: "Tell us what the storm left behind. We give you a flat, transparent price upfront, no storm-season price gouging, ever.",
         },
         {
           num: "02",
@@ -1488,8 +1626,8 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       title: "Fair pricing, ",
       titleAccent: "even after a storm.",
       paragraphs: [
-        "Storm debris is priced by volume — how much space it takes in the truck — plus the labor to clear it safely. We give you a flat quote after a quick look or a few photos, and it doesn't change on the day. No storm-season surge pricing.",
-        "Our minimum is $199 (a small load) and the price scales from there based on how much there is and how tough the access is. Free estimates, every time — even when we're slammed after a big storm.",
+        "Storm debris is priced by volume (how much space it takes in the truck) plus the labor to clear it safely. We give you a flat quote after a quick look or a few photos, and it doesn't change on the day. No storm-season surge pricing.",
+        "Our minimum is $199 (a small load) and the price scales from there based on how much there is and how tough the access is. Free estimates, every time, even when we're slammed after a big storm.",
       ],
       cardPre: "Free Estimate",
       cardLg: "Get it\ncleared.",
@@ -1509,9 +1647,9 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       title: "Storm debris removal, ",
       titleAccent: "explained.",
       items: [
-        { q: "How much does storm debris removal cost in Jacksonville Beach?", a: "It's priced by volume and labor — how much debris there is and how hard it is to reach. We quote a flat price after a quick look or a few photos. Our minimum is $199 and estimates are always free, even during a busy storm-recovery week." },
+        { q: "How much does storm debris removal cost in Jacksonville Beach?", a: "It's priced by volume and labor: how much debris there is and how hard it is to reach. We quote a flat price after a quick look or a few photos. Our minimum is $199 and estimates are always free, even during a busy storm-recovery week." },
         { q: "Do you charge more after a hurricane?", a: "No. We don't do storm-season surge pricing. You get the same fair, flat-rate pricing whether it's a calm week or the day after a hurricane." },
-        { q: "Can you come right after the storm?", a: "We do our best to get out fast during cleanup weeks. Call as early as you can — demand spikes after a big storm, so the sooner you're on the list, the sooner we can clear your property." },
+        { q: "Can you come right after the storm?", a: "We do our best to get out fast during cleanup weeks. Call as early as you can. Demand spikes after a big storm, so the sooner you're on the list, the sooner we can clear your property." },
         { q: "Do you handle flood-damaged material inside the home?", a: "Yes. We haul out water-logged drywall, carpet, baseboards, furniture, and appliances so you can start drying out and preventing mold. For structural repairs you'll want a licensed contractor, but the demo debris is ours to clear." },
         { q: "Do you take downed trees and large limbs?", a: "We take limbs, brush, and manageable sections. For large whole-tree removals that need a crane or bucket truck, we'll point you to a tree service and haul off the debris once it's down." },
       ],
@@ -1535,7 +1673,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       titleAccent: "Low ceilings. No problem.",
       paragraphs: [
         "Attics are awkward. Pull-down ladders, low rafters, dust, and decades of boxes nobody wants to climb up there to deal with. We do. The right ladder, the right gear, the right care for what's worth keeping and what isn't.",
-        "Old insulation, packed-tight boxes, cracked Christmas storage bins, ancient luggage — it all comes out clean. Heat-trapped attics in summer are no fun, so we work in cooler hours when we can and stay efficient when we can't.",
+        "Old insulation, packed-tight boxes, cracked Christmas storage bins, ancient luggage. It all comes out clean. Heat-trapped attics in summer are no fun, so we work in cooler hours when we can and stay efficient when we can't.",
       ],
       includesEyebrow: "Includes",
       includesList: [
@@ -1566,7 +1704,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
         {
           num: "01",
           title: "Get a free estimate",
-          desc: "Send us a photo or call us. We give you a flat, transparent price upfront — no hidden fees, no surprises on the day.",
+          desc: "Send us a photo or call us. We give you a flat, transparent price upfront, no hidden fees, no surprises on the day.",
         },
         {
           num: "02",
@@ -1585,7 +1723,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       title: "Transparent pricing, ",
       titleAccent: "no surprises.",
       paragraphs: [
-        "Attic cleanouts are priced by volume and by access — a walk-in attic is faster than a pull-down ladder space with low headroom. Flat quote upfront after a quick walkthrough.",
+        "Attic cleanouts are priced by volume and by access. A walk-in attic is faster than a pull-down ladder space with low headroom. Flat quote upfront after a quick walkthrough.",
         "We beat the franchises on price, and we care a heck of a lot more about the work. Our minimum is $199 (a small pile of stuff or a single couch) and the price scales from there based on volume and labor. Free estimates, every time.",
       ],
       cardPre: "Free Estimate",
@@ -1608,8 +1746,8 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       items: [
         { q: "How much does an attic cleanout cost in Jacksonville Beach?", a: "Volume + access drive the price. Free estimates and our $199 minimum applies. Most residential attics fall in a predictable range." },
         { q: "Will you take old insulation?", a: "Loose-fill we can take with the right precautions. Blown-in insulation we'll quote separately. We'll let you know if anything looks like vermiculite (which has special handling)." },
-        { q: "My attic is HOT in summer — will you still come?", a: "Yes. We try to schedule attic cleanouts for early morning or cooler weather when possible, but we get it done either way." },
-        { q: "What if there's stuff up there worth saving?", a: "Set it aside before we get there or point it out — we don't sort, we follow your direction." },
+        { q: "My attic is HOT in summer. Will you still come?", a: "Yes. We try to schedule attic cleanouts for early morning or cooler weather when possible, but we get it done either way." },
+        { q: "What if there's stuff up there worth saving?", a: "Set it aside before we get there or point it out. We don't sort, we follow your direction." },
         { q: "Do you take items from any-floor attics?", a: "Walk-up, pull-down, drop-down ladders, scuttle holes. We've worked them all. Send a photo of your access and we'll plan accordingly." },
       ],
     },
@@ -1631,7 +1769,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       title: "Park your car ",
       titleAccent: "in the garage again.",
       paragraphs: [
-        "When your garage hasn't held a car in years, that changes today. Old tools, broken bikes, stacks of mystery boxes, paint cans that should've been disposed of a decade ago, lawn equipment that doesn't run anymore — we take it. Cleared in an afternoon.",
+        "When your garage hasn't held a car in years, that changes today. Old tools, broken bikes, stacks of mystery boxes, paint cans that should've been disposed of a decade ago, lawn equipment that doesn't run anymore. We take it. Cleared in an afternoon.",
         "We separate scrap-worthy metal (tools, bike frames, old grills) for recycling, properly dispose of household hazards like dried paint and old solvents, and donate what's still usable. You get back a clean garage and a usable space.",
       ],
       includesEyebrow: "Includes",
@@ -1663,7 +1801,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
         {
           num: "01",
           title: "Get a free estimate",
-          desc: "Send us a photo or call us. We give you a flat, transparent price upfront — no hidden fees, no surprises on the day.",
+          desc: "Send us a photo or call us. We give you a flat, transparent price upfront, no hidden fees, no surprises on the day.",
         },
         {
           num: "02",
@@ -1705,7 +1843,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       items: [
         { q: "How much does a garage cleanout cost in Jacksonville Beach?", a: "Volume-based. Most residential garages fall in a predictable range. Free estimates and $199 minimum." },
         { q: "Will you take old paint?", a: "Dried-out paint, yes. Liquid paint needs to be dried first or taken to a household hazardous waste site. We can guide you on the easy ways to dry it." },
-        { q: "Can you sort what's worth keeping?", a: "We don't sort — that's your call. If you want to keep something, pull it aside before we arrive." },
+        { q: "Can you sort what's worth keeping?", a: "We don't sort. That's your call. If you want to keep something, pull it aside before we arrive." },
         { q: "Do you take a lawn mower or snow blower?", a: "Yes. We drain the gas first (or you can) and load it for proper disposal/recycling." },
         { q: "How long does a garage cleanout take?", a: "Most residential garages: 2–4 hours. Heavily packed three-car garages: a half day. We work fast and don't take longer than the job needs." },
       ],
@@ -1728,7 +1866,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       title: "Bank-ready, ",
       titleAccent: "fast.",
       paragraphs: [
-        "Foreclosure cleanouts are different from residential cleanouts. There's a clock, a lender, and often a property condition report waiting on photos. We work with banks, asset managers, REO firms, and Jacksonville Beach realtors to clear properties efficiently — full trash-out, broom-swept, photo-documented.",
+        "Foreclosure cleanouts are different from residential cleanouts. There's a clock, a lender, and often a property condition report waiting on photos. We work with banks, asset managers, REO firms, and Jacksonville Beach realtors to clear properties efficiently, full trash-out, broom-swept, photo-documented.",
         "We turn around quickly because every day a foreclosure sits costs money. Net-30 invoicing for repeat property managers, signed liability releases on every job, and we've never missed a closing because of trash.",
       ],
       includesEyebrow: "Includes",
@@ -1760,7 +1898,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
         {
           num: "01",
           title: "Get a free estimate",
-          desc: "Send us a photo or call us. We give you a flat, transparent price upfront — no hidden fees, no surprises on the day.",
+          desc: "Send us a photo or call us. We give you a flat, transparent price upfront, no hidden fees, no surprises on the day.",
         },
         {
           num: "02",
@@ -1801,10 +1939,10 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       titleAccent: "explained.",
       items: [
         { q: "How fast can you clear a foreclosed property?", a: "Most residential foreclosures: same-day or next-day for properties under 2,500 sq ft. Larger properties usually inside 48 hours." },
-        { q: "Do you provide photo documentation?", a: "Yes — before, during, after. Sent to your email or uploaded to your portal. Standard for every foreclosure job." },
+        { q: "Do you provide photo documentation?", a: "Yes: before, during, after. Sent to your email or uploaded to your portal. Standard for every foreclosure job." },
         { q: "Do you offer net-30 invoicing for property managers?", a: "Yes for repeat clients with established accounts. First job is paid upon completion." },
         { q: "What if there's hazardous material?", a: "We'll flag it and either route it to a hazmat partner or include the disposal in our quote. We don't haul anything we shouldn't." },
-        { q: "Do you handle interior AND exterior?", a: "Yes — interior trash-out, garage, sheds, yard debris all in one job. One contractor, one invoice." },
+        { q: "Do you handle interior AND exterior?", a: "Yes. Interior trash-out, garage, sheds, yard debris all in one job. One contractor, one invoice." },
       ],
     },
   },
@@ -1816,7 +1954,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     hero: {
       photo: {
         src: "/images/services/hoarder-cleanout-hero.jpg",
-        alt: "A large pile of household junk — mattresses, furniture, boxes and bagged waste — cleared out into a Jacksonville Beach backyard",
+        alt: "A large pile of household junk (mattresses, furniture, boxes and bagged waste) cleared out into a Jacksonville Beach backyard",
         focal: "center 45%",
       },
     },
@@ -1825,7 +1963,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       title: "Patient. ",
       titleAccent: "Discreet. Compassionate.",
       paragraphs: [
-        "Hoarder cleanouts ask more than just hauling. We approach every job with patience and zero judgment. Discreet trucks, careful pacing, and full respect for whoever is involved — the homeowner, the family, the property manager. We work at your speed.",
+        "Hoarder cleanouts ask more than just hauling. We approach every job with patience and zero judgment. Discreet trucks, careful pacing, and full respect for whoever is involved: the homeowner, the family, the property manager. We work at your speed.",
         "We bring PPE for our crew, take the time to look for documents and items of value, and never throw out anything important without confirming. We've helped Jacksonville Beach families bring homes back from years of accumulation. We can help yours too.",
       ],
       includesEyebrow: "Includes",
@@ -1843,7 +1981,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     banner: {
       photo: {
         src: "/images/services/hoarder-cleanout-banner.jpg",
-        alt: "A large pile of household junk — mattresses, furniture, boxes and bagged waste — cleared out into a Jacksonville Beach backyard",
+        alt: "A large pile of household junk (mattresses, furniture, boxes and bagged waste) cleared out into a Jacksonville Beach backyard",
         focal: "center 30%",
       },
       text: "Bring the home ",
@@ -1857,7 +1995,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
         {
           num: "01",
           title: "Get a free estimate",
-          desc: "Send us a photo or call us. We give you a flat, transparent price upfront — no hidden fees, no surprises on the day.",
+          desc: "Send us a photo or call us. We give you a flat, transparent price upfront, no hidden fees, no surprises on the day.",
         },
         {
           num: "02",
@@ -1876,7 +2014,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       title: "Transparent pricing, ",
       titleAccent: "no surprises.",
       paragraphs: [
-        "Hoarder cleanouts are scoped before quoted — we walk through with you (or family/property manager), assess scope, and give you a fair flat quote. We don't charge by the hour and we don't surprise you on the day.",
+        "Hoarder cleanouts are scoped before quoted. We walk through with you (or family/property manager), assess scope, and give you a fair flat quote. We don't charge by the hour and we don't surprise you on the day.",
         "We beat the franchises on price, and we care a heck of a lot more about the work. Our minimum is $199 (a small pile of stuff or a single couch) and the price scales from there based on volume and labor. Free estimates, every time.",
       ],
       cardPre: "Free Estimate",
@@ -1897,10 +2035,10 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       title: "Hoarder cleanouts, ",
       titleAccent: "explained.",
       items: [
-        { q: "How much does a hoarder cleanout cost in Jacksonville Beach?", a: "Scoped per property — small one-room cleanouts are very different from full-house multi-decade accumulations. Free estimates after walkthrough." },
+        { q: "How much does a hoarder cleanout cost in Jacksonville Beach?", a: "Scoped per property. Small one-room cleanouts are very different from full-house multi-decade accumulations. Free estimates after walkthrough." },
         { q: "Will you protect privacy?", a: "Always. Unmarked options available on request. We don't talk about jobs publicly and we don't post photos without permission." },
         { q: "What if pests or biohazards are involved?", a: "We work with vetted biohazard remediation partners across the Beaches and refer them when needed. Sometimes that's pre-haul, sometimes alongside us." },
-        { q: "Can family be present?", a: "Yes — most hoarder cleanouts go better with a family member there to make calls on what stays. We can also work without anyone present if that's easier." },
+        { q: "Can family be present?", a: "Yes. Most hoarder cleanouts go better with a family member there to make calls on what stays. We can also work without anyone present if that's easier." },
         { q: "How long does a hoarder cleanout take?", a: "Anywhere from a day to a week, depending on volume. We can do partial cleanouts spread across multiple visits if that's easier on the homeowner." },
       ],
     },
@@ -1922,8 +2060,8 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       title: "Drywall, flooring, ",
       titleAccent: "demo waste.",
       paragraphs: [
-        "Renovation, kitchen demo, bathroom tear-out, drywall replacement, deck removal — the debris adds up fast. Your crew shouldn't be running it to the dump. We pull up, load fast, and let them stay focused on the build.",
-        "We coordinate with contractors, GCs, and homeowners running their own projects. On-call dumps for ongoing work, single hauls for one-time renos. Every load goes to licensed disposal facilities — drywall recycling where it makes sense, scrap metal pulled out for recovery.",
+        "Renovation, kitchen demo, bathroom tear-out, drywall replacement, deck removal: the debris adds up fast. Your crew shouldn't be running it to the dump. We pull up, load fast, and let them stay focused on the build.",
+        "We coordinate with contractors, GCs, and homeowners running their own projects. On-call dumps for ongoing work, single hauls for one-time renos. Every load goes to licensed disposal facilities, drywall recycling where it makes sense, scrap metal pulled out for recovery.",
       ],
       includesEyebrow: "Includes",
       includesList: [
@@ -1954,7 +2092,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
         {
           num: "01",
           title: "Get a free estimate",
-          desc: "Send us a photo or call us. We give you a flat, transparent price upfront — no hidden fees, no surprises on the day.",
+          desc: "Send us a photo or call us. We give you a flat, transparent price upfront, no hidden fees, no surprises on the day.",
         },
         {
           num: "02",
@@ -1995,9 +2133,9 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       titleAccent: "explained.",
       items: [
         { q: "How much does construction debris removal cost in Jacksonville Beach?", a: "Volume + weight drive the price. We give bulk rates for active job sites and contractors with recurring needs." },
-        { q: "Do you work with contractors directly?", a: "Yes — many of our regular customers are GCs, remodelers, and handyman businesses across the Beaches. Predictable pricing and fast scheduling." },
+        { q: "Do you work with contractors directly?", a: "Yes. Many of our regular customers are GCs, remodelers, and handyman businesses across the Beaches. Predictable pricing and fast scheduling." },
         { q: "Can you take roofing shingles?", a: "Small batches yes, with the disposal fees included. For a full re-roof, we'll give you a quote that accounts for the weight." },
-        { q: "Will you haul concrete and brick?", a: "Yes. Heavy material requires the right truck — we'll let you know which crew and rate apply." },
+        { q: "Will you haul concrete and brick?", a: "Yes. Heavy material requires the right truck, and we'll let you know which crew and rate apply." },
         { q: "Same-day haul during a renovation?", a: "Often. Mid-job clean-ups are common for our contractor clients. Call us in the morning." },
       ],
     },
@@ -2017,10 +2155,10 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     whatWeHandle: {
       eyebrow: "What we handle",
       title: "Office, retail, ",
-      titleAccent: "or warehouse — gone.",
+      titleAccent: "or warehouse, gone.",
       paragraphs: [
         "Closing an office, downsizing, or relocating your business? We handle desks, cubicles, conference tables, and full office furniture cleanouts. After-hours and weekend service available so we don't disrupt operations during business hours.",
-        "Retail spaces, warehouses, and small commercial buildings — we work with property managers, business owners, and lease termination cleanouts. Insured, licensed, and we sign off on COIs for your landlord when needed.",
+        "Retail spaces, warehouses, and small commercial buildings: we work with property managers, business owners, and lease termination cleanouts. Insured, licensed, and we sign off on COIs for your landlord when needed.",
       ],
       includesEyebrow: "Includes",
       includesList: [
@@ -2051,7 +2189,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
         {
           num: "01",
           title: "Get a free estimate",
-          desc: "Send us a photo or call us. We give you a flat, transparent price upfront — no hidden fees, no surprises on the day.",
+          desc: "Send us a photo or call us. We give you a flat, transparent price upfront, no hidden fees, no surprises on the day.",
         },
         {
           num: "02",
@@ -2070,7 +2208,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       title: "Transparent pricing, ",
       titleAccent: "no surprises.",
       paragraphs: [
-        "Office cleanouts are priced by volume and access — a 2,000 sq ft office is different from a multi-floor corporate move-out. After-hours service is available with advance scheduling. Flat quote upfront after a walkthrough.",
+        "Office cleanouts are priced by volume and access. A 2,000 sq ft office is different from a multi-floor corporate move-out. After-hours service is available with advance scheduling. Flat quote upfront after a walkthrough.",
         "We beat the franchises on price, and we care a heck of a lot more about the work. Our minimum is $199 (a small pile of stuff or a single couch) and the price scales from there based on volume and labor. Free estimates, every time.",
       ],
       cardPre: "Free Estimate",
@@ -2116,7 +2254,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       title: "Move-out mess. ",
       titleAccent: "Move-in ready.",
       paragraphs: [
-        "When a tenant leaves a mess, every day costs you rent. We turn the unit over fast — full cleanout, broom-swept, ready for the next listing photo. We work with Jacksonville Beach property managers, individual landlords, and short-term rental hosts.",
+        "When a tenant leaves a mess, every day costs you rent. We turn the unit over fast: full cleanout, broom-swept, ready for the next listing photo. We work with Jacksonville Beach property managers, individual landlords, and short-term rental hosts.",
         "Standing-account pricing for property managers with recurring needs, single-job pricing for one-off turnovers. Photo-documented before/after for your records and security deposit deductions.",
       ],
       includesEyebrow: "Includes",
@@ -2148,7 +2286,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
         {
           num: "01",
           title: "Get a free estimate",
-          desc: "Send us a photo or call us. We give you a flat, transparent price upfront — no hidden fees, no surprises on the day.",
+          desc: "Send us a photo or call us. We give you a flat, transparent price upfront, no hidden fees, no surprises on the day.",
         },
         {
           num: "02",
@@ -2189,10 +2327,10 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       titleAccent: "explained.",
       items: [
         { q: "How fast can you turn over a unit?", a: "Most apartments: same-day or next-day. We know the clock starts when the tenant walks out." },
-        { q: "Do you have standing rates for property managers?", a: "Yes — schedule a call and we'll set up an account with predictable per-unit pricing." },
+        { q: "Do you have standing rates for property managers?", a: "Yes. Schedule a call and we'll set up an account with predictable per-unit pricing." },
         { q: "Will you photo-document for security deposit purposes?", a: "Standard. Before/during/after photos sent to your email immediately after the job." },
-        { q: "Do you handle multi-unit properties?", a: "Yes. Five-unit buildings, twenty-unit complexes — we scale the crew. Predictable per-unit pricing." },
-        { q: "Same-day service on tenant turnovers?", a: "Yes when scheduled. Same-day calls depend on crew availability — book ahead for guaranteed turnaround." },
+        { q: "Do you handle multi-unit properties?", a: "Yes. Five-unit buildings, twenty-unit complexes: we scale the crew. Predictable per-unit pricing." },
+        { q: "Same-day service on tenant turnovers?", a: "Yes when scheduled. Same-day calls depend on crew availability, so book ahead for guaranteed turnaround." },
       ],
     },
   },
@@ -2211,10 +2349,10 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     whatWeHandle: {
       eyebrow: "What we handle",
       title: "Old swing sets, AC units, ",
-      titleAccent: "and broken metal — gone.",
+      titleAccent: "and broken metal, gone.",
       paragraphs: [
-        "Scrap metal removal is a paid junk-removal service. We haul old swing sets, broken-down AC condensers, water heaters, dead appliances, fence panels, and metal anything you need gone. We take it as part of standard junk removal — priced like every other haul.",
-        "We route what we collect to licensed scrap recycling facilities in Jacksonville Beach. The recycling part is good for the environment, and it's how we keep prices fair. But this isn't a free pickup service or a buyback — pricing is the same as any other junk job.",
+        "Scrap metal removal is a paid junk-removal service. We haul old swing sets, broken-down AC condensers, water heaters, dead appliances, fence panels, and metal anything you need gone. We take it as part of standard junk removal, priced like every other haul.",
+        "We route what we collect to licensed scrap recycling facilities in the Jacksonville area. The recycling part is good for the environment, and it's how we keep prices fair. But this isn't a free pickup service or a buyback. Pricing is the same as any other junk job.",
       ],
       includesEyebrow: "Includes",
       includesList: [
@@ -2245,7 +2383,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
         {
           num: "01",
           title: "Get a free estimate",
-          desc: "Send us a photo or call us. We give you a flat, transparent price upfront — no hidden fees, no surprises on the day.",
+          desc: "Send us a photo or call us. We give you a flat, transparent price upfront, no hidden fees, no surprises on the day.",
         },
         {
           num: "02",
@@ -2264,7 +2402,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       title: "Transparent pricing, ",
       titleAccent: "no surprises.",
       paragraphs: [
-        "Scrap metal removal is priced by volume, just like every other junk removal job — there's no buyback, no free pickup. We come, we haul, and we route the metal to recycling. The price you pay is for our crew's labor and disposal logistics, same as any other haul.",
+        "Scrap metal removal is priced by volume, just like every other junk removal job. There's no buyback, no free pickup. We come, we haul, and we route the metal to recycling. The price you pay is for our crew's labor and disposal logistics, same as any other haul.",
         "We beat the franchises on price, and we care a heck of a lot more about the work. Our minimum is $199 (a small pile of stuff or a single couch) and the price scales from there based on volume and labor. Free estimates, every time.",
       ],
       cardPre: "Free Estimate",
@@ -2285,11 +2423,11 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       title: "Scrap metal removal, ",
       titleAccent: "explained.",
       items: [
-        { q: "Do you pay for scrap metal?", a: "No — scrap metal removal is a paid haul-away service, not a buyback. We charge for the labor and disposal, same as any other junk job." },
+        { q: "Do you pay for scrap metal?", a: "No. Scrap metal removal is a paid haul-away service, not a buyback. We charge for the labor and disposal, same as any other junk job." },
         { q: "How much does scrap metal removal cost in Jacksonville Beach?", a: "Volume-based, starting at our $199 minimum. Free estimates after a photo or walkthrough." },
-        { q: "Will you take a swing set?", a: "Yes — disassembly included. Most residential swing sets fall under a single haul." },
+        { q: "Will you take a swing set?", a: "Yes, with disassembly included. Most residential swing sets fall under a single haul." },
         { q: "Can you remove an old AC condenser?", a: "Yes. We disconnect (we don't touch live electrical), pull the unit, and haul. Refrigerant in older units is recovered properly." },
-        { q: "Do you take car parts?", a: "Small parts yes (rims, bumpers, exhaust pieces). Whole vehicles, no — that's a salvage yard's job, not ours." },
+        { q: "Do you take car parts?", a: "Small parts yes (rims, bumpers, exhaust pieces). Whole vehicles, no. That's a salvage yard's job, not ours." },
       ],
     },
   },
@@ -2311,7 +2449,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       titleAccent: "junk crew.",
       paragraphs: [
         "Managing 20 doors or 200, we'll be the junk crew you call without thinking. Predictable pricing, fast scheduling, photos with every job, and net-30 invoicing once the account is established.",
-        "We handle tenant turnovers, foreclosure cleanouts, common-area trash, oversized item disposal — anything that comes up across your portfolio. One contact, one invoice, no surprises on rates.",
+        "We handle tenant turnovers, foreclosure cleanouts, common-area trash, oversized item disposal, and anything else that comes up across your portfolio. One contact, one invoice, no surprises on rates.",
       ],
       includesEyebrow: "Includes",
       includesList: [
@@ -2342,7 +2480,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
         {
           num: "01",
           title: "Get a free estimate",
-          desc: "Send us a photo or call us. We give you a flat, transparent price upfront — no hidden fees, no surprises on the day.",
+          desc: "Send us a photo or call us. We give you a flat, transparent price upfront, no hidden fees, no surprises on the day.",
         },
         {
           num: "02",
@@ -2361,7 +2499,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       title: "Transparent pricing, ",
       titleAccent: "no surprises.",
       paragraphs: [
-        "Property management accounts get standing-rate pricing per service type — turnovers, foreclosures, common-area haul-aways. The rates are agreed upfront and stay predictable across the portfolio. New clients get a free first-job quote.",
+        "Property management accounts get standing-rate pricing per service type: turnovers, foreclosures, common-area haul-aways. The rates are agreed upfront and stay predictable across the portfolio. New clients get a free first-job quote.",
         "We beat the franchises on price, and we care a heck of a lot more about the work. Our minimum is $199 (a small pile of stuff or a single couch) and the price scales from there based on volume and labor. Free estimates, every time.",
       ],
       cardPre: "Free Estimate",
@@ -2385,8 +2523,8 @@ export const serviceDetails: Record<string, ServiceDetail> = {
         { q: "Do you offer standing-rate pricing?", a: "Yes. Set up an account and rates per service type are locked. No re-quoting every job." },
         { q: "Net-30 invoicing?", a: "Yes for established accounts. New clients pay on completion until the account history is built." },
         { q: "Can you handle multiple properties in one day?", a: "Yes. Multi-property routes are common for our property management clients. We schedule and bill them as a batch." },
-        { q: "Do you provide a single point of contact?", a: "Yes. Each account gets a primary point of contact for booking, scheduling, and invoicing — no phone tag." },
-        { q: "What about emergency cleanouts?", a: "Same-day service available with our standing clients. Call us first — we route emergencies to the next open slot." },
+        { q: "Do you provide a single point of contact?", a: "Yes. Each account gets a primary point of contact for booking, scheduling, and invoicing. No phone tag." },
+        { q: "What about emergency cleanouts?", a: "Same-day service available with our standing clients. Call us first and we route emergencies to the next open slot." },
       ],
     },
   },
@@ -2439,7 +2577,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
         {
           num: "01",
           title: "Get a free estimate",
-          desc: "Send us a photo or call us. We give you a flat, transparent price upfront — no hidden fees, no surprises on the day.",
+          desc: "Send us a photo or call us. We give you a flat, transparent price upfront, no hidden fees, no surprises on the day.",
         },
         {
           num: "02",
@@ -2480,10 +2618,10 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       titleAccent: "explained.",
       items: [
         { q: "How much does an estate cleanout cost in Jacksonville Beach?", a: "Property-by-property quote after walkthrough. Free estimates and our $199 minimum applies for partial cleanouts." },
-        { q: "Will you flag items of value?", a: "We do — anything that looks valuable, sentimental, or important (documents, photos, jewelry, valuables) gets set aside for your review before haul-away." },
-        { q: "Can you coordinate with an out-of-state family?", a: "Yes. We do this often — Jacksonville Beach estate, out-of-state family. Photos, video walkthroughs, and full email coordination." },
+        { q: "Will you flag items of value?", a: "We do. Anything that looks valuable, sentimental, or important (documents, photos, jewelry, valuables) gets set aside for your review before haul-away." },
+        { q: "Can you coordinate with an out-of-state family?", a: "Yes. We do this often: Jacksonville Beach estate, out-of-state family. Photos, video walkthroughs, and full email coordination." },
         { q: "Do you donate the donatable items?", a: "When condition allows, yes. Local Jacksonville Beach shelters and donation centers. We can provide donation receipts when needed." },
-        { q: "How long does an estate cleanout take?", a: "From a day to a full week depending on size and how much sorting is needed. We don't rush — but we don't drag it out either." },
+        { q: "How long does an estate cleanout take?", a: "From a day to a full week depending on size and how much sorting is needed. We don't rush, but we don't drag it out either." },
       ],
     },
   },
@@ -2504,7 +2642,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       title: "Single piano. ",
       titleAccent: "Cross-town move. Either way.",
       paragraphs: [
-        "We're a junk crew that also moves things — short-haul, single-item, and small local moves with the same hands you trust to haul out a garage. Need a piano moved across the room? A fridge to the new house? Half a one-bedroom across Jacksonville Beach? Same crew.",
+        "We're a junk crew that also moves things: short-haul, single-item, and small local moves with the same hands you trust to haul out a garage. Need a piano moved across the room? A fridge to the new house? Half a one-bedroom across Jacksonville Beach? Same crew.",
         "We're not a national van line and we don't pretend to be. We're better than that for short Jacksonville Beach moves: same-day availability, flat hourly or flat-rate quotes, no fuel surcharges, no hidden add-ons.",
       ],
       includesEyebrow: "Includes",
@@ -2536,7 +2674,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
         {
           num: "01",
           title: "Get a free estimate",
-          desc: "Send us a photo or call us. We give you a flat, transparent price upfront — no hidden fees, no surprises on the day.",
+          desc: "Send us a photo or call us. We give you a flat, transparent price upfront, no hidden fees, no surprises on the day.",
         },
         {
           num: "02",
@@ -2555,7 +2693,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       title: "Transparent pricing, ",
       titleAccent: "no surprises.",
       paragraphs: [
-        "Moving service is priced flat per job — we walk it with you (in person or by photo/list) and quote upfront. No hourly drift, no fuel surcharges. Single-item moves start at our $199 minimum and scale by volume and distance.",
+        "Moving service is priced flat per job. We walk it with you (in person or by photo/list) and quote upfront. No hourly drift, no fuel surcharges. Single-item moves start at our $199 minimum and scale by volume and distance.",
         "We beat the franchises on price, and we care a heck of a lot more about the work. Our minimum is $199 (a small pile of stuff or a single couch) and the price scales from there based on volume and labor. Free estimates, every time.",
       ],
       cardPre: "Free Estimate",
@@ -2577,10 +2715,10 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       titleAccent: "explained.",
       items: [
         { q: "How much does a local move cost in Jacksonville Beach?", a: "Flat-rate per job. Single items start at $199. Studio and one-bedroom apartments fall in a predictable range. Free estimate after walkthrough or list." },
-        { q: "Do you move pianos?", a: "Yes — uprights, baby grands, and small grands. We bring the dolly, straps, and four hands. We don't tune them and we don't move concert grands." },
+        { q: "Do you move pianos?", a: "Yes: uprights, baby grands, and small grands. We bring the dolly, straps, and four hands. We don't tune them and we don't move concert grands." },
         { q: "Same-day moving help?", a: "Often, especially for in-town single-item moves. Larger moves we usually schedule a day or two ahead." },
-        { q: "Do you provide packing materials?", a: "We bring blankets, straps, and floor protection. Boxes and packing tape we don't supply — bring your own or we can route you to a local supplier." },
-        { q: "How big a move is too big?", a: "Whole-house long-haul moves aren't us — that's a national van line. Anything within Jacksonville Beach or to nearby Maryland/PA, we handle routinely." },
+        { q: "Do you provide packing materials?", a: "We bring blankets, straps, and floor protection. Boxes and packing tape we don't supply, so bring your own or we can route you to a local supplier." },
+        { q: "How big a move is too big?", a: "Whole-house long-haul moves aren't us. That's a national van line. Local moves around the Jacksonville Beaches are what we handle." },
       ],
     },
   },
@@ -2622,6 +2760,48 @@ export type LocationDetail = {
     towns?: { name: string; slug?: string }[];
   };
 
+  // Real jobs the crew did in this town. Renders right after the local
+  // intro, only when present. Rules: service categories only (never the
+  // specific items), no customer names or addresses, and nothing that
+  // isn't in the job record. EMPTY FOR NOW: Haul Aboard is new, and
+  // this section is never filled with made-up jobs. Add real ones as
+  // they happen (see Junk Away's content.ts for worked examples).
+  recentJobs?: {
+    eyebrow: string;
+    title: string;
+    titleAccent: string;
+    intro?: string;
+    // Photos are real job photos from this town. `label` drives the
+    // small Before/After caption; `focal` is where the subject sits.
+    jobs: {
+      title: string;
+      text: string;
+      photos?: { src: string; alt: string; label?: string; focal?: string }[];
+    }[];
+    closing?: string;
+    // Later weeks, newest first. Each renders above the original
+    // intro and jobs, so the section builds up a history instead of
+    // one week replacing the last.
+    newerWeeks?: {
+      intro: string;
+      jobs: {
+        title: string;
+        text: string;
+        photos?: { src: string; alt: string; label?: string; focal?: string }[];
+      }[];
+      closing?: string;
+    }[];
+  };
+
+  // Full-width photo band with a short line of text over it. Same
+  // shape as ServiceDetail["banner"] so it renders through the same
+  // <PhotoBanner> component. Use a REAL job photo from this town.
+  banner?: {
+    photo: { src: string; alt: string; focal?: string };
+    text: string;
+    textAccent: string;
+  };
+
   // Services grid (6 cards) — defaults to the homepage preview slugs
   // if not overridden. Use to feature different services per area.
   servicesPreview?: {
@@ -2657,9 +2837,36 @@ export type LocationDetail = {
     href: string;
     anchor: string;
   };
+
+  // Town-specific FAQ. When present the page renders the accordion AND
+  // emits FAQPage JSON-LD, so these answers are eligible for the
+  // "People also ask" style rich results on town-intent searches.
+  // Keep every question genuinely local. A generic FAQ duplicated
+  // across towns is worth nothing and risks looking templated.
+  faq?: {
+    eyebrow: string;
+    title: string;
+    titleAccent: string;
+    items: { q: string; a: string }[];
+  };
 };
 
 export const locationDetails: Record<string, LocationDetail> = {
+  // ============================================================
+  // All six town pages were rebuilt on 2026-10-04 to match the
+  // structure Junk Away's Wilmington page moved to on 2026-09-01:
+  // a specific H1 instead of the template one, a longer local intro,
+  // a photo banner, and a town FAQ that also emits FAQPage schema.
+  //
+  // What is deliberately NOT here yet: `recentJobs` and
+  // `testimonials`. Those are real-jobs and real-reviews sections.
+  // Haul Aboard is new, so they stay empty until there is something
+  // true to put in them.
+  // ============================================================
+
+  // ============================================================
+  // JACKSONVILLE BEACH (home base)
+  // ============================================================
   "jacksonville-beach": {
     guide: {
       blurb: "Want the local deep dive? Read our full guide to",
@@ -2667,8 +2874,10 @@ export const locationDetails: Record<string, LocationDetail> = {
       href: "/blog/junk-removal-jacksonville-beach-fl",
     },
     hero: {
-      lede: "From the pier and downtown Jax Beach out to the Intracoastal, we haul furniture, appliances, hot tubs, and whole-home cleanouts — same-day, flat-rate, and clean.",
-    stats: [
+      h1: "Junk removal in Jacksonville Beach, FL, ",
+      h1Accent: "condo stairs and all.",
+      lede: "Jacksonville Beach is home base. Condos along 1st Street, rentals turning over between guests, garages off Beach Boulevard, whole houses out toward the Intracoastal. Free on-site estimate, flat price before we lift a thing.",
+      stats: [
         { num: "Same-Day", label: "Service available" },
         { num: "Free", label: "On-site estimates" },
         { num: "$199", label: "Flat-rate minimum" },
@@ -2676,11 +2885,13 @@ export const locationDetails: Record<string, LocationDetail> = {
     },
     localIntro: {
       eyebrow: "Jacksonville Beach's local junk crew",
-      title: "We know ",
-      titleAccent: "Jacksonville Beach.",
+      title: "Built for ",
+      titleAccent: "beach access.",
       paragraphs: [
-        "Jacksonville Beach is our home base. We clear out beach condos and rentals along 1st and 3rd Street, garages and sheds in the older neighborhoods off Beach Boulevard, and full estates over toward the Intracoastal. Salt air is hard on outdoor furniture, grills, and hot tubs — when they're done, we haul them off and recycle what we can.",
-        "Whether you're staging a South Beach rental between guests, clearing a garage in Isle of Palms, or emptying a whole house near Pablo Point, our crew shows up on time with the truck and the muscle. Same-day junk removal is regular here, and every estimate is free and on-site.",
+        "Jacksonville Beach is where Haul Aboard is based, so this is the town we can get to fastest. The work here is shaped by the buildings: oceanfront condos with elevators and loading rules, older beach cottages on narrow lots, and rental units along 1st and 3rd Street that have to be empty and clean before the next guest checks in.",
+        "Access is the whole job at the beach. Parking is tight near the pier, a lot of units are up a flight or three of outside stairs, and nobody wants a sleeper sofa dragged across their pavers. We walk the carry-out first, pad the corners and door frames, and bring enough hands that nothing gets forced.",
+        "Salt air is hard on anything that lives outside. Grills, patio sets, hot tubs and metal sheds all have a shorter life here than they do inland. When they are done, we take them apart if we have to, haul them off, and send the metal to a scrap recycler.",
+        "We are locally owned, licensed and insured, and the same owner runs Junk Away, the top-rated junk removal company in Delaware. Every estimate is free and on-site, and you get one flat price before we start.",
       ],
       neighborhoodsHeading: "Jacksonville Beach Neighborhoods We Serve",
       neighborhoods: [
@@ -2698,6 +2909,15 @@ export const locationDetails: Record<string, LocationDetail> = {
         "Downtown Jax Beach",
       ],
     },
+    banner: {
+      photo: {
+        src: "/images/locations/jacksonville-beach-banner.jpg",
+        alt: "Haul Aboard junk removal truck on a job in Jacksonville Beach, Florida",
+        focal: "center 45%",
+      },
+      text: "Oceanfront condos and ",
+      textAccent: "back-alley garages.",
+    },
     servicesPreview: {
       eyebrow: "Services in Jacksonville Beach",
       title: "If it doesn't belong, ",
@@ -2711,6 +2931,37 @@ export const locationDetails: Record<string, LocationDetail> = {
         "tenant-turnover-services",
       ],
     },
+    faq: {
+      eyebrow: "Jacksonville Beach questions",
+      title: "The stuff people ",
+      titleAccent: "actually ask.",
+      items: [
+        {
+          q: "How much does junk removal cost in Jacksonville Beach?",
+          a: "Our minimum is $199, which covers a single couch or a small pile. Above that the price scales with volume and labor, and stairs count as labor: a third-floor condo is more work than a pickup at the curb, and the quote reflects that. Estimates are free and on-site, and you get a flat number before we start. No hourly meter, no surprise line at the end.",
+        },
+        {
+          q: "Can you come out the same day in Jacksonville Beach?",
+          a: "Often, yes. Jacksonville Beach is our home base, so it is the easiest town for us to work a job into. Same-day slots fill early, so call (904) 404-6264 in the morning rather than the afternoon. You can also book online any time.",
+        },
+        {
+          q: "Can you clear out an upstairs condo or a unit with no elevator?",
+          a: "Yes. Outside stairs, tight landings and elevator buildings are normal here. We plan the carry-out before we start and pad what needs padding. If your building needs the elevator reserved or limits when contractors can load, tell us at the estimate and we will schedule around it.",
+        },
+        {
+          q: "Do you handle vacation rental and Airbnb turnovers?",
+          a: "Yes. Old mattresses, broken furniture, a dead fridge, whatever the last guest or tenant left. If you have a check-in coming, give us the date and time when you call and we will tell you honestly whether we can make it.",
+        },
+        {
+          q: "Where does the truck park near the beach?",
+          a: "Usually in your driveway, your building's lot or the alley behind the house. On blocks near the pier where street parking is tight, mention it when you book. If your building or the city requires a reserved space, that has to be arranged by the owner or the property manager, and we will work to the slot you get.",
+        },
+        {
+          q: "What do you take out of a Jacksonville Beach property?",
+          a: "Furniture and mattresses, appliances, hot tubs, grills and patio sets, garage and attic cleanouts, tenant leave-behinds, renovation debris, yard waste and storm debris. What we can't take is hazardous material: paint, solvents, motor oil, propane tanks, asbestos. If you are unsure, send a photo and we will tell you straight.",
+        },
+      ],
+    },
     otherAreas: {
       eyebrow: "Other areas we serve",
       title: "All along ",
@@ -2719,10 +2970,20 @@ export const locationDetails: Record<string, LocationDetail> = {
     },
   },
 
+  // ============================================================
+  // NEPTUNE BEACH
+  // ============================================================
   "neptune-beach": {
+    guide: {
+      blurb: "Want the local deep dive? Read our full guide to",
+      anchor: "junk removal in Neptune Beach, FL",
+      href: "/blog/junk-removal-neptune-beach-fl",
+    },
     hero: {
-      lede: "A short hop north of the pier, Neptune Beach is one of our most-served towns — cleanouts, furniture, appliances, and rental turnovers, done same-day.",
-    stats: [
+      h1: "Junk removal in Neptune Beach, FL, ",
+      h1Accent: "tight lots and all.",
+      lede: "A few minutes up 3rd Street from our home base. Beach cottages, rental turnovers, garages that haven't seen a car in years. Free on-site estimate, flat price before we lift a thing.",
+      stats: [
         { num: "Same-Day", label: "Service available" },
         { num: "Free", label: "On-site estimates" },
         { num: "$199", label: "Flat-rate minimum" },
@@ -2730,16 +2991,17 @@ export const locationDetails: Record<string, LocationDetail> = {
     },
     localIntro: {
       eyebrow: "Neptune Beach's local junk crew",
-      title: "We know ",
-      titleAccent: "Neptune Beach.",
+      title: "Small town, ",
+      titleAccent: "tight access.",
       paragraphs: [
-        "Neptune Beach packs a lot into a small footprint, from the shops and restaurants of Beaches Town Center down to the quiet streets near the ocean. We handle beach-cottage cleanouts, garage clear-outs, appliance swaps, and the odd hot tub tucked behind an older home.",
-        "Tight lots and alley access are the norm here — our crew is used to carrying loads out the long way without scuffing a wall or a fence. Same-day service is common, and you always get a flat price before we start.",
+        "Neptune Beach packs a lot into a small footprint, from the shops and restaurants at Beaches Town Center down to the quiet streets near the ocean. Lots are small, driveways are short, and plenty of houses load from a side yard or a shared drive. We are used to carrying a load out the long way without scuffing a wall or a fence.",
+        "The town has two kinds of work. One is rentals: units near the ocean and around Town Center where a tenant or a season of guests has left things behind and the owner needs the place empty. The other is long-time homes, where a garage, an attic or a back shed has been filling up for decades and somebody has finally decided it is time.",
+        "We handle both. Furniture and mattresses, appliances, hot tubs tucked behind older homes, yard debris after a storm, and whole-house cleanouts when a family is selling or settling an estate.",
+        "Haul Aboard is locally owned and based next door in Jacksonville Beach, licensed and insured. Every estimate is free and on-site, and you get one flat price before we start.",
       ],
       neighborhoodsHeading: "Neptune Beach Neighborhoods We Serve",
       neighborhoods: [
         "Beaches Town Center",
-        "Oceanwalk",
         "Cedar Bluff",
         "Poinsettia",
         "Hopkins Street",
@@ -2747,6 +3009,15 @@ export const locationDetails: Record<string, LocationDetail> = {
         "Florida Boulevard",
         "Forest & Myra Streets",
       ],
+    },
+    banner: {
+      photo: {
+        src: "/images/locations/neptune-beach-banner.jpg",
+        alt: "Haul Aboard junk removal crew loading the truck in Neptune Beach, Florida",
+        focal: "center 45%",
+      },
+      text: "Beach cottages and ",
+      textAccent: "rental turnovers.",
     },
     servicesPreview: {
       eyebrow: "Services in Neptune Beach",
@@ -2761,6 +3032,33 @@ export const locationDetails: Record<string, LocationDetail> = {
         "estate-cleanouts",
       ],
     },
+    faq: {
+      eyebrow: "Neptune Beach questions",
+      title: "The stuff people ",
+      titleAccent: "actually ask.",
+      items: [
+        {
+          q: "How much does junk removal cost in Neptune Beach?",
+          a: "Our minimum is $199, which covers a single couch or a small pile. Above that the price scales with volume and labor. Estimates are free and on-site, and you get a flat number before we start.",
+        },
+        {
+          q: "Can you come out the same day in Neptune Beach?",
+          a: "Often, yes. Neptune Beach is a few minutes from our base in Jacksonville Beach, so it is easy to fit in. Call (904) 404-6264 in the morning for the best chance at a same-day slot.",
+        },
+        {
+          q: "My driveway is short and the street is narrow. Can you still get a truck in?",
+          a: "Almost always. That describes most of Neptune Beach. We park where it is legal and safe and carry the load to the truck, even if that means a longer walk from a back yard or a side gate. If your block is unusually tight, tell us when you book so we bring the right setup.",
+        },
+        {
+          q: "Can you clear a rental between tenants or before the season?",
+          a: "Yes. Tell us the date the unit has to be ready. We take the furniture, mattresses, appliances and bagged trash a tenant leaves behind, and we can work with your property manager or cleaner on timing.",
+        },
+        {
+          q: "Will you take old beach gear, grills and patio furniture?",
+          a: "Yes. Rusted grills, sun-rotted patio sets, broken kayaks and boards, coolers, umbrellas. Propane tanks are the one thing we can't haul, so take the tank off the grill before we arrive.",
+        },
+      ],
+    },
     otherAreas: {
       eyebrow: "Other areas we serve",
       title: "All along ",
@@ -2769,10 +3067,20 @@ export const locationDetails: Record<string, LocationDetail> = {
     },
   },
 
+  // ============================================================
+  // ATLANTIC BEACH
+  // ============================================================
   "atlantic-beach": {
+    guide: {
+      blurb: "Want the local deep dive? Read our full guide to",
+      anchor: "junk removal in Atlantic Beach, FL",
+      href: "/blog/junk-removal-atlantic-beach-fl",
+    },
     hero: {
-      lede: "From Selva Marina to the north end, we clear furniture, appliances, hot tubs, and full homes across Atlantic Beach — same-day, flat-rate, and tidy.",
-    stats: [
+      h1: "Junk removal in Atlantic Beach, FL, ",
+      h1Accent: "oak canopy and all.",
+      lede: "From the blocks by Beaches Town Center up through Selva Marina and out along Mayport Road. Garages, estates, moves and hot tubs. Free on-site estimate, flat price before we lift a thing.",
+      stats: [
         { num: "Same-Day", label: "Service available" },
         { num: "Free", label: "On-site estimates" },
         { num: "$199", label: "Flat-rate minimum" },
@@ -2780,24 +3088,36 @@ export const locationDetails: Record<string, LocationDetail> = {
     },
     localIntro: {
       eyebrow: "Atlantic Beach's local junk crew",
-      title: "We know ",
-      titleAccent: "Atlantic Beach.",
+      title: "Careful work in ",
+      titleAccent: "established yards.",
       paragraphs: [
-        "Atlantic Beach ranges from the walkable blocks near Beaches Town Center to the golf-course homes around Selva Marina and the Atlantic Beach Country Club. We do garage and shed cleanouts, appliance and furniture haul-away, and estate clear-outs in the established neighborhoods.",
-        "Older trees, coquina driveways, and mature landscaping mean careful access — we protect your property on the way out and sweep up before we leave. Free on-site estimates and same-day service whenever our schedule allows.",
+        "Atlantic Beach runs from the walkable blocks near Beaches Town Center to the golf-course homes around Selva Marina and the Atlantic Beach Country Club, then west along the Mayport Road corridor. It is an older, greener town than its neighbors, and a lot of the homes have been lived in for a long time.",
+        "That shapes the work. Mature oaks, shell and paver driveways and established landscaping mean we think about where the truck sits and how the load comes out before we start. We protect what is staying and sweep up before we leave.",
+        "With Naval Station Mayport just up the road, moves are a regular part of life here. If you have orders and a house to empty, we can clear what the movers won't take: old furniture, garage leftovers, the shed, the playset in the back yard.",
+        "Haul Aboard is locally owned and based in Jacksonville Beach, licensed and insured. Every estimate is free and on-site, and you get one flat price before we start.",
       ],
       neighborhoodsHeading: "Atlantic Beach Neighborhoods We Serve",
       neighborhoods: [
         "Selva Marina",
         "Selva Lakes",
+        "Oceanwalk",
         "Ocean Grove",
         "Saltair",
         "Sherry Estates",
         "Section H",
         "Donner",
         "Atlantic Beach Country Club",
-        "Royal Palms (border)",
+        "Royal Palms",
       ],
+    },
+    banner: {
+      photo: {
+        src: "/images/locations/atlantic-beach-banner.jpg",
+        alt: "Haul Aboard junk removal crew on a job in Atlantic Beach, Florida",
+        focal: "center 45%",
+      },
+      text: "Garages, estates and ",
+      textAccent: "moving-day leftovers.",
     },
     servicesPreview: {
       eyebrow: "Services in Atlantic Beach",
@@ -2812,6 +3132,33 @@ export const locationDetails: Record<string, LocationDetail> = {
         "yard-waste-removal",
       ],
     },
+    faq: {
+      eyebrow: "Atlantic Beach questions",
+      title: "The stuff people ",
+      titleAccent: "actually ask.",
+      items: [
+        {
+          q: "How much does junk removal cost in Atlantic Beach?",
+          a: "Our minimum is $199, which covers a single couch or a small pile. Above that the price scales with volume and labor. Estimates are free and on-site, and you get a flat number before we start.",
+        },
+        {
+          q: "Can you come out the same day in Atlantic Beach?",
+          a: "Often, yes. Atlantic Beach is a short drive up 3rd Street from our base. Call (904) 404-6264 in the morning for the best chance at a same-day slot.",
+        },
+        {
+          q: "We have military orders and need the house empty fast. Can you help?",
+          a: "Yes. Tell us your pack-out date and what the movers are not taking. We can clear the garage, the shed, old furniture and yard items in one visit so the house is ready to hand back or list.",
+        },
+        {
+          q: "Will the truck damage my driveway or landscaping?",
+          a: "We plan around it. Where the driveway is shell, pavers or sits under low oak limbs, we park on the street and carry the load out. We lay down protection over floors and walkways when a job calls for it.",
+        },
+        {
+          q: "Do you haul yard and storm debris in Atlantic Beach?",
+          a: "Yes. Limbs, palm fronds, brush piles and fence sections after a storm, and regular yard cleanups the rest of the year. If a tree is still standing or leaning on a structure, that is a tree service job first, and we haul what they leave.",
+        },
+      ],
+    },
     otherAreas: {
       eyebrow: "Other areas we serve",
       title: "All along ",
@@ -2820,10 +3167,20 @@ export const locationDetails: Record<string, LocationDetail> = {
     },
   },
 
+  // ============================================================
+  // PONTE VEDRA BEACH
+  // ============================================================
   "ponte-vedra-beach": {
+    guide: {
+      blurb: "Want the local deep dive? Read our full guide to",
+      anchor: "junk removal in Ponte Vedra, FL",
+      href: "/blog/junk-removal-ponte-vedra-fl",
+    },
     hero: {
-      lede: "White-glove junk removal for Ponte Vedra Beach — estate cleanouts, furniture, and hot tubs handled with care around Sawgrass, Marsh Landing, and the Boulevard.",
-    stats: [
+      h1: "Junk removal in Ponte Vedra Beach, FL, ",
+      h1Accent: "gate codes and all.",
+      lede: "Careful, quiet junk removal for Sawgrass, Marsh Landing, The Plantation and the homes along Ponte Vedra Boulevard. Free on-site estimate, flat price before we lift a thing.",
+      stats: [
         { num: "Same-Day", label: "Service available" },
         { num: "Free", label: "On-site estimates" },
         { num: "$199", label: "Flat-rate minimum" },
@@ -2831,11 +3188,13 @@ export const locationDetails: Record<string, LocationDetail> = {
     },
     localIntro: {
       eyebrow: "Ponte Vedra Beach's local junk crew",
-      title: "We know ",
-      titleAccent: "Ponte Vedra Beach.",
+      title: "Careful, quiet, ",
+      titleAccent: "on schedule.",
       paragraphs: [
-        "Ponte Vedra Beach is home to some of the finest addresses on the First Coast — Marsh Landing, The Plantation, Sawgrass, and the estates along Ponte Vedra Boulevard. These jobs call for a careful crew: floor protection, clean loading, and total discretion.",
-        "We handle full estate cleanouts, downsizing moves, furniture and appliance removal, and hot tub teardowns — quietly and on schedule. Every job starts with a free walkthrough or photo quote and a flat price with no surprises.",
+        "Ponte Vedra Beach is mostly gated and mostly governed by an HOA, and both of those change how a junk removal job runs. Sawgrass, Marsh Landing and The Plantation all have a gate to clear and rules about when contractors can work and where a truck can sit. We ask about those at the estimate so there are no surprises on the day.",
+        "The homes here are large and well kept, so the work is as much about care as it is about lifting. Floor protection going in, padded door frames, clean loading, and no pile left at the curb. If discretion matters, for an estate or a family situation, say so and we will keep it low-key.",
+        "Most of what we expect to do in Ponte Vedra Beach is estate cleanouts, downsizing, furniture and appliance removal, garage cleanouts and hot tub teardowns. We can also work around a closing date or a listing photographer.",
+        "Haul Aboard is locally owned and based in Jacksonville Beach, licensed and insured, and we can send a certificate of insurance to your community manager if the gate requires one.",
       ],
       neighborhoodsHeading: "Ponte Vedra Beach Neighborhoods We Serve",
       neighborhoods: [
@@ -2850,6 +3209,15 @@ export const locationDetails: Record<string, LocationDetail> = {
         "TPC Sawgrass area",
       ],
     },
+    banner: {
+      photo: {
+        src: "/images/locations/ponte-vedra-beach-banner.jpg",
+        alt: "Haul Aboard junk removal crew carrying furniture out of a Ponte Vedra Beach home",
+        focal: "center 45%",
+      },
+      text: "Estates, downsizing and ",
+      textAccent: "gated communities.",
+    },
     servicesPreview: {
       eyebrow: "Services in Ponte Vedra Beach",
       title: "If it doesn't belong, ",
@@ -2863,6 +3231,33 @@ export const locationDetails: Record<string, LocationDetail> = {
         "garage-cleanouts",
       ],
     },
+    faq: {
+      eyebrow: "Ponte Vedra Beach questions",
+      title: "The stuff people ",
+      titleAccent: "actually ask.",
+      items: [
+        {
+          q: "How much does junk removal cost in Ponte Vedra Beach?",
+          a: "Our minimum is $199, which covers a single couch or a small pile. Above that the price scales with volume and labor. Estimates are free and on-site, and you get a flat number before we start.",
+        },
+        {
+          q: "How do you get through the gate at Sawgrass, Marsh Landing or The Plantation?",
+          a: "You add us to the gate list or call us in the way you would any contractor. Tell us at the estimate which community you are in and whether it restricts contractor hours or days, and we will schedule inside those rules.",
+        },
+        {
+          q: "Can you provide a certificate of insurance for my HOA or property manager?",
+          a: "Yes. We are licensed and insured and can send a certificate of insurance to your community manager before the job. Ask for it when you book so it is in hand before we arrive.",
+        },
+        {
+          q: "Do you handle whole-home and estate cleanouts?",
+          a: "Yes. We start with a free walkthrough, agree what is kept, donated and hauled, and give you one flat price. We can work with your realtor, attorney or family on timing, and leave the home broom-swept.",
+        },
+        {
+          q: "Can you come out the same day in Ponte Vedra Beach?",
+          a: "Sometimes. A single item or a small load can often be done same-day if you call (904) 404-6264 in the morning. Larger cleanouts, and jobs in communities with contractor hours, we usually schedule a day or two out.",
+        },
+      ],
+    },
     otherAreas: {
       eyebrow: "Other areas we serve",
       title: "All along ",
@@ -2871,10 +3266,20 @@ export const locationDetails: Record<string, LocationDetail> = {
     },
   },
 
+  // ============================================================
+  // PONTE VEDRA (Palm Valley and inland)
+  // ============================================================
   "ponte-vedra": {
+    guide: {
+      blurb: "Want the local deep dive? Read our full guide to",
+      anchor: "junk removal in Ponte Vedra, FL",
+      href: "/blog/junk-removal-ponte-vedra-fl",
+    },
     hero: {
-      lede: "Garage, home, and estate cleanouts plus furniture and appliance haul-away across Ponte Vedra — same-day, flat-rate, licensed and insured.",
-    stats: [
+      h1: "Junk removal in Ponte Vedra, FL, ",
+      h1Accent: "garage to lanai.",
+      lede: "Palm Valley, Sawmill Lakes and the neighborhoods west of the Intracoastal. Garage cleanouts, furniture, appliances, sheds and playsets. Free on-site estimate, flat price before we lift a thing.",
+      stats: [
         { num: "Same-Day", label: "Service available" },
         { num: "Free", label: "On-site estimates" },
         { num: "$199", label: "Flat-rate minimum" },
@@ -2882,11 +3287,13 @@ export const locationDetails: Record<string, LocationDetail> = {
     },
     localIntro: {
       eyebrow: "Ponte Vedra's local junk crew",
-      title: "We know ",
-      titleAccent: "Ponte Vedra.",
+      title: "Family homes, ",
+      titleAccent: "full garages.",
       paragraphs: [
-        "Ponte Vedra spreads from Palm Valley and Sawmill Lakes to the newer communities near Nocatee. We clear garages, sheds, and lanais, haul off old furniture and appliances, and handle whole-home and estate cleanouts across the area.",
-        "It's a lot of newer construction and growing families, which means moving-day cleanouts, playset and shed teardowns, and renovation debris. We give you one flat price up front and get it gone — often the same day.",
+        "Ponte Vedra spreads from Palm Valley along the Intracoastal out through Sawmill Lakes and the newer neighborhoods toward Nocatee. It is a place of family homes with two- and three-car garages, screened lanais and back yards, and each of those fills up over time.",
+        "So the work here is mostly household. Garages that need to hold a car again, furniture and appliances being replaced, a playset the kids have outgrown, a shed that has rusted through, and the debris from a kitchen or bathroom remodel.",
+        "Florida homes are built on a slab, so there is no basement to hide things in. The garage and the attic do that job instead. We clear both, and we bring enough hands to get an attic emptied without anyone wrestling a box down a pull-down ladder alone.",
+        "Haul Aboard is locally owned and based in Jacksonville Beach, licensed and insured. Every estimate is free and on-site, and you get one flat price before we start.",
       ],
       neighborhoodsHeading: "Ponte Vedra Neighborhoods We Serve",
       neighborhoods: [
@@ -2900,17 +3307,53 @@ export const locationDetails: Record<string, LocationDetail> = {
         "Walden Chase",
       ],
     },
+    banner: {
+      photo: {
+        src: "/images/locations/ponte-vedra-banner.jpg",
+        alt: "Haul Aboard junk removal crew clearing a garage in Ponte Vedra, Florida",
+        focal: "center 45%",
+      },
+      text: "Garages, attics and ",
+      textAccent: "back-yard teardowns.",
+    },
     servicesPreview: {
       eyebrow: "Services in Ponte Vedra",
       title: "If it doesn't belong, ",
       titleAccent: "it's gone.",
       featuredSlugs: [
+        "garage-cleanouts",
         "furniture-and-mattress-removal",
         "appliance-removal",
-        "garage-cleanouts",
         "estate-cleanouts",
         "construction-debris-removal",
         "shed-and-fence-removal",
+      ],
+    },
+    faq: {
+      eyebrow: "Ponte Vedra questions",
+      title: "The stuff people ",
+      titleAccent: "actually ask.",
+      items: [
+        {
+          q: "How much does junk removal cost in Ponte Vedra?",
+          a: "Our minimum is $199, which covers a single couch or a small pile. Above that the price scales with volume and labor. Estimates are free and on-site, and you get a flat number before we start.",
+        },
+        {
+          q: "Can you come out the same day in Ponte Vedra?",
+          a: "Often, yes, for a single item or a small load. Call (904) 404-6264 in the morning. Full garage or whole-house cleanouts we usually schedule a day or two out so we bring the right crew.",
+        },
+        {
+          q: "Can you clear out a garage and an attic in one visit?",
+          a: "Yes. That is the most common pairing here, since slab-built homes have no basement. You point at what goes, we carry it down and out, sweep the garage floor and haul it all off in one trip where the load allows.",
+        },
+        {
+          q: "Will you take down a playset or a shed?",
+          a: "Yes. We take it apart in the yard, carry it out in pieces and haul it away. Check with your HOA first if it has rules about work in the yard, then call us.",
+        },
+        {
+          q: "My HOA doesn't allow bulk items at the curb. Can you pick up from inside?",
+          a: "Yes. Nothing has to go to the curb. We carry everything from where it sits, whether that is the garage, a bedroom upstairs or the lanai, straight to the truck.",
+        },
       ],
     },
     otherAreas: {
@@ -2921,10 +3364,20 @@ export const locationDetails: Record<string, LocationDetail> = {
     },
   },
 
+  // ============================================================
+  // NOCATEE
+  // ============================================================
   "nocatee": {
+    guide: {
+      blurb: "Want the local deep dive? Read our full guide to",
+      anchor: "junk removal in Nocatee, FL",
+      href: "/blog/junk-removal-nocatee-fl",
+    },
     hero: {
-      lede: "One of Florida's fastest-growing communities — we handle new-build debris, moving-day cleanouts, and furniture and appliance haul-away all over Nocatee.",
-    stats: [
+      h1: "Junk removal in Nocatee, FL, ",
+      h1Accent: "move-in to move-out.",
+      lede: "New builds, growing families and a lot of moving trucks. We haul the boxes, the old furniture, the remodel debris and the playset. Free on-site estimate, flat price before we lift a thing.",
+      stats: [
         { num: "Same-Day", label: "Service available" },
         { num: "Free", label: "On-site estimates" },
         { num: "$199", label: "Flat-rate minimum" },
@@ -2932,11 +3385,13 @@ export const locationDetails: Record<string, LocationDetail> = {
     },
     localIntro: {
       eyebrow: "Nocatee's local junk crew",
-      title: "We know ",
-      titleAccent: "Nocatee.",
+      title: "New homes, ",
+      titleAccent: "new junk.",
       paragraphs: [
-        "Nocatee is booming, and new homes mean new junk: packaging and renovation debris, old furniture from the last house, playsets and grills that didn't survive the move. We clear it all across Town Center, Twenty Mile, and the villages in between.",
-        "From Del Webb downsizers to young families in Willowcove and Crosswater, we bring the truck, quote a flat price, and haul it off fast. Same-day service is common and every estimate is free.",
+        "Nocatee is one of the fastest-growing communities in Florida, and a place that is always being built and moved into makes a particular kind of junk. Appliance and furniture packaging, the pieces that came from the last house and don't fit this one, and the leftovers when a builder-grade kitchen or floor gets upgraded.",
+        "The neighborhoods here are deed-restricted, which usually means nothing can sit at the curb and work has to look tidy while it is happening. That suits how we work. We carry straight from the garage or the house to the truck, and we don't leave a pile behind.",
+        "From Del Webb downsizers to young families in Willowcove and Crosswater, most jobs are household: garage cleanouts, furniture and appliance removal, playsets and trampolines, and construction debris from a remodel or a new pool deck.",
+        "Haul Aboard is locally owned and based in Jacksonville Beach, licensed and insured. Every estimate is free and on-site, and you get one flat price before we start.",
       ],
       neighborhoodsHeading: "Nocatee Neighborhoods We Serve",
       neighborhoods: [
@@ -2954,6 +3409,15 @@ export const locationDetails: Record<string, LocationDetail> = {
         "Seabrook",
       ],
     },
+    banner: {
+      photo: {
+        src: "/images/locations/nocatee-banner.jpg",
+        alt: "Haul Aboard junk removal crew loading moving boxes and old furniture in Nocatee, Florida",
+        focal: "center 45%",
+      },
+      text: "Moving boxes, remodels and ",
+      textAccent: "outgrown playsets.",
+    },
     servicesPreview: {
       eyebrow: "Services in Nocatee",
       title: "If it doesn't belong, ",
@@ -2965,6 +3429,33 @@ export const locationDetails: Record<string, LocationDetail> = {
         "garage-cleanouts",
         "moving-services",
         "shed-and-fence-removal",
+      ],
+    },
+    faq: {
+      eyebrow: "Nocatee questions",
+      title: "The stuff people ",
+      titleAccent: "actually ask.",
+      items: [
+        {
+          q: "How much does junk removal cost in Nocatee?",
+          a: "Our minimum is $199, which covers a single couch or a small pile. Above that the price scales with volume and labor. Estimates are free and on-site, and you get a flat number before we start.",
+        },
+        {
+          q: "Can you come out the same day in Nocatee?",
+          a: "Sometimes. Nocatee is the farthest town from our base in Jacksonville Beach, so same-day depends on where the crew already is. Call (904) 404-6264 in the morning and we will give you a straight answer.",
+        },
+        {
+          q: "We just moved in. Will you take all the boxes and packing material?",
+          a: "Yes. Flattened or not, plus the foam, the pallets and the old furniture that didn't make the cut. Cardboard gets recycled.",
+        },
+        {
+          q: "Can you haul debris from a remodel or a new-build punch list?",
+          a: "Yes. Drywall, flooring, cabinets, tile, trim and packaging. We work for homeowners and for contractors, and we can come back for a second load if the job runs in phases.",
+        },
+        {
+          q: "Do you work in Del Webb and the gated villages?",
+          a: "Yes. Add us at the gate the way you would any contractor, and tell us if the community limits contractor hours. We can send a certificate of insurance to the management office if they ask for one.",
+        },
       ],
     },
     otherAreas: {
@@ -3030,6 +3521,14 @@ export type ComboDetail = {
     titleAccent: string;
     items: { q: string; a: string }[];
   };
+  // Optional block of real recent jobs for this service in this town.
+  // Renders right after the local intro. Same rules as
+  // LocationDetail["recentJobs"]: categories only, nothing invented.
+  recentJobs?: {
+    heading: string;
+    paragraphs: string[];
+    photos?: { src: string; alt: string; label?: string; focal?: string }[];
+  };
   // Optional real review from a customer in or near this town. Only set it
   // when the review genuinely comes from there; never relabel a review to a
   // town it isn't from.
@@ -3041,8 +3540,8 @@ export const comboDetails: Record<string, ComboDetail> = {
     localIntro: {
       heading: "Hot tub removal in Jacksonville Beach, FL",
       paragraphs: [
-        "Salt air is brutal on backyard spas, and when a Jacksonville Beach hot tub finally quits, getting it out is the hard part. Our crew dismantles the shell, frame, pump, and heater right where it sits — no dragging a waterlogged tub across your pavers or lanai — and carries it out in pieces.",
-        "From the condos near the pier to the homes over toward the Intracoastal, we handle the full teardown and recycle the copper, metal, and frame wood we pull out. Same-day hot tub removal is often available in Jacksonville Beach — send a photo and we'll give you a flat quote, with a $199 minimum, before we lift a finger.",
+        "Salt air is brutal on backyard spas, and when a Jacksonville Beach hot tub finally quits, getting it out is the hard part. Our crew dismantles the shell, frame, pump, and heater right where it sits, with no dragging a waterlogged tub across your pavers or lanai, and carries it out in pieces.",
+        "From the condos near the pier to the homes over toward the Intracoastal, we handle the full teardown and recycle the copper, metal, and frame wood we pull out. Same-day hot tub removal is often available in Jacksonville Beach. Send a photo and we'll give you a flat quote, with a $199 minimum, before we lift a finger.",
       ],
     },
     faq: {
@@ -3052,7 +3551,7 @@ export const comboDetails: Record<string, ComboDetail> = {
       items: [
         {
           q: "Do I need to drain the hot tub first?",
-          a: "Yes — please drain it fully before we arrive. A drained tub is faster and safer to dismantle. If you can't drain it, tell us when you book and we'll talk through options.",
+          a: "Yes, please drain it fully before we arrive. A drained tub is faster and safer to dismantle. If you can't drain it, tell us when you book and we'll talk through options.",
         },
         {
           q: "Will you damage my deck or pavers?",
@@ -3060,7 +3559,7 @@ export const comboDetails: Record<string, ComboDetail> = {
         },
         {
           q: "Can you remove it the same day?",
-          a: "Often, yes — same-day hot tub removal is available in Jacksonville Beach depending on the crew's schedule. Call in the morning and we'll do our best to fit you in.",
+          a: "Often, yes. Same-day hot tub removal is available in Jacksonville Beach depending on the crew's schedule. Call in the morning and we'll do our best to fit you in.",
         },
       ],
     },
@@ -3069,7 +3568,7 @@ export const comboDetails: Record<string, ComboDetail> = {
     localIntro: {
       heading: "Estate cleanouts in Ponte Vedra Beach, FL",
       paragraphs: [
-        "Clearing an estate in Ponte Vedra Beach — in Marsh Landing, The Plantation, Sawgrass, or along the Boulevard — calls for a careful, discreet crew. After a loss, a downsize, or a long-distance move, we're the hands you can hand the keys to.",
+        "Clearing an estate in Ponte Vedra Beach (in Marsh Landing, The Plantation, Sawgrass, or along the Boulevard) calls for a careful, discreet crew. After a loss, a downsize, or a long-distance move, we're the hands you can hand the keys to.",
         "We sort what's kept, donated, and hauled, protect floors and doorways in the home, and leave it broom-swept and ready to list. Everything starts with a free, private walkthrough and one flat price up front, with a $199 minimum and no surprises.",
       ],
     },
@@ -3093,7 +3592,7 @@ export const comboDetails: Record<string, ComboDetail> = {
     localIntro: {
       heading: "Furniture & mattress removal in Jacksonville Beach, FL",
       paragraphs: [
-        "From a single mattress in a beach rental to a full living-room set, we lift it, carry it down the stairs, and haul it away — couches, beds, dressers, recliners, box springs, all of it. Perfect for turnovers along 1st and 3rd Street or a quick declutter before guests arrive.",
+        "From a single mattress in a beach rental to a full living-room set, we lift it, carry it down the stairs, and haul it away: couches, beds, dressers, recliners, box springs, all of it. Perfect for turnovers along 1st and 3rd Street or a quick declutter before guests arrive.",
         "No stairs too narrow, no piece too awkward. We donate and recycle what we can, and you get a flat price before we start, with a $199 minimum. Same-day furniture removal is common in Jacksonville Beach.",
       ],
     },
@@ -3102,7 +3601,7 @@ export const comboDetails: Record<string, ComboDetail> = {
     localIntro: {
       heading: "Construction & renovation debris removal in Nocatee, FL",
       paragraphs: [
-        "Nocatee is one of the fastest-growing communities in Florida, and all that building leaves debris behind — drywall, flooring, packaging, cabinets, and demo waste. We pull up, load fast, and keep your crew on the build instead of on the dump run.",
+        "Nocatee is one of the fastest-growing communities in Florida, and all that building leaves debris behind: drywall, flooring, packaging, cabinets, and demo waste. We pull up, load fast, and keep your crew on the build instead of on the dump run.",
         "We work around active job sites in Town Center, Twenty Mile, and the villages, and haul everything to the right facility. Flat-rate pricing with a $199 minimum, free estimates, and same-day service when the schedule allows.",
       ],
     },
@@ -3111,7 +3610,7 @@ export const comboDetails: Record<string, ComboDetail> = {
     localIntro: {
       heading: "Appliance removal in Jacksonville Beach, FL",
       paragraphs: [
-        "Old appliances are heavy, awkward, and usually wedged into a tight beach-cottage kitchen or garage. We disconnect, dolly out, and load — refrigerators, stoves, washers, dryers, and window AC units — without scuffing your floors or doorframes.",
+        "Old appliances are heavy, awkward, and usually wedged into a tight beach-cottage kitchen or garage. We disconnect, dolly out, and load refrigerators, stoves, washers, dryers, and window AC units without scuffing your floors or doorframes.",
         "Refrigerators are refrigerant-recovered properly, and we recycle the scrap metal. One flat price before we start, with a $199 minimum, and same-day appliance removal is regular across Jacksonville Beach.",
       ],
     },
@@ -3120,8 +3619,177 @@ export const comboDetails: Record<string, ComboDetail> = {
     localIntro: {
       heading: "Garage cleanouts in Ponte Vedra, FL",
       paragraphs: [
-        "When the garage in Palm Valley or Sawmill Lakes hasn't held a car in years, we fix that in an afternoon — old tools, broken beach gear, paint cans, playsets, and stacks of mystery boxes, cleared out and hauled off.",
+        "When the garage in Palm Valley or Sawmill Lakes hasn't held a car in years, we fix that in an afternoon: old tools, broken beach gear, paint cans, playsets, and stacks of mystery boxes, cleared out and hauled off.",
         "You point, we lift. We sort out anything donatable, sweep the slab, and give you one flat price up front with a $199 minimum. Free on-site estimates and same-day service across Ponte Vedra.",
+      ],
+    },
+  },
+
+  // ============================================================
+  // WAVE 2 (2026-10-04): eight more town + service pages built out
+  // with their own local copy and a town FAQ, the same way Junk Away
+  // released its combo pages from noindex. Having an entry here is
+  // what puts the page in the sitemap and takes it out of noindex.
+  // No `recentJobs` or `review` on any of these: those are for real
+  // jobs and real reviews only, and Haul Aboard has neither yet.
+  // ============================================================
+  "hot-tub-removal:ponte-vedra-beach": {
+    localIntro: {
+      heading: "Hot tub removal in Ponte Vedra Beach, FL",
+      paragraphs: [
+        "A hot tub in Ponte Vedra Beach is usually built in: set into a paver patio, tucked inside a screen enclosure, or boxed in by a deck. None of those let a tub leave in one piece. We disconnect it, cut it down where it sits, and carry it out in sections so nothing has to squeeze past the screen door or over the landscaping.",
+        "In Sawgrass, Marsh Landing and The Plantation we work to the community's contractor hours and gate rules, and we can send a certificate of insurance to the management office first. The metal, the pump and the wiring go to a scrap recycler. Send a photo and we will give you a flat quote, with a $199 minimum, before we touch it.",
+      ],
+    },
+    faq: {
+      eyebrow: "Ponte Vedra Beach hot tub removal",
+      title: "Questions from ",
+      titleAccent: "Ponte Vedra Beach.",
+      items: [
+        { q: "Can you get a hot tub out of a screened lanai?", a: "Yes. The tub comes apart inside the enclosure and leaves in pieces through the screen door, so no panels have to come out. We lay protection over the pavers on the way." },
+        { q: "Do I need to drain it and cut the power first?", a: "Please drain it, and switch off the breaker that feeds it. If it is hard-wired and you want the electrical capped properly, that part is a job for an electrician. Tell us when you book if the tub can't be drained and we will come prepared." },
+        { q: "Will my HOA allow the work?", a: "Removing a tub is rarely a problem, but communities differ on contractor hours and where a truck can park. Check with your management office, tell us the rules, and we will schedule inside them." },
+        { q: "What happens to the old tub?", a: "The copper, the pump motor and the metal frame go to a scrap recycler. Only the shell and the foam go to licensed disposal." },
+      ],
+    },
+  },
+  "furniture-and-mattress-removal:neptune-beach": {
+    localIntro: {
+      heading: "Furniture & mattress removal in Neptune Beach, FL",
+      paragraphs: [
+        "Furniture leaves Neptune Beach for two reasons. A rental is turning over and the old mattress and the sagging couch have to be gone before the next tenant or guest arrives, or a long-time homeowner is finally replacing pieces that have sat in salt air for years. Either way it is heavy, awkward, and usually up a narrow staircase.",
+        "We carry it out from wherever it sits, whether that is an upstairs bedroom, a garage apartment or a back porch, and we take the mattress and box spring with it. Usable pieces go to donation where we can. You get one flat price before we start, with a $199 minimum.",
+      ],
+    },
+    faq: {
+      eyebrow: "Neptune Beach furniture removal",
+      title: "Questions from ",
+      titleAccent: "Neptune Beach.",
+      items: [
+        { q: "Will you take just one couch or one mattress?", a: "Yes. A single item is fine. Our $199 minimum covers it, and it is often worth adding anything else you want gone while the truck is there." },
+        { q: "Can you get a sleeper sofa down a tight beach-house staircase?", a: "Almost always. We look at the turn before we lift and pad the walls and rail. If a piece truly won't make it, we take it apart upstairs and carry it down in sections." },
+        { q: "Do you take mattresses and box springs?", a: "Yes, any size, along with bed frames and headboards. If it has gotten wet or moldy, bag it if you can and tell us when you book." },
+        { q: "Can you be in and out before a rental check-in?", a: "Tell us the check-in time when you call (904) 404-6264. Neptune Beach is a few minutes from our base, so a same-day pickup is often possible if you call in the morning." },
+      ],
+    },
+  },
+  "garage-cleanouts:nocatee": {
+    localIntro: {
+      heading: "Garage cleanouts in Nocatee, FL",
+      paragraphs: [
+        "A Nocatee garage fills up fast. The move-in boxes that never got unpacked, the furniture from the last house, the golf cart that took one bay, and the toys and bikes that took the other. With no basement under a Florida home, the garage ends up holding everything.",
+        "We clear it in one visit. You point at what goes, we carry it out, sweep the slab and haul the load away. Cardboard and metal get recycled, and usable items go to donation where we can. Nothing sits at the curb, which keeps your HOA happy. One flat price before we start, with a $199 minimum.",
+      ],
+    },
+    faq: {
+      eyebrow: "Nocatee garage cleanouts",
+      title: "Questions from ",
+      titleAccent: "Nocatee.",
+      items: [
+        { q: "Do I have to sort everything before you arrive?", a: "No. It helps to know roughly what is staying, but we can sort with you on the day. Anything you are unsure about, we set aside until you decide." },
+        { q: "Can you take old paint, pool chemicals or gas cans?", a: "No. Those are household hazardous waste and we can't haul them. St. Johns County runs drop-off options for hazardous waste, so check the county's site for the current location and hours." },
+        { q: "Will you take the moving boxes too?", a: "Yes. Flattened or full of packing paper, we take them and recycle the cardboard." },
+        { q: "How long does a garage cleanout take?", a: "A typical two-car garage is a few hours for our crew. We will give you a time window at the estimate once we have seen it." },
+      ],
+    },
+  },
+  "estate-cleanouts:ponte-vedra": {
+    localIntro: {
+      heading: "Estate cleanouts in Ponte Vedra, FL",
+      paragraphs: [
+        "Clearing a parent's or a relative's home in Ponte Vedra is a big job at a hard time, and it is harder still when the family lives out of state. We start with a free walkthrough, in person or over a video call, agree what is kept, donated and hauled, and give you one flat price for all of it.",
+        "From there you can hand us the keys. We work room by room through the house, the garage and the attic, set aside anything you have flagged, and leave the home broom-swept and ready for the realtor. We can send photos when it is done. Pricing starts at our $199 minimum and scales with the size of the home.",
+      ],
+    },
+    faq: {
+      eyebrow: "Ponte Vedra estate cleanouts",
+      title: "Questions from ",
+      titleAccent: "Ponte Vedra.",
+      items: [
+        { q: "Can you handle it if none of the family is local?", a: "Yes. We can do the walkthrough by video, work from a list of what to keep, coordinate access with your realtor or a neighbor, and send photos when the house is empty." },
+        { q: "What happens to furniture and household items that are still good?", a: "We route usable items to local donation where we can, and recycle metal and cardboard. Tell us if there is a charity the family prefers." },
+        { q: "What if we find documents, photos or valuables?", a: "We set aside paperwork, photographs, jewelry and anything that looks personal, and hand it to you or whoever you name. When in doubt we ask before it goes on the truck." },
+        { q: "Can you work to a closing or listing date?", a: "Yes. Give us the date at the estimate and we will tell you plainly whether we can meet it and how many visits it will take." },
+      ],
+    },
+  },
+  "tenant-turnover-services:jacksonville-beach": {
+    localIntro: {
+      heading: "Tenant turnover cleanouts in Jacksonville Beach, FL",
+      paragraphs: [
+        "Jacksonville Beach has a lot of rentals, long-term and short-term, and every one of them loses money for each day it sits empty. When a tenant moves out and leaves a mattress, a couch, a full fridge and a closet of bags behind, the unit can't be cleaned, painted or shown until all of it is gone.",
+        "That is the part we do. We clear the unit, the balcony, the storage closet and the garage in one visit and leave it ready for your cleaner. We work for individual owners and for property managers, and Jacksonville Beach is our home base, so this is the town we can get to fastest. Flat price up front, with a $199 minimum.",
+      ],
+    },
+    faq: {
+      eyebrow: "Jacksonville Beach turnovers",
+      title: "Questions from ",
+      titleAccent: "Jacksonville Beach.",
+      items: [
+        { q: "How fast can you get a unit cleared?", a: "Often the same or the next day. Call (904) 404-6264 in the morning with the address and what was left, and we will tell you when we can be there." },
+        { q: "Do I need to be there?", a: "No. Many owners and managers leave a lockbox or door code. We send photos of the empty unit when we are done." },
+        { q: "Can you work in a condo building with an elevator and loading rules?", a: "Yes. Tell us if the elevator has to be reserved or if the building limits contractor hours, and we will schedule to the slot you get." },
+        { q: "Do you do the cleaning too?", a: "No. We remove everything that isn't staying and sweep up after ourselves. The deep clean is your cleaner's job, and we leave the unit ready for them." },
+      ],
+    },
+  },
+  "storm-debris-removal:jacksonville-beach": {
+    localIntro: {
+      heading: "Storm & hurricane debris removal in Jacksonville Beach, FL",
+      paragraphs: [
+        "After a tropical storm or a hurricane, the yard is the first problem: downed limbs, palm fronds, sections of fence, a flattened shed, and whatever blew in from next door. Then comes what the water got to, like soaked carpet, ruined furniture and drywall that has to come out before mold sets in.",
+        "We haul all of it. Our crew loads the debris by hand, so there is no waiting for a pile at the curb to be collected, and we can come back for a second load once the tear-out is finished. Before a storm, we also clear loose items, old fencing and dead limbs that could become projectiles. Flat price before we start, with a $199 minimum.",
+      ],
+    },
+    faq: {
+      eyebrow: "Jacksonville Beach storm cleanup",
+      title: "Questions from ",
+      titleAccent: "Jacksonville Beach.",
+      items: [
+        { q: "How soon after a storm can you come?", a: "As soon as roads are open and it is safe to work. Demand is heavy right after a storm, so call (904) 404-6264 early and we will give you an honest date." },
+        { q: "Do you remove trees that are still standing or on the house?", a: "No. A tree that is standing, leaning or resting on a structure needs a licensed tree service. Once it is on the ground and cut up, we haul it." },
+        { q: "Will you take flood-damaged carpet, furniture and drywall?", a: "Yes. Photograph everything for your insurance claim before we load it, since we can't bring it back." },
+        { q: "Can you help me get ready before a storm?", a: "Yes. We clear loose yard items, broken fence panels, old sheds and brush piles so they are not in the air when the wind picks up. Call as soon as a storm is in the forecast, because those days book up." },
+      ],
+    },
+  },
+  "appliance-removal:atlantic-beach": {
+    localIntro: {
+      heading: "Appliance removal in Atlantic Beach, FL",
+      paragraphs: [
+        "Appliances don't last as long at the beach. Salt air gets into garage fridges, outdoor kitchens and laundry sets on a back porch, and one day the old unit is rusted at the base and the new one is on a delivery truck. If the installer won't haul the old one, or there is a second one in the garage, we take it.",
+        "We disconnect it, dolly it out without marking the floors or the door frames, and load it. Refrigerators and freezers go to a facility that recovers the refrigerant properly, and the steel is recycled. One flat price before we start, with a $199 minimum.",
+      ],
+    },
+    faq: {
+      eyebrow: "Atlantic Beach appliance removal",
+      title: "Questions from ",
+      titleAccent: "Atlantic Beach.",
+      items: [
+        { q: "Will you disconnect the appliance?", a: "We unplug it and disconnect standard water lines. Gas lines and hard-wired units need to be disconnected by a plumber or electrician before we arrive." },
+        { q: "Do you take the old garage fridge or a chest freezer?", a: "Yes. Empty it first, and if it has been sitting unplugged with food in it, tell us so we come prepared." },
+        { q: "Can you take one appliance, or do I need a full load?", a: "One is fine. Our $199 minimum covers it, and it is usually worth adding anything else you want gone while we are there." },
+        { q: "Can you come the same day?", a: "Often, yes. Atlantic Beach is a short drive from our base. Call (904) 404-6264 in the morning for the best chance." },
+      ],
+    },
+  },
+  "shed-and-fence-removal:nocatee": {
+    localIntro: {
+      heading: "Shed, fence & playset removal in Nocatee, FL",
+      paragraphs: [
+        "Back yards in Nocatee change as families do. The playset the kids have outgrown, the trampoline nobody uses, a section of fence coming out for a pool, a resin shed that has cracked in the sun. All of it has to be taken apart before it can leave, and none of it can sit at the curb.",
+        "We take it down in the yard, carry it out through the side gate in pieces and haul it away the same visit. We work around irrigation heads, sod and pavers, and we rake up the hardware when we are done. Flat price before we start, with a $199 minimum.",
+      ],
+    },
+    faq: {
+      eyebrow: "Nocatee shed & playset removal",
+      title: "Questions from ",
+      titleAccent: "Nocatee.",
+      items: [
+        { q: "Do I need HOA approval to take down a playset, shed or fence?", a: "Rules differ by neighborhood, so check with your HOA before we schedule, especially for a fence. Once you have the go-ahead we handle the teardown and the hauling." },
+        { q: "Will you take a trampoline or a swing set?", a: "Yes. We take it apart, pull the anchors and haul every piece. The steel is recycled." },
+        { q: "Can you get everything out through a standard side gate?", a: "Yes. Everything comes apart small enough to carry through a normal gate, so no fence panels need to come down unless they are part of the job." },
+        { q: "Will you pull the concrete footings?", a: "We can. Footings and pads take more labor and weigh more to dispose of, so they are priced separately, and we will tell you that at the estimate." },
       ],
     },
   },
@@ -3226,17 +3894,17 @@ export function isComboEnriched(
 export const servicesIndexPage = {
   metaTitle: "Junk Removal Services in Jacksonville Beach",
   metaDescription:
-    "Every junk removal service Haul Aboard offers across the Beaches — appliance, furniture, hot tub, estate cleanouts, construction debris & more. Same-day, free estimates.",
+    "Every junk removal service Haul Aboard offers across the Beaches: appliance, furniture, hot tub, estate cleanouts, construction debris & more. Same-day, free estimates.",
   eyebrow: "What we haul",
   h1: "Every kind of ",
   h1Accent: "junk.",
-  lede: "From a single mattress to a full estate cleanout — we handle the lift, the haul, and the disposal. Below is everything we offer. If you don't see what you have, send a photo and we'll quote it.",
+  lede: "From a single mattress to a full estate cleanout, we handle the lift, the haul, and the disposal. Below is everything we offer. If you don't see what you have, send a photo and we'll quote it.",
 } as const;
 
 export const serviceAreasIndexPage = {
   metaTitle: "Junk Removal Service Areas — The Jacksonville Beaches",
   metaDescription:
-    "The towns Haul Aboard serves — Jacksonville Beach, Neptune Beach, Atlantic Beach, Ponte Vedra Beach, Ponte Vedra & Nocatee. Same-day service, free on-site estimates, licensed & insured.",
+    "The towns Haul Aboard serves: Jacksonville Beach, Neptune Beach, Atlantic Beach, Ponte Vedra Beach, Ponte Vedra & Nocatee. Same-day service, free on-site estimates, licensed & insured.",
   eyebrow: "Where we work",
   h1: "All along ",
   h1Accent: "the Beaches.",
@@ -3280,11 +3948,11 @@ export const homepageFaq = {
     },
     {
       q: "What areas do you serve?",
-      a: "The Jacksonville Beaches — Jacksonville Beach, Neptune Beach, Atlantic Beach, Ponte Vedra Beach, Ponte Vedra and Nocatee, across Duval and St. Johns counties. We're locally owned and based in Jacksonville Beach.",
+      a: "The Jacksonville Beaches: Jacksonville Beach, Neptune Beach, Atlantic Beach, Ponte Vedra Beach, Ponte Vedra and Nocatee, across Duval and St. Johns counties. We're locally owned and based in Jacksonville Beach.",
     },
     {
       q: "Are you licensed and insured?",
-      a: "Yes — fully licensed and insured. Haul Aboard is brand-new to the Beaches, but our owner also runs Junk Away, the top-rated junk removal company in Delaware (4.9★ across 300+ Google reviews and 2,600+ jobs), so you're getting a seasoned crew from day one.",
+      a: "Yes, fully licensed and insured. Haul Aboard is brand-new to the Beaches, but our owner also runs Junk Away, the top-rated junk removal company in Delaware (4.9★ across 340+ Google reviews and 2,600+ jobs), so you're getting a seasoned crew from day one.",
     },
   ],
 } as const;
@@ -3292,19 +3960,19 @@ export const homepageFaq = {
 export const faqPage = {
   metaTitle: "Junk Removal FAQ — Jacksonville Beach",
   metaDescription:
-    "Common questions about junk removal pricing, scheduling, what we take & how we work across the Beaches — answered by the Haul Aboard crew. Free estimates, same-day service.",
+    "Common questions about junk removal pricing, scheduling, what we take & how we work across the Beaches, answered by the Haul Aboard crew. Free estimates, same-day service.",
   eyebrow: "Common questions",
   h1: "Got questions? ",
   h1Accent: "We've got answers.",
-  lede: "If you don't find your answer here, call us at (904) 404-6264 or send us a message — we respond next business day.",
+  lede: "If you don't find your answer here, call us at (904) 404-6264 or send us a message. We respond next business day.",
   items: [
     {
       q: "How much does junk removal cost?",
-      a: "Pricing depends on volume — how much space your junk takes up in our truck — and the labor needed to get it out. Our minimum is $199 (a small pile of stuff or a single couch) and the price scales from there. We always quote you flat upfront after a photo or walkthrough. No hidden fees, no surprises on the day.",
+      a: "Pricing depends on volume (how much space your junk takes up in our truck) and the labor needed to get it out. Our minimum is $199 (a small pile of stuff or a single couch) and the price scales from there. We always quote you flat upfront after a photo or walkthrough. No hidden fees, no surprises on the day.",
     },
     {
       q: "What areas do you serve?",
-      a: "The Jacksonville Beaches — Jacksonville Beach, Neptune Beach, Atlantic Beach, Ponte Vedra Beach, Ponte Vedra and Nocatee. Duval County's beaches are our home base, and we cover the St. Johns County coast too.",
+      a: "The Jacksonville Beaches: Jacksonville Beach, Neptune Beach, Atlantic Beach, Ponte Vedra Beach, Ponte Vedra and Nocatee. Duval County's beaches are our home base, and we cover the St. Johns County coast too.",
     },
     {
       q: "Do you offer same-day service?",
@@ -3332,11 +4000,11 @@ export const faqPage = {
     },
     {
       q: "What happens to the junk after you take it?",
-      a: "We sort and route everything for the best end-of-life: donation when it's still usable (local Jacksonville Beach shelters and donation centers), recycling for scrap metal, copper, electronics, and clean cardboard, and licensed disposal facilities for the rest. Eco-friendly disposal is the default — not an upgrade.",
+      a: "We sort and route everything for the best end-of-life: donation when it's still usable (local Jacksonville Beach shelters and donation centers), recycling for scrap metal, copper, electronics, and clean cardboard, and licensed disposal facilities for the rest. Eco-friendly disposal is the default, not an upgrade.",
     },
     {
       q: "Can I get an estimate without scheduling a job?",
-      a: "Yes. Free estimates always — no obligation. Send us a photo or schedule a 15-minute walkthrough. We give you a flat number and you decide.",
+      a: "Yes. Free estimates always, no obligation. Send us a photo or schedule a 15-minute walkthrough. We give you a flat number and you decide.",
     },
   ],
 } as const;
@@ -3364,15 +4032,15 @@ export const contactPage = {
     servicePlaceholder: "Select a service…",
     descriptionLabel: "Anything else we should know?",
     descriptionPlaceholder:
-      "Volume, access, stairs, timeline — whatever helps us quote accurately.",
+      "Volume, access, stairs, timeline, whatever helps us quote accurately.",
     // photoLabel: unused — the form has no upload yet. Customers are
     // asked to email photos instead (see `lede` above).
     submitLabel: "Get My Free Estimate",
     submittingLabel: "Sending…",
   },
-  successHeading: "Thanks — we got it.",
+  successHeading: "Thanks, we got it.",
   successBody:
-    "We'll be in touch within one business day with a flat quote. For urgent jobs, call (904) 404-6264 — we usually answer.",
+    "We'll be in touch within one business day with a flat quote. For urgent jobs, call (904) 404-6264. We usually answer.",
   errorBody:
     "Something went wrong on our end. Please call us at (904) 404-6264 or try again in a moment.",
 } as const;
@@ -3385,14 +4053,14 @@ export const contactPage = {
 export const reviewsPage = {
   metaTitle: "Reviews — New at the Beaches, Proven in Delaware",
   metaDescription:
-    "Haul Aboard is brand-new to Jacksonville Beach — so we haven't collected local reviews yet. See the track record our owner built at Junk Away, Delaware's top-rated junk removal company.",
+    "Haul Aboard is brand-new to Jacksonville Beach, so we haven't collected local reviews yet. See the track record our owner built at Junk Away, Delaware's top-rated junk removal company.",
   eyebrow: "Our track record",
   h1: "New here. ",
   h1Accent: "Not new to this.",
-  lede: "Haul Aboard just launched at the Jacksonville Beaches, so we don't have local reviews yet — and we won't pretend otherwise. But our owner also runs Junk Away, the top-rated junk removal company in Delaware. Below are real, verbatim 5-star Google reviews of that crew — the exact standard we bring to Jax Beach. Be our first Beaches review and we'll earn it.",
+  lede: "Haul Aboard just launched at the Jacksonville Beaches, so we don't have local reviews yet, and we won't pretend otherwise. But our owner also runs Junk Away, the top-rated junk removal company in Delaware. Below are real, verbatim 5-star Google reviews of that crew, the exact standard we bring to Jax Beach. Be our first Beaches review and we'll earn it.",
   // Honest attribution line shown above the review grid.
   attribution:
-    "Real 5-star Google reviews of Junk Away (Delaware) — same owner, same standards. Not Haul Aboard / Florida reviews.",
+    "Real 5-star Google reviews of Junk Away (Delaware): same owner, same standards. Not Haul Aboard / Florida reviews.",
   leaveReviewLabel: "See Junk Away's reviews on Google →",
 } as const;
 
@@ -3428,7 +4096,7 @@ export const pricingPage = {
       titleAccent: "volume and labor.",
       paragraphs: [
         "Junk removal is priced on two things: how much space your stuff takes up in our truck, and the labor it takes to get it out. That's the whole formula. There's no per-item nickel-and-diming, and no charge for the walk to the curb.",
-        "Four things move the number. Volume — a single couch is a small slice of the truck; a full garage is most of a load. What the material is — appliances with refrigerant, mattresses, tires, and construction debris cost more to dispose of or recycle the right way. Labor and access — a curbside pile is quicker than a third-floor walk-up, a tight stairwell, or a hot tub that has to be cut apart before it can leave the yard. And the disposal or recycling fees the transfer station, recycler, or donation center charges us for the material.",
+        "Four things move the number. Volume: a single couch is a small slice of the truck; a full garage is most of a load. What the material is: appliances with refrigerant, mattresses, tires, and construction debris cost more to dispose of or recycle the right way. Labor and access, a curbside pile is quicker than a third-floor walk-up, a tight stairwell, or a hot tub that has to be cut apart before it can leave the yard. And the disposal or recycling fees the transfer station, recycler, or donation center charges us for the material.",
         "Every one of those is visible when we look at the job. That's why we look at the job.",
       ],
     },
@@ -3437,8 +4105,8 @@ export const pricingPage = {
       title: "Why we quote it ",
       titleAccent: "in person.",
       paragraphs: [
-        "A photo hides a lot — what's behind the pile, how heavy it actually is, whether it fits through the door, what's underneath. Guessing over the phone is exactly how people end up with a 'surprise' when the truck shows up. We'd rather not do that to you.",
-        "So for most jobs we come out, look at it, and hand you a real number. It's free, there's no obligation, and there's no pressure to book on the spot. For small, obvious jobs — a single couch, a mattress, one appliance — a photo is usually enough and we'll quote straight from that.",
+        "A photo hides a lot: what's behind the pile, how heavy it actually is, whether it fits through the door, what's underneath. Guessing over the phone is exactly how people end up with a 'surprise' when the truck shows up. We'd rather not do that to you.",
+        "So for most jobs we come out, look at it, and hand you a real number. It's free, there's no obligation, and there's no pressure to book on the spot. For small, obvious jobs (a single couch, a mattress, one appliance) a photo is usually enough and we'll quote straight from that.",
       ],
     },
     {
@@ -3447,7 +4115,7 @@ export const pricingPage = {
       titleAccent: "before we start.",
       paragraphs: [
         "Not after. Not once the truck is loaded and you're over a barrel. We quote you flat, you approve it, and only then does anything move.",
-        "Stairs, long carries, and dismantling are already baked into the number we give you — they're not add-ons we spring later. If the job genuinely changes because you decide to add items, we tell you first and you approve the new number before we keep going.",
+        "Stairs, long carries, and dismantling are already baked into the number we give you. They're not add-ons we spring later. If the job genuinely changes because you decide to add items, we tell you first and you approve the new number before we keep going.",
       ],
     },
     {
@@ -3456,7 +4124,7 @@ export const pricingPage = {
       titleAccent: "$199.",
       paragraphs: [
         "Our minimum is $199. That covers a small pile or a single item like a couch, and the price scales up from there based on how much room it takes in the truck and the labor involved.",
-        "We publish the minimum on purpose. We'd rather be upfront than waste your afternoon — if it's below what you had in mind, you know before anyone drives anywhere. Everything above the minimum depends on the job, which is what the free estimate is for.",
+        "We publish the minimum on purpose. We'd rather be upfront than waste your afternoon. If it's below what you had in mind, you know before anyone drives anywhere. Everything above the minimum depends on the job, which is what the free estimate is for.",
       ],
     },
   ],
@@ -3467,7 +4135,7 @@ export const pricingPage = {
     items: [
       {
         q: "How do you price junk removal?",
-        a: "By volume — the space your items take up in our truck — plus the labor to get them out and the disposal or recycling fees for the material. We give you a flat number upfront, before any work starts.",
+        a: "By volume (the space your items take up in our truck) plus the labor to get them out and the disposal or recycling fees for the material. We give you a flat number upfront, before any work starts.",
       },
       {
         q: "Do you charge for estimates?",
@@ -3475,11 +4143,11 @@ export const pricingPage = {
       },
       {
         q: "Can you quote me over the phone?",
-        a: "For small, clear-cut jobs — a single couch, a mattress, one appliance — a photo or a phone call is often enough. For anything bigger we'd rather see it in person. That's the only way to account for access, weight, and what's underneath the pile, and it's how we avoid surprises on the day.",
+        a: "For small, clear-cut jobs (a single couch, a mattress, one appliance) a photo or a phone call is often enough. For anything bigger we'd rather see it in person. That's the only way to account for access, weight, and what's underneath the pile, and it's how we avoid surprises on the day.",
       },
       {
         q: "Is there a minimum charge?",
-        a: "Yes — our minimum is $199. That covers a small pile or a single item, and pricing scales up from there based on volume and labor.",
+        a: "Yes. Our minimum is $199. That covers a small pile or a single item, and pricing scales up from there based on volume and labor.",
       },
       {
         q: "Do you charge extra for stairs or long carries?",
@@ -3487,7 +4155,7 @@ export const pricingPage = {
       },
       {
         q: "What affects the price the most?",
-        a: "Volume, almost always — how much of the truck you fill. After that it's what the material is (appliances, mattresses, and construction debris cost more to dispose of responsibly) and how hard it is to get out of the space.",
+        a: "Volume, almost always: how much of the truck you fill. After that it's what the material is (appliances, mattresses, and construction debris cost more to dispose of responsibly) and how hard it is to get out of the space.",
       },
       {
         q: "When do I find out the price?",
@@ -3508,7 +4176,7 @@ export const blogIndexPage = {
   eyebrow: "Resources",
   h1: "Practical ",
   h1Accent: "guides.",
-  lede: "Pricing, prep, and process — straight from the crew. Updated regularly.",
+  lede: "Pricing, prep, and process, straight from the crew. Updated regularly.",
   emptyHeading: "Coming soon.",
   emptyBody:
     "We're publishing new articles regularly. Check back, or sign up for an estimate while you're here.",

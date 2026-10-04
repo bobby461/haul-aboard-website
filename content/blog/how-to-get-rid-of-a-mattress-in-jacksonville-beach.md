@@ -11,17 +11,17 @@ author: "Haul Aboard Team"
 
 Nobody plans for mattress day. You buy the new one, the delivery guys lean the old one against the garage wall, and suddenly you own a queen-size problem that doesn't fit in a trash can, doesn't fit in your car, and can't just sit at the curb.
 
-We haul mattresses across the Jacksonville Beaches every single week, so here's the honest rundown of every option you actually have, including the free ones.
+Mattress pickup is one of the most common requests in junk removal, so here's the honest rundown of every option you actually have, including the free ones.
 
-Here's a real one: a bedroom stacked with old mattresses and box springs, and the same room after we carried them out.
+Here's what the job looks like: a bedroom stacked with old mattresses and box springs, and the same room after they are carried out.
 
-![Mattresses and box springs stacked against the wall of a Jacksonville Beach bedroom, ready for removal](/images/blog/mattress-before.jpg)
+![Mattresses and box springs stacked against the wall of a bedroom, ready for removal](/images/blog/mattress-before.jpg)
 
 *Before: mattresses and box springs, wall to wall.*
 
 ![The same bedroom emptied out, bare floor, ready to go](/images/blog/mattress-after.jpg)
 
-*After: gone, and nobody had to wrestle a queen down the stairs but us.*
+*After: gone, and nobody in the house had to wrestle a queen down the stairs.*
 
 ## Option 1: Donate it (only if it's genuinely clean)
 

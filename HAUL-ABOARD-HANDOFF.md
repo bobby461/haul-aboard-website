@@ -74,3 +74,31 @@ Junk Away.
 5. Submit `https://haulaboardjunk.com/sitemap.xml` in Google Search Console.
 
 Run locally: `npm run dev` → http://localhost:3000. Build check: `npm run build`.
+
+## 2026-10-04: brought in line with the current Junk Away site
+
+The layout now matches junkawaydelaware.com as it stands today, in Haul Aboard's
+colors, type and logo. What changed:
+
+- **Homepage hero** is the Junk Away hero: full-width photo under a dark overlay,
+  three stat blocks, three-line headline, then pitch / phone / estimate button.
+  The photo is a navy placeholder. Drop the real one at
+  `/public/images/hero/crew.jpeg` (wide, about 3:2).
+- **Hero stats are service facts, not numbers** (Same-Day / Free / Local), because
+  Haul Aboard has no rating or job count of its own yet. Swap them in
+  `homepage.hero.stats` when real Google reviews exist.
+- **"What we haul"** uses Junk Away's redesigned cards.
+- **All six town pages** rebuilt the way Junk Away's Wilmington page was: a specific
+  H1, a longer local intro, a photo banner, and a town FAQ with FAQPage schema.
+- **Light Demolition** service page added (`/services/light-demolition`).
+- **Eight more town + service pages** written and released from noindex (14 total).
+- **Six new blog posts** and a cleanup of the existing eleven.
+- **Em dashes** taken out of body copy sitewide (kept in titles), as on Junk Away.
+- **Logo**: new mascot head and lettering in the nav.
+
+Still empty on purpose, because they are for real jobs and real reviews only:
+`recentJobs` on town pages and combo pages, and `review` on combo pages. The code
+for both is in place. See Junk Away's `content.ts` for worked examples.
+
+Not copied from Junk Away: its 7-day 6am-9pm hours (Haul Aboard's hours were left
+as they were), its legacy junkaway.info redirects, and its review numbers.

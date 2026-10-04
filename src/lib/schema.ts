@@ -144,7 +144,7 @@ export function serviceSchema(service: Service, location?: Location) {
         "@type": "UnitPriceSpecification",
         priceCurrency: "USD",
         price: business.minimumPrice,
-        unitText: "Minimum charge — flat-quote pricing scales by volume",
+        unitText: "Minimum charge (flat-quote pricing scales by volume)",
       },
       availability: "https://schema.org/InStock",
     },

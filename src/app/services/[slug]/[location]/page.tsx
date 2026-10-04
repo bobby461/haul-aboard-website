@@ -6,6 +6,7 @@ import { Footer } from "@/components/Footer";
 import { BigCta } from "@/components/BigCta";
 import { PageHero } from "@/components/PageHero";
 import { SeoImage } from "@/components/SeoImage";
+import { JobPhotos } from "@/components/LocationPageSections";
 import {
   WhatWeHandle,
   PhotoBanner,
@@ -66,7 +67,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
     // Template ("%s | Haul Aboard") adds the brand — don't repeat it here.
     title: `${svc.name} in ${loc.nameWithState}`,
     description: enriched
-      ? `${svc.name} in ${loc.nameWithState} by Haul Aboard — a local Jacksonville Beach crew. Same-day service, free on-site estimates, licensed, insured & locally owned.`
+      ? `${svc.name} in ${loc.nameWithState} by Haul Aboard, a local Jacksonville Beach crew. Same-day service, free on-site estimates, licensed, insured & locally owned.`
       : `${svc.name} in ${loc.nameWithState}. ${svc.metaDescription}`,
     alternates: { canonical: `/services/${svc.slug}/${loc.slug}` },
     // Thin, non-enriched combos: keep out of the index (still followed).
@@ -142,6 +143,22 @@ export default async function ComboPage({ params }: Params) {
                   <p key={i}>{p}</p>
                 ))}
               </div>
+            </div>
+          </section>
+        )}
+
+        {/* Real recent jobs for this service in this town, when we have them. */}
+        {combo?.recentJobs && (
+          <section className="local-intro recent-jobs-combo">
+            <div style={{ maxWidth: 820, margin: "0 auto" }}>
+              <div className="section-label">Recent work</div>
+              <h2 className="section-title">{combo.recentJobs.heading}</h2>
+              <div className="local-intro-text">
+                {combo.recentJobs.paragraphs.map((p, i) => (
+                  <p key={i}>{p}</p>
+                ))}
+              </div>
+              <JobPhotos photos={combo.recentJobs.photos} />
             </div>
           </section>
         )}

@@ -23,7 +23,7 @@ The single biggest factor is when you call. Call at 7:30am and there's a real ch
 
 ## Why a local Beaches crew can fit you in
 
-Haul Aboard serves the Jacksonville Beaches — Jacksonville Beach, Neptune Beach, Atlantic Beach, Ponte Vedra, and Nocatee. We're new to Florida, but we're run by the same owner behind Junk Away, Delaware's top-rated junk removal company, so the way we run a route is well tested.
+Haul Aboard serves the Jacksonville Beaches: Jacksonville Beach, Neptune Beach, Atlantic Beach, Ponte Vedra, and Nocatee. We're new to Florida, but we're run by the same owner behind Junk Away, Delaware's top-rated junk removal company, so the way we run a route is well tested.
 
 Staying local matters more than it sounds. When a national chain takes your call, you're talking to a call center that routes your job through a dispatch system somewhere out of state. Adding a job to today's route is a whole process. When you call us, you're talking to people who know exactly where the truck is right now and whether there's room in the day.
 
@@ -35,15 +35,15 @@ If you want to know more about who's showing up at your door, our [story and wha
 
 No mystery here. It's five steps.
 
-**1. You call or text photos.** Ring (904) 404-6264 or send us pictures of what's going. Photos help a lot — we can size up the load before we roll and give you a better sense of what to expect.
+**1. You call or text photos.** Ring (904) 404-6264 or send us pictures of what's going. Photos help a lot. We can size up the load before we roll and give you a better sense of what to expect.
 
 **2. Free on-site estimate.** We come out, look at the actual pile, and quote it. Free, no obligation, no pressure. If the number doesn't work for you, we shake hands and go. That happens sometimes and it's fine.
 
 **3. Flat quote, upfront.** You get one number before any work starts. No hourly meter running. No surprise line items at the end. We don't publish full pricing in blog posts because every job is different, but you can read exactly [how our pricing works](/prices) and what drives the number.
 
-**4. We load.** You point. We carry. You don't lift anything, you don't move anything to the curb, you don't sweep up after. We get it out of the garage, the lanai, the attic, the third-floor condo — wherever it is.
+**4. We load.** You point. We carry. You don't lift anything, you don't move anything to the curb, you don't sweep up after. We get it out of the garage, the lanai, the attic, the third-floor condo, wherever it is.
 
-**5. We haul it away and sort it.** Everything that can be donated or recycled gets routed that way instead of straight to a landfill. Metal, appliances, usable furniture. It's more work on our end and it's the right thing to do — more on our [recycling and donation approach here](/blog/eco-friendly-junk-removal-jacksonville-beach).
+**5. We haul it away and sort it.** Everything that can be donated or recycled gets routed that way instead of straight to a landfill. Metal, appliances, usable furniture. It's more work on our end and it's the right thing to do. More on our [recycling and donation approach here](/blog/eco-friendly-junk-removal-jacksonville-beach).
 
 ## What to have ready so we can move fast
 
@@ -60,11 +60,11 @@ If you're chasing a same-day slot, a little prep on your end buys us real time.
 Some jobs are practically built for same-day. These are the calls we can usually slot in:
 
 - **Single item pickups.** One couch. One treadmill. One fridge. Fast in, fast out. See [furniture and mattress removal](/services/furniture-and-mattress-removal) and [appliance removal](/services/appliance-removal).
-- **Rental turnovers.** Tenant's gone, showing's tomorrow, the unit's full of what they didn't want. This is our bread and butter — [tenant turnover services](/services/tenant-turnover-services).
+- **Rental turnovers.** Tenant's gone, showing's tomorrow, the unit's full of what they didn't want. This is our bread and butter: [tenant turnover services](/services/tenant-turnover-services).
 - **Curbside piles.** Everything's already outside. These are the quickest jobs we do.
 - **Post-move leftovers.** The stuff that didn't make the truck. Boxes, a broken dresser, the mystery bin.
-- **Closing on a house.** Walkthrough tomorrow, seller left the garage full. We do [garage cleanouts](/services/garage-cleanouts) constantly.
-- **Yard piles.** Branches, palm fronds, old fence sections — [yard waste removal](/services/yard-waste-removal).
+- **Closing on a house.** Walkthrough tomorrow, seller left the garage full. That's what our [garage cleanouts](/services/garage-cleanouts) are for, and here's our guide to a [garage cleanout before you sell](/blog/garage-cleanout-before-you-sell-jacksonville-beach).
+- **Yard piles.** Branches, palm fronds, old fence sections: [yard waste removal](/services/yard-waste-removal).
 
 Full list of what we take is on the [services page](/services).
 
@@ -72,9 +72,9 @@ Full list of what we take is on the [services page](/services).
 
 Two categories, and we'd rather tell you now than waste your afternoon.
 
-**Hazardous materials — ever.** Wet paint, gasoline, propane, asbestos, medical waste, ammunition. We're not licensed to haul any of it and we won't. Those need a proper hazardous waste facility. Dried-out paint cans are usually a different story — ask us.
+**Hazardous materials, ever.** Wet paint, gasoline, propane, asbestos, medical waste, ammunition. We're not licensed to haul any of it and we won't. Those need a proper hazardous waste facility. Dried-out paint cans are usually a different story. Ask us.
 
-**Very large multi-day cleanouts.** A full hoarding situation or a whole-estate clearout isn't a "squeeze it into the afternoon" job. Those need real planning — the right size crew, the right number of truckloads, sometimes multiple days. Call us and we'll get you on the calendar properly. Rushing a job like that serves nobody.
+**Very large multi-day cleanouts.** A full hoarding situation or a whole-estate clearout isn't a "squeeze it into the afternoon" job. Those need real planning: the right size crew, the right number of truckloads, sometimes multiple days. Call us and we'll get you on the calendar properly. Rushing a job like that serves nobody.
 
 If you're unsure which bucket you're in, the [FAQ](/faq) covers a lot of it, or just call and ask.
 
@@ -84,7 +84,7 @@ The whole beach stretch, Duval and St. Johns County side.
 
 We're out most days in [Jacksonville Beach](/service-areas/jacksonville-beach), [Neptune Beach](/service-areas/neptune-beach), [Atlantic Beach](/service-areas/atlantic-beach), [Ponte Vedra](/service-areas/ponte-vedra), [Ponte Vedra Beach](/service-areas/ponte-vedra-beach), and [Nocatee](/service-areas/nocatee). Check the [full list of service areas](/service-areas) to find your town.
 
-If you're searching "junk removal near me" from anywhere along the Beaches, we're near you. That's the advantage of running a compact stretch of coast — we're close to almost everything.
+If you're searching "junk removal near me" from anywhere along the Beaches, we're near you. That's the advantage of running a compact stretch of coast. We're close to almost everything.
 
 ## Can you come this afternoon?
 
@@ -100,6 +100,6 @@ If you already know you need us Thursday, book it. A confirmed slot always beats
 
 ## Get a free estimate today
 
-Call **(904) 404-6264** — early in the day if you can. We'll tell you straight whether we can get to you today or whether tomorrow's the honest answer. The on-site estimate is free, there's no obligation, and you get a flat quote before we touch a thing.
+Call **(904) 404-6264**, early in the day if you can. We'll tell you straight whether we can get to you today or whether tomorrow's the honest answer. The on-site estimate is free, there's no obligation, and you get a flat quote before we touch a thing.
 
 Licensed and insured, workers comp and general liability, and a crew that shows up. You can also [send us your details and photos here](/contact) and we'll get right back to you.

@@ -7,10 +7,13 @@ import { BigCta } from "@/components/BigCta";
 import { PageHero } from "@/components/PageHero";
 import {
   LocalIntro,
+  RecentJobs,
   LocationServices,
   Testimonials,
+  LocationFaq,
   OtherAreas,
 } from "@/components/LocationPageSections";
+import { PhotoBanner } from "@/components/ServicePageSections";
 import {
   locations,
   getLocationBySlug,
@@ -19,6 +22,7 @@ import {
 } from "@/lib/content";
 import {
   breadcrumbSchema,
+  faqSchema,
   asScript,
 } from "@/lib/schema";
 
@@ -48,6 +52,12 @@ export default async function LocationPage({ params }: Params) {
   const heroPhoto = detail?.hero?.photo ?? loc.heroPhoto;
   const lede = detail?.hero?.lede;
 
+  // Most city pages use the default "Junk Removal in <City>, DE."
+  // headline. A page can override it when a sharper, more specific
+  // H1 will do more for it than the template one.
+  const h1 = detail?.hero?.h1 ?? "Junk Removal in ";
+  const h1Accent = detail?.hero?.h1Accent ?? loc.nameWithState + ".";
+
   // Real Google reviews for this area, replacing the old placeholder
   // testimonials. Keep the section's heading; swap in real review items.
   const testimonials = detail?.testimonials
@@ -70,6 +80,12 @@ export default async function LocationPage({ params }: Params) {
           ])
         )}
       />
+      {detail?.faq && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={asScript(faqSchema(detail.faq.items))}
+        />
+      )}
       <Nav />
       <main>
         <PageHero
@@ -78,14 +94,15 @@ export default async function LocationPage({ params }: Params) {
             { label: "Service Areas", href: "/service-areas" },
             { label: loc.name },
           ]}
-          h1={`Junk Removal in `}
-          h1Accent={loc.nameWithState + "."}
+          h1={h1}
+          h1Accent={h1Accent}
           lede={lede}
           photo={heroPhoto}
           stats={detail?.hero?.stats}
         />
 
         <LocalIntro data={detail?.localIntro} parentLocation={loc} />
+        <RecentJobs data={detail?.recentJobs} />
         {detail?.guide && (
           <section className="local-guide-line">
             <p>
@@ -94,11 +111,13 @@ export default async function LocationPage({ params }: Params) {
             </p>
           </section>
         )}
+        <PhotoBanner data={detail?.banner} />
         <LocationServices
           data={detail?.servicesPreview}
           locationSlug={loc.slug}
         />
         <Testimonials data={testimonials} />
+        <LocationFaq data={detail?.faq} />
         <OtherAreas data={detail?.otherAreas} />
 
         <BigCta

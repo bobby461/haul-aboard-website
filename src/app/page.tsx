@@ -4,7 +4,6 @@ import { TrustStrip } from "@/components/TrustStrip";
 import { ServicesPreview } from "@/components/ServicesPreview";
 import { ReviewsSection } from "@/components/ReviewsSection";
 import { HomeSeoLinks } from "@/components/HomeSeoLinks";
-import { BrandElementsStrip } from "@/components/BrandArt";
 import { FaqAccordion } from "@/components/FaqAccordion";
 import { BigCta } from "@/components/BigCta";
 import { Footer } from "@/components/Footer";
@@ -21,7 +20,7 @@ export const metadata: Metadata = {
     absolute: "Junk Removal in Jacksonville Beach, FL | Haul Aboard",
   },
   description:
-    "Locally owned junk removal across the Jacksonville Beaches — Jax Beach, Neptune Beach, Atlantic Beach, Ponte Vedra & Nocatee. Same-day service, free on-site estimates, flat upfront pricing, licensed & insured. We haul it all.",
+    "Locally owned junk removal across the Jacksonville Beaches: Jax Beach, Neptune Beach, Atlantic Beach, Ponte Vedra & Nocatee. Same-day service, free on-site estimates, flat upfront pricing, licensed & insured. We haul it all.",
   alternates: { canonical: "/" },
   openGraph: {
     title: "Junk Removal in Jacksonville Beach, FL | Haul Aboard",
@@ -50,7 +49,6 @@ export default function HomePage() {
         <Hero />
         <TrustStrip />
         <ServicesPreview />
-        <BrandElementsStrip />
         <ReviewsSection />
         <HomeSeoLinks />
         <section className="faq-section">

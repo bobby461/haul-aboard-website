@@ -498,7 +498,9 @@ nav.site-nav {
 
 .meta-row {
   display: grid;
-  grid-template-columns: 1.2fr 1fr 1.5fr;
+  /* The phone column carries the biggest type in the row, so it gets
+     more width than the pitch text beside it. */
+  grid-template-columns: 1fr 1.25fr 1.3fr;
   gap: 40px;
   align-items: end;
   border-top: 2px solid rgba(255, 255, 255, 0.4);
@@ -580,20 +582,35 @@ nav.site-nav {
   text-decoration: none;
   color: #ffffff;
 }
+/* "Call us direct" — orange eyebrow over the number. */
+.phone-cta .label {
+  font-family: var(--font-barlow-condensed), "Barlow Condensed", sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 6px;
+}
+/* The number is the second-loudest thing in the hero after the
+   headline: people should find it without hunting. It scales with the
+   viewport and never wraps mid-number. */
 .phone-cta .num {
-  font-family: var(--font-bebas), "Anton", sans-serif;
-  font-size: 28px;
-  letter-spacing: 0.04em;
-  line-height: 1;
+  font-family: var(--font-bebas), "Bebas Neue", sans-serif;
+  font-size: clamp(38px, 4.6vw, 64px);
+  letter-spacing: 0.01em;
+  line-height: 0.95;
+  white-space: nowrap;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.5);
 }
 .phone-cta .sub {
   font-family: var(--font-barlow-condensed), "Barlow Condensed", sans-serif;
-  font-weight: 500;
-  font-size: 13px;
+  font-weight: 600;
+  font-size: 14px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.7);
-  margin-top: 6px;
+  color: rgba(255, 255, 255, 0.85);
+  margin-top: 10px;
 }
 .phone-cta:hover .num {
   color: var(--orange);
@@ -2752,6 +2769,414 @@ footer.site-footer .footer-link-plain {
 }
 
 /* ============================================================
+   LOCATION PAGE — RECENT JOBS
+   Real jobs from the weekly job audit. Sits right under the local
+   intro; the cream background separates it from the white intro.
+   ============================================================ */
+.recent-jobs {
+  padding: 80px 40px;
+  background: var(--bg);
+  border-bottom: 2px solid var(--ink);
+}
+.recent-jobs > .section-label,
+.recent-jobs > .section-title,
+.recent-jobs > .recent-jobs-intro,
+.recent-jobs > .recent-jobs-list,
+.recent-jobs > .recent-jobs-closing {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.recent-jobs-intro,
+.recent-jobs-closing {
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--ink);
+}
+.recent-jobs-intro {
+  margin-bottom: 28px;
+}
+.recent-jobs-list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  /* Each card is only as tall as its own content, so a text-only job
+     next to one with photos doesn't stretch into an empty box. */
+  align-items: start;
+}
+.recent-job {
+  background: #ffffff;
+  padding: 26px 28px;
+  border-left: 4px solid var(--orange);
+}
+.recent-job h3 {
+  font-family: var(--font-bebas), "Bebas Neue", sans-serif;
+  font-size: 24px;
+  letter-spacing: 0.02em;
+  margin-bottom: 10px;
+}
+.recent-job p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--ink);
+}
+.recent-jobs-closing {
+  margin-top: 28px;
+  font-weight: 600;
+}
+.recent-jobs-closing a {
+  color: var(--orange);
+  text-decoration: none;
+  border-bottom: 1px solid var(--orange);
+  white-space: nowrap;
+}
+/* The "read the local guide" line normally tucks under the white
+   intro; when recent jobs sit between them, give it clear space. */
+.recent-jobs + .local-guide-line {
+  margin-top: 0;
+  padding-top: 32px;
+}
+/* Combo pages: the recent-jobs block follows another white intro,
+   so tighten the gap and switch to cream to separate the two. */
+.recent-jobs-combo {
+  background: var(--bg);
+  padding-top: 70px;
+  padding-bottom: 70px;
+}
+@media (max-width: 900px) {
+  .recent-jobs {
+    padding: 60px 20px;
+  }
+  .recent-jobs-combo {
+    padding: 50px 20px;
+  }
+}
+
+/* Real job photos inside a recent-jobs card. Square frames keep the
+   phone portraits and the one landscape shot on the same grid. */
+.job-photos {
+  display: grid;
+  /* Two columns so before/after pairs sit side by side and a set of
+     four lands as a tidy 2x2 instead of wrapping 3 + 1. */
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 18px;
+}
+.job-photos[data-count="1"] {
+  grid-template-columns: 1fr;
+}
+.job-photo {
+  margin: 0;
+  min-width: 0;
+}
+.job-photo-img {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border: 1px solid var(--line);
+  overflow: hidden;
+  background: var(--bg);
+}
+.job-photo figcaption {
+  font-family: var(--font-bebas), "Bebas Neue", sans-serif;
+  font-size: 15px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 6px;
+}
+/* A lone photo has no pair to match, so give it a landscape frame. */
+.job-photos[data-count="1"] .job-photo-img {
+  aspect-ratio: 4 / 3;
+}
+
+/* On the combo page the block is centered at 820px, so cap the strip. */
+.recent-jobs-combo .job-photos {
+  margin-top: 24px;
+}
+
+/* ============================================================
+   HOMEPAGE — WHAT WE HAUL
+   Photo on top, content below on white. Scoped to `haul-*` so the
+   older `.service-card` treatment still serves the city pages and
+   /services untouched.
+   ============================================================ */
+.haul-section {
+  padding: 50px 40px 90px;
+  border-bottom: 2px solid var(--ink);
+  background: var(--bg);
+}
+
+/* Heading left, supporting line right, split by a thin orange rule. */
+.haul-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  gap: 48px;
+  align-items: end;
+  margin-bottom: 44px;
+}
+.haul-title {
+  margin-bottom: 0;
+  max-width: 100%;
+}
+.haul-intro {
+  font-size: 18px;
+  line-height: 1.55;
+  color: var(--ink);
+  border-left: 2px solid var(--orange);
+  padding-left: 22px;
+  margin-bottom: 10px;
+  max-width: 38ch;
+}
+
+.haul-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 26px;
+}
+
+.haul-card {
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  overflow: hidden;
+  text-decoration: none;
+  color: var(--ink);
+  box-shadow: 0 1px 2px rgba(14, 14, 12, 0.04);
+  transition:
+    transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
+    border-color 0.3s ease;
+}
+.haul-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 106, 26, 0.55);
+  box-shadow: 0 14px 30px rgba(14, 14, 12, 0.12);
+}
+.haul-card:focus-visible {
+  outline: 3px solid var(--orange);
+  outline-offset: 3px;
+}
+
+/* No dark overlay here: the photo is the photo. */
+.haul-card-photo {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--bg);
+}
+.haul-card-photo img {
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.haul-card:hover .haul-card-photo img {
+  transform: scale(1.04);
+}
+
+.haul-card-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 26px 26px 28px;
+}
+.haul-card-num {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-barlow-condensed), "Barlow Condensed", sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  color: var(--orange);
+  margin-bottom: 12px;
+}
+.haul-card-num::after {
+  content: "";
+  width: 26px;
+  height: 2px;
+  background: var(--orange);
+  opacity: 0.55;
+}
+.haul-card-name {
+  font-family: var(--font-bebas), "Bebas Neue", sans-serif;
+  font-size: clamp(26px, 2.1vw, 32px);
+  line-height: 0.98;
+  letter-spacing: 0.015em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.haul-card-desc {
+  font-size: 15.5px;
+  line-height: 1.55;
+  color: var(--muted);
+  margin-bottom: 22px;
+}
+.haul-card-link {
+  margin-top: auto;
+  font-family: var(--font-barlow-condensed), "Barlow Condensed", sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--orange);
+}
+.haul-card-link .arrow,
+.haul-card-btn .arrow {
+  display: inline-block;
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.haul-card:hover .haul-card-link .arrow,
+.haul-card:hover .haul-card-btn .arrow {
+  transform: translateX(6px);
+}
+
+/* The last card is the "ask us" call to action, not a service. */
+.haul-card-cta {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: #ffffff;
+}
+.haul-card-cta .haul-card-body {
+  justify-content: center;
+  padding: 40px 30px;
+}
+/* The call-to-action headline carries this card on its own, so it runs
+   large enough to fill the black panel rather than floating in it. */
+.haul-card-cta .haul-card-name {
+  color: #ffffff;
+  font-size: clamp(30px, 2.5vw, 38px);
+  line-height: 1.02;
+  margin-bottom: 18px;
+}
+.haul-card-cta .haul-card-name .accent {
+  color: var(--orange);
+}
+.haul-card-cta .haul-card-desc {
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 16px;
+  margin-bottom: 24px;
+  max-width: 32ch;
+}
+.haul-card-btn {
+  align-self: flex-start;
+  background: var(--orange);
+  color: #ffffff;
+  font-family: var(--font-barlow-condensed), "Barlow Condensed", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 15px 26px;
+  border-radius: 4px;
+  transition: background 0.25s ease;
+}
+.haul-card-cta:hover {
+  border-color: var(--ink);
+}
+.haul-card-cta:hover .haul-card-btn {
+  background: var(--orange-deep);
+}
+
+/* Tablet: two across, CTA card runs full width under them. */
+@media (max-width: 1100px) {
+  .haul-head {
+    grid-template-columns: 1fr;
+    gap: 22px;
+    align-items: start;
+  }
+  .haul-intro {
+    margin-bottom: 0;
+    max-width: 52ch;
+  }
+  .haul-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .haul-card-cta {
+    grid-column: 1 / -1;
+  }
+  .haul-card-cta .haul-card-desc {
+    max-width: 46ch;
+  }
+}
+
+@media (max-width: 700px) {
+  .haul-section {
+    padding: 40px 20px 60px;
+  }
+  .haul-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .haul-intro {
+    font-size: 16.5px;
+    padding-left: 16px;
+  }
+  .haul-card-photo {
+    aspect-ratio: 16 / 10;
+  }
+  .haul-card-body {
+    padding: 22px 20px 24px;
+  }
+  .haul-card-cta .haul-card-body {
+    padding: 30px 20px;
+  }
+}
+
+/* ============================================================
+   HOMEPAGE — "DELAWARE JUNK REMOVAL, TOP TO BOTTOM"
+   The copy and the two link columns run the full width of the
+   heading above them and sit a size up from the default body copy,
+   so the block fills the space instead of hugging the left edge.
+   ============================================================ */
+.home-seo-body {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.home-seo-body .local-intro-text {
+  max-width: none;
+}
+.home-seo-body .local-intro-text p {
+  font-size: 19px;
+  line-height: 1.6;
+  max-width: 95ch;
+  margin-bottom: 24px;
+}
+.home-seo-body .home-links-grid {
+  gap: 48px;
+  margin-top: 52px;
+}
+.home-seo-body .home-links-heading {
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+.home-seo-body .home-links-list li {
+  margin-bottom: 14px;
+}
+.home-seo-body .home-links-list a {
+  font-size: 18px;
+}
+
+@media (max-width: 760px) {
+  .home-seo-body .local-intro-text p {
+    font-size: 17.5px;
+  }
+  .home-seo-body .home-links-grid {
+    gap: 30px;
+    margin-top: 36px;
+  }
+  .home-seo-body .home-links-heading {
+    font-size: 26px;
+  }
+  .home-seo-body .home-links-list a {
+    font-size: 17px;
+  }
+}
+
+/* ============================================================
    ★  VINTAGE RETRO LAYER  ★
    1950s Florida marina / bait-shop skin, layered on top of the
    base styles above. Pulled from the Haul Aboard brand board:
@@ -3044,287 +3469,6 @@ body::before { opacity: 0.06; } /* nudge the grain up a touch */
 }
 
 /* ============================================================
-   ★  POSTER HERO  ★  (brand-board social-post layout)
-   ============================================================ */
-.hero-poster {
-  position: relative;
-  background: var(--bg);
-  /* No horizontal padding here on purpose: the service row and the orange
-     serving bar are full-bleed and must run the whole width of the screen.
-     The copy/mascot area gets its own padding via .hero-poster-inner. */
-  padding: 104px 0 0;
-  overflow: hidden;
-  border-bottom: 3px solid var(--ink);
-}
-/* faint halftone sunburst behind the whole hero */
-.hero-poster::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background: repeating-conic-gradient(
-    from 0deg at 74% 42%,
-    rgba(20, 56, 92, 0.045) 0deg 5deg,
-    transparent 5deg 10deg
-  );
-  -webkit-mask: radial-gradient(circle at 74% 42%, #000, transparent 62%);
-  mask: radial-gradient(circle at 74% 42%, #000, transparent 62%);
-  pointer-events: none;
-}
-.hero-poster-inner {
-  position: relative;
-  z-index: 2;
-  max-width: 1220px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1.02fr 0.98fr;
-  column-gap: 30px;
-  row-gap: 10px;
-  align-items: center;
-  min-height: clamp(480px, 58vh, 660px);
-  padding: 26px 40px 34px;
-}
-/* Eyebrow + slogan: full width, above both columns. */
-.hero-poster-head {
-  grid-column: 1 / -1;
-}
-.hero-eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  font-family: var(--font-barlow-condensed), sans-serif;
-  font-weight: 700;
-  font-size: 14px;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
-  color: var(--ink);
-  margin-bottom: 12px;
-}
-.hero-eyebrow-anchor {
-  width: 22px;
-  height: 22px;
-  color: var(--orange);
-}
-/* "WE HAUL IT ALL!" — one line, poster scale. Flat two-tone type: the
-   old hard 3D offset made it muddy and fought the logo. Legibility and
-   the orange/navy pairing carry the vintage feel instead. */
-.hero-slogan {
-  font-family: var(--font-bebas), sans-serif;
-  line-height: 0.86;
-  text-transform: uppercase;
-  margin-bottom: 14px;
-  white-space: nowrap;
-  font-size: clamp(52px, 15vw, 186px);
-  letter-spacing: 0.005em;
-}
-.hero-slogan .l1,
-.hero-slogan .l2 {
-  display: inline;
-  font-size: inherit;
-}
-.hero-slogan .l1 { color: var(--ink); }
-.hero-slogan .l2 { color: var(--orange); }
-.hero-lede {
-  font-size: 18px;
-  line-height: 1.55;
-  color: var(--ink);
-  max-width: 46ch;
-  margin-bottom: 26px;
-}
-.hero-poster .hero-cta-row {
-  display: flex;
-  align-items: stretch;
-  gap: 18px;
-  flex-wrap: wrap;
-  margin-bottom: 24px;
-}
-.hero-poster .phone-cta {
-  color: var(--ink);
-  align-self: center;
-}
-.hero-poster .phone-cta .num {
-  font-family: var(--font-bebas), sans-serif;
-  font-size: 30px;
-  letter-spacing: 0.03em;
-  color: var(--ink);
-}
-.hero-poster .phone-cta .sub {
-  font-family: var(--font-barlow-condensed), sans-serif;
-  font-weight: 600;
-  font-size: 12px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-top: 4px;
-}
-.hero-poster .phone-cta:hover .num { color: var(--orange); }
-.hero-badges {
-  grid-column: 1 / -1;
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 4px;
-}
-.hero-badges li {
-  font-family: var(--font-barlow-condensed), sans-serif;
-  font-weight: 700;
-  font-size: 12px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--ink);
-  background: var(--bg-2);
-  border: 2px solid var(--ink);
-  border-radius: 999px;
-  padding: 7px 15px;
-  box-shadow: 2px 2px 0 var(--ink);
-}
-.hero-badges li::before {
-  content: "⚓ ";
-  color: var(--orange);
-}
-/* Mascot slot */
-.hero-poster-art {
-  position: relative;
-  align-self: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.mascot-frame {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 4 / 5;
-  max-height: 560px;
-}
-/* Service-icon row (orange marks on deep cream) */
-.service-row {
-  position: relative;
-  z-index: 2;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 0;
-  background: var(--bg-2);
-  border-top: 3px solid var(--ink);
-  max-width: 100%;
-}
-.service-row-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-  padding: 26px 16px;
-  text-decoration: none;
-  border-right: 2px solid rgba(20, 56, 92, 0.14);
-  transition: background 0.2s, transform 0.2s;
-}
-.service-row-item:last-child { border-right: none; }
-.service-row-item:hover { background: rgba(243, 106, 33, 0.08); }
-.service-row-icon {
-  width: 52px;
-  height: 52px;
-  color: var(--orange);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.service-row-icon svg { width: 100%; height: 100%; }
-.service-row-label {
-  font-family: var(--font-barlow-condensed), sans-serif;
-  font-weight: 700;
-  font-size: 14px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--ink);
-  text-align: center;
-}
-/* Orange serving bar */
-.serving-bar {
-  background: var(--orange);
-  color: #fff8ee;
-  text-align: center;
-  padding: 13px 20px;
-  font-family: var(--font-barlow-condensed), sans-serif;
-  font-weight: 700;
-  font-size: 14px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 14px;
-}
-.serving-anchor { width: 18px; height: 18px; color: #fff8ee; }
-
-@media (max-width: 900px) {
-  .hero-poster { padding: 92px 0 0; }
-  .hero-poster-inner {
-    grid-template-columns: 1fr;
-    min-height: 0;
-    gap: 8px;
-    padding: 22px 20px 28px;
-    text-align: center;
-  }
-  .hero-eyebrow { justify-content: center; }
-  /* On phones the one-line slogan would shrink to nothing, so let it
-     wrap back to two lines and scale off the viewport. */
-  .hero-slogan {
-    white-space: normal;
-    font-size: clamp(46px, 15vw, 84px);
-  }
-  .hero-poster-art { order: 3; }
-  .hero-poster .hero-cta-row,
-  .hero-badges { justify-content: center; }
-  .hero-mascot-img { max-height: 280px; margin: 0 auto; }
-  .mascot-frame { aspect-ratio: 3 / 3; max-height: 340px; margin: 0 auto; max-width: 340px; }
-  .service-row { grid-template-columns: repeat(2, 1fr); }
-  .service-row-item:nth-child(2) { border-right: none; }
-  .service-row-item:nth-child(1),
-  .service-row-item:nth-child(2) { border-bottom: 2px solid rgba(20, 56, 92, 0.14); }
-}
-
-/* ============================================================
-   ★  BRAND ELEMENTS STRIP  ★  (decorative divider)
-   ============================================================ */
-.brand-elements {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 30px;
-  flex-wrap: wrap;
-  padding: 30px 40px;
-  background: var(--bg);
-  border-top: 2px solid var(--line);
-  border-bottom: 2px solid var(--line);
-}
-.brand-el {
-  width: 40px;
-  height: 40px;
-  color: var(--ink);
-  display: inline-flex;
-}
-.brand-el svg { width: 100%; height: 100%; }
-.brand-el-script {
-  font-family: var(--font-script), cursive;
-  color: var(--orange);
-  font-size: 34px;
-  transform: rotate(-4deg);
-}
-.brand-el-rule {
-  flex: 1;
-  min-width: 40px;
-  height: 2px;
-  max-width: 120px;
-  background: repeating-linear-gradient(90deg, var(--ink) 0 8px, transparent 8px 14px);
-  opacity: 0.5;
-}
-@media (max-width: 640px) {
-  .brand-el { width: 30px; height: 30px; }
-  .brand-el-script { font-size: 26px; }
-  .brand-elements { gap: 16px; padding: 22px 16px; }
-}
-
-/* ============================================================
    ★  REAL ARTWORK PLACEMENT  ★
    ============================================================ */
 /* Nav: mascot face + wordmark lockup */
@@ -3339,16 +3483,35 @@ body::before { opacity: 0.06; } /* nudge the grain up a touch */
   display: block;
 }
 
-/* Hero: real fishing mascot */
-.hero-mascot-img {
-  display: block;
-  width: 100%;
-  height: auto;
-  max-height: 400px;
-  object-fit: contain;
-  filter: drop-shadow(0 10px 18px rgba(20, 56, 92, 0.18));
-}
 @media (max-width: 900px) {
-  .hero-mascot-img { max-height: 280px; margin: 0 auto; }
   .logo-face { height: 38px; }
+}
+
+/* Hero headline, sized for Haul Aboard. Same layout as the Junk Away
+   hero, but "Haul Aboard" is two characters longer than "Junk Away"
+   and Anton is wider and taller than Bebas Neue, so the three lines
+   come down a step and get more leading or they collide and run off
+   the side of a phone. */
+.headline {
+  line-height: 1.02;
+}
+.headline .connector,
+.headline .for-good {
+  font-size: clamp(30px, 7vw, 100px);
+}
+.headline .brand {
+  font-size: clamp(58px, 15.6vw, 236px);
+  line-height: 0.98;
+}
+
+/* The hero stats are words here ("Same-Day"), not short numbers like
+   Junk Away's "4.9", so keep each on one line and let the type shrink
+   on a phone instead of wrapping. */
+.stat-block .top {
+  white-space: nowrap;
+}
+@media (max-width: 640px) {
+  .stat-block .top {
+    font-size: clamp(22px, 7.4vw, 34px);
+  }
 }

@@ -106,7 +106,7 @@ export default function PricesPage() {
             </h2>
             <div className="local-intro-text">
               <p>
-                Pricing works the same way across every job we do — here are the
+                Pricing works the same way across every job we do. Here are the
                 ones people ask about most:{" "}
                 <Link href="/services/hot-tub-removal">
                   hot tub removal in Jacksonville Beach

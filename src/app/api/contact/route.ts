@@ -200,7 +200,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json(
         {
           ok: false,
-          error: `We couldn't send that just now — please call us at ${business.phone} and we'll take care of you.`,
+          error: `We couldn't send that just now. Please call us at ${business.phone} and we'll take care of you.`,
           code: failCode,
         },
         { status: 502 }
