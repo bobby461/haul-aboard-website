@@ -31,7 +31,20 @@ export function Hero() {
       <div>
         <h1 className="headline">
           <span className="line connector">{h.headlineLine1}</span>
-          <span className="line brand">{h.headlineBrand}</span>
+          <span className="line brand">
+            {/* The mascot stands on the last letters of the name and
+                fishes off the end of it. Decorative, so no alt text. */}
+            <span className="brand-text">
+              {h.headlineBrand}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/brand/mascot-fishing.svg"
+                alt=""
+                aria-hidden="true"
+                className="hero-mascot"
+              />
+            </span>
+          </span>
           <span className="line">
             <span className="for-good">{h.headlineLine3}</span>
           </span>

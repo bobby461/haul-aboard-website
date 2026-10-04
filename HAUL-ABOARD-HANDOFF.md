@@ -40,7 +40,7 @@ Junk Away.
 1. **Photos.** I removed all the Junk Away photos (they showed the DE crew,
    trucks with Delaware signage, and a DE phone number — can't use those here).
    Every photo now shows a labeled gray placeholder telling you the exact path
-   to drop a file at. Priority shots to take: a hero shot (`/public/images/hero/crew.jpeg`,
+   to drop a file at. Priority shots to take: a hero shot (`/public/images/hero/ (then point `homepage.hero.photo.src` at it)`,
    wide ~3:2), a couple of service photos, and an About photo. Until then the
    branded navy placeholders look intentional. **Tip:** don't `sips -r` rotate
    phone photos (EXIF double-rotation bug); resize with `sharp().rotate()`.
@@ -83,7 +83,7 @@ colors, type and logo. What changed:
 - **Homepage hero** is the Junk Away hero: full-width photo under a dark overlay,
   three stat blocks, three-line headline, then pitch / phone / estimate button.
   The photo is a navy placeholder. Drop the real one at
-  `/public/images/hero/crew.jpeg` (wide, about 3:2).
+  `/public/images/hero/ (then point `homepage.hero.photo.src` at it)` (wide, about 3:2).
 - **Hero stats are service facts, not numbers** (Same-Day / Free / Local), because
   Haul Aboard has no rating or job count of its own yet. Swap them in
   `homepage.hero.stats` when real Google reviews exist.

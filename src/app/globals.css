@@ -3608,3 +3608,97 @@ nav.site-nav {
   .logo-face { height: 42px; }
   .logo-wordmark-img { height: 44px; }
 }
+
+/* ============================================================
+   2026-10-04, second round of notes from Bobby
+   ============================================================ */
+
+/* Header links: bigger, bolder, more room between them, but still
+   a clear step below the logo lettering. */
+.nav-links {
+  gap: 38px;
+  font-size: 16.5px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+}
+/* Call Now is the call to action, so it gets the most weight. */
+.call-now {
+  padding: 16px 30px;
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  gap: 11px;
+  background: #ff6a1a;
+  box-shadow: 4px 4px 0 var(--ink), 0 6px 22px rgba(255, 106, 26, 0.45);
+}
+.call-now:hover {
+  background: var(--orange);
+  box-shadow: 5px 5px 0 var(--ink), 0 8px 26px rgba(255, 106, 26, 0.55);
+}
+.call-now .phone-icon {
+  width: 22px;
+  height: 22px;
+}
+@media (max-width: 1420px) and (min-width: 901px) {
+  .nav-links { gap: 26px; font-size: 15px; letter-spacing: 0.12em; }
+  .call-now { padding: 14px 22px; font-size: 16px; }
+  nav.site-nav { gap: 20px; padding-left: 28px; padding-right: 28px; }
+}
+@media (max-width: 1240px) and (min-width: 901px) {
+  .nav-links { gap: 16px; font-size: 13.5px; letter-spacing: 0.08em; }
+  .call-now { padding: 12px 16px; font-size: 14px; }
+  .call-now .phone-icon { width: 18px; height: 18px; }
+  .logo-face { height: 50px; }
+  .logo-wordmark-img { height: 52px; }
+  nav.site-nav { gap: 14px; padding-left: 20px; padding-right: 20px; }
+}
+@media (max-width: 1040px) and (min-width: 901px) {
+  .nav-links { gap: 12px; font-size: 12.5px; letter-spacing: 0.05em; }
+  .logo-face { height: 42px; }
+  .logo-wordmark-img { height: 44px; }
+}
+@media (max-width: 900px) {
+  .call-now { padding: 12px 16px; font-size: 14px; gap: 8px; }
+  .call-now .phone-icon { width: 17px; height: 17px; }
+}
+
+/* Hero: the block is as tall as its content instead of a full
+   screen, so the phone number and estimate button sit close under
+   the headline. Extra room up top is for the mascot. */
+.hero {
+  min-height: 0;
+  justify-content: flex-start;
+  padding-top: clamp(150px, 16.5vw, 270px);
+  background: var(--ink);
+}
+.headline {
+  margin-bottom: 30px;
+}
+/* The fishing mascot stands on the "ARD" of "Haul Aboard" and casts
+   off the end of the name. Sized in em so it scales with the
+   lettering at every screen width. The cream edge is what keeps his
+   navy overalls and the fishing line visible on a navy background. */
+.headline .brand-text {
+  position: relative;
+  display: inline-block;
+}
+.hero-mascot {
+  position: absolute;
+  width: 1.7em;
+  height: auto;
+  right: -0.76em;
+  bottom: 0.865em;
+  pointer-events: none;
+  filter:
+    drop-shadow(0.012em 0 0 #f6e9d6)
+    drop-shadow(-0.012em 0 0 #f6e9d6)
+    drop-shadow(0 0.012em 0 #f6e9d6)
+    drop-shadow(0 -0.012em 0 #f6e9d6);
+}
+.call-now {
+  white-space: nowrap;
+}
+@media (max-width: 480px) {
+  .call-now { padding: 11px 13px; font-size: 13px; letter-spacing: 0.1em; gap: 7px; }
+  .call-now .phone-icon { width: 15px; height: 15px; }
+}

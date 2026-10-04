@@ -134,10 +134,11 @@ export const homepage = {
     headlineLine3: "Hauls It All!",
 
     // Background photo behind the dark overlay. PLACEHOLDER: this file is
-    // a plain navy panel until there is a real crew-and-truck photo. Drop
-    // the real one at this same path (wide, about 3:2) and it swaps in.
+    // a flat brand-navy panel until there is a real crew-and-truck photo.
+    // When there is one, save it in /public/images/hero/ (wide, about
+    // 3:2) and point `src` at it.
     photo: {
-      src: "/images/hero/crew.jpeg",
+      src: "/images/hero/hero-navy-placeholder.jpg",
       alt: "Haul Aboard Junk Removal, Jacksonville Beach, Florida",
       width: 2400,
       height: 1600,
